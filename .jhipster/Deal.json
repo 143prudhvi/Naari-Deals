@@ -1,0 +1,99 @@
+{
+  "applications": "*",
+  "changelogDate": "20220925160514",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "deal",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "dealUrl",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "postedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postedDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "originalPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "discount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "discountType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "approved",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pinCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "merchant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Deal",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

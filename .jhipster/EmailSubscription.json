@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220925160517",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "email_subscription",
+  "fields": [
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "EmailSubscription",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

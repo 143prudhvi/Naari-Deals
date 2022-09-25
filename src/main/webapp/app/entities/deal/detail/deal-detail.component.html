@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="deal">
+      <h2 data-cy="dealDetailsHeading"><span>Deal</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ deal.id }}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+          <span>{{ deal.type }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ deal.title }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ deal.description }}</span>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+          <span>{{ deal.imageUrl }}</span>
+        </dd>
+        <dt><span>Deal Url</span></dt>
+        <dd>
+          <span>{{ deal.dealUrl }}</span>
+        </dd>
+        <dt><span>Posted By</span></dt>
+        <dd>
+          <span>{{ deal.postedBy }}</span>
+        </dd>
+        <dt><span>Posted Date</span></dt>
+        <dd>
+          <span>{{ deal.postedDate }}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+          <span>{{ deal.startDate }}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+          <span>{{ deal.endDate }}</span>
+        </dd>
+        <dt><span>Original Price</span></dt>
+        <dd>
+          <span>{{ deal.originalPrice }}</span>
+        </dd>
+        <dt><span>Current Price</span></dt>
+        <dd>
+          <span>{{ deal.currentPrice }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ deal.discount }}</span>
+        </dd>
+        <dt><span>Discount Type</span></dt>
+        <dd>
+          <span>{{ deal.discountType }}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+          <span>{{ deal.active }}</span>
+        </dd>
+        <dt><span>Approved</span></dt>
+        <dd>
+          <span>{{ deal.approved }}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+          <span>{{ deal.country }}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+          <span>{{ deal.city }}</span>
+        </dd>
+        <dt><span>Pin Code</span></dt>
+        <dd>
+          <span>{{ deal.pinCode }}</span>
+        </dd>
+        <dt><span>Merchant</span></dt>
+        <dd>
+          <span>{{ deal.merchant }}</span>
+        </dd>
+        <dt><span>Category</span></dt>
+        <dd>
+          <span>{{ deal.category }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/deal', deal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+{
+  "applications": "*",
+  "changelogDate": "20220925160519",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "notification",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOfRead",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "originalPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "discount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "discountType",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Notification",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

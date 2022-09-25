@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220925160511",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "deal_type",
+  "fields": [
+    {
+      "fieldName": "dealType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DealType",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
