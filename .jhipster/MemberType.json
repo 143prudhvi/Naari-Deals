@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220925160510",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "member_type",
+  "fields": [
+    {
+      "fieldName": "memberType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "MemberType",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

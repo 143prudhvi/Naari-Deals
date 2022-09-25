@@ -48,6 +48,16 @@ public class CacheConfiguration {
             createCache(cm, com.deals.naari.domain.User.class.getName());
             createCache(cm, com.deals.naari.domain.Authority.class.getName());
             createCache(cm, com.deals.naari.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.deals.naari.domain.MemberType.class.getName());
+            createCache(cm, com.deals.naari.domain.DealType.class.getName());
+            createCache(cm, com.deals.naari.domain.LoginProfile.class.getName());
+            createCache(cm, com.deals.naari.domain.BioProfile.class.getName());
+            createCache(cm, com.deals.naari.domain.Deal.class.getName());
+            createCache(cm, com.deals.naari.domain.Merchant.class.getName());
+            createCache(cm, com.deals.naari.domain.Category.class.getName());
+            createCache(cm, com.deals.naari.domain.EmailSubscription.class.getName());
+            createCache(cm, com.deals.naari.domain.NotificationType.class.getName());
+            createCache(cm, com.deals.naari.domain.Notification.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

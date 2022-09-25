@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-login-profile-heading" data-cy="LoginProfileCreateUpdateHeading">Create or edit a Login Profile</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_userName">User Name</label>
+          <input type="text" class="form-control" name="userName" id="field_userName" data-cy="userName" formControlName="userName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_userId">User Id</label>
+          <input type="text" class="form-control" name="userId" id="field_userId" data-cy="userId" formControlName="userId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_memberType">Member Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="memberType"
+            id="field_memberType"
+            data-cy="memberType"
+            formControlName="memberType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_emailId">Email Id</label>
+          <input type="text" class="form-control" name="emailId" id="field_emailId" data-cy="emailId" formControlName="emailId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_password">Password</label>
+          <input type="text" class="form-control" name="password" id="field_password" data-cy="password" formControlName="password" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_activationStatus">Activation Status</label>
+          <input
+            type="text"
+            class="form-control"
+            name="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+            formControlName="activationStatus"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_activationCode">Activation Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="activationCode"
+            id="field_activationCode"
+            data-cy="activationCode"
+            formControlName="activationCode"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

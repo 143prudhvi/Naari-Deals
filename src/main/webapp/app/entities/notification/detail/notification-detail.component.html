@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="notification">
+      <h2 data-cy="notificationDetailsHeading"><span>Notification</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ notification.id }}</span>
+        </dd>
+        <dt><span>User Id</span></dt>
+        <dd>
+          <span>{{ notification.userId }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ notification.title }}</span>
+        </dd>
+        <dt><span>Message</span></dt>
+        <dd>
+          <span>{{ notification.message }}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+          <span>{{ notification.status }}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+          <span>{{ notification.type }}</span>
+        </dd>
+        <dt><span>Date Of Read</span></dt>
+        <dd>
+          <span>{{ notification.dateOfRead }}</span>
+        </dd>
+        <dt><span>Image Url</span></dt>
+        <dd>
+          <span>{{ notification.imageUrl }}</span>
+        </dd>
+        <dt><span>Original Price</span></dt>
+        <dd>
+          <span>{{ notification.originalPrice }}</span>
+        </dd>
+        <dt><span>Current Price</span></dt>
+        <dd>
+          <span>{{ notification.currentPrice }}</span>
+        </dd>
+        <dt><span>Discount</span></dt>
+        <dd>
+          <span>{{ notification.discount }}</span>
+        </dd>
+        <dt><span>Discount Type</span></dt>
+        <dd>
+          <span>{{ notification.discountType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/notification', notification.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

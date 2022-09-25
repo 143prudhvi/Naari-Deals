@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-bio-profile-heading" data-cy="BioProfileCreateUpdateHeading">Create or edit a Bio Profile</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_userId">User Id</label>
+          <input type="text" class="form-control" name="userId" id="field_userId" data-cy="userId" formControlName="userId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_dob">Dob</label>
+          <input type="text" class="form-control" name="dob" id="field_dob" data-cy="dob" formControlName="dob" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_gender">Gender</label>
+          <input type="text" class="form-control" name="gender" id="field_gender" data-cy="gender" formControlName="gender" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_imageUrl">Image Url</label>
+          <input type="text" class="form-control" name="imageUrl" id="field_imageUrl" data-cy="imageUrl" formControlName="imageUrl" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

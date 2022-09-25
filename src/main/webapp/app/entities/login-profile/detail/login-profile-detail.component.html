@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="loginProfile">
+      <h2 data-cy="loginProfileDetailsHeading"><span>Login Profile</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ loginProfile.id }}</span>
+        </dd>
+        <dt><span>User Name</span></dt>
+        <dd>
+          <span>{{ loginProfile.userName }}</span>
+        </dd>
+        <dt><span>User Id</span></dt>
+        <dd>
+          <span>{{ loginProfile.userId }}</span>
+        </dd>
+        <dt><span>Member Type</span></dt>
+        <dd>
+          <span>{{ loginProfile.memberType }}</span>
+        </dd>
+        <dt><span>Phone Number</span></dt>
+        <dd>
+          <span>{{ loginProfile.phoneNumber }}</span>
+        </dd>
+        <dt><span>Email Id</span></dt>
+        <dd>
+          <span>{{ loginProfile.emailId }}</span>
+        </dd>
+        <dt><span>Password</span></dt>
+        <dd>
+          <span>{{ loginProfile.password }}</span>
+        </dd>
+        <dt><span>Activation Status</span></dt>
+        <dd>
+          <span>{{ loginProfile.activationStatus }}</span>
+        </dd>
+        <dt><span>Activation Code</span></dt>
+        <dd>
+          <span>{{ loginProfile.activationCode }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/login-profile', loginProfile.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

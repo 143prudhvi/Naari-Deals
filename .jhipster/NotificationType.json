@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220925160518",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "notification_type",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "NotificationType",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
