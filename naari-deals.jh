@@ -1,0 +1,105 @@
+entity MemberType {
+      memberType String
+      description String
+      imageUrl TextBlob
+}
+
+entity DealType {
+      dealType String
+      description String
+      imageUrl TextBlob
+}
+
+
+entity LoginProfile{
+	  userName String
+	  userId String
+      memberType String
+      phoneNumber String
+      emailId String
+      password String
+      activationStatus String
+      activationCode String
+}
+
+entity BioProfile {
+	  userId String
+      firstName String
+      lastName String
+      dob String
+      gender String
+      imageUrl String
+}
+
+entity Deal {
+      type String
+      title String
+      description TextBlob
+      imageUrl TextBlob
+      dealUrl TextBlob
+      postedBy String
+      postedDate String
+      startDate String
+      endDate String
+      originalPrice String
+      currentPrice String
+      discount String
+      discountType String
+      active String
+      approved Boolean
+      country String
+      city String
+      pinCode String
+      merchant String
+      category String
+}
+
+entity Merchant{
+      name String
+      country String
+      city String
+      storeIcon TextBlob
+      type String
+      location String
+}
+
+entity Category{
+      name String
+      icon TextBlob
+      description TextBlob
+}
+
+entity EmailSubscription{
+      email String
+      country String
+}
+
+entity NotificationType {
+    type String
+    description String
+}
+
+entity Notification{
+  userId String
+  title String
+  message String
+  status String
+  type String
+  dateOfRead String
+  imageUrl String
+  originalPrice String
+  currentPrice String
+  discount String
+  discountType String
+}
+
+filter Deal
+
+paginate Deal with infinite-scroll
+paginate Deal with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
