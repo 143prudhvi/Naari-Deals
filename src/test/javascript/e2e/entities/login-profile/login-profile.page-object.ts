@@ -33,6 +33,7 @@ export class LoginProfileUpdatePage {
   userNameInput = element(by.id('field_userName'));
   userIdInput = element(by.id('field_userId'));
   memberTypeInput = element(by.id('field_memberType'));
+  memberIdInput = element(by.id('field_memberId'));
   phoneNumberInput = element(by.id('field_phoneNumber'));
   emailIdInput = element(by.id('field_emailId'));
   passwordInput = element(by.id('field_password'));
@@ -73,6 +74,14 @@ export class LoginProfileUpdatePage {
 
   async getMemberTypeInput(): Promise<string> {
     return await this.memberTypeInput.getAttribute('value');
+  }
+
+  async setMemberIdInput(memberId: string): Promise<void> {
+    await this.memberIdInput.sendKeys(memberId);
+  }
+
+  async getMemberIdInput(): Promise<string> {
+    return await this.memberIdInput.getAttribute('value');
   }
 
   async setPhoneNumberInput(phoneNumber: string): Promise<void> {

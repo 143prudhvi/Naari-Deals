@@ -30,6 +30,9 @@ public class LoginProfile implements Serializable {
     @Column(name = "member_type")
     private String memberType;
 
+    @Column(name = "member_id")
+    private String memberId;
+
     @Column(name = "phone_number")
     private String phoneNumber;
 
@@ -97,6 +100,19 @@ public class LoginProfile implements Serializable {
 
     public void setMemberType(String memberType) {
         this.memberType = memberType;
+    }
+
+    public String getMemberId() {
+        return this.memberId;
+    }
+
+    public LoginProfile memberId(String memberId) {
+        this.setMemberId(memberId);
+        return this;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
     public String getPhoneNumber() {
@@ -191,6 +207,7 @@ public class LoginProfile implements Serializable {
             ", userName='" + getUserName() + "'" +
             ", userId='" + getUserId() + "'" +
             ", memberType='" + getMemberType() + "'" +
+            ", memberId='" + getMemberId() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", emailId='" + getEmailId() + "'" +
             ", password='" + getPassword() + "'" +

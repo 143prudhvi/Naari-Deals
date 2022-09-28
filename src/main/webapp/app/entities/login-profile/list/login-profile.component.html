@@ -56,6 +56,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="memberId">
+            <div class="d-flex">
+              <span>Member Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="phoneNumber">
             <div class="d-flex">
               <span>Phone Number</span>
@@ -97,6 +103,7 @@
           <td>{{ loginProfile.userName }}</td>
           <td>{{ loginProfile.userId }}</td>
           <td>{{ loginProfile.memberType }}</td>
+          <td>{{ loginProfile.memberId }}</td>
           <td>{{ loginProfile.phoneNumber }}</td>
           <td>{{ loginProfile.emailId }}</td>
           <td>{{ loginProfile.password }}</td>

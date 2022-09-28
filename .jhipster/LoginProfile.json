@@ -18,6 +18,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "memberId",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "phoneNumber",
       "fieldType": "String"
     },

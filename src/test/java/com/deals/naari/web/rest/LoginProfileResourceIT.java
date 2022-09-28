@@ -38,6 +38,9 @@ class LoginProfileResourceIT {
     private static final String DEFAULT_MEMBER_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_MEMBER_TYPE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_MEMBER_ID = "AAAAAAAAAA";
+    private static final String UPDATED_MEMBER_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_PHONE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_PHONE_NUMBER = "BBBBBBBBBB";
 
@@ -81,6 +84,7 @@ class LoginProfileResourceIT {
             .userName(DEFAULT_USER_NAME)
             .userId(DEFAULT_USER_ID)
             .memberType(DEFAULT_MEMBER_TYPE)
+            .memberId(DEFAULT_MEMBER_ID)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .emailId(DEFAULT_EMAIL_ID)
             .password(DEFAULT_PASSWORD)
@@ -100,6 +104,7 @@ class LoginProfileResourceIT {
             .userName(UPDATED_USER_NAME)
             .userId(UPDATED_USER_ID)
             .memberType(UPDATED_MEMBER_TYPE)
+            .memberId(UPDATED_MEMBER_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .emailId(UPDATED_EMAIL_ID)
             .password(UPDATED_PASSWORD)
@@ -129,6 +134,7 @@ class LoginProfileResourceIT {
         assertThat(testLoginProfile.getUserName()).isEqualTo(DEFAULT_USER_NAME);
         assertThat(testLoginProfile.getUserId()).isEqualTo(DEFAULT_USER_ID);
         assertThat(testLoginProfile.getMemberType()).isEqualTo(DEFAULT_MEMBER_TYPE);
+        assertThat(testLoginProfile.getMemberId()).isEqualTo(DEFAULT_MEMBER_ID);
         assertThat(testLoginProfile.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testLoginProfile.getEmailId()).isEqualTo(DEFAULT_EMAIL_ID);
         assertThat(testLoginProfile.getPassword()).isEqualTo(DEFAULT_PASSWORD);
@@ -169,6 +175,7 @@ class LoginProfileResourceIT {
             .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME)))
             .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)))
             .andExpect(jsonPath("$.[*].memberType").value(hasItem(DEFAULT_MEMBER_TYPE)))
+            .andExpect(jsonPath("$.[*].memberId").value(hasItem(DEFAULT_MEMBER_ID)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
             .andExpect(jsonPath("$.[*].emailId").value(hasItem(DEFAULT_EMAIL_ID)))
             .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD)))
@@ -191,6 +198,7 @@ class LoginProfileResourceIT {
             .andExpect(jsonPath("$.userName").value(DEFAULT_USER_NAME))
             .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID))
             .andExpect(jsonPath("$.memberType").value(DEFAULT_MEMBER_TYPE))
+            .andExpect(jsonPath("$.memberId").value(DEFAULT_MEMBER_ID))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
             .andExpect(jsonPath("$.emailId").value(DEFAULT_EMAIL_ID))
             .andExpect(jsonPath("$.password").value(DEFAULT_PASSWORD))
@@ -221,6 +229,7 @@ class LoginProfileResourceIT {
             .userName(UPDATED_USER_NAME)
             .userId(UPDATED_USER_ID)
             .memberType(UPDATED_MEMBER_TYPE)
+            .memberId(UPDATED_MEMBER_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .emailId(UPDATED_EMAIL_ID)
             .password(UPDATED_PASSWORD)
@@ -242,6 +251,7 @@ class LoginProfileResourceIT {
         assertThat(testLoginProfile.getUserName()).isEqualTo(UPDATED_USER_NAME);
         assertThat(testLoginProfile.getUserId()).isEqualTo(UPDATED_USER_ID);
         assertThat(testLoginProfile.getMemberType()).isEqualTo(UPDATED_MEMBER_TYPE);
+        assertThat(testLoginProfile.getMemberId()).isEqualTo(UPDATED_MEMBER_ID);
         assertThat(testLoginProfile.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testLoginProfile.getEmailId()).isEqualTo(UPDATED_EMAIL_ID);
         assertThat(testLoginProfile.getPassword()).isEqualTo(UPDATED_PASSWORD);
@@ -319,8 +329,9 @@ class LoginProfileResourceIT {
 
         partialUpdatedLoginProfile
             .userName(UPDATED_USER_NAME)
-            .phoneNumber(UPDATED_PHONE_NUMBER)
-            .password(UPDATED_PASSWORD)
+            .memberId(UPDATED_MEMBER_ID)
+            .emailId(UPDATED_EMAIL_ID)
+            .activationStatus(UPDATED_ACTIVATION_STATUS)
             .activationCode(UPDATED_ACTIVATION_CODE);
 
         restLoginProfileMockMvc
@@ -338,10 +349,11 @@ class LoginProfileResourceIT {
         assertThat(testLoginProfile.getUserName()).isEqualTo(UPDATED_USER_NAME);
         assertThat(testLoginProfile.getUserId()).isEqualTo(DEFAULT_USER_ID);
         assertThat(testLoginProfile.getMemberType()).isEqualTo(DEFAULT_MEMBER_TYPE);
-        assertThat(testLoginProfile.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
-        assertThat(testLoginProfile.getEmailId()).isEqualTo(DEFAULT_EMAIL_ID);
-        assertThat(testLoginProfile.getPassword()).isEqualTo(UPDATED_PASSWORD);
-        assertThat(testLoginProfile.getActivationStatus()).isEqualTo(DEFAULT_ACTIVATION_STATUS);
+        assertThat(testLoginProfile.getMemberId()).isEqualTo(UPDATED_MEMBER_ID);
+        assertThat(testLoginProfile.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
+        assertThat(testLoginProfile.getEmailId()).isEqualTo(UPDATED_EMAIL_ID);
+        assertThat(testLoginProfile.getPassword()).isEqualTo(DEFAULT_PASSWORD);
+        assertThat(testLoginProfile.getActivationStatus()).isEqualTo(UPDATED_ACTIVATION_STATUS);
         assertThat(testLoginProfile.getActivationCode()).isEqualTo(UPDATED_ACTIVATION_CODE);
     }
 
@@ -361,6 +373,7 @@ class LoginProfileResourceIT {
             .userName(UPDATED_USER_NAME)
             .userId(UPDATED_USER_ID)
             .memberType(UPDATED_MEMBER_TYPE)
+            .memberId(UPDATED_MEMBER_ID)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .emailId(UPDATED_EMAIL_ID)
             .password(UPDATED_PASSWORD)
@@ -382,6 +395,7 @@ class LoginProfileResourceIT {
         assertThat(testLoginProfile.getUserName()).isEqualTo(UPDATED_USER_NAME);
         assertThat(testLoginProfile.getUserId()).isEqualTo(UPDATED_USER_ID);
         assertThat(testLoginProfile.getMemberType()).isEqualTo(UPDATED_MEMBER_TYPE);
+        assertThat(testLoginProfile.getMemberId()).isEqualTo(UPDATED_MEMBER_ID);
         assertThat(testLoginProfile.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testLoginProfile.getEmailId()).isEqualTo(UPDATED_EMAIL_ID);
         assertThat(testLoginProfile.getPassword()).isEqualTo(UPDATED_PASSWORD);

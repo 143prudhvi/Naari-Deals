@@ -49,6 +49,7 @@ describe('LoginProfile e2e test', () => {
       loginProfileUpdatePage.setUserNameInput('userName'),
       loginProfileUpdatePage.setUserIdInput('userId'),
       loginProfileUpdatePage.setMemberTypeInput('memberType'),
+      loginProfileUpdatePage.setMemberIdInput('memberId'),
       loginProfileUpdatePage.setPhoneNumberInput('phoneNumber'),
       loginProfileUpdatePage.setEmailIdInput('emailId'),
       loginProfileUpdatePage.setPasswordInput('password'),

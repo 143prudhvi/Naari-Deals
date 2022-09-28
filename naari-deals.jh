@@ -12,9 +12,10 @@ entity DealType {
 
 
 entity LoginProfile{
-	  userName String
-	  userId String
+	userName String
+	userId String
       memberType String
+      memberId String
       phoneNumber String
       emailId String
       password String

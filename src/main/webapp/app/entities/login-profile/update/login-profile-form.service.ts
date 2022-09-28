@@ -21,6 +21,7 @@ type LoginProfileFormGroupContent = {
   userName: FormControl<ILoginProfile['userName']>;
   userId: FormControl<ILoginProfile['userId']>;
   memberType: FormControl<ILoginProfile['memberType']>;
+  memberId: FormControl<ILoginProfile['memberId']>;
   phoneNumber: FormControl<ILoginProfile['phoneNumber']>;
   emailId: FormControl<ILoginProfile['emailId']>;
   password: FormControl<ILoginProfile['password']>;
@@ -48,6 +49,7 @@ export class LoginProfileFormService {
       userName: new FormControl(loginProfileRawValue.userName),
       userId: new FormControl(loginProfileRawValue.userId),
       memberType: new FormControl(loginProfileRawValue.memberType),
+      memberId: new FormControl(loginProfileRawValue.memberId),
       phoneNumber: new FormControl(loginProfileRawValue.phoneNumber),
       emailId: new FormControl(loginProfileRawValue.emailId),
       password: new FormControl(loginProfileRawValue.password),

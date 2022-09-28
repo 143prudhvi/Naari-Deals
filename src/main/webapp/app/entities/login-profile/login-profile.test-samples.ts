@@ -5,24 +5,25 @@ export const sampleWithRequiredData: ILoginProfile = {
 };
 
 export const sampleWithPartialData: ILoginProfile = {
-  id: 45733,
-  userName: 'Way',
-  emailId: 'Myanmar hack',
-  password: 'Home',
-  activationStatus: 'users Borders',
-  activationCode: 'Division Berkshire Algeria',
+  id: 12793,
+  userName: 'Strategist Myanmar',
+  phoneNumber: 'Shoes Home technologies',
+  emailId: 'Borders SDR',
+  password: 'Berkshire Algeria reintermediate',
+  activationStatus: 'auxiliary Savings',
 };
 
 export const sampleWithFullData: ILoginProfile = {
-  id: 38868,
-  userName: 'Web Games',
-  userId: 'Small',
-  memberType: 'withdrawal',
-  phoneNumber: 'Manager',
-  emailId: 'generating Liechtenstein',
-  password: 'platforms',
-  activationStatus: 'Missouri card Kyrgyz',
-  activationCode: 'Cheese sexy',
+  id: 4568,
+  userName: 'orchid Enhanced',
+  userId: 'Pants',
+  memberType: 'deliver extranet',
+  memberId: '1080p',
+  phoneNumber: 'Roads Malaysia',
+  emailId: 'initiatives Fundamental',
+  password: 'Passage sensor',
+  activationStatus: 'Avon Keys primary',
+  activationCode: 'PCI',
 };
 
 export const sampleWithNewData: NewLoginProfile = {

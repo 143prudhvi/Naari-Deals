@@ -3,6 +3,7 @@ export interface ILoginProfile {
   userName?: string | null;
   userId?: string | null;
   memberType?: string | null;
+  memberId?: string | null;
   phoneNumber?: string | null;
   emailId?: string | null;
   password?: string | null;

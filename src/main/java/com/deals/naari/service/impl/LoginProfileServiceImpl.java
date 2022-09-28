@@ -53,6 +53,9 @@ public class LoginProfileServiceImpl implements LoginProfileService {
                 if (loginProfile.getMemberType() != null) {
                     existingLoginProfile.setMemberType(loginProfile.getMemberType());
                 }
+                if (loginProfile.getMemberId() != null) {
+                    existingLoginProfile.setMemberId(loginProfile.getMemberId());
+                }
                 if (loginProfile.getPhoneNumber() != null) {
                     existingLoginProfile.setPhoneNumber(loginProfile.getPhoneNumber());
                 }
