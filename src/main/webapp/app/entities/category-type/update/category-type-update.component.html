@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-category-heading" data-cy="CategoryCreateUpdateHeading">Create or edit a Category</h2>
+      <h2 id="jhi-category-type-heading" data-cy="CategoryTypeCreateUpdateHeading">Create or edit a Category Type</h2>
 
       <div>
         <jhi-alert-error></jhi-alert-error>
@@ -22,24 +22,13 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_imageUrl">Image Url</label>
-          <input type="text" class="form-control" name="imageUrl" id="field_imageUrl" data-cy="imageUrl" formControlName="imageUrl" />
+          <label class="form-label" for="field_icon">Icon</label>
+          <input type="text" class="form-control" name="icon" id="field_icon" data-cy="icon" formControlName="icon" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" for="field_description">Description</label>
-          <textarea
-            class="form-control"
-            name="description"
-            id="field_description"
-            data-cy="description"
-            formControlName="description"
-          ></textarea>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" for="field_status">Status</label>
-          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+          <label class="form-label" for="field_bgColor">Bg Color</label>
+          <input type="text" class="form-control" name="bgColor" id="field_bgColor" data-cy="bgColor" formControlName="bgColor" />
         </div>
 
         <div class="row mb-3">
@@ -50,6 +39,11 @@
         <div class="row mb-3">
           <label class="form-label" for="field_code">Code</label>
           <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
         </div>
       </div>
 

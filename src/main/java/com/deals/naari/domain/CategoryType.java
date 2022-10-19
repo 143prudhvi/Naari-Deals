@@ -6,13 +6,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A Category.
+ * A CategoryType.
  */
 @Entity
-@Table(name = "category")
+@Table(name = "category_type")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class Category implements Serializable {
+public class CategoryType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,15 +27,11 @@ public class Category implements Serializable {
     @Column(name = "sub_title")
     private String subTitle;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "icon")
+    private String icon;
 
-    @Lob
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "status")
-    private String status;
+    @Column(name = "bg_color")
+    private String bgColor;
 
     @Column(name = "country")
     private String country;
@@ -43,13 +39,16 @@ public class Category implements Serializable {
     @Column(name = "code")
     private String code;
 
+    @Column(name = "status")
+    private String status;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;
     }
 
-    public Category id(Long id) {
+    public CategoryType id(Long id) {
         this.setId(id);
         return this;
     }
@@ -62,7 +61,7 @@ public class Category implements Serializable {
         return this.title;
     }
 
-    public Category title(String title) {
+    public CategoryType title(String title) {
         this.setTitle(title);
         return this;
     }
@@ -75,7 +74,7 @@ public class Category implements Serializable {
         return this.subTitle;
     }
 
-    public Category subTitle(String subTitle) {
+    public CategoryType subTitle(String subTitle) {
         this.setSubTitle(subTitle);
         return this;
     }
@@ -84,50 +83,37 @@ public class Category implements Serializable {
         this.subTitle = subTitle;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
+    public String getIcon() {
+        return this.icon;
     }
 
-    public Category imageUrl(String imageUrl) {
-        this.setImageUrl(imageUrl);
+    public CategoryType icon(String icon) {
+        this.setIcon(icon);
         return this;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getBgColor() {
+        return this.bgColor;
     }
 
-    public Category description(String description) {
-        this.setDescription(description);
+    public CategoryType bgColor(String bgColor) {
+        this.setBgColor(bgColor);
         return this;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public Category status(String status) {
-        this.setStatus(status);
-        return this;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setBgColor(String bgColor) {
+        this.bgColor = bgColor;
     }
 
     public String getCountry() {
         return this.country;
     }
 
-    public Category country(String country) {
+    public CategoryType country(String country) {
         this.setCountry(country);
         return this;
     }
@@ -140,13 +126,26 @@ public class Category implements Serializable {
         return this.code;
     }
 
-    public Category code(String code) {
+    public CategoryType code(String code) {
         this.setCode(code);
         return this;
     }
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public CategoryType status(String status) {
+        this.setStatus(status);
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -156,10 +155,10 @@ public class Category implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Category)) {
+        if (!(o instanceof CategoryType)) {
             return false;
         }
-        return id != null && id.equals(((Category) o).id);
+        return id != null && id.equals(((CategoryType) o).id);
     }
 
     @Override
@@ -171,15 +170,15 @@ public class Category implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Category{" +
+        return "CategoryType{" +
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", subTitle='" + getSubTitle() + "'" +
-            ", imageUrl='" + getImageUrl() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", status='" + getStatus() + "'" +
+            ", icon='" + getIcon() + "'" +
+            ", bgColor='" + getBgColor() + "'" +
             ", country='" + getCountry() + "'" +
             ", code='" + getCode() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

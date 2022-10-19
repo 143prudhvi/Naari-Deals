@@ -54,6 +54,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'Notifications' },
         loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule),
       },
+      {
+        path: 'category-type',
+        data: { pageTitle: 'CategoryTypes' },
+        loadChildren: () => import('./category-type/category-type.module').then(m => m.CategoryTypeModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

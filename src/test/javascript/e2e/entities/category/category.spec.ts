@@ -43,9 +43,13 @@ describe('Category e2e test', () => {
     await categoryComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      categoryUpdatePage.setNameInput('name'),
-      categoryUpdatePage.setIconInput('icon'),
+      categoryUpdatePage.setTitleInput('title'),
+      categoryUpdatePage.setSubTitleInput('subTitle'),
+      categoryUpdatePage.setImageUrlInput('imageUrl'),
       categoryUpdatePage.setDescriptionInput('description'),
+      categoryUpdatePage.setStatusInput('status'),
+      categoryUpdatePage.setCountryInput('country'),
+      categoryUpdatePage.setCodeInput('code'),
     ]);
 
     await categoryUpdatePage.save();

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    <div *ngIf="category">
-      <h2 data-cy="categoryDetailsHeading"><span>Category</span></h2>
+    <div *ngIf="categoryType">
+      <h2 data-cy="categoryTypeDetailsHeading"><span>Category Type</span></h2>
 
       <hr />
 
@@ -12,35 +12,35 @@
       <dl class="row-md jh-entity-details">
         <dt><span>ID</span></dt>
         <dd>
-          <span>{{ category.id }}</span>
+          <span>{{ categoryType.id }}</span>
         </dd>
         <dt><span>Title</span></dt>
         <dd>
-          <span>{{ category.title }}</span>
+          <span>{{ categoryType.title }}</span>
         </dd>
         <dt><span>Sub Title</span></dt>
         <dd>
-          <span>{{ category.subTitle }}</span>
+          <span>{{ categoryType.subTitle }}</span>
         </dd>
-        <dt><span>Image Url</span></dt>
+        <dt><span>Icon</span></dt>
         <dd>
-          <span>{{ category.imageUrl }}</span>
+          <span>{{ categoryType.icon }}</span>
         </dd>
-        <dt><span>Description</span></dt>
+        <dt><span>Bg Color</span></dt>
         <dd>
-          <span>{{ category.description }}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-          <span>{{ category.status }}</span>
+          <span>{{ categoryType.bgColor }}</span>
         </dd>
         <dt><span>Country</span></dt>
         <dd>
-          <span>{{ category.country }}</span>
+          <span>{{ categoryType.country }}</span>
         </dd>
         <dt><span>Code</span></dt>
         <dd>
-          <span>{{ category.code }}</span>
+          <span>{{ categoryType.code }}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+          <span>{{ categoryType.status }}</span>
         </dd>
       </dl>
 
@@ -48,7 +48,7 @@
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
       </button>
 
-      <button type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
+      <button type="button" [routerLink]="['/category-type', categoryType.id, 'edit']" class="btn btn-primary">
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
       </button>
     </div>

@@ -5,17 +5,21 @@ export const sampleWithRequiredData: ICategory = {
 };
 
 export const sampleWithPartialData: ICategory = {
-  id: 14860,
-  name: 'emulation',
-  icon: '../fake-data/blob/hipster.txt',
-  description: '../fake-data/blob/hipster.txt',
+  id: 91930,
+  title: 'up USB Down-sized',
+  subTitle: 'Facilitator synthesizing Directives',
+  imageUrl: 'navigating',
 };
 
 export const sampleWithFullData: ICategory = {
-  id: 81675,
-  name: 'Clothing navigate gold',
-  icon: '../fake-data/blob/hipster.txt',
+  id: 54514,
+  title: 'bus',
+  subTitle: 'Accounts Computer Handmade',
+  imageUrl: 'generating',
   description: '../fake-data/blob/hipster.txt',
+  status: 'pixel syndicate',
+  country: 'Samoa',
+  code: 'metrics Shoals hub',
 };
 
 export const sampleWithNewData: NewCategory = {

@@ -1,9 +1,9 @@
 import { element, by, ElementFinder } from 'protractor';
 
-export class CategoryComponentsPage {
+export class CategoryTypeComponentsPage {
   createButton = element(by.id('jh-create-entity'));
-  deleteButtons = element.all(by.css('jhi-category div table .btn-danger'));
-  title = element.all(by.css('jhi-category div h2#page-heading span')).first();
+  deleteButtons = element.all(by.css('jhi-category-type div table .btn-danger'));
+  title = element.all(by.css('jhi-category-type div h2#page-heading span')).first();
   noResult = element(by.id('no-result'));
   entities = element(by.id('entities'));
 
@@ -24,19 +24,19 @@ export class CategoryComponentsPage {
   }
 }
 
-export class CategoryUpdatePage {
-  pageTitle = element(by.id('jhi-category-heading'));
+export class CategoryTypeUpdatePage {
+  pageTitle = element(by.id('jhi-category-type-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
   idInput = element(by.id('field_id'));
   titleInput = element(by.id('field_title'));
   subTitleInput = element(by.id('field_subTitle'));
-  imageUrlInput = element(by.id('field_imageUrl'));
-  descriptionInput = element(by.id('field_description'));
-  statusInput = element(by.id('field_status'));
+  iconInput = element(by.id('field_icon'));
+  bgColorInput = element(by.id('field_bgColor'));
   countryInput = element(by.id('field_country'));
   codeInput = element(by.id('field_code'));
+  statusInput = element(by.id('field_status'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -66,28 +66,20 @@ export class CategoryUpdatePage {
     return await this.subTitleInput.getAttribute('value');
   }
 
-  async setImageUrlInput(imageUrl: string): Promise<void> {
-    await this.imageUrlInput.sendKeys(imageUrl);
+  async setIconInput(icon: string): Promise<void> {
+    await this.iconInput.sendKeys(icon);
   }
 
-  async getImageUrlInput(): Promise<string> {
-    return await this.imageUrlInput.getAttribute('value');
+  async getIconInput(): Promise<string> {
+    return await this.iconInput.getAttribute('value');
   }
 
-  async setDescriptionInput(description: string): Promise<void> {
-    await this.descriptionInput.sendKeys(description);
+  async setBgColorInput(bgColor: string): Promise<void> {
+    await this.bgColorInput.sendKeys(bgColor);
   }
 
-  async getDescriptionInput(): Promise<string> {
-    return await this.descriptionInput.getAttribute('value');
-  }
-
-  async setStatusInput(status: string): Promise<void> {
-    await this.statusInput.sendKeys(status);
-  }
-
-  async getStatusInput(): Promise<string> {
-    return await this.statusInput.getAttribute('value');
+  async getBgColorInput(): Promise<string> {
+    return await this.bgColorInput.getAttribute('value');
   }
 
   async setCountryInput(country: string): Promise<void> {
@@ -106,6 +98,14 @@ export class CategoryUpdatePage {
     return await this.codeInput.getAttribute('value');
   }
 
+  async setStatusInput(status: string): Promise<void> {
+    await this.statusInput.sendKeys(status);
+  }
+
+  async getStatusInput(): Promise<string> {
+    return await this.statusInput.getAttribute('value');
+  }
+
   async save(): Promise<void> {
     await this.saveButton.click();
   }
@@ -119,9 +119,9 @@ export class CategoryUpdatePage {
   }
 }
 
-export class CategoryDeleteDialog {
-  private dialogTitle = element(by.id('jhi-delete-category-heading'));
-  private confirmButton = element(by.id('jhi-confirm-delete-category'));
+export class CategoryTypeDeleteDialog {
+  private dialogTitle = element(by.id('jhi-delete-categoryType-heading'));
+  private confirmButton = element(by.id('jhi-confirm-delete-categoryType'));
 
   async getDialogTitle(): Promise<string> {
     return this.dialogTitle.getText();

@@ -10,6 +10,16 @@ entity DealType {
       imageUrl TextBlob
 }
 
+entity CategoryType {
+      title String
+      subTitle String
+      icon String
+      bgColor String
+      country String
+      code String
+      status String
+}
+
 
 entity LoginProfile{
 	userName String
@@ -65,9 +75,13 @@ entity Merchant{
 }
 
 entity Category{
-      name String
-      icon TextBlob
+      title String
+      subTitle String
+      imageUrl String
       description TextBlob
+      status String
+      country String
+      code String
 }
 
 entity EmailSubscription{

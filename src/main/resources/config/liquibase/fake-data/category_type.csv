@@ -1,0 +1,7 @@
+id;title;subtitle;icon;bgColor;country;code;status
+1;DAILY DEALS;Available (100);icofont-tags;#028a0f;USA;DAILY;active
+2;Upto 50%;Available (150);icofont-sale-discount;#3d64ff;USA;UPTO50;active
+3.BLACK FRIDAY;Available(300);icofont-tags;#434a54;USA;BLACKFRIDAY;active
+4.CHRISTMAS;Available(300);icofont-tags;#434a54;USA;CHRISTMAS;in-active
+5.Above 50%;Available (20);icofont-sale-discount;#e74d57;USA;ABOVE50;active
+6.CLEARENCE;Available(200);icofont-price;#ff3d00;USA;CLEARENCE;active

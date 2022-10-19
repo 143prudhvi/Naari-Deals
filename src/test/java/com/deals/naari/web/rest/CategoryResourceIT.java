@@ -30,14 +30,26 @@ import org.springframework.util.Base64Utils;
 @WithMockUser
 class CategoryResourceIT {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_ICON = "AAAAAAAAAA";
-    private static final String UPDATED_ICON = "BBBBBBBBBB";
+    private static final String DEFAULT_SUB_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_SUB_TITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_STATUS = "AAAAAAAAAA";
+    private static final String UPDATED_STATUS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
+    private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/categories";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -63,7 +75,14 @@ class CategoryResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Category createEntity(EntityManager em) {
-        Category category = new Category().name(DEFAULT_NAME).icon(DEFAULT_ICON).description(DEFAULT_DESCRIPTION);
+        Category category = new Category()
+            .title(DEFAULT_TITLE)
+            .subTitle(DEFAULT_SUB_TITLE)
+            .imageUrl(DEFAULT_IMAGE_URL)
+            .description(DEFAULT_DESCRIPTION)
+            .status(DEFAULT_STATUS)
+            .country(DEFAULT_COUNTRY)
+            .code(DEFAULT_CODE);
         return category;
     }
 
@@ -74,7 +93,14 @@ class CategoryResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Category createUpdatedEntity(EntityManager em) {
-        Category category = new Category().name(UPDATED_NAME).icon(UPDATED_ICON).description(UPDATED_DESCRIPTION);
+        Category category = new Category()
+            .title(UPDATED_TITLE)
+            .subTitle(UPDATED_SUB_TITLE)
+            .imageUrl(UPDATED_IMAGE_URL)
+            .description(UPDATED_DESCRIPTION)
+            .status(UPDATED_STATUS)
+            .country(UPDATED_COUNTRY)
+            .code(UPDATED_CODE);
         return category;
     }
 
@@ -96,9 +122,13 @@ class CategoryResourceIT {
         List<Category> categoryList = categoryRepository.findAll();
         assertThat(categoryList).hasSize(databaseSizeBeforeCreate + 1);
         Category testCategory = categoryList.get(categoryList.size() - 1);
-        assertThat(testCategory.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testCategory.getIcon()).isEqualTo(DEFAULT_ICON);
+        assertThat(testCategory.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testCategory.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
+        assertThat(testCategory.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
         assertThat(testCategory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testCategory.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testCategory.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testCategory.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -131,9 +161,13 @@ class CategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(category.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].subTitle").value(hasItem(DEFAULT_SUB_TITLE)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)));
     }
 
     @Test
@@ -148,9 +182,13 @@ class CategoryResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(category.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
+            .andExpect(jsonPath("$.subTitle").value(DEFAULT_SUB_TITLE))
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE));
     }
 
     @Test
@@ -172,7 +210,14 @@ class CategoryResourceIT {
         Category updatedCategory = categoryRepository.findById(category.getId()).get();
         // Disconnect from session so that the updates on updatedCategory are not directly saved in db
         em.detach(updatedCategory);
-        updatedCategory.name(UPDATED_NAME).icon(UPDATED_ICON).description(UPDATED_DESCRIPTION);
+        updatedCategory
+            .title(UPDATED_TITLE)
+            .subTitle(UPDATED_SUB_TITLE)
+            .imageUrl(UPDATED_IMAGE_URL)
+            .description(UPDATED_DESCRIPTION)
+            .status(UPDATED_STATUS)
+            .country(UPDATED_COUNTRY)
+            .code(UPDATED_CODE);
 
         restCategoryMockMvc
             .perform(
@@ -186,9 +231,13 @@ class CategoryResourceIT {
         List<Category> categoryList = categoryRepository.findAll();
         assertThat(categoryList).hasSize(databaseSizeBeforeUpdate);
         Category testCategory = categoryList.get(categoryList.size() - 1);
-        assertThat(testCategory.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testCategory.getIcon()).isEqualTo(UPDATED_ICON);
+        assertThat(testCategory.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testCategory.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
+        assertThat(testCategory.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testCategory.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testCategory.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testCategory.getCode()).isEqualTo(UPDATED_CODE);
     }
 
     @Test
@@ -259,7 +308,7 @@ class CategoryResourceIT {
         Category partialUpdatedCategory = new Category();
         partialUpdatedCategory.setId(category.getId());
 
-        partialUpdatedCategory.name(UPDATED_NAME);
+        partialUpdatedCategory.title(UPDATED_TITLE).description(UPDATED_DESCRIPTION).status(UPDATED_STATUS).country(UPDATED_COUNTRY);
 
         restCategoryMockMvc
             .perform(
@@ -273,9 +322,13 @@ class CategoryResourceIT {
         List<Category> categoryList = categoryRepository.findAll();
         assertThat(categoryList).hasSize(databaseSizeBeforeUpdate);
         Category testCategory = categoryList.get(categoryList.size() - 1);
-        assertThat(testCategory.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testCategory.getIcon()).isEqualTo(DEFAULT_ICON);
-        assertThat(testCategory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testCategory.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testCategory.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
+        assertThat(testCategory.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testCategory.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testCategory.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testCategory.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -290,7 +343,14 @@ class CategoryResourceIT {
         Category partialUpdatedCategory = new Category();
         partialUpdatedCategory.setId(category.getId());
 
-        partialUpdatedCategory.name(UPDATED_NAME).icon(UPDATED_ICON).description(UPDATED_DESCRIPTION);
+        partialUpdatedCategory
+            .title(UPDATED_TITLE)
+            .subTitle(UPDATED_SUB_TITLE)
+            .imageUrl(UPDATED_IMAGE_URL)
+            .description(UPDATED_DESCRIPTION)
+            .status(UPDATED_STATUS)
+            .country(UPDATED_COUNTRY)
+            .code(UPDATED_CODE);
 
         restCategoryMockMvc
             .perform(
@@ -304,9 +364,13 @@ class CategoryResourceIT {
         List<Category> categoryList = categoryRepository.findAll();
         assertThat(categoryList).hasSize(databaseSizeBeforeUpdate);
         Category testCategory = categoryList.get(categoryList.size() - 1);
-        assertThat(testCategory.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testCategory.getIcon()).isEqualTo(UPDATED_ICON);
+        assertThat(testCategory.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testCategory.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
+        assertThat(testCategory.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testCategory.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testCategory.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testCategory.getCode()).isEqualTo(UPDATED_CODE);
     }
 
     @Test

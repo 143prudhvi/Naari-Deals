@@ -58,6 +58,7 @@ public class CacheConfiguration {
             createCache(cm, com.deals.naari.domain.EmailSubscription.class.getName());
             createCache(cm, com.deals.naari.domain.NotificationType.class.getName());
             createCache(cm, com.deals.naari.domain.Notification.class.getName());
+            createCache(cm, com.deals.naari.domain.CategoryType.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

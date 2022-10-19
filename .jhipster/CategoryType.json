@@ -1,9 +1,9 @@
 {
   "applications": "*",
-  "changelogDate": "20220925160516",
+  "changelogDate": "20221018235158",
   "dto": "no",
   "embedded": false,
-  "entityTableName": "category",
+  "entityTableName": "category_type",
   "fields": [
     {
       "fieldName": "title",
@@ -14,16 +14,11 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "imageUrl",
+      "fieldName": "icon",
       "fieldType": "String"
     },
     {
-      "fieldName": "description",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
-    },
-    {
-      "fieldName": "status",
+      "fieldName": "bgColor",
       "fieldType": "String"
     },
     {
@@ -33,11 +28,15 @@
     {
       "fieldName": "code",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
-  "name": "Category",
+  "name": "CategoryType",
   "pagination": "no",
   "readOnly": false,
   "relationships": [],

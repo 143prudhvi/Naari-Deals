@@ -18,9 +18,13 @@ type CategoryFormDefaults = Pick<NewCategory, 'id'>;
 
 type CategoryFormGroupContent = {
   id: FormControl<ICategory['id'] | NewCategory['id']>;
-  name: FormControl<ICategory['name']>;
-  icon: FormControl<ICategory['icon']>;
+  title: FormControl<ICategory['title']>;
+  subTitle: FormControl<ICategory['subTitle']>;
+  imageUrl: FormControl<ICategory['imageUrl']>;
   description: FormControl<ICategory['description']>;
+  status: FormControl<ICategory['status']>;
+  country: FormControl<ICategory['country']>;
+  code: FormControl<ICategory['code']>;
 };
 
 export type CategoryFormGroup = FormGroup<CategoryFormGroupContent>;
@@ -40,9 +44,13 @@ export class CategoryFormService {
           validators: [Validators.required],
         }
       ),
-      name: new FormControl(categoryRawValue.name),
-      icon: new FormControl(categoryRawValue.icon),
+      title: new FormControl(categoryRawValue.title),
+      subTitle: new FormControl(categoryRawValue.subTitle),
+      imageUrl: new FormControl(categoryRawValue.imageUrl),
       description: new FormControl(categoryRawValue.description),
+      status: new FormControl(categoryRawValue.status),
+      country: new FormControl(categoryRawValue.country),
+      code: new FormControl(categoryRawValue.code),
     });
   }
 
