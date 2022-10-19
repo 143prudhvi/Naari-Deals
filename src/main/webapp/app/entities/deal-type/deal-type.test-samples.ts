@@ -5,16 +5,21 @@ export const sampleWithRequiredData: IDealType = {
 };
 
 export const sampleWithPartialData: IDealType = {
-  id: 11244,
-  dealType: 'Bedfordshire generating',
-  description: 'Meadows orchestrate',
+  id: 871,
+  title: 'California Meadows orchestrate',
+  subTitle: 'architectures',
+  country: 'Saint Kitts and Nevis',
 };
 
 export const sampleWithFullData: IDealType = {
-  id: 26932,
-  dealType: 'Jamahiriya customized',
-  description: 'action-items payment driver',
-  imageUrl: '../fake-data/blob/hipster.txt',
+  id: 34231,
+  title: 'Re-engineered enterprise navigate',
+  subTitle: 'index',
+  icon: 'Borders ubiquitous Credit',
+  bgColor: 'adapter Frozen',
+  country: 'Switzerland',
+  code: 'Home',
+  status: 'capacitor invoice',
 };
 
 export const sampleWithNewData: NewDealType = {

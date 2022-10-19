@@ -40,12 +40,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="type">
-            <div class="d-flex">
-              <span>Type</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="title">
             <div class="d-flex">
               <span>Title</span>
@@ -154,9 +148,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="category">
+          <th scope="col" jhiSortBy="tags">
             <div class="d-flex">
-              <span>Category</span>
+              <span>Tags</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -168,7 +162,6 @@
           <td>
             <a [routerLink]="['/deal', deal.id, 'view']">{{ deal.id }}</a>
           </td>
-          <td>{{ deal.type }}</td>
           <td>{{ deal.title }}</td>
           <td>{{ deal.description }}</td>
           <td>{{ deal.imageUrl }}</td>
@@ -187,7 +180,7 @@
           <td>{{ deal.city }}</td>
           <td>{{ deal.pinCode }}</td>
           <td>{{ deal.merchant }}</td>
-          <td>{{ deal.category }}</td>
+          <td>{{ deal.tags }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/deal', deal.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

@@ -30,7 +30,6 @@ export class DealUpdatePage {
   cancelButton = element(by.id('cancel-save'));
 
   idInput = element(by.id('field_id'));
-  typeInput = element(by.id('field_type'));
   titleInput = element(by.id('field_title'));
   descriptionInput = element(by.id('field_description'));
   imageUrlInput = element(by.id('field_imageUrl'));
@@ -49,7 +48,7 @@ export class DealUpdatePage {
   cityInput = element(by.id('field_city'));
   pinCodeInput = element(by.id('field_pinCode'));
   merchantInput = element(by.id('field_merchant'));
-  categoryInput = element(by.id('field_category'));
+  tagsInput = element(by.id('field_tags'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -61,14 +60,6 @@ export class DealUpdatePage {
 
   async getIdInput(): Promise<string> {
     return await this.idInput.getAttribute('value');
-  }
-
-  async setTypeInput(type: string): Promise<void> {
-    await this.typeInput.sendKeys(type);
-  }
-
-  async getTypeInput(): Promise<string> {
-    return await this.typeInput.getAttribute('value');
   }
 
   async setTitleInput(title: string): Promise<void> {
@@ -211,12 +202,12 @@ export class DealUpdatePage {
     return await this.merchantInput.getAttribute('value');
   }
 
-  async setCategoryInput(category: string): Promise<void> {
-    await this.categoryInput.sendKeys(category);
+  async setTagsInput(tags: string): Promise<void> {
+    await this.tagsInput.sendKeys(tags);
   }
 
-  async getCategoryInput(): Promise<string> {
-    return await this.categoryInput.getAttribute('value');
+  async getTagsInput(): Promise<string> {
+    return await this.tagsInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

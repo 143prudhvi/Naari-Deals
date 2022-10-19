@@ -6,17 +6,32 @@
   "entityTableName": "deal_type",
   "fields": [
     {
-      "fieldName": "dealType",
+      "fieldName": "title",
       "fieldType": "String"
     },
     {
-      "fieldName": "description",
+      "fieldName": "subTitle",
       "fieldType": "String"
     },
     {
-      "fieldName": "imageUrl",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "icon",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bgColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

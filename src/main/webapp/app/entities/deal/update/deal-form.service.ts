@@ -18,7 +18,6 @@ type DealFormDefaults = Pick<NewDeal, 'id' | 'approved'>;
 
 type DealFormGroupContent = {
   id: FormControl<IDeal['id'] | NewDeal['id']>;
-  type: FormControl<IDeal['type']>;
   title: FormControl<IDeal['title']>;
   description: FormControl<IDeal['description']>;
   imageUrl: FormControl<IDeal['imageUrl']>;
@@ -37,7 +36,7 @@ type DealFormGroupContent = {
   city: FormControl<IDeal['city']>;
   pinCode: FormControl<IDeal['pinCode']>;
   merchant: FormControl<IDeal['merchant']>;
-  category: FormControl<IDeal['category']>;
+  tags: FormControl<IDeal['tags']>;
 };
 
 export type DealFormGroup = FormGroup<DealFormGroupContent>;
@@ -57,7 +56,6 @@ export class DealFormService {
           validators: [Validators.required],
         }
       ),
-      type: new FormControl(dealRawValue.type),
       title: new FormControl(dealRawValue.title),
       description: new FormControl(dealRawValue.description),
       imageUrl: new FormControl(dealRawValue.imageUrl),
@@ -76,7 +74,7 @@ export class DealFormService {
       city: new FormControl(dealRawValue.city),
       pinCode: new FormControl(dealRawValue.pinCode),
       merchant: new FormControl(dealRawValue.merchant),
-      category: new FormControl(dealRawValue.category),
+      tags: new FormControl(dealRawValue.tags),
     });
   }
 

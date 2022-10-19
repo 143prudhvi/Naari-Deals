@@ -23,8 +23,6 @@ public class DealCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
-    private StringFilter type;
-
     private StringFilter title;
 
     private StringFilter postedBy;
@@ -55,7 +53,7 @@ public class DealCriteria implements Serializable, Criteria {
 
     private StringFilter merchant;
 
-    private StringFilter category;
+    private StringFilter tags;
 
     private Boolean distinct;
 
@@ -63,7 +61,6 @@ public class DealCriteria implements Serializable, Criteria {
 
     public DealCriteria(DealCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
-        this.type = other.type == null ? null : other.type.copy();
         this.title = other.title == null ? null : other.title.copy();
         this.postedBy = other.postedBy == null ? null : other.postedBy.copy();
         this.postedDate = other.postedDate == null ? null : other.postedDate.copy();
@@ -79,7 +76,7 @@ public class DealCriteria implements Serializable, Criteria {
         this.city = other.city == null ? null : other.city.copy();
         this.pinCode = other.pinCode == null ? null : other.pinCode.copy();
         this.merchant = other.merchant == null ? null : other.merchant.copy();
-        this.category = other.category == null ? null : other.category.copy();
+        this.tags = other.tags == null ? null : other.tags.copy();
         this.distinct = other.distinct;
     }
 
@@ -101,21 +98,6 @@ public class DealCriteria implements Serializable, Criteria {
 
     public void setId(LongFilter id) {
         this.id = id;
-    }
-
-    public StringFilter getType() {
-        return type;
-    }
-
-    public StringFilter type() {
-        if (type == null) {
-            type = new StringFilter();
-        }
-        return type;
-    }
-
-    public void setType(StringFilter type) {
-        this.type = type;
     }
 
     public StringFilter getTitle() {
@@ -343,19 +325,19 @@ public class DealCriteria implements Serializable, Criteria {
         this.merchant = merchant;
     }
 
-    public StringFilter getCategory() {
-        return category;
+    public StringFilter getTags() {
+        return tags;
     }
 
-    public StringFilter category() {
-        if (category == null) {
-            category = new StringFilter();
+    public StringFilter tags() {
+        if (tags == null) {
+            tags = new StringFilter();
         }
-        return category;
+        return tags;
     }
 
-    public void setCategory(StringFilter category) {
-        this.category = category;
+    public void setTags(StringFilter tags) {
+        this.tags = tags;
     }
 
     public Boolean getDistinct() {
@@ -377,7 +359,6 @@ public class DealCriteria implements Serializable, Criteria {
         final DealCriteria that = (DealCriteria) o;
         return (
             Objects.equals(id, that.id) &&
-            Objects.equals(type, that.type) &&
             Objects.equals(title, that.title) &&
             Objects.equals(postedBy, that.postedBy) &&
             Objects.equals(postedDate, that.postedDate) &&
@@ -393,7 +374,7 @@ public class DealCriteria implements Serializable, Criteria {
             Objects.equals(city, that.city) &&
             Objects.equals(pinCode, that.pinCode) &&
             Objects.equals(merchant, that.merchant) &&
-            Objects.equals(category, that.category) &&
+            Objects.equals(tags, that.tags) &&
             Objects.equals(distinct, that.distinct)
         );
     }
@@ -402,7 +383,6 @@ public class DealCriteria implements Serializable, Criteria {
     public int hashCode() {
         return Objects.hash(
             id,
-            type,
             title,
             postedBy,
             postedDate,
@@ -418,7 +398,7 @@ public class DealCriteria implements Serializable, Criteria {
             city,
             pinCode,
             merchant,
-            category,
+            tags,
             distinct
         );
     }
@@ -428,7 +408,6 @@ public class DealCriteria implements Serializable, Criteria {
     public String toString() {
         return "DealCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
-            (type != null ? "type=" + type + ", " : "") +
             (title != null ? "title=" + title + ", " : "") +
             (postedBy != null ? "postedBy=" + postedBy + ", " : "") +
             (postedDate != null ? "postedDate=" + postedDate + ", " : "") +
@@ -444,7 +423,7 @@ public class DealCriteria implements Serializable, Criteria {
             (city != null ? "city=" + city + ", " : "") +
             (pinCode != null ? "pinCode=" + pinCode + ", " : "") +
             (merchant != null ? "merchant=" + merchant + ", " : "") +
-            (category != null ? "category=" + category + ", " : "") +
+            (tags != null ? "tags=" + tags + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

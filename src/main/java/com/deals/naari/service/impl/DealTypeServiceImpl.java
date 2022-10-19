@@ -44,14 +44,26 @@ public class DealTypeServiceImpl implements DealTypeService {
         return dealTypeRepository
             .findById(dealType.getId())
             .map(existingDealType -> {
-                if (dealType.getDealType() != null) {
-                    existingDealType.setDealType(dealType.getDealType());
+                if (dealType.getTitle() != null) {
+                    existingDealType.setTitle(dealType.getTitle());
                 }
-                if (dealType.getDescription() != null) {
-                    existingDealType.setDescription(dealType.getDescription());
+                if (dealType.getSubTitle() != null) {
+                    existingDealType.setSubTitle(dealType.getSubTitle());
                 }
-                if (dealType.getImageUrl() != null) {
-                    existingDealType.setImageUrl(dealType.getImageUrl());
+                if (dealType.getIcon() != null) {
+                    existingDealType.setIcon(dealType.getIcon());
+                }
+                if (dealType.getBgColor() != null) {
+                    existingDealType.setBgColor(dealType.getBgColor());
+                }
+                if (dealType.getCountry() != null) {
+                    existingDealType.setCountry(dealType.getCountry());
+                }
+                if (dealType.getCode() != null) {
+                    existingDealType.setCode(dealType.getCode());
+                }
+                if (dealType.getStatus() != null) {
+                    existingDealType.setStatus(dealType.getStatus());
                 }
 
                 return existingDealType;

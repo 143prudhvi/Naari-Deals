@@ -45,9 +45,6 @@ public class DealServiceImpl implements DealService {
         return dealRepository
             .findById(deal.getId())
             .map(existingDeal -> {
-                if (deal.getType() != null) {
-                    existingDeal.setType(deal.getType());
-                }
                 if (deal.getTitle() != null) {
                     existingDeal.setTitle(deal.getTitle());
                 }
@@ -102,8 +99,8 @@ public class DealServiceImpl implements DealService {
                 if (deal.getMerchant() != null) {
                     existingDeal.setMerchant(deal.getMerchant());
                 }
-                if (deal.getCategory() != null) {
-                    existingDeal.setCategory(deal.getCategory());
+                if (deal.getTags() != null) {
+                    existingDeal.setTags(deal.getTags());
                 }
 
                 return existingDeal;

@@ -30,9 +30,13 @@ export class DealTypeUpdatePage {
   cancelButton = element(by.id('cancel-save'));
 
   idInput = element(by.id('field_id'));
-  dealTypeInput = element(by.id('field_dealType'));
-  descriptionInput = element(by.id('field_description'));
-  imageUrlInput = element(by.id('field_imageUrl'));
+  titleInput = element(by.id('field_title'));
+  subTitleInput = element(by.id('field_subTitle'));
+  iconInput = element(by.id('field_icon'));
+  bgColorInput = element(by.id('field_bgColor'));
+  countryInput = element(by.id('field_country'));
+  codeInput = element(by.id('field_code'));
+  statusInput = element(by.id('field_status'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -46,28 +50,60 @@ export class DealTypeUpdatePage {
     return await this.idInput.getAttribute('value');
   }
 
-  async setDealTypeInput(dealType: string): Promise<void> {
-    await this.dealTypeInput.sendKeys(dealType);
+  async setTitleInput(title: string): Promise<void> {
+    await this.titleInput.sendKeys(title);
   }
 
-  async getDealTypeInput(): Promise<string> {
-    return await this.dealTypeInput.getAttribute('value');
+  async getTitleInput(): Promise<string> {
+    return await this.titleInput.getAttribute('value');
   }
 
-  async setDescriptionInput(description: string): Promise<void> {
-    await this.descriptionInput.sendKeys(description);
+  async setSubTitleInput(subTitle: string): Promise<void> {
+    await this.subTitleInput.sendKeys(subTitle);
   }
 
-  async getDescriptionInput(): Promise<string> {
-    return await this.descriptionInput.getAttribute('value');
+  async getSubTitleInput(): Promise<string> {
+    return await this.subTitleInput.getAttribute('value');
   }
 
-  async setImageUrlInput(imageUrl: string): Promise<void> {
-    await this.imageUrlInput.sendKeys(imageUrl);
+  async setIconInput(icon: string): Promise<void> {
+    await this.iconInput.sendKeys(icon);
   }
 
-  async getImageUrlInput(): Promise<string> {
-    return await this.imageUrlInput.getAttribute('value');
+  async getIconInput(): Promise<string> {
+    return await this.iconInput.getAttribute('value');
+  }
+
+  async setBgColorInput(bgColor: string): Promise<void> {
+    await this.bgColorInput.sendKeys(bgColor);
+  }
+
+  async getBgColorInput(): Promise<string> {
+    return await this.bgColorInput.getAttribute('value');
+  }
+
+  async setCountryInput(country: string): Promise<void> {
+    await this.countryInput.sendKeys(country);
+  }
+
+  async getCountryInput(): Promise<string> {
+    return await this.countryInput.getAttribute('value');
+  }
+
+  async setCodeInput(code: string): Promise<void> {
+    await this.codeInput.sendKeys(code);
+  }
+
+  async getCodeInput(): Promise<string> {
+    return await this.codeInput.getAttribute('value');
+  }
+
+  async setStatusInput(status: string): Promise<void> {
+    await this.statusInput.sendKeys(status);
+  }
+
+  async getStatusInput(): Promise<string> {
+    return await this.statusInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

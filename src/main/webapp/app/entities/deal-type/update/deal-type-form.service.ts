@@ -18,9 +18,13 @@ type DealTypeFormDefaults = Pick<NewDealType, 'id'>;
 
 type DealTypeFormGroupContent = {
   id: FormControl<IDealType['id'] | NewDealType['id']>;
-  dealType: FormControl<IDealType['dealType']>;
-  description: FormControl<IDealType['description']>;
-  imageUrl: FormControl<IDealType['imageUrl']>;
+  title: FormControl<IDealType['title']>;
+  subTitle: FormControl<IDealType['subTitle']>;
+  icon: FormControl<IDealType['icon']>;
+  bgColor: FormControl<IDealType['bgColor']>;
+  country: FormControl<IDealType['country']>;
+  code: FormControl<IDealType['code']>;
+  status: FormControl<IDealType['status']>;
 };
 
 export type DealTypeFormGroup = FormGroup<DealTypeFormGroupContent>;
@@ -40,9 +44,13 @@ export class DealTypeFormService {
           validators: [Validators.required],
         }
       ),
-      dealType: new FormControl(dealTypeRawValue.dealType),
-      description: new FormControl(dealTypeRawValue.description),
-      imageUrl: new FormControl(dealTypeRawValue.imageUrl),
+      title: new FormControl(dealTypeRawValue.title),
+      subTitle: new FormControl(dealTypeRawValue.subTitle),
+      icon: new FormControl(dealTypeRawValue.icon),
+      bgColor: new FormControl(dealTypeRawValue.bgColor),
+      country: new FormControl(dealTypeRawValue.country),
+      code: new FormControl(dealTypeRawValue.code),
+      status: new FormControl(dealTypeRawValue.status),
     });
   }
 

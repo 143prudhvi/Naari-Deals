@@ -20,7 +20,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link DealTypeResource} REST controller.
@@ -30,14 +29,26 @@ import org.springframework.util.Base64Utils;
 @WithMockUser
 class DealTypeResourceIT {
 
-    private static final String DEFAULT_DEAL_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_DEAL_TYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+    private static final String DEFAULT_SUB_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_SUB_TITLE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
-    private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
+    private static final String DEFAULT_ICON = "AAAAAAAAAA";
+    private static final String UPDATED_ICON = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BG_COLOR = "AAAAAAAAAA";
+    private static final String UPDATED_BG_COLOR = "BBBBBBBBBB";
+
+    private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
+    private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_STATUS = "AAAAAAAAAA";
+    private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/deal-types";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -63,7 +74,14 @@ class DealTypeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static DealType createEntity(EntityManager em) {
-        DealType dealType = new DealType().dealType(DEFAULT_DEAL_TYPE).description(DEFAULT_DESCRIPTION).imageUrl(DEFAULT_IMAGE_URL);
+        DealType dealType = new DealType()
+            .title(DEFAULT_TITLE)
+            .subTitle(DEFAULT_SUB_TITLE)
+            .icon(DEFAULT_ICON)
+            .bgColor(DEFAULT_BG_COLOR)
+            .country(DEFAULT_COUNTRY)
+            .code(DEFAULT_CODE)
+            .status(DEFAULT_STATUS);
         return dealType;
     }
 
@@ -74,7 +92,14 @@ class DealTypeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static DealType createUpdatedEntity(EntityManager em) {
-        DealType dealType = new DealType().dealType(UPDATED_DEAL_TYPE).description(UPDATED_DESCRIPTION).imageUrl(UPDATED_IMAGE_URL);
+        DealType dealType = new DealType()
+            .title(UPDATED_TITLE)
+            .subTitle(UPDATED_SUB_TITLE)
+            .icon(UPDATED_ICON)
+            .bgColor(UPDATED_BG_COLOR)
+            .country(UPDATED_COUNTRY)
+            .code(UPDATED_CODE)
+            .status(UPDATED_STATUS);
         return dealType;
     }
 
@@ -96,9 +121,13 @@ class DealTypeResourceIT {
         List<DealType> dealTypeList = dealTypeRepository.findAll();
         assertThat(dealTypeList).hasSize(databaseSizeBeforeCreate + 1);
         DealType testDealType = dealTypeList.get(dealTypeList.size() - 1);
-        assertThat(testDealType.getDealType()).isEqualTo(DEFAULT_DEAL_TYPE);
-        assertThat(testDealType.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testDealType.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testDealType.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testDealType.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
+        assertThat(testDealType.getIcon()).isEqualTo(DEFAULT_ICON);
+        assertThat(testDealType.getBgColor()).isEqualTo(DEFAULT_BG_COLOR);
+        assertThat(testDealType.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testDealType.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testDealType.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -131,9 +160,13 @@ class DealTypeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(dealType.getId().intValue())))
-            .andExpect(jsonPath("$.[*].dealType").value(hasItem(DEFAULT_DEAL_TYPE)))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].subTitle").value(hasItem(DEFAULT_SUB_TITLE)))
+            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON)))
+            .andExpect(jsonPath("$.[*].bgColor").value(hasItem(DEFAULT_BG_COLOR)))
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
     }
 
     @Test
@@ -148,9 +181,13 @@ class DealTypeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(dealType.getId().intValue()))
-            .andExpect(jsonPath("$.dealType").value(DEFAULT_DEAL_TYPE))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
+            .andExpect(jsonPath("$.subTitle").value(DEFAULT_SUB_TITLE))
+            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON))
+            .andExpect(jsonPath("$.bgColor").value(DEFAULT_BG_COLOR))
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
     }
 
     @Test
@@ -172,7 +209,14 @@ class DealTypeResourceIT {
         DealType updatedDealType = dealTypeRepository.findById(dealType.getId()).get();
         // Disconnect from session so that the updates on updatedDealType are not directly saved in db
         em.detach(updatedDealType);
-        updatedDealType.dealType(UPDATED_DEAL_TYPE).description(UPDATED_DESCRIPTION).imageUrl(UPDATED_IMAGE_URL);
+        updatedDealType
+            .title(UPDATED_TITLE)
+            .subTitle(UPDATED_SUB_TITLE)
+            .icon(UPDATED_ICON)
+            .bgColor(UPDATED_BG_COLOR)
+            .country(UPDATED_COUNTRY)
+            .code(UPDATED_CODE)
+            .status(UPDATED_STATUS);
 
         restDealTypeMockMvc
             .perform(
@@ -186,9 +230,13 @@ class DealTypeResourceIT {
         List<DealType> dealTypeList = dealTypeRepository.findAll();
         assertThat(dealTypeList).hasSize(databaseSizeBeforeUpdate);
         DealType testDealType = dealTypeList.get(dealTypeList.size() - 1);
-        assertThat(testDealType.getDealType()).isEqualTo(UPDATED_DEAL_TYPE);
-        assertThat(testDealType.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testDealType.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testDealType.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testDealType.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
+        assertThat(testDealType.getIcon()).isEqualTo(UPDATED_ICON);
+        assertThat(testDealType.getBgColor()).isEqualTo(UPDATED_BG_COLOR);
+        assertThat(testDealType.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testDealType.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testDealType.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test
@@ -259,6 +307,8 @@ class DealTypeResourceIT {
         DealType partialUpdatedDealType = new DealType();
         partialUpdatedDealType.setId(dealType.getId());
 
+        partialUpdatedDealType.country(UPDATED_COUNTRY);
+
         restDealTypeMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedDealType.getId())
@@ -271,9 +321,13 @@ class DealTypeResourceIT {
         List<DealType> dealTypeList = dealTypeRepository.findAll();
         assertThat(dealTypeList).hasSize(databaseSizeBeforeUpdate);
         DealType testDealType = dealTypeList.get(dealTypeList.size() - 1);
-        assertThat(testDealType.getDealType()).isEqualTo(DEFAULT_DEAL_TYPE);
-        assertThat(testDealType.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testDealType.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testDealType.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testDealType.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
+        assertThat(testDealType.getIcon()).isEqualTo(DEFAULT_ICON);
+        assertThat(testDealType.getBgColor()).isEqualTo(DEFAULT_BG_COLOR);
+        assertThat(testDealType.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testDealType.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testDealType.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -288,7 +342,14 @@ class DealTypeResourceIT {
         DealType partialUpdatedDealType = new DealType();
         partialUpdatedDealType.setId(dealType.getId());
 
-        partialUpdatedDealType.dealType(UPDATED_DEAL_TYPE).description(UPDATED_DESCRIPTION).imageUrl(UPDATED_IMAGE_URL);
+        partialUpdatedDealType
+            .title(UPDATED_TITLE)
+            .subTitle(UPDATED_SUB_TITLE)
+            .icon(UPDATED_ICON)
+            .bgColor(UPDATED_BG_COLOR)
+            .country(UPDATED_COUNTRY)
+            .code(UPDATED_CODE)
+            .status(UPDATED_STATUS);
 
         restDealTypeMockMvc
             .perform(
@@ -302,9 +363,13 @@ class DealTypeResourceIT {
         List<DealType> dealTypeList = dealTypeRepository.findAll();
         assertThat(dealTypeList).hasSize(databaseSizeBeforeUpdate);
         DealType testDealType = dealTypeList.get(dealTypeList.size() - 1);
-        assertThat(testDealType.getDealType()).isEqualTo(UPDATED_DEAL_TYPE);
-        assertThat(testDealType.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testDealType.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testDealType.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testDealType.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
+        assertThat(testDealType.getIcon()).isEqualTo(UPDATED_ICON);
+        assertThat(testDealType.getBgColor()).isEqualTo(UPDATED_BG_COLOR);
+        assertThat(testDealType.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testDealType.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testDealType.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 
     @Test

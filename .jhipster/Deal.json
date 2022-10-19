@@ -6,10 +6,6 @@
   "entityTableName": "deal",
   "fields": [
     {
-      "fieldName": "type",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "title",
       "fieldType": "String"
     },
@@ -85,7 +81,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "category",
+      "fieldName": "tags",
       "fieldType": "String"
     }
   ],

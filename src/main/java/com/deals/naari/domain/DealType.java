@@ -21,15 +21,26 @@ public class DealType implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "deal_type")
-    private String dealType;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "sub_title")
+    private String subTitle;
 
-    @Lob
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "icon")
+    private String icon;
+
+    @Column(name = "bg_color")
+    private String bgColor;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "status")
+    private String status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -46,43 +57,95 @@ public class DealType implements Serializable {
         this.id = id;
     }
 
-    public String getDealType() {
-        return this.dealType;
+    public String getTitle() {
+        return this.title;
     }
 
-    public DealType dealType(String dealType) {
-        this.setDealType(dealType);
+    public DealType title(String title) {
+        this.setTitle(title);
         return this;
     }
 
-    public void setDealType(String dealType) {
-        this.dealType = dealType;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getSubTitle() {
+        return this.subTitle;
     }
 
-    public DealType description(String description) {
-        this.setDescription(description);
+    public DealType subTitle(String subTitle) {
+        this.setSubTitle(subTitle);
         return this;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
+    public String getIcon() {
+        return this.icon;
     }
 
-    public DealType imageUrl(String imageUrl) {
-        this.setImageUrl(imageUrl);
+    public DealType icon(String icon) {
+        this.setIcon(icon);
         return this;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getBgColor() {
+        return this.bgColor;
+    }
+
+    public DealType bgColor(String bgColor) {
+        this.setBgColor(bgColor);
+        return this;
+    }
+
+    public void setBgColor(String bgColor) {
+        this.bgColor = bgColor;
+    }
+
+    public String getCountry() {
+        return this.country;
+    }
+
+    public DealType country(String country) {
+        this.setCountry(country);
+        return this;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCode() {
+        return this.code;
+    }
+
+    public DealType code(String code) {
+        this.setCode(code);
+        return this;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public DealType status(String status) {
+        this.setStatus(status);
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -109,9 +172,13 @@ public class DealType implements Serializable {
     public String toString() {
         return "DealType{" +
             "id=" + getId() +
-            ", dealType='" + getDealType() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", imageUrl='" + getImageUrl() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", subTitle='" + getSubTitle() + "'" +
+            ", icon='" + getIcon() + "'" +
+            ", bgColor='" + getBgColor() + "'" +
+            ", country='" + getCountry() + "'" +
+            ", code='" + getCode() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

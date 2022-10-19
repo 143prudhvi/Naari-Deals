@@ -21,9 +21,6 @@ public class Deal implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "type")
-    private String type;
-
     @Column(name = "title")
     private String title;
 
@@ -81,8 +78,8 @@ public class Deal implements Serializable {
     @Column(name = "merchant")
     private String merchant;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "tags")
+    private String tags;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -97,19 +94,6 @@ public class Deal implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public Deal type(String type) {
-        this.setType(type);
-        return this;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getTitle() {
@@ -346,17 +330,17 @@ public class Deal implements Serializable {
         this.merchant = merchant;
     }
 
-    public String getCategory() {
-        return this.category;
+    public String getTags() {
+        return this.tags;
     }
 
-    public Deal category(String category) {
-        this.setCategory(category);
+    public Deal tags(String tags) {
+        this.setTags(tags);
         return this;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -383,7 +367,6 @@ public class Deal implements Serializable {
     public String toString() {
         return "Deal{" +
             "id=" + getId() +
-            ", type='" + getType() + "'" +
             ", title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +
@@ -402,7 +385,7 @@ public class Deal implements Serializable {
             ", city='" + getCity() + "'" +
             ", pinCode='" + getPinCode() + "'" +
             ", merchant='" + getMerchant() + "'" +
-            ", category='" + getCategory() + "'" +
+            ", tags='" + getTags() + "'" +
             "}";
     }
 }

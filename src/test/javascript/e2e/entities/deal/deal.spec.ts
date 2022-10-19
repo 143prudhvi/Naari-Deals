@@ -43,7 +43,6 @@ describe('Deal e2e test', () => {
     await dealComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      dealUpdatePage.setTypeInput('type'),
       dealUpdatePage.setTitleInput('title'),
       dealUpdatePage.setDescriptionInput('description'),
       dealUpdatePage.setImageUrlInput('imageUrl'),
@@ -62,7 +61,7 @@ describe('Deal e2e test', () => {
       dealUpdatePage.setCityInput('city'),
       dealUpdatePage.setPinCodeInput('pinCode'),
       dealUpdatePage.setMerchantInput('merchant'),
-      dealUpdatePage.setCategoryInput('category'),
+      dealUpdatePage.setTagsInput('tags'),
     ]);
 
     await dealUpdatePage.save();

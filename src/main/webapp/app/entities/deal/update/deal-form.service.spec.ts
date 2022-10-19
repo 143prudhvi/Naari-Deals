@@ -20,7 +20,6 @@ describe('Deal Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            type: expect.any(Object),
             title: expect.any(Object),
             description: expect.any(Object),
             imageUrl: expect.any(Object),
@@ -39,7 +38,7 @@ describe('Deal Form Service', () => {
             city: expect.any(Object),
             pinCode: expect.any(Object),
             merchant: expect.any(Object),
-            category: expect.any(Object),
+            tags: expect.any(Object),
           })
         );
       });
@@ -50,7 +49,6 @@ describe('Deal Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            type: expect.any(Object),
             title: expect.any(Object),
             description: expect.any(Object),
             imageUrl: expect.any(Object),
@@ -69,7 +67,7 @@ describe('Deal Form Service', () => {
             city: expect.any(Object),
             pinCode: expect.any(Object),
             merchant: expect.any(Object),
-            category: expect.any(Object),
+            tags: expect.any(Object),
           })
         );
       });

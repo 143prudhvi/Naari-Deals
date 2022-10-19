@@ -31,9 +31,6 @@ import org.springframework.util.Base64Utils;
 @WithMockUser
 class DealResourceIT {
 
-    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE = "BBBBBBBBBB";
-
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
@@ -88,8 +85,8 @@ class DealResourceIT {
     private static final String DEFAULT_MERCHANT = "AAAAAAAAAA";
     private static final String UPDATED_MERCHANT = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CATEGORY = "AAAAAAAAAA";
-    private static final String UPDATED_CATEGORY = "BBBBBBBBBB";
+    private static final String DEFAULT_TAGS = "AAAAAAAAAA";
+    private static final String UPDATED_TAGS = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/deals";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -116,7 +113,6 @@ class DealResourceIT {
      */
     public static Deal createEntity(EntityManager em) {
         Deal deal = new Deal()
-            .type(DEFAULT_TYPE)
             .title(DEFAULT_TITLE)
             .description(DEFAULT_DESCRIPTION)
             .imageUrl(DEFAULT_IMAGE_URL)
@@ -135,7 +131,7 @@ class DealResourceIT {
             .city(DEFAULT_CITY)
             .pinCode(DEFAULT_PIN_CODE)
             .merchant(DEFAULT_MERCHANT)
-            .category(DEFAULT_CATEGORY);
+            .tags(DEFAULT_TAGS);
         return deal;
     }
 
@@ -147,7 +143,6 @@ class DealResourceIT {
      */
     public static Deal createUpdatedEntity(EntityManager em) {
         Deal deal = new Deal()
-            .type(UPDATED_TYPE)
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
@@ -166,7 +161,7 @@ class DealResourceIT {
             .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
             .merchant(UPDATED_MERCHANT)
-            .category(UPDATED_CATEGORY);
+            .tags(UPDATED_TAGS);
         return deal;
     }
 
@@ -188,7 +183,6 @@ class DealResourceIT {
         List<Deal> dealList = dealRepository.findAll();
         assertThat(dealList).hasSize(databaseSizeBeforeCreate + 1);
         Deal testDeal = dealList.get(dealList.size() - 1);
-        assertThat(testDeal.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testDeal.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testDeal.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
@@ -207,7 +201,7 @@ class DealResourceIT {
         assertThat(testDeal.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testDeal.getPinCode()).isEqualTo(DEFAULT_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(DEFAULT_MERCHANT);
-        assertThat(testDeal.getCategory()).isEqualTo(DEFAULT_CATEGORY);
+        assertThat(testDeal.getTags()).isEqualTo(DEFAULT_TAGS);
     }
 
     @Test
@@ -240,7 +234,6 @@ class DealResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(deal.getId().intValue())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
@@ -259,7 +252,7 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].pinCode").value(hasItem(DEFAULT_PIN_CODE)))
             .andExpect(jsonPath("$.[*].merchant").value(hasItem(DEFAULT_MERCHANT)))
-            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)));
+            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
     }
 
     @Test
@@ -274,7 +267,6 @@ class DealResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(deal.getId().intValue()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()))
@@ -293,7 +285,7 @@ class DealResourceIT {
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
             .andExpect(jsonPath("$.pinCode").value(DEFAULT_PIN_CODE))
             .andExpect(jsonPath("$.merchant").value(DEFAULT_MERCHANT))
-            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY));
+            .andExpect(jsonPath("$.tags").value(DEFAULT_TAGS));
     }
 
     @Test
@@ -312,71 +304,6 @@ class DealResourceIT {
 
         defaultDealShouldBeFound("id.lessThanOrEqual=" + id);
         defaultDealShouldNotBeFound("id.lessThan=" + id);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByTypeIsEqualToSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where type equals to DEFAULT_TYPE
-        defaultDealShouldBeFound("type.equals=" + DEFAULT_TYPE);
-
-        // Get all the dealList where type equals to UPDATED_TYPE
-        defaultDealShouldNotBeFound("type.equals=" + UPDATED_TYPE);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByTypeIsInShouldWork() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where type in DEFAULT_TYPE or UPDATED_TYPE
-        defaultDealShouldBeFound("type.in=" + DEFAULT_TYPE + "," + UPDATED_TYPE);
-
-        // Get all the dealList where type equals to UPDATED_TYPE
-        defaultDealShouldNotBeFound("type.in=" + UPDATED_TYPE);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByTypeIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where type is not null
-        defaultDealShouldBeFound("type.specified=true");
-
-        // Get all the dealList where type is null
-        defaultDealShouldNotBeFound("type.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByTypeContainsSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where type contains DEFAULT_TYPE
-        defaultDealShouldBeFound("type.contains=" + DEFAULT_TYPE);
-
-        // Get all the dealList where type contains UPDATED_TYPE
-        defaultDealShouldNotBeFound("type.contains=" + UPDATED_TYPE);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByTypeNotContainsSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where type does not contain DEFAULT_TYPE
-        defaultDealShouldNotBeFound("type.doesNotContain=" + DEFAULT_TYPE);
-
-        // Get all the dealList where type does not contain UPDATED_TYPE
-        defaultDealShouldBeFound("type.doesNotContain=" + UPDATED_TYPE);
     }
 
     @Test
@@ -1330,67 +1257,67 @@ class DealResourceIT {
 
     @Test
     @Transactional
-    void getAllDealsByCategoryIsEqualToSomething() throws Exception {
+    void getAllDealsByTagsIsEqualToSomething() throws Exception {
         // Initialize the database
         dealRepository.saveAndFlush(deal);
 
-        // Get all the dealList where category equals to DEFAULT_CATEGORY
-        defaultDealShouldBeFound("category.equals=" + DEFAULT_CATEGORY);
+        // Get all the dealList where tags equals to DEFAULT_TAGS
+        defaultDealShouldBeFound("tags.equals=" + DEFAULT_TAGS);
 
-        // Get all the dealList where category equals to UPDATED_CATEGORY
-        defaultDealShouldNotBeFound("category.equals=" + UPDATED_CATEGORY);
+        // Get all the dealList where tags equals to UPDATED_TAGS
+        defaultDealShouldNotBeFound("tags.equals=" + UPDATED_TAGS);
     }
 
     @Test
     @Transactional
-    void getAllDealsByCategoryIsInShouldWork() throws Exception {
+    void getAllDealsByTagsIsInShouldWork() throws Exception {
         // Initialize the database
         dealRepository.saveAndFlush(deal);
 
-        // Get all the dealList where category in DEFAULT_CATEGORY or UPDATED_CATEGORY
-        defaultDealShouldBeFound("category.in=" + DEFAULT_CATEGORY + "," + UPDATED_CATEGORY);
+        // Get all the dealList where tags in DEFAULT_TAGS or UPDATED_TAGS
+        defaultDealShouldBeFound("tags.in=" + DEFAULT_TAGS + "," + UPDATED_TAGS);
 
-        // Get all the dealList where category equals to UPDATED_CATEGORY
-        defaultDealShouldNotBeFound("category.in=" + UPDATED_CATEGORY);
+        // Get all the dealList where tags equals to UPDATED_TAGS
+        defaultDealShouldNotBeFound("tags.in=" + UPDATED_TAGS);
     }
 
     @Test
     @Transactional
-    void getAllDealsByCategoryIsNullOrNotNull() throws Exception {
+    void getAllDealsByTagsIsNullOrNotNull() throws Exception {
         // Initialize the database
         dealRepository.saveAndFlush(deal);
 
-        // Get all the dealList where category is not null
-        defaultDealShouldBeFound("category.specified=true");
+        // Get all the dealList where tags is not null
+        defaultDealShouldBeFound("tags.specified=true");
 
-        // Get all the dealList where category is null
-        defaultDealShouldNotBeFound("category.specified=false");
+        // Get all the dealList where tags is null
+        defaultDealShouldNotBeFound("tags.specified=false");
     }
 
     @Test
     @Transactional
-    void getAllDealsByCategoryContainsSomething() throws Exception {
+    void getAllDealsByTagsContainsSomething() throws Exception {
         // Initialize the database
         dealRepository.saveAndFlush(deal);
 
-        // Get all the dealList where category contains DEFAULT_CATEGORY
-        defaultDealShouldBeFound("category.contains=" + DEFAULT_CATEGORY);
+        // Get all the dealList where tags contains DEFAULT_TAGS
+        defaultDealShouldBeFound("tags.contains=" + DEFAULT_TAGS);
 
-        // Get all the dealList where category contains UPDATED_CATEGORY
-        defaultDealShouldNotBeFound("category.contains=" + UPDATED_CATEGORY);
+        // Get all the dealList where tags contains UPDATED_TAGS
+        defaultDealShouldNotBeFound("tags.contains=" + UPDATED_TAGS);
     }
 
     @Test
     @Transactional
-    void getAllDealsByCategoryNotContainsSomething() throws Exception {
+    void getAllDealsByTagsNotContainsSomething() throws Exception {
         // Initialize the database
         dealRepository.saveAndFlush(deal);
 
-        // Get all the dealList where category does not contain DEFAULT_CATEGORY
-        defaultDealShouldNotBeFound("category.doesNotContain=" + DEFAULT_CATEGORY);
+        // Get all the dealList where tags does not contain DEFAULT_TAGS
+        defaultDealShouldNotBeFound("tags.doesNotContain=" + DEFAULT_TAGS);
 
-        // Get all the dealList where category does not contain UPDATED_CATEGORY
-        defaultDealShouldBeFound("category.doesNotContain=" + UPDATED_CATEGORY);
+        // Get all the dealList where tags does not contain UPDATED_TAGS
+        defaultDealShouldBeFound("tags.doesNotContain=" + UPDATED_TAGS);
     }
 
     /**
@@ -1402,7 +1329,6 @@ class DealResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(deal.getId().intValue())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
@@ -1421,7 +1347,7 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].pinCode").value(hasItem(DEFAULT_PIN_CODE)))
             .andExpect(jsonPath("$.[*].merchant").value(hasItem(DEFAULT_MERCHANT)))
-            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)));
+            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
 
         // Check, that the count call also returns 1
         restDealMockMvc
@@ -1470,7 +1396,6 @@ class DealResourceIT {
         // Disconnect from session so that the updates on updatedDeal are not directly saved in db
         em.detach(updatedDeal);
         updatedDeal
-            .type(UPDATED_TYPE)
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
@@ -1489,7 +1414,7 @@ class DealResourceIT {
             .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
             .merchant(UPDATED_MERCHANT)
-            .category(UPDATED_CATEGORY);
+            .tags(UPDATED_TAGS);
 
         restDealMockMvc
             .perform(
@@ -1503,7 +1428,6 @@ class DealResourceIT {
         List<Deal> dealList = dealRepository.findAll();
         assertThat(dealList).hasSize(databaseSizeBeforeUpdate);
         Deal testDeal = dealList.get(dealList.size() - 1);
-        assertThat(testDeal.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testDeal.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testDeal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
@@ -1522,7 +1446,7 @@ class DealResourceIT {
         assertThat(testDeal.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(UPDATED_MERCHANT);
-        assertThat(testDeal.getCategory()).isEqualTo(UPDATED_CATEGORY);
+        assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
     }
 
     @Test
@@ -1594,19 +1518,19 @@ class DealResourceIT {
         partialUpdatedDeal.setId(deal.getId());
 
         partialUpdatedDeal
-            .type(UPDATED_TYPE)
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
-            .startDate(UPDATED_START_DATE)
+            .imageUrl(UPDATED_IMAGE_URL)
             .endDate(UPDATED_END_DATE)
             .originalPrice(UPDATED_ORIGINAL_PRICE)
             .currentPrice(UPDATED_CURRENT_PRICE)
             .discount(UPDATED_DISCOUNT)
-            .active(UPDATED_ACTIVE)
+            .discountType(UPDATED_DISCOUNT_TYPE)
             .approved(UPDATED_APPROVED)
             .country(UPDATED_COUNTRY)
             .city(UPDATED_CITY)
-            .merchant(UPDATED_MERCHANT);
+            .pinCode(UPDATED_PIN_CODE)
+            .tags(UPDATED_TAGS);
 
         restDealMockMvc
             .perform(
@@ -1620,26 +1544,25 @@ class DealResourceIT {
         List<Deal> dealList = dealRepository.findAll();
         assertThat(dealList).hasSize(databaseSizeBeforeUpdate);
         Deal testDeal = dealList.get(dealList.size() - 1);
-        assertThat(testDeal.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testDeal.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testDeal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testDeal.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testDeal.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testDeal.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
         assertThat(testDeal.getPostedBy()).isEqualTo(DEFAULT_POSTED_BY);
         assertThat(testDeal.getPostedDate()).isEqualTo(DEFAULT_POSTED_DATE);
-        assertThat(testDeal.getStartDate()).isEqualTo(UPDATED_START_DATE);
+        assertThat(testDeal.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testDeal.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testDeal.getOriginalPrice()).isEqualTo(UPDATED_ORIGINAL_PRICE);
         assertThat(testDeal.getCurrentPrice()).isEqualTo(UPDATED_CURRENT_PRICE);
         assertThat(testDeal.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
-        assertThat(testDeal.getDiscountType()).isEqualTo(DEFAULT_DISCOUNT_TYPE);
-        assertThat(testDeal.getActive()).isEqualTo(UPDATED_ACTIVE);
+        assertThat(testDeal.getDiscountType()).isEqualTo(UPDATED_DISCOUNT_TYPE);
+        assertThat(testDeal.getActive()).isEqualTo(DEFAULT_ACTIVE);
         assertThat(testDeal.getApproved()).isEqualTo(UPDATED_APPROVED);
         assertThat(testDeal.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testDeal.getCity()).isEqualTo(UPDATED_CITY);
-        assertThat(testDeal.getPinCode()).isEqualTo(DEFAULT_PIN_CODE);
-        assertThat(testDeal.getMerchant()).isEqualTo(UPDATED_MERCHANT);
-        assertThat(testDeal.getCategory()).isEqualTo(DEFAULT_CATEGORY);
+        assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
+        assertThat(testDeal.getMerchant()).isEqualTo(DEFAULT_MERCHANT);
+        assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
     }
 
     @Test
@@ -1655,7 +1578,6 @@ class DealResourceIT {
         partialUpdatedDeal.setId(deal.getId());
 
         partialUpdatedDeal
-            .type(UPDATED_TYPE)
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
@@ -1674,7 +1596,7 @@ class DealResourceIT {
             .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
             .merchant(UPDATED_MERCHANT)
-            .category(UPDATED_CATEGORY);
+            .tags(UPDATED_TAGS);
 
         restDealMockMvc
             .perform(
@@ -1688,7 +1610,6 @@ class DealResourceIT {
         List<Deal> dealList = dealRepository.findAll();
         assertThat(dealList).hasSize(databaseSizeBeforeUpdate);
         Deal testDeal = dealList.get(dealList.size() - 1);
-        assertThat(testDeal.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testDeal.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testDeal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
@@ -1707,7 +1628,7 @@ class DealResourceIT {
         assertThat(testDeal.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(UPDATED_MERCHANT);
-        assertThat(testDeal.getCategory()).isEqualTo(UPDATED_CATEGORY);
+        assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
     }
 
     @Test

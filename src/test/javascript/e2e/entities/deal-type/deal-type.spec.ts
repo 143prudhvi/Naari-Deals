@@ -43,9 +43,13 @@ describe('DealType e2e test', () => {
     await dealTypeComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      dealTypeUpdatePage.setDealTypeInput('dealType'),
-      dealTypeUpdatePage.setDescriptionInput('description'),
-      dealTypeUpdatePage.setImageUrlInput('imageUrl'),
+      dealTypeUpdatePage.setTitleInput('title'),
+      dealTypeUpdatePage.setSubTitleInput('subTitle'),
+      dealTypeUpdatePage.setIconInput('icon'),
+      dealTypeUpdatePage.setBgColorInput('bgColor'),
+      dealTypeUpdatePage.setCountryInput('country'),
+      dealTypeUpdatePage.setCodeInput('code'),
+      dealTypeUpdatePage.setStatusInput('status'),
     ]);
 
     await dealTypeUpdatePage.save();

@@ -38,21 +38,45 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="dealType">
+          <th scope="col" jhiSortBy="title">
             <div class="d-flex">
-              <span>Deal Type</span>
+              <span>Title</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="description">
+          <th scope="col" jhiSortBy="subTitle">
             <div class="d-flex">
-              <span>Description</span>
+              <span>Sub Title</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="imageUrl">
+          <th scope="col" jhiSortBy="icon">
             <div class="d-flex">
-              <span>Image Url</span>
+              <span>Icon</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bgColor">
+            <div class="d-flex">
+              <span>Bg Color</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="country">
+            <div class="d-flex">
+              <span>Country</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span>Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span>Status</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -64,9 +88,13 @@
           <td>
             <a [routerLink]="['/deal-type', dealType.id, 'view']">{{ dealType.id }}</a>
           </td>
-          <td>{{ dealType.dealType }}</td>
-          <td>{{ dealType.description }}</td>
-          <td>{{ dealType.imageUrl }}</td>
+          <td>{{ dealType.title }}</td>
+          <td>{{ dealType.subTitle }}</td>
+          <td>{{ dealType.icon }}</td>
+          <td>{{ dealType.bgColor }}</td>
+          <td>{{ dealType.country }}</td>
+          <td>{{ dealType.code }}</td>
+          <td>{{ dealType.status }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

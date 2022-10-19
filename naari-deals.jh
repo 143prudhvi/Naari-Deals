@@ -5,12 +5,6 @@ entity MemberType {
 }
 
 entity DealType {
-      dealType String
-      description String
-      imageUrl TextBlob
-}
-
-entity CategoryType {
       title String
       subTitle String
       icon String
@@ -19,7 +13,6 @@ entity CategoryType {
       code String
       status String
 }
-
 
 entity LoginProfile{
 	userName String
@@ -34,7 +27,7 @@ entity LoginProfile{
 }
 
 entity BioProfile {
-	  userId String
+	userId String
       firstName String
       lastName String
       dob String
@@ -43,7 +36,6 @@ entity BioProfile {
 }
 
 entity Deal {
-      type String
       title String
       description TextBlob
       imageUrl TextBlob
@@ -62,7 +54,7 @@ entity Deal {
       city String
       pinCode String
       merchant String
-      category String
+      tags String
 }
 
 entity Merchant{

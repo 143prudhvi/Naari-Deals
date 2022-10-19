@@ -7,9 +7,6 @@ import { finalize } from 'rxjs/operators';
 import { DealTypeFormService, DealTypeFormGroup } from './deal-type-form.service';
 import { IDealType } from '../deal-type.model';
 import { DealTypeService } from '../service/deal-type.service';
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 
 @Component({
   selector: 'jhi-deal-type-update',
@@ -22,8 +19,6 @@ export class DealTypeUpdateComponent implements OnInit {
   editForm: DealTypeFormGroup = this.dealTypeFormService.createDealTypeFormGroup();
 
   constructor(
-    protected dataUtils: DataUtils,
-    protected eventManager: EventManager,
     protected dealTypeService: DealTypeService,
     protected dealTypeFormService: DealTypeFormService,
     protected activatedRoute: ActivatedRoute
@@ -35,21 +30,6 @@ export class DealTypeUpdateComponent implements OnInit {
       if (dealType) {
         this.updateForm(dealType);
       }
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(new EventWithContent<AlertError>('naariDealsApp.error', { message: err.message })),
     });
   }
 

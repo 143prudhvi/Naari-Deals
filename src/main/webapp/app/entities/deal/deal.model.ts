@@ -1,6 +1,5 @@
 export interface IDeal {
   id: number;
-  type?: string | null;
   title?: string | null;
   description?: string | null;
   imageUrl?: string | null;
@@ -19,7 +18,7 @@ export interface IDeal {
   city?: string | null;
   pinCode?: string | null;
   merchant?: string | null;
-  category?: string | null;
+  tags?: string | null;
 }
 
 export type NewDeal = Omit<IDeal, 'id'> & { id: null };
