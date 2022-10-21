@@ -76,6 +76,17 @@ entity Category{
       code String
 }
 
+entity Slide{
+      title String
+      subTitle String
+      imageUrl String
+      status String
+      country String
+      startDate String
+      endDate String
+}
+
+
 entity EmailSubscription{
       email String
       country String
