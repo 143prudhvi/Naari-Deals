@@ -50,6 +50,7 @@ describe('Slide e2e test', () => {
       slideUpdatePage.setCountryInput('country'),
       slideUpdatePage.setStartDateInput('startDate'),
       slideUpdatePage.setEndDateInput('endDate'),
+      slideUpdatePage.setDealUrlInput('dealUrl'),
     ]);
 
     await slideUpdatePage.save();

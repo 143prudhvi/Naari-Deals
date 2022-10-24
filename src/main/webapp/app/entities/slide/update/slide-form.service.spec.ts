@@ -27,6 +27,7 @@ describe('Slide Form Service', () => {
             country: expect.any(Object),
             startDate: expect.any(Object),
             endDate: expect.any(Object),
+            dealUrl: expect.any(Object),
           })
         );
       });
@@ -44,6 +45,7 @@ describe('Slide Form Service', () => {
             country: expect.any(Object),
             startDate: expect.any(Object),
             endDate: expect.any(Object),
+            dealUrl: expect.any(Object),
           })
         );
       });

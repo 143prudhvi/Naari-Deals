@@ -49,6 +49,7 @@ describe('Merchant e2e test', () => {
       merchantUpdatePage.setStoreIconInput('storeIcon'),
       merchantUpdatePage.setTypeInput('type'),
       merchantUpdatePage.setLocationInput('location'),
+      merchantUpdatePage.setSiteUrlInput('siteUrl'),
     ]);
 
     await merchantUpdatePage.save();

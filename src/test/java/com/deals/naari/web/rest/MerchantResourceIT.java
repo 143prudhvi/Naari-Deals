@@ -48,6 +48,9 @@ class MerchantResourceIT {
     private static final String DEFAULT_LOCATION = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SITE_URL = "AAAAAAAAAA";
+    private static final String UPDATED_SITE_URL = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/merchants";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -78,7 +81,8 @@ class MerchantResourceIT {
             .city(DEFAULT_CITY)
             .storeIcon(DEFAULT_STORE_ICON)
             .type(DEFAULT_TYPE)
-            .location(DEFAULT_LOCATION);
+            .location(DEFAULT_LOCATION)
+            .siteUrl(DEFAULT_SITE_URL);
         return merchant;
     }
 
@@ -95,7 +99,8 @@ class MerchantResourceIT {
             .city(UPDATED_CITY)
             .storeIcon(UPDATED_STORE_ICON)
             .type(UPDATED_TYPE)
-            .location(UPDATED_LOCATION);
+            .location(UPDATED_LOCATION)
+            .siteUrl(UPDATED_SITE_URL);
         return merchant;
     }
 
@@ -123,6 +128,7 @@ class MerchantResourceIT {
         assertThat(testMerchant.getStoreIcon()).isEqualTo(DEFAULT_STORE_ICON);
         assertThat(testMerchant.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testMerchant.getLocation()).isEqualTo(DEFAULT_LOCATION);
+        assertThat(testMerchant.getSiteUrl()).isEqualTo(DEFAULT_SITE_URL);
     }
 
     @Test
@@ -160,7 +166,8 @@ class MerchantResourceIT {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].storeIcon").value(hasItem(DEFAULT_STORE_ICON.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
-            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)));
+            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
+            .andExpect(jsonPath("$.[*].siteUrl").value(hasItem(DEFAULT_SITE_URL)));
     }
 
     @Test
@@ -180,7 +187,8 @@ class MerchantResourceIT {
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
             .andExpect(jsonPath("$.storeIcon").value(DEFAULT_STORE_ICON.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
-            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION));
+            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
+            .andExpect(jsonPath("$.siteUrl").value(DEFAULT_SITE_URL));
     }
 
     @Test
@@ -208,7 +216,8 @@ class MerchantResourceIT {
             .city(UPDATED_CITY)
             .storeIcon(UPDATED_STORE_ICON)
             .type(UPDATED_TYPE)
-            .location(UPDATED_LOCATION);
+            .location(UPDATED_LOCATION)
+            .siteUrl(UPDATED_SITE_URL);
 
         restMerchantMockMvc
             .perform(
@@ -228,6 +237,7 @@ class MerchantResourceIT {
         assertThat(testMerchant.getStoreIcon()).isEqualTo(UPDATED_STORE_ICON);
         assertThat(testMerchant.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testMerchant.getLocation()).isEqualTo(UPDATED_LOCATION);
+        assertThat(testMerchant.getSiteUrl()).isEqualTo(UPDATED_SITE_URL);
     }
 
     @Test
@@ -298,7 +308,7 @@ class MerchantResourceIT {
         Merchant partialUpdatedMerchant = new Merchant();
         partialUpdatedMerchant.setId(merchant.getId());
 
-        partialUpdatedMerchant.country(UPDATED_COUNTRY).city(UPDATED_CITY).storeIcon(UPDATED_STORE_ICON);
+        partialUpdatedMerchant.country(UPDATED_COUNTRY).city(UPDATED_CITY).storeIcon(UPDATED_STORE_ICON).siteUrl(UPDATED_SITE_URL);
 
         restMerchantMockMvc
             .perform(
@@ -318,6 +328,7 @@ class MerchantResourceIT {
         assertThat(testMerchant.getStoreIcon()).isEqualTo(UPDATED_STORE_ICON);
         assertThat(testMerchant.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testMerchant.getLocation()).isEqualTo(DEFAULT_LOCATION);
+        assertThat(testMerchant.getSiteUrl()).isEqualTo(UPDATED_SITE_URL);
     }
 
     @Test
@@ -338,7 +349,8 @@ class MerchantResourceIT {
             .city(UPDATED_CITY)
             .storeIcon(UPDATED_STORE_ICON)
             .type(UPDATED_TYPE)
-            .location(UPDATED_LOCATION);
+            .location(UPDATED_LOCATION)
+            .siteUrl(UPDATED_SITE_URL);
 
         restMerchantMockMvc
             .perform(
@@ -358,6 +370,7 @@ class MerchantResourceIT {
         assertThat(testMerchant.getStoreIcon()).isEqualTo(UPDATED_STORE_ICON);
         assertThat(testMerchant.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testMerchant.getLocation()).isEqualTo(UPDATED_LOCATION);
+        assertThat(testMerchant.getSiteUrl()).isEqualTo(UPDATED_SITE_URL);
     }
 
     @Test

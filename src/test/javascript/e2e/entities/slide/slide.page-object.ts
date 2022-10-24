@@ -37,6 +37,7 @@ export class SlideUpdatePage {
   countryInput = element(by.id('field_country'));
   startDateInput = element(by.id('field_startDate'));
   endDateInput = element(by.id('field_endDate'));
+  dealUrlInput = element(by.id('field_dealUrl'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -104,6 +105,14 @@ export class SlideUpdatePage {
 
   async getEndDateInput(): Promise<string> {
     return await this.endDateInput.getAttribute('value');
+  }
+
+  async setDealUrlInput(dealUrl: string): Promise<void> {
+    await this.dealUrlInput.sendKeys(dealUrl);
+  }
+
+  async getDealUrlInput(): Promise<string> {
+    return await this.dealUrlInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

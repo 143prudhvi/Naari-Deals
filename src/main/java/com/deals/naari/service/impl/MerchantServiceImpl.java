@@ -62,6 +62,9 @@ public class MerchantServiceImpl implements MerchantService {
                 if (merchant.getLocation() != null) {
                     existingMerchant.setLocation(merchant.getLocation());
                 }
+                if (merchant.getSiteUrl() != null) {
+                    existingMerchant.setSiteUrl(merchant.getSiteUrl());
+                }
 
                 return existingMerchant;
             })

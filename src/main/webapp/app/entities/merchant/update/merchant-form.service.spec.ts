@@ -26,6 +26,7 @@ describe('Merchant Form Service', () => {
             storeIcon: expect.any(Object),
             type: expect.any(Object),
             location: expect.any(Object),
+            siteUrl: expect.any(Object),
           })
         );
       });
@@ -42,6 +43,7 @@ describe('Merchant Form Service', () => {
             storeIcon: expect.any(Object),
             type: expect.any(Object),
             location: expect.any(Object),
+            siteUrl: expect.any(Object),
           })
         );
       });

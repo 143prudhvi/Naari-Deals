@@ -29,6 +29,10 @@
     {
       "fieldName": "location",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "siteUrl",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

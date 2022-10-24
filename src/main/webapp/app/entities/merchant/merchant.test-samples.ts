@@ -5,21 +5,23 @@ export const sampleWithRequiredData: IMerchant = {
 };
 
 export const sampleWithPartialData: IMerchant = {
-  id: 62419,
-  country: 'French Guiana',
+  id: 29592,
+  country: 'Senegal',
   storeIcon: '../fake-data/blob/hipster.txt',
-  type: 'Investor functionalities Health',
-  location: 'Naira Human',
+  type: 'Market Legacy Cambridgeshire',
+  location: 'Hawaii Customer Sausages',
+  siteUrl: 'Operations Branch Shoes',
 };
 
 export const sampleWithFullData: IMerchant = {
-  id: 15862,
-  name: 'Factors',
-  country: 'Uruguay',
-  city: 'Chayaport',
+  id: 57040,
+  name: 'Ergonomic Pound',
+  country: 'Taiwan',
+  city: 'Considinemouth',
   storeIcon: '../fake-data/blob/hipster.txt',
-  type: 'web-readiness',
-  location: 'Nebraska',
+  type: 'Bedfordshire Tactics Maine',
+  location: 'Congolese program Central',
+  siteUrl: 'navigating Buckinghamshire',
 };
 
 export const sampleWithNewData: NewMerchant = {

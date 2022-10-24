@@ -64,6 +64,7 @@ entity Merchant{
       storeIcon TextBlob
       type String
       location String
+      siteUrl String
 }
 
 entity Category{
@@ -84,6 +85,7 @@ entity Slide{
       country String
       startDate String
       endDate String
+      dealUrl String
 }
 
 

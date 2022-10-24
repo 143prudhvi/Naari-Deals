@@ -5,19 +5,20 @@ export const sampleWithRequiredData: ISlide = {
 };
 
 export const sampleWithPartialData: ISlide = {
-  id: 21312,
-  startDate: 'enable disintermediate',
+  id: 55451,
+  startDate: 'Plastic e-enable',
 };
 
 export const sampleWithFullData: ISlide = {
-  id: 59641,
-  title: 'Diverse Assurance yellow',
-  subTitle: 'Pants Plastic Self-enabling',
-  imageUrl: 'port framework',
-  status: 'user-centric B2C Pre-emptive',
-  country: 'Ukraine',
-  startDate: 'encompassing HTTP',
-  endDate: 'teal',
+  id: 94716,
+  title: 'azure',
+  subTitle: 'Bedfordshire Producer Lakes',
+  imageUrl: 'Plastic Self-enabling Buckinghamshire',
+  status: 'framework navigate',
+  country: 'Luxembourg',
+  startDate: '24/7 Account',
+  endDate: 'encompassing HTTP',
+  dealUrl: 'teal',
 };
 
 export const sampleWithNewData: NewSlide = {

@@ -32,6 +32,10 @@
     {
       "fieldName": "endDate",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "dealUrl",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

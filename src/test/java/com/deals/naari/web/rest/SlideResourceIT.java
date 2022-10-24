@@ -50,6 +50,9 @@ class SlideResourceIT {
     private static final String DEFAULT_END_DATE = "AAAAAAAAAA";
     private static final String UPDATED_END_DATE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DEAL_URL = "AAAAAAAAAA";
+    private static final String UPDATED_DEAL_URL = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/slides";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -81,7 +84,8 @@ class SlideResourceIT {
             .status(DEFAULT_STATUS)
             .country(DEFAULT_COUNTRY)
             .startDate(DEFAULT_START_DATE)
-            .endDate(DEFAULT_END_DATE);
+            .endDate(DEFAULT_END_DATE)
+            .dealUrl(DEFAULT_DEAL_URL);
         return slide;
     }
 
@@ -99,7 +103,8 @@ class SlideResourceIT {
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE);
+            .endDate(UPDATED_END_DATE)
+            .dealUrl(UPDATED_DEAL_URL);
         return slide;
     }
 
@@ -128,6 +133,7 @@ class SlideResourceIT {
         assertThat(testSlide.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(DEFAULT_END_DATE);
+        assertThat(testSlide.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
     }
 
     @Test
@@ -166,7 +172,8 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
-            .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)));
+            .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
+            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)));
     }
 
     @Test
@@ -187,7 +194,8 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE))
-            .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE));
+            .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE))
+            .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL));
     }
 
     @Test
@@ -216,7 +224,8 @@ class SlideResourceIT {
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE);
+            .endDate(UPDATED_END_DATE)
+            .dealUrl(UPDATED_DEAL_URL);
 
         restSlideMockMvc
             .perform(
@@ -237,6 +246,7 @@ class SlideResourceIT {
         assertThat(testSlide.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testSlide.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
     }
 
     @Test
@@ -328,6 +338,7 @@ class SlideResourceIT {
         assertThat(testSlide.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testSlide.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
     }
 
     @Test
@@ -349,7 +360,8 @@ class SlideResourceIT {
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE);
+            .endDate(UPDATED_END_DATE)
+            .dealUrl(UPDATED_DEAL_URL);
 
         restSlideMockMvc
             .perform(
@@ -370,6 +382,7 @@ class SlideResourceIT {
         assertThat(testSlide.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testSlide.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
     }
 
     @Test

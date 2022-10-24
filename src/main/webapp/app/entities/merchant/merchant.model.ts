@@ -6,6 +6,7 @@ export interface IMerchant {
   storeIcon?: string | null;
   type?: string | null;
   location?: string | null;
+  siteUrl?: string | null;
 }
 
 export type NewMerchant = Omit<IMerchant, 'id'> & { id: null };

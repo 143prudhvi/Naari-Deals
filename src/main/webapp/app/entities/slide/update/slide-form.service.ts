@@ -25,6 +25,7 @@ type SlideFormGroupContent = {
   country: FormControl<ISlide['country']>;
   startDate: FormControl<ISlide['startDate']>;
   endDate: FormControl<ISlide['endDate']>;
+  dealUrl: FormControl<ISlide['dealUrl']>;
 };
 
 export type SlideFormGroup = FormGroup<SlideFormGroupContent>;
@@ -51,6 +52,7 @@ export class SlideFormService {
       country: new FormControl(slideRawValue.country),
       startDate: new FormControl(slideRawValue.startDate),
       endDate: new FormControl(slideRawValue.endDate),
+      dealUrl: new FormControl(slideRawValue.dealUrl),
     });
   }
 

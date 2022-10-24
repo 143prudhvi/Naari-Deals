@@ -24,6 +24,7 @@ type MerchantFormGroupContent = {
   storeIcon: FormControl<IMerchant['storeIcon']>;
   type: FormControl<IMerchant['type']>;
   location: FormControl<IMerchant['location']>;
+  siteUrl: FormControl<IMerchant['siteUrl']>;
 };
 
 export type MerchantFormGroup = FormGroup<MerchantFormGroupContent>;
@@ -49,6 +50,7 @@ export class MerchantFormService {
       storeIcon: new FormControl(merchantRawValue.storeIcon),
       type: new FormControl(merchantRawValue.type),
       location: new FormControl(merchantRawValue.location),
+      siteUrl: new FormControl(merchantRawValue.siteUrl),
     });
   }
 

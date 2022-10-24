@@ -7,6 +7,7 @@ export interface ISlide {
   country?: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  dealUrl?: string | null;
 }
 
 export type NewSlide = Omit<ISlide, 'id'> & { id: null };

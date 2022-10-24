@@ -40,6 +40,9 @@ public class Merchant implements Serializable {
     @Column(name = "location")
     private String location;
 
+    @Column(name = "site_url")
+    private String siteUrl;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -133,6 +136,19 @@ public class Merchant implements Serializable {
         this.location = location;
     }
 
+    public String getSiteUrl() {
+        return this.siteUrl;
+    }
+
+    public Merchant siteUrl(String siteUrl) {
+        this.setSiteUrl(siteUrl);
+        return this;
+    }
+
+    public void setSiteUrl(String siteUrl) {
+        this.siteUrl = siteUrl;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -163,6 +179,7 @@ public class Merchant implements Serializable {
             ", storeIcon='" + getStoreIcon() + "'" +
             ", type='" + getType() + "'" +
             ", location='" + getLocation() + "'" +
+            ", siteUrl='" + getSiteUrl() + "'" +
             "}";
     }
 }

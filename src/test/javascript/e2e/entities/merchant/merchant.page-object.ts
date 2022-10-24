@@ -36,6 +36,7 @@ export class MerchantUpdatePage {
   storeIconInput = element(by.id('field_storeIcon'));
   typeInput = element(by.id('field_type'));
   locationInput = element(by.id('field_location'));
+  siteUrlInput = element(by.id('field_siteUrl'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -95,6 +96,14 @@ export class MerchantUpdatePage {
 
   async getLocationInput(): Promise<string> {
     return await this.locationInput.getAttribute('value');
+  }
+
+  async setSiteUrlInput(siteUrl: string): Promise<void> {
+    await this.siteUrlInput.sendKeys(siteUrl);
+  }
+
+  async getSiteUrlInput(): Promise<string> {
+    return await this.siteUrlInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

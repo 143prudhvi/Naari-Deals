@@ -65,6 +65,9 @@ public class SlideServiceImpl implements SlideService {
                 if (slide.getEndDate() != null) {
                     existingSlide.setEndDate(slide.getEndDate());
                 }
+                if (slide.getDealUrl() != null) {
+                    existingSlide.setDealUrl(slide.getDealUrl());
+                }
 
                 return existingSlide;
             })
