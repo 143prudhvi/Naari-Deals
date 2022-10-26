@@ -6,19 +6,19 @@ export const sampleWithRequiredData: ISlide = {
 
 export const sampleWithPartialData: ISlide = {
   id: 55451,
-  startDate: 'Plastic e-enable',
+  endDate: 'Plastic e-enable',
 };
 
 export const sampleWithFullData: ISlide = {
   id: 94716,
   title: 'azure',
   subTitle: 'Bedfordshire Producer Lakes',
-  imageUrl: 'Plastic Self-enabling Buckinghamshire',
-  status: 'framework navigate',
-  country: 'Luxembourg',
-  startDate: '24/7 Account',
-  endDate: 'encompassing HTTP',
-  dealUrl: 'teal',
+  status: 'Plastic Self-enabling Buckinghamshire',
+  country: 'Guatemala',
+  startDate: 'e-business',
+  endDate: 'XML 24/7',
+  imageUrl: 'Viaduct encompassing',
+  dealUrl: 'Generic Marketing Operations',
 };
 
 export const sampleWithNewData: NewSlide = {

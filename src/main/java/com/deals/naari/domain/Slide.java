@@ -27,9 +27,6 @@ public class Slide implements Serializable {
     @Column(name = "sub_title")
     private String subTitle;
 
-    @Column(name = "image_url")
-    private String imageUrl;
-
     @Column(name = "status")
     private String status;
 
@@ -41,6 +38,9 @@ public class Slide implements Serializable {
 
     @Column(name = "end_date")
     private String endDate;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Column(name = "deal_url")
     private String dealUrl;
@@ -84,19 +84,6 @@ public class Slide implements Serializable {
 
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
-    }
-
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
-
-    public Slide imageUrl(String imageUrl) {
-        this.setImageUrl(imageUrl);
-        return this;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getStatus() {
@@ -151,6 +138,19 @@ public class Slide implements Serializable {
         this.endDate = endDate;
     }
 
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public Slide imageUrl(String imageUrl) {
+        this.setImageUrl(imageUrl);
+        return this;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getDealUrl() {
         return this.dealUrl;
     }
@@ -190,11 +190,11 @@ public class Slide implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", subTitle='" + getSubTitle() + "'" +
-            ", imageUrl='" + getImageUrl() + "'" +
             ", status='" + getStatus() + "'" +
             ", country='" + getCountry() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
+            ", imageUrl='" + getImageUrl() + "'" +
             ", dealUrl='" + getDealUrl() + "'" +
             "}";
     }

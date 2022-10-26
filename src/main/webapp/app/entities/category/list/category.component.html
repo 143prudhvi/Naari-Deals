@@ -38,6 +38,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="parent">
+            <div class="d-flex">
+              <span>Parent</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="title">
             <div class="d-flex">
               <span>Title</span>
@@ -62,12 +68,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="status">
-            <div class="d-flex">
-              <span>Status</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="country">
             <div class="d-flex">
               <span>Country</span>
@@ -80,6 +80,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span>Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -88,13 +94,14 @@
           <td>
             <a [routerLink]="['/category', category.id, 'view']">{{ category.id }}</a>
           </td>
+          <td>{{ category.parent }}</td>
           <td>{{ category.title }}</td>
           <td>{{ category.subTitle }}</td>
           <td>{{ category.imageUrl }}</td>
           <td>{{ category.description }}</td>
-          <td>{{ category.status }}</td>
           <td>{{ category.country }}</td>
           <td>{{ category.code }}</td>
+          <td>{{ category.status }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

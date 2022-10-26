@@ -35,9 +35,6 @@ class SlideResourceIT {
     private static final String DEFAULT_SUB_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_SUB_TITLE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
-    private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
-
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
@@ -49,6 +46,9 @@ class SlideResourceIT {
 
     private static final String DEFAULT_END_DATE = "AAAAAAAAAA";
     private static final String UPDATED_END_DATE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
 
     private static final String DEFAULT_DEAL_URL = "AAAAAAAAAA";
     private static final String UPDATED_DEAL_URL = "BBBBBBBBBB";
@@ -80,11 +80,11 @@ class SlideResourceIT {
         Slide slide = new Slide()
             .title(DEFAULT_TITLE)
             .subTitle(DEFAULT_SUB_TITLE)
-            .imageUrl(DEFAULT_IMAGE_URL)
             .status(DEFAULT_STATUS)
             .country(DEFAULT_COUNTRY)
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
+            .imageUrl(DEFAULT_IMAGE_URL)
             .dealUrl(DEFAULT_DEAL_URL);
         return slide;
     }
@@ -99,11 +99,11 @@ class SlideResourceIT {
         Slide slide = new Slide()
             .title(UPDATED_TITLE)
             .subTitle(UPDATED_SUB_TITLE)
-            .imageUrl(UPDATED_IMAGE_URL)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
+            .imageUrl(UPDATED_IMAGE_URL)
             .dealUrl(UPDATED_DEAL_URL);
         return slide;
     }
@@ -128,11 +128,11 @@ class SlideResourceIT {
         Slide testSlide = slideList.get(slideList.size() - 1);
         assertThat(testSlide.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testSlide.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
-        assertThat(testSlide.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
         assertThat(testSlide.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testSlide.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(DEFAULT_END_DATE);
+        assertThat(testSlide.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
         assertThat(testSlide.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
     }
 
@@ -168,11 +168,11 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(slide.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].subTitle").value(hasItem(DEFAULT_SUB_TITLE)))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
             .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)));
     }
 
@@ -190,11 +190,11 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.id").value(slide.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.subTitle").value(DEFAULT_SUB_TITLE))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE))
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
             .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL));
     }
 
@@ -220,11 +220,11 @@ class SlideResourceIT {
         updatedSlide
             .title(UPDATED_TITLE)
             .subTitle(UPDATED_SUB_TITLE)
-            .imageUrl(UPDATED_IMAGE_URL)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
+            .imageUrl(UPDATED_IMAGE_URL)
             .dealUrl(UPDATED_DEAL_URL);
 
         restSlideMockMvc
@@ -241,11 +241,11 @@ class SlideResourceIT {
         Slide testSlide = slideList.get(slideList.size() - 1);
         assertThat(testSlide.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testSlide.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
-        assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testSlide.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testSlide.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testSlide.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
     }
 
@@ -317,7 +317,7 @@ class SlideResourceIT {
         Slide partialUpdatedSlide = new Slide();
         partialUpdatedSlide.setId(slide.getId());
 
-        partialUpdatedSlide.title(UPDATED_TITLE).imageUrl(UPDATED_IMAGE_URL).country(UPDATED_COUNTRY).endDate(UPDATED_END_DATE);
+        partialUpdatedSlide.title(UPDATED_TITLE).status(UPDATED_STATUS).startDate(UPDATED_START_DATE).imageUrl(UPDATED_IMAGE_URL);
 
         restSlideMockMvc
             .perform(
@@ -333,11 +333,11 @@ class SlideResourceIT {
         Slide testSlide = slideList.get(slideList.size() - 1);
         assertThat(testSlide.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testSlide.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
+        assertThat(testSlide.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testSlide.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
+        assertThat(testSlide.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
-        assertThat(testSlide.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testSlide.getCountry()).isEqualTo(UPDATED_COUNTRY);
-        assertThat(testSlide.getStartDate()).isEqualTo(DEFAULT_START_DATE);
-        assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testSlide.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
     }
 
@@ -356,11 +356,11 @@ class SlideResourceIT {
         partialUpdatedSlide
             .title(UPDATED_TITLE)
             .subTitle(UPDATED_SUB_TITLE)
-            .imageUrl(UPDATED_IMAGE_URL)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
+            .imageUrl(UPDATED_IMAGE_URL)
             .dealUrl(UPDATED_DEAL_URL);
 
         restSlideMockMvc
@@ -377,11 +377,11 @@ class SlideResourceIT {
         Slide testSlide = slideList.get(slideList.size() - 1);
         assertThat(testSlide.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testSlide.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
-        assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testSlide.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testSlide.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testSlide.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
     }
 

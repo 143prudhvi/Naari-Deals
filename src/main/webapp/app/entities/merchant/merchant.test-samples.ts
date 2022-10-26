@@ -7,10 +7,10 @@ export const sampleWithRequiredData: IMerchant = {
 export const sampleWithPartialData: IMerchant = {
   id: 29592,
   country: 'Senegal',
-  storeIcon: '../fake-data/blob/hipster.txt',
-  type: 'Market Legacy Cambridgeshire',
-  location: 'Hawaii Customer Sausages',
-  siteUrl: 'Operations Branch Shoes',
+  storeIcon: 'Market Legacy Cambridgeshire',
+  type: 'Hawaii Customer Sausages',
+  location: 'Operations Branch Shoes',
+  siteUrl: '../fake-data/blob/hipster.txt',
 };
 
 export const sampleWithFullData: IMerchant = {
@@ -18,10 +18,10 @@ export const sampleWithFullData: IMerchant = {
   name: 'Ergonomic Pound',
   country: 'Taiwan',
   city: 'Considinemouth',
-  storeIcon: '../fake-data/blob/hipster.txt',
-  type: 'Bedfordshire Tactics Maine',
-  location: 'Congolese program Central',
-  siteUrl: 'navigating Buckinghamshire',
+  storeIcon: 'Bedfordshire Tactics Maine',
+  type: 'Congolese program Central',
+  location: 'navigating Buckinghamshire',
+  siteUrl: '../fake-data/blob/hipster.txt',
 };
 
 export const sampleWithNewData: NewMerchant = {

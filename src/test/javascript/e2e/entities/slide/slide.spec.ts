@@ -45,11 +45,11 @@ describe('Slide e2e test', () => {
     await promise.all([
       slideUpdatePage.setTitleInput('title'),
       slideUpdatePage.setSubTitleInput('subTitle'),
-      slideUpdatePage.setImageUrlInput('imageUrl'),
       slideUpdatePage.setStatusInput('status'),
       slideUpdatePage.setCountryInput('country'),
       slideUpdatePage.setStartDateInput('startDate'),
       slideUpdatePage.setEndDateInput('endDate'),
+      slideUpdatePage.setImageUrlInput('imageUrl'),
       slideUpdatePage.setDealUrlInput('dealUrl'),
     ]);
 

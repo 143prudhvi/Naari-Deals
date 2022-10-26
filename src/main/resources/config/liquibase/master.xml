@@ -23,6 +23,7 @@
     <include file="config/liquibase/changelog/20220925160519_added_entity_Notification.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20221018235158_added_entity_CategoryType.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20221020054506_added_entity_Slide.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221025170344_added_entity_Brand.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->

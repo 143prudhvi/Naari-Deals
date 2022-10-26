@@ -32,7 +32,7 @@
             <column name="date_of_read" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="image_url" type="varchar(255)">
+            <column name="image_url" type="${clobType}">
                 <constraints nullable="true" />
             </column>
             <column name="original_price" type="varchar(255)">
@@ -74,7 +74,7 @@
             <column name="status" type="string"/>
             <column name="type" type="string"/>
             <column name="date_of_read" type="string"/>
-            <column name="image_url" type="string"/>
+            <column name="image_url" type="clob"/>
             <column name="original_price" type="string"/>
             <column name="current_price" type="string"/>
             <column name="discount" type="string"/>

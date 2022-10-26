@@ -31,7 +31,8 @@
     },
     {
       "fieldName": "imageUrl",
-      "fieldType": "String"
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "originalPrice",

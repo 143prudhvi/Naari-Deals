@@ -5,21 +5,23 @@ export const sampleWithRequiredData: ICategory = {
 };
 
 export const sampleWithPartialData: ICategory = {
-  id: 91930,
-  title: 'up USB Down-sized',
-  subTitle: 'Facilitator synthesizing Directives',
-  imageUrl: 'navigating',
+  id: 81675,
+  parent: 'Clothing navigate gold',
+  title: 'PCI virtual Chair',
+  subTitle: 'target Realigned Handmade',
+  status: 'Concrete Steel transform',
 };
 
 export const sampleWithFullData: ICategory = {
-  id: 54514,
-  title: 'bus',
-  subTitle: 'Accounts Computer Handmade',
-  imageUrl: 'generating',
-  description: '../fake-data/blob/hipster.txt',
-  status: 'pixel syndicate',
-  country: 'Samoa',
-  code: 'metrics Shoals hub',
+  id: 58360,
+  parent: 'Oklahoma AI',
+  title: 'parse',
+  subTitle: 'indexing Kong Dynamic',
+  imageUrl: 'Cotton',
+  description: 'Music',
+  country: 'Australia',
+  code: 'Brand compressing Pizza',
+  status: 'Agent monitor optimal',
 };
 
 export const sampleWithNewData: NewCategory = {

@@ -50,9 +50,6 @@ public class SlideServiceImpl implements SlideService {
                 if (slide.getSubTitle() != null) {
                     existingSlide.setSubTitle(slide.getSubTitle());
                 }
-                if (slide.getImageUrl() != null) {
-                    existingSlide.setImageUrl(slide.getImageUrl());
-                }
                 if (slide.getStatus() != null) {
                     existingSlide.setStatus(slide.getStatus());
                 }
@@ -64,6 +61,9 @@ public class SlideServiceImpl implements SlideService {
                 }
                 if (slide.getEndDate() != null) {
                     existingSlide.setEndDate(slide.getEndDate());
+                }
+                if (slide.getImageUrl() != null) {
+                    existingSlide.setImageUrl(slide.getImageUrl());
                 }
                 if (slide.getDealUrl() != null) {
                     existingSlide.setDealUrl(slide.getDealUrl());

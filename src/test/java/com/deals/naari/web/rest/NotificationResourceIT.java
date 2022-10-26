@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link NotificationResource} REST controller.
@@ -190,7 +191,7 @@ class NotificationResourceIT {
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].dateOfRead").value(hasItem(DEFAULT_DATE_OF_READ)))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
             .andExpect(jsonPath("$.[*].originalPrice").value(hasItem(DEFAULT_ORIGINAL_PRICE)))
             .andExpect(jsonPath("$.[*].currentPrice").value(hasItem(DEFAULT_CURRENT_PRICE)))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT)))
@@ -215,7 +216,7 @@ class NotificationResourceIT {
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.dateOfRead").value(DEFAULT_DATE_OF_READ))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()))
             .andExpect(jsonPath("$.originalPrice").value(DEFAULT_ORIGINAL_PRICE))
             .andExpect(jsonPath("$.currentPrice").value(DEFAULT_CURRENT_PRICE))
             .andExpect(jsonPath("$.discount").value(DEFAULT_DISCOUNT))

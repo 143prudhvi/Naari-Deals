@@ -32,11 +32,11 @@ export class SlideUpdatePage {
   idInput = element(by.id('field_id'));
   titleInput = element(by.id('field_title'));
   subTitleInput = element(by.id('field_subTitle'));
-  imageUrlInput = element(by.id('field_imageUrl'));
   statusInput = element(by.id('field_status'));
   countryInput = element(by.id('field_country'));
   startDateInput = element(by.id('field_startDate'));
   endDateInput = element(by.id('field_endDate'));
+  imageUrlInput = element(by.id('field_imageUrl'));
   dealUrlInput = element(by.id('field_dealUrl'));
 
   async getPageTitle(): Promise<string> {
@@ -65,14 +65,6 @@ export class SlideUpdatePage {
 
   async getSubTitleInput(): Promise<string> {
     return await this.subTitleInput.getAttribute('value');
-  }
-
-  async setImageUrlInput(imageUrl: string): Promise<void> {
-    await this.imageUrlInput.sendKeys(imageUrl);
-  }
-
-  async getImageUrlInput(): Promise<string> {
-    return await this.imageUrlInput.getAttribute('value');
   }
 
   async setStatusInput(status: string): Promise<void> {
@@ -105,6 +97,14 @@ export class SlideUpdatePage {
 
   async getEndDateInput(): Promise<string> {
     return await this.endDateInput.getAttribute('value');
+  }
+
+  async setImageUrlInput(imageUrl: string): Promise<void> {
+    await this.imageUrlInput.sendKeys(imageUrl);
+  }
+
+  async getImageUrlInput(): Promise<string> {
+    return await this.imageUrlInput.getAttribute('value');
   }
 
   async setDealUrlInput(dealUrl: string): Promise<void> {

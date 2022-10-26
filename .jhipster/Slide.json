@@ -14,10 +14,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "imageUrl",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "status",
       "fieldType": "String"
     },
@@ -31,6 +27,10 @@
     },
     {
       "fieldName": "endDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
       "fieldType": "String"
     },
     {

@@ -31,7 +31,8 @@
       "NotificationType",
       "Notification",
       "CategoryType",
-      "Slide"
+      "Slide",
+      "Brand"
     ],
     "entitySuffix": "",
     "gitCompany": "",
@@ -39,7 +40,7 @@
     "jhipsterVersion": "7.9.3",
     "jwtSecretKey": "NGQwMzI1MGJhZDAwZDcxMmNlNjViM2E3YTQ4NTE1YzM3YWYyMzc5ZDA5ODFhYWFjYWQ1ZjhkMzlmMTU4MjFhZDI0Yzk4OTc3NmI2NWY4Y2FlZmFjNjgzZGVhZmE1YTdkY2UzZjU2NTc4MTMwNWVjODAxZTdkNTNjYjUzMzdiN2Q=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1666244706000,
+    "lastLiquibaseTimestamp": 1666717424000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "otherModules": [],

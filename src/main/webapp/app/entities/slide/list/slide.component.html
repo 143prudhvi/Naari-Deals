@@ -50,12 +50,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="imageUrl">
-            <div class="d-flex">
-              <span>Image Url</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="status">
             <div class="d-flex">
               <span>Status</span>
@@ -80,6 +74,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="imageUrl">
+            <div class="d-flex">
+              <span>Image Url</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="dealUrl">
             <div class="d-flex">
               <span>Deal Url</span>
@@ -96,11 +96,11 @@
           </td>
           <td>{{ slide.title }}</td>
           <td>{{ slide.subTitle }}</td>
-          <td>{{ slide.imageUrl }}</td>
           <td>{{ slide.status }}</td>
           <td>{{ slide.country }}</td>
           <td>{{ slide.startDate }}</td>
           <td>{{ slide.endDate }}</td>
+          <td>{{ slide.imageUrl }}</td>
           <td>{{ slide.dealUrl }}</td>
           <td class="text-end">
             <div class="btn-group">

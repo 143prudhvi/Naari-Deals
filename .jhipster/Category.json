@@ -6,6 +6,10 @@
   "entityTableName": "category",
   "fields": [
     {
+      "fieldName": "parent",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "title",
       "fieldType": "String"
     },
@@ -19,11 +23,6 @@
     },
     {
       "fieldName": "description",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
-    },
-    {
-      "fieldName": "status",
       "fieldType": "String"
     },
     {
@@ -32,6 +31,10 @@
     },
     {
       "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
       "fieldType": "String"
     }
   ],

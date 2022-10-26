@@ -30,7 +30,6 @@ public class Merchant implements Serializable {
     @Column(name = "city")
     private String city;
 
-    @Lob
     @Column(name = "store_icon")
     private String storeIcon;
 
@@ -40,6 +39,7 @@ public class Merchant implements Serializable {
     @Column(name = "location")
     private String location;
 
+    @Lob
     @Column(name = "site_url")
     private String siteUrl;
 

@@ -39,6 +39,7 @@ public class Notification implements Serializable {
     @Column(name = "date_of_read")
     private String dateOfRead;
 
+    @Lob
     @Column(name = "image_url")
     private String imageUrl;
 

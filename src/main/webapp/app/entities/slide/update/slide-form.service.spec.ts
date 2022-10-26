@@ -22,11 +22,11 @@ describe('Slide Form Service', () => {
             id: expect.any(Object),
             title: expect.any(Object),
             subTitle: expect.any(Object),
-            imageUrl: expect.any(Object),
             status: expect.any(Object),
             country: expect.any(Object),
             startDate: expect.any(Object),
             endDate: expect.any(Object),
+            imageUrl: expect.any(Object),
             dealUrl: expect.any(Object),
           })
         );
@@ -40,11 +40,11 @@ describe('Slide Form Service', () => {
             id: expect.any(Object),
             title: expect.any(Object),
             subTitle: expect.any(Object),
-            imageUrl: expect.any(Object),
             status: expect.any(Object),
             country: expect.any(Object),
             startDate: expect.any(Object),
             endDate: expect.any(Object),
+            imageUrl: expect.any(Object),
             dealUrl: expect.any(Object),
           })
         );

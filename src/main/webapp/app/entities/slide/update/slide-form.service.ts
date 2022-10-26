@@ -20,11 +20,11 @@ type SlideFormGroupContent = {
   id: FormControl<ISlide['id'] | NewSlide['id']>;
   title: FormControl<ISlide['title']>;
   subTitle: FormControl<ISlide['subTitle']>;
-  imageUrl: FormControl<ISlide['imageUrl']>;
   status: FormControl<ISlide['status']>;
   country: FormControl<ISlide['country']>;
   startDate: FormControl<ISlide['startDate']>;
   endDate: FormControl<ISlide['endDate']>;
+  imageUrl: FormControl<ISlide['imageUrl']>;
   dealUrl: FormControl<ISlide['dealUrl']>;
 };
 
@@ -47,11 +47,11 @@ export class SlideFormService {
       ),
       title: new FormControl(slideRawValue.title),
       subTitle: new FormControl(slideRawValue.subTitle),
-      imageUrl: new FormControl(slideRawValue.imageUrl),
       status: new FormControl(slideRawValue.status),
       country: new FormControl(slideRawValue.country),
       startDate: new FormControl(slideRawValue.startDate),
       endDate: new FormControl(slideRawValue.endDate),
+      imageUrl: new FormControl(slideRawValue.imageUrl),
       dealUrl: new FormControl(slideRawValue.dealUrl),
     });
   }

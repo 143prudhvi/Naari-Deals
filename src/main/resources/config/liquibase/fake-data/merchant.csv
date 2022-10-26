@@ -1,11 +1,11 @@
 id;name;country;city;store_icon;type;location;site_url
-1;ROI;Germany;Santafort;../fake-data/blob/hipster.txt;Music Manager bypass;eyeballs;Clothing
-2;Nuevo Human;Nicaragua;Lake Lucindaport;../fake-data/blob/hipster.txt;white;1080p;Ergonomic Checking magnetic
-3;Toys;Liechtenstein;Tremblaychester;../fake-data/blob/hipster.txt;enterprise synthesizing;Croatian Crossroad architecture;Clothing Public-key
-4;program;Vanuatu;Blue Springs;../fake-data/blob/hipster.txt;USB;Springs;Comoros Implementation
-5;quantifying virtual;Virgin Islands, U.S.;Lake Meredithfort;../fake-data/blob/hipster.txt;copying Investment;plum Secured Security;Coordinator SQL Shirt
-6;Handcrafted;South Georgia and the South Sandwich Islands;Port Estastad;../fake-data/blob/hipster.txt;Tala;Checking;Concrete Plains Analyst
-7;Bacon optimal Representative;Poland;Ardellaville;../fake-data/blob/hipster.txt;Brand Rustic hacking;value-added Rustic matrix;microchip
-8;optical niches Frozen;Iran;Lake Petermouth;../fake-data/blob/hipster.txt;Russian;Granite Generic Soft;SQL vertical
-9;Beauty;Syrian Arab Republic;East Myahhaven;../fake-data/blob/hipster.txt;alarm SDD;Electronics indexing background;Wisconsin withdrawal
-10;vortals;Guernsey;New Alivia;../fake-data/blob/hipster.txt;Baby Identity virtual;Customer;Manor forecast
+1;ROI;Germany;Santafort;Music Manager bypass;eyeballs;Clothing;../fake-data/blob/hipster.txt
+2;Nuevo Human;Nicaragua;Lake Lucindaport;white;1080p;Ergonomic Checking magnetic;../fake-data/blob/hipster.txt
+3;Toys;Liechtenstein;Tremblaychester;enterprise synthesizing;Croatian Crossroad architecture;Clothing Public-key;../fake-data/blob/hipster.txt
+4;program;Vanuatu;Blue Springs;USB;Springs;Comoros Implementation;../fake-data/blob/hipster.txt
+5;quantifying virtual;Virgin Islands, U.S.;Lake Meredithfort;copying Investment;plum Secured Security;Coordinator SQL Shirt;../fake-data/blob/hipster.txt
+6;Handcrafted;South Georgia and the South Sandwich Islands;Port Estastad;Tala;Checking;Concrete Plains Analyst;../fake-data/blob/hipster.txt
+7;Bacon optimal Representative;Poland;Ardellaville;Brand Rustic hacking;value-added Rustic matrix;microchip;../fake-data/blob/hipster.txt
+8;optical niches Frozen;Iran;Lake Petermouth;Russian;Granite Generic Soft;SQL vertical;../fake-data/blob/hipster.txt
+9;Beauty;Syrian Arab Republic;East Myahhaven;alarm SDD;Electronics indexing background;Wisconsin withdrawal;../fake-data/blob/hipster.txt
+10;vortals;Guernsey;New Alivia;Baby Identity virtual;Customer;Manor forecast;../fake-data/blob/hipster.txt

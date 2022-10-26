@@ -19,8 +19,7 @@
     },
     {
       "fieldName": "storeIcon",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldType": "String"
     },
     {
       "fieldName": "type",
@@ -32,7 +31,8 @@
     },
     {
       "fieldName": "siteUrl",
-      "fieldType": "String"
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
     }
   ],
   "fluentMethods": true,

@@ -20,11 +20,11 @@ export const sampleWithFullData: INotification = {
   status: 'Representative cyan',
   type: 'Books Berkshire',
   dateOfRead: 'Mobility',
-  imageUrl: 'Cotton Fresh Public-key',
-  originalPrice: 'navigate Solutions',
-  currentPrice: 'calculate Palestinian microchip',
-  discount: 'Games instruction',
-  discountType: 'Steel',
+  imageUrl: '../fake-data/blob/hipster.txt',
+  originalPrice: 'Cotton Fresh Public-key',
+  currentPrice: 'navigate Solutions',
+  discount: 'calculate Palestinian microchip',
+  discountType: 'Games instruction',
 };
 
 export const sampleWithNewData: NewNotification = {

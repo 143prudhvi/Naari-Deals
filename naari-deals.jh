@@ -61,31 +61,40 @@ entity Merchant{
       name String
       country String
       city String
-      storeIcon TextBlob
+      storeIcon String
       type String
       location String
-      siteUrl String
+      siteUrl TextBlob
 }
 
 entity Category{
+      parent String
       title String
       subTitle String
       imageUrl String
-      description TextBlob
-      status String
+      description String
       country String
       code String
+      status String
 }
 
 entity Slide{
       title String
       subTitle String
-      imageUrl String
       status String
       country String
       startDate String
       endDate String
+      imageUrl String
       dealUrl String
+}
+
+entity Brand{
+      title String
+      subTitle String
+      status String
+      country String
+      imageUrl TextBlob
 }
 
 
@@ -106,7 +115,7 @@ entity Notification{
   status String
   type String
   dateOfRead String
-  imageUrl String
+  imageUrl TextBlob
   originalPrice String
   currentPrice String
   discount String

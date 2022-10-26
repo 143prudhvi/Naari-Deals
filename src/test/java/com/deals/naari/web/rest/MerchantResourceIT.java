@@ -164,10 +164,10 @@ class MerchantResourceIT {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
-            .andExpect(jsonPath("$.[*].storeIcon").value(hasItem(DEFAULT_STORE_ICON.toString())))
+            .andExpect(jsonPath("$.[*].storeIcon").value(hasItem(DEFAULT_STORE_ICON)))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
-            .andExpect(jsonPath("$.[*].siteUrl").value(hasItem(DEFAULT_SITE_URL)));
+            .andExpect(jsonPath("$.[*].siteUrl").value(hasItem(DEFAULT_SITE_URL.toString())));
     }
 
     @Test
@@ -185,10 +185,10 @@ class MerchantResourceIT {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
-            .andExpect(jsonPath("$.storeIcon").value(DEFAULT_STORE_ICON.toString()))
+            .andExpect(jsonPath("$.storeIcon").value(DEFAULT_STORE_ICON))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
-            .andExpect(jsonPath("$.siteUrl").value(DEFAULT_SITE_URL));
+            .andExpect(jsonPath("$.siteUrl").value(DEFAULT_SITE_URL.toString()));
     }
 
     @Test

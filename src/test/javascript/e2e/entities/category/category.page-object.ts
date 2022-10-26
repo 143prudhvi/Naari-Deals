@@ -30,13 +30,14 @@ export class CategoryUpdatePage {
   cancelButton = element(by.id('cancel-save'));
 
   idInput = element(by.id('field_id'));
+  parentInput = element(by.id('field_parent'));
   titleInput = element(by.id('field_title'));
   subTitleInput = element(by.id('field_subTitle'));
   imageUrlInput = element(by.id('field_imageUrl'));
   descriptionInput = element(by.id('field_description'));
-  statusInput = element(by.id('field_status'));
   countryInput = element(by.id('field_country'));
   codeInput = element(by.id('field_code'));
+  statusInput = element(by.id('field_status'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -48,6 +49,14 @@ export class CategoryUpdatePage {
 
   async getIdInput(): Promise<string> {
     return await this.idInput.getAttribute('value');
+  }
+
+  async setParentInput(parent: string): Promise<void> {
+    await this.parentInput.sendKeys(parent);
+  }
+
+  async getParentInput(): Promise<string> {
+    return await this.parentInput.getAttribute('value');
   }
 
   async setTitleInput(title: string): Promise<void> {
@@ -82,14 +91,6 @@ export class CategoryUpdatePage {
     return await this.descriptionInput.getAttribute('value');
   }
 
-  async setStatusInput(status: string): Promise<void> {
-    await this.statusInput.sendKeys(status);
-  }
-
-  async getStatusInput(): Promise<string> {
-    return await this.statusInput.getAttribute('value');
-  }
-
   async setCountryInput(country: string): Promise<void> {
     await this.countryInput.sendKeys(country);
   }
@@ -104,6 +105,14 @@ export class CategoryUpdatePage {
 
   async getCodeInput(): Promise<string> {
     return await this.codeInput.getAttribute('value');
+  }
+
+  async setStatusInput(status: string): Promise<void> {
+    await this.statusInput.sendKeys(status);
+  }
+
+  async getStatusInput(): Promise<string> {
+    return await this.statusInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

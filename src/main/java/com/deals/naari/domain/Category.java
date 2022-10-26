@@ -21,6 +21,9 @@ public class Category implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "parent")
+    private String parent;
+
     @Column(name = "title")
     private String title;
 
@@ -30,18 +33,17 @@ public class Category implements Serializable {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Lob
     @Column(name = "description")
     private String description;
-
-    @Column(name = "status")
-    private String status;
 
     @Column(name = "country")
     private String country;
 
     @Column(name = "code")
     private String code;
+
+    @Column(name = "status")
+    private String status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -56,6 +58,19 @@ public class Category implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getParent() {
+        return this.parent;
+    }
+
+    public Category parent(String parent) {
+        this.setParent(parent);
+        return this;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
     }
 
     public String getTitle() {
@@ -110,19 +125,6 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
-
-    public Category status(String status) {
-        this.setStatus(status);
-        return this;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getCountry() {
         return this.country;
     }
@@ -149,6 +151,19 @@ public class Category implements Serializable {
         this.code = code;
     }
 
+    public String getStatus() {
+        return this.status;
+    }
+
+    public Category status(String status) {
+        this.setStatus(status);
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -173,13 +188,14 @@ public class Category implements Serializable {
     public String toString() {
         return "Category{" +
             "id=" + getId() +
+            ", parent='" + getParent() + "'" +
             ", title='" + getTitle() + "'" +
             ", subTitle='" + getSubTitle() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +
             ", description='" + getDescription() + "'" +
-            ", status='" + getStatus() + "'" +
             ", country='" + getCountry() + "'" +
             ", code='" + getCode() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

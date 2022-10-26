@@ -20,13 +20,14 @@ describe('Category Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            parent: expect.any(Object),
             title: expect.any(Object),
             subTitle: expect.any(Object),
             imageUrl: expect.any(Object),
             description: expect.any(Object),
-            status: expect.any(Object),
             country: expect.any(Object),
             code: expect.any(Object),
+            status: expect.any(Object),
           })
         );
       });
@@ -37,13 +38,14 @@ describe('Category Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            parent: expect.any(Object),
             title: expect.any(Object),
             subTitle: expect.any(Object),
             imageUrl: expect.any(Object),
             description: expect.any(Object),
-            status: expect.any(Object),
             country: expect.any(Object),
             code: expect.any(Object),
+            status: expect.any(Object),
           })
         );
       });
