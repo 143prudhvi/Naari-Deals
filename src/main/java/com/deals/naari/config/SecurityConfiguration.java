@@ -85,6 +85,8 @@ public class SecurityConfiguration {
             .antMatchers("/api/naari-activate").permitAll()
             .antMatchers("/api/naari-send-activation-code").permitAll()
             .antMatchers("/api/naari-login").permitAll()
+            .antMatchers("/api/naari-deals").permitAll()
+            .antMatchers("/api/deals").permitAll()
             .antMatchers("/api/aws-s3upload").permitAll()
             .antMatchers("/send-private-message").permitAll()
             .antMatchers("/send-private-message/**").permitAll()
