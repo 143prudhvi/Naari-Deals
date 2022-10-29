@@ -38,6 +38,7 @@ export class SlideUpdatePage {
   endDateInput = element(by.id('field_endDate'));
   imageUrlInput = element(by.id('field_imageUrl'));
   dealUrlInput = element(by.id('field_dealUrl'));
+  tagsInput = element(by.id('field_tags'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -113,6 +114,14 @@ export class SlideUpdatePage {
 
   async getDealUrlInput(): Promise<string> {
     return await this.dealUrlInput.getAttribute('value');
+  }
+
+  async setTagsInput(tags: string): Promise<void> {
+    await this.tagsInput.sendKeys(tags);
+  }
+
+  async getTagsInput(): Promise<string> {
+    return await this.tagsInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

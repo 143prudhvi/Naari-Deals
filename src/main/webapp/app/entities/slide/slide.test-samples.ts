@@ -5,20 +5,22 @@ export const sampleWithRequiredData: ISlide = {
 };
 
 export const sampleWithPartialData: ISlide = {
-  id: 55451,
-  endDate: 'Plastic e-enable',
+  id: 40476,
+  endDate: 'framework',
+  tags: 'Personal azure sensor',
 };
 
 export const sampleWithFullData: ISlide = {
-  id: 94716,
-  title: 'azure',
-  subTitle: 'Bedfordshire Producer Lakes',
-  status: 'Plastic Self-enabling Buckinghamshire',
-  country: 'Guatemala',
-  startDate: 'e-business',
-  endDate: 'XML 24/7',
-  imageUrl: 'Viaduct encompassing',
-  dealUrl: 'Generic Marketing Operations',
+  id: 11894,
+  title: 'protocol portals Plastic',
+  subTitle: 'digital',
+  status: 'even-keeled e-business user-centric',
+  country: 'Guinea-Bissau',
+  startDate: 'Computers',
+  endDate: 'Identity magnetic',
+  imageUrl: 'Checking',
+  dealUrl: 'Marketing',
+  tags: 'Norway background application',
 };
 
 export const sampleWithNewData: NewSlide = {

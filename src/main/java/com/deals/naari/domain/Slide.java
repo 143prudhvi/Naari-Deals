@@ -45,6 +45,9 @@ public class Slide implements Serializable {
     @Column(name = "deal_url")
     private String dealUrl;
 
+    @Column(name = "tags")
+    private String tags;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -164,6 +167,19 @@ public class Slide implements Serializable {
         this.dealUrl = dealUrl;
     }
 
+    public String getTags() {
+        return this.tags;
+    }
+
+    public Slide tags(String tags) {
+        this.setTags(tags);
+        return this;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -196,6 +212,7 @@ public class Slide implements Serializable {
             ", endDate='" + getEndDate() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +
             ", dealUrl='" + getDealUrl() + "'" +
+            ", tags='" + getTags() + "'" +
             "}";
     }
 }

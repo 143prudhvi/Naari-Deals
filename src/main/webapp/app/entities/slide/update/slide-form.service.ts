@@ -26,6 +26,7 @@ type SlideFormGroupContent = {
   endDate: FormControl<ISlide['endDate']>;
   imageUrl: FormControl<ISlide['imageUrl']>;
   dealUrl: FormControl<ISlide['dealUrl']>;
+  tags: FormControl<ISlide['tags']>;
 };
 
 export type SlideFormGroup = FormGroup<SlideFormGroupContent>;
@@ -53,6 +54,7 @@ export class SlideFormService {
       endDate: new FormControl(slideRawValue.endDate),
       imageUrl: new FormControl(slideRawValue.imageUrl),
       dealUrl: new FormControl(slideRawValue.dealUrl),
+      tags: new FormControl(slideRawValue.tags),
     });
   }
 

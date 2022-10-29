@@ -87,6 +87,7 @@ entity Slide{
       endDate String
       imageUrl String
       dealUrl String
+      tags String
 }
 
 entity Brand{

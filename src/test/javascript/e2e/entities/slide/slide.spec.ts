@@ -51,6 +51,7 @@ describe('Slide e2e test', () => {
       slideUpdatePage.setEndDateInput('endDate'),
       slideUpdatePage.setImageUrlInput('imageUrl'),
       slideUpdatePage.setDealUrlInput('dealUrl'),
+      slideUpdatePage.setTagsInput('tags'),
     ]);
 
     await slideUpdatePage.save();

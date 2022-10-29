@@ -68,6 +68,9 @@ public class SlideServiceImpl implements SlideService {
                 if (slide.getDealUrl() != null) {
                     existingSlide.setDealUrl(slide.getDealUrl());
                 }
+                if (slide.getTags() != null) {
+                    existingSlide.setTags(slide.getTags());
+                }
 
                 return existingSlide;
             })

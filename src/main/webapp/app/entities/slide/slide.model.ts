@@ -8,6 +8,7 @@ export interface ISlide {
   endDate?: string | null;
   imageUrl?: string | null;
   dealUrl?: string | null;
+  tags?: string | null;
 }
 
 export type NewSlide = Omit<ISlide, 'id'> & { id: null };
