@@ -32,6 +32,7 @@ export class BrandUpdatePage {
   idInput = element(by.id('field_id'));
   titleInput = element(by.id('field_title'));
   subTitleInput = element(by.id('field_subTitle'));
+  codeInput = element(by.id('field_code'));
   statusInput = element(by.id('field_status'));
   countryInput = element(by.id('field_country'));
   imageUrlInput = element(by.id('field_imageUrl'));
@@ -62,6 +63,14 @@ export class BrandUpdatePage {
 
   async getSubTitleInput(): Promise<string> {
     return await this.subTitleInput.getAttribute('value');
+  }
+
+  async setCodeInput(code: string): Promise<void> {
+    await this.codeInput.sendKeys(code);
+  }
+
+  async getCodeInput(): Promise<string> {
+    return await this.codeInput.getAttribute('value');
   }
 
   async setStatusInput(status: string): Promise<void> {

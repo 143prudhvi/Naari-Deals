@@ -81,6 +81,12 @@ public class Deal implements Serializable {
     @Column(name = "tags")
     private String tags;
 
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "expired")
+    private Boolean expired;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -343,6 +349,32 @@ public class Deal implements Serializable {
         this.tags = tags;
     }
 
+    public String getBrand() {
+        return this.brand;
+    }
+
+    public Deal brand(String brand) {
+        this.setBrand(brand);
+        return this;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Boolean getExpired() {
+        return this.expired;
+    }
+
+    public Deal expired(Boolean expired) {
+        this.setExpired(expired);
+        return this;
+    }
+
+    public void setExpired(Boolean expired) {
+        this.expired = expired;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -386,6 +418,8 @@ public class Deal implements Serializable {
             ", pinCode='" + getPinCode() + "'" +
             ", merchant='" + getMerchant() + "'" +
             ", tags='" + getTags() + "'" +
+            ", brand='" + getBrand() + "'" +
+            ", expired='" + getExpired() + "'" +
             "}";
     }
 }

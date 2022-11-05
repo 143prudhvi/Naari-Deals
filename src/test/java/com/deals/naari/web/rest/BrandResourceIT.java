@@ -20,7 +20,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link BrandResource} REST controller.
@@ -35,6 +34,9 @@ class BrandResourceIT {
 
     private static final String DEFAULT_SUB_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_SUB_TITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_CODE = "BBBBBBBBBB";
 
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
@@ -72,6 +74,7 @@ class BrandResourceIT {
         Brand brand = new Brand()
             .title(DEFAULT_TITLE)
             .subTitle(DEFAULT_SUB_TITLE)
+            .code(DEFAULT_CODE)
             .status(DEFAULT_STATUS)
             .country(DEFAULT_COUNTRY)
             .imageUrl(DEFAULT_IMAGE_URL);
@@ -88,6 +91,7 @@ class BrandResourceIT {
         Brand brand = new Brand()
             .title(UPDATED_TITLE)
             .subTitle(UPDATED_SUB_TITLE)
+            .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .imageUrl(UPDATED_IMAGE_URL);
@@ -114,6 +118,7 @@ class BrandResourceIT {
         Brand testBrand = brandList.get(brandList.size() - 1);
         assertThat(testBrand.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testBrand.getSubTitle()).isEqualTo(DEFAULT_SUB_TITLE);
+        assertThat(testBrand.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testBrand.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
@@ -151,9 +156,10 @@ class BrandResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(brand.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].subTitle").value(hasItem(DEFAULT_SUB_TITLE)))
+            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())));
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)));
     }
 
     @Test
@@ -170,9 +176,10 @@ class BrandResourceIT {
             .andExpect(jsonPath("$.id").value(brand.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.subTitle").value(DEFAULT_SUB_TITLE))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()));
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL));
     }
 
     @Test
@@ -197,6 +204,7 @@ class BrandResourceIT {
         updatedBrand
             .title(UPDATED_TITLE)
             .subTitle(UPDATED_SUB_TITLE)
+            .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .imageUrl(UPDATED_IMAGE_URL);
@@ -215,6 +223,7 @@ class BrandResourceIT {
         Brand testBrand = brandList.get(brandList.size() - 1);
         assertThat(testBrand.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testBrand.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
+        assertThat(testBrand.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testBrand.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
@@ -288,7 +297,7 @@ class BrandResourceIT {
         Brand partialUpdatedBrand = new Brand();
         partialUpdatedBrand.setId(brand.getId());
 
-        partialUpdatedBrand.subTitle(UPDATED_SUB_TITLE).country(UPDATED_COUNTRY).imageUrl(UPDATED_IMAGE_URL);
+        partialUpdatedBrand.subTitle(UPDATED_SUB_TITLE).status(UPDATED_STATUS).country(UPDATED_COUNTRY);
 
         restBrandMockMvc
             .perform(
@@ -304,9 +313,10 @@ class BrandResourceIT {
         Brand testBrand = brandList.get(brandList.size() - 1);
         assertThat(testBrand.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testBrand.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
-        assertThat(testBrand.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testBrand.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testBrand.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(UPDATED_COUNTRY);
-        assertThat(testBrand.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testBrand.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
     }
 
     @Test
@@ -324,6 +334,7 @@ class BrandResourceIT {
         partialUpdatedBrand
             .title(UPDATED_TITLE)
             .subTitle(UPDATED_SUB_TITLE)
+            .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
             .imageUrl(UPDATED_IMAGE_URL);
@@ -342,6 +353,7 @@ class BrandResourceIT {
         Brand testBrand = brandList.get(brandList.size() - 1);
         assertThat(testBrand.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testBrand.getSubTitle()).isEqualTo(UPDATED_SUB_TITLE);
+        assertThat(testBrand.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testBrand.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);

@@ -55,6 +55,8 @@ entity Deal {
       pinCode String
       merchant String
       tags String
+      brand String
+      expired Boolean
 }
 
 entity Merchant{
@@ -93,9 +95,10 @@ entity Slide{
 entity Brand{
       title String
       subTitle String
+      code String
       status String
       country String
-      imageUrl TextBlob
+      imageUrl String
 }
 
 

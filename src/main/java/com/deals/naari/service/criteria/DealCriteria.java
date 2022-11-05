@@ -55,6 +55,10 @@ public class DealCriteria implements Serializable, Criteria {
 
     private StringFilter tags;
 
+    private StringFilter brand;
+
+    private BooleanFilter expired;
+
     private Boolean distinct;
 
     public DealCriteria() {}
@@ -77,6 +81,8 @@ public class DealCriteria implements Serializable, Criteria {
         this.pinCode = other.pinCode == null ? null : other.pinCode.copy();
         this.merchant = other.merchant == null ? null : other.merchant.copy();
         this.tags = other.tags == null ? null : other.tags.copy();
+        this.brand = other.brand == null ? null : other.brand.copy();
+        this.expired = other.expired == null ? null : other.expired.copy();
         this.distinct = other.distinct;
     }
 
@@ -340,6 +346,36 @@ public class DealCriteria implements Serializable, Criteria {
         this.tags = tags;
     }
 
+    public StringFilter getBrand() {
+        return brand;
+    }
+
+    public StringFilter brand() {
+        if (brand == null) {
+            brand = new StringFilter();
+        }
+        return brand;
+    }
+
+    public void setBrand(StringFilter brand) {
+        this.brand = brand;
+    }
+
+    public BooleanFilter getExpired() {
+        return expired;
+    }
+
+    public BooleanFilter expired() {
+        if (expired == null) {
+            expired = new BooleanFilter();
+        }
+        return expired;
+    }
+
+    public void setExpired(BooleanFilter expired) {
+        this.expired = expired;
+    }
+
     public Boolean getDistinct() {
         return distinct;
     }
@@ -375,6 +411,8 @@ public class DealCriteria implements Serializable, Criteria {
             Objects.equals(pinCode, that.pinCode) &&
             Objects.equals(merchant, that.merchant) &&
             Objects.equals(tags, that.tags) &&
+            Objects.equals(brand, that.brand) &&
+            Objects.equals(expired, that.expired) &&
             Objects.equals(distinct, that.distinct)
         );
     }
@@ -399,6 +437,8 @@ public class DealCriteria implements Serializable, Criteria {
             pinCode,
             merchant,
             tags,
+            brand,
+            expired,
             distinct
         );
     }
@@ -424,6 +464,8 @@ public class DealCriteria implements Serializable, Criteria {
             (pinCode != null ? "pinCode=" + pinCode + ", " : "") +
             (merchant != null ? "merchant=" + merchant + ", " : "") +
             (tags != null ? "tags=" + tags + ", " : "") +
+            (brand != null ? "brand=" + brand + ", " : "") +
+            (expired != null ? "expired=" + expired + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

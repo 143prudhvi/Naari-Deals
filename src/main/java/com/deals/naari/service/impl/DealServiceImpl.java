@@ -102,6 +102,12 @@ public class DealServiceImpl implements DealService {
                 if (deal.getTags() != null) {
                     existingDeal.setTags(deal.getTags());
                 }
+                if (deal.getBrand() != null) {
+                    existingDeal.setBrand(deal.getBrand());
+                }
+                if (deal.getExpired() != null) {
+                    existingDeal.setExpired(deal.getExpired());
+                }
 
                 return existingDeal;
             })

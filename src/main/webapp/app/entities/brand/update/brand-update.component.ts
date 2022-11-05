@@ -7,9 +7,6 @@ import { finalize } from 'rxjs/operators';
 import { BrandFormService, BrandFormGroup } from './brand-form.service';
 import { IBrand } from '../brand.model';
 import { BrandService } from '../service/brand.service';
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 
 @Component({
   selector: 'jhi-brand-update',
@@ -22,8 +19,6 @@ export class BrandUpdateComponent implements OnInit {
   editForm: BrandFormGroup = this.brandFormService.createBrandFormGroup();
 
   constructor(
-    protected dataUtils: DataUtils,
-    protected eventManager: EventManager,
     protected brandService: BrandService,
     protected brandFormService: BrandFormService,
     protected activatedRoute: ActivatedRoute
@@ -35,21 +30,6 @@ export class BrandUpdateComponent implements OnInit {
       if (brand) {
         this.updateForm(brand);
       }
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(new EventWithContent<AlertError>('naariDealsApp.error', { message: err.message })),
     });
   }
 

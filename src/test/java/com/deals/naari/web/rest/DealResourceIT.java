@@ -88,6 +88,12 @@ class DealResourceIT {
     private static final String DEFAULT_TAGS = "AAAAAAAAAA";
     private static final String UPDATED_TAGS = "BBBBBBBBBB";
 
+    private static final String DEFAULT_BRAND = "AAAAAAAAAA";
+    private static final String UPDATED_BRAND = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_EXPIRED = false;
+    private static final Boolean UPDATED_EXPIRED = true;
+
     private static final String ENTITY_API_URL = "/api/deals";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -131,7 +137,9 @@ class DealResourceIT {
             .city(DEFAULT_CITY)
             .pinCode(DEFAULT_PIN_CODE)
             .merchant(DEFAULT_MERCHANT)
-            .tags(DEFAULT_TAGS);
+            .tags(DEFAULT_TAGS)
+            .brand(DEFAULT_BRAND)
+            .expired(DEFAULT_EXPIRED);
         return deal;
     }
 
@@ -161,7 +169,9 @@ class DealResourceIT {
             .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
             .merchant(UPDATED_MERCHANT)
-            .tags(UPDATED_TAGS);
+            .tags(UPDATED_TAGS)
+            .brand(UPDATED_BRAND)
+            .expired(UPDATED_EXPIRED);
         return deal;
     }
 
@@ -202,6 +212,8 @@ class DealResourceIT {
         assertThat(testDeal.getPinCode()).isEqualTo(DEFAULT_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(DEFAULT_MERCHANT);
         assertThat(testDeal.getTags()).isEqualTo(DEFAULT_TAGS);
+        assertThat(testDeal.getBrand()).isEqualTo(DEFAULT_BRAND);
+        assertThat(testDeal.getExpired()).isEqualTo(DEFAULT_EXPIRED);
     }
 
     @Test
@@ -252,7 +264,9 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].pinCode").value(hasItem(DEFAULT_PIN_CODE)))
             .andExpect(jsonPath("$.[*].merchant").value(hasItem(DEFAULT_MERCHANT)))
-            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
+            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)))
+            .andExpect(jsonPath("$.[*].brand").value(hasItem(DEFAULT_BRAND)))
+            .andExpect(jsonPath("$.[*].expired").value(hasItem(DEFAULT_EXPIRED.booleanValue())));
     }
 
     @Test
@@ -285,7 +299,9 @@ class DealResourceIT {
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
             .andExpect(jsonPath("$.pinCode").value(DEFAULT_PIN_CODE))
             .andExpect(jsonPath("$.merchant").value(DEFAULT_MERCHANT))
-            .andExpect(jsonPath("$.tags").value(DEFAULT_TAGS));
+            .andExpect(jsonPath("$.tags").value(DEFAULT_TAGS))
+            .andExpect(jsonPath("$.brand").value(DEFAULT_BRAND))
+            .andExpect(jsonPath("$.expired").value(DEFAULT_EXPIRED.booleanValue()));
     }
 
     @Test
@@ -1320,6 +1336,110 @@ class DealResourceIT {
         defaultDealShouldBeFound("tags.doesNotContain=" + UPDATED_TAGS);
     }
 
+    @Test
+    @Transactional
+    void getAllDealsByBrandIsEqualToSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where brand equals to DEFAULT_BRAND
+        defaultDealShouldBeFound("brand.equals=" + DEFAULT_BRAND);
+
+        // Get all the dealList where brand equals to UPDATED_BRAND
+        defaultDealShouldNotBeFound("brand.equals=" + UPDATED_BRAND);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByBrandIsInShouldWork() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where brand in DEFAULT_BRAND or UPDATED_BRAND
+        defaultDealShouldBeFound("brand.in=" + DEFAULT_BRAND + "," + UPDATED_BRAND);
+
+        // Get all the dealList where brand equals to UPDATED_BRAND
+        defaultDealShouldNotBeFound("brand.in=" + UPDATED_BRAND);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByBrandIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where brand is not null
+        defaultDealShouldBeFound("brand.specified=true");
+
+        // Get all the dealList where brand is null
+        defaultDealShouldNotBeFound("brand.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByBrandContainsSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where brand contains DEFAULT_BRAND
+        defaultDealShouldBeFound("brand.contains=" + DEFAULT_BRAND);
+
+        // Get all the dealList where brand contains UPDATED_BRAND
+        defaultDealShouldNotBeFound("brand.contains=" + UPDATED_BRAND);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByBrandNotContainsSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where brand does not contain DEFAULT_BRAND
+        defaultDealShouldNotBeFound("brand.doesNotContain=" + DEFAULT_BRAND);
+
+        // Get all the dealList where brand does not contain UPDATED_BRAND
+        defaultDealShouldBeFound("brand.doesNotContain=" + UPDATED_BRAND);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByExpiredIsEqualToSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where expired equals to DEFAULT_EXPIRED
+        defaultDealShouldBeFound("expired.equals=" + DEFAULT_EXPIRED);
+
+        // Get all the dealList where expired equals to UPDATED_EXPIRED
+        defaultDealShouldNotBeFound("expired.equals=" + UPDATED_EXPIRED);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByExpiredIsInShouldWork() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where expired in DEFAULT_EXPIRED or UPDATED_EXPIRED
+        defaultDealShouldBeFound("expired.in=" + DEFAULT_EXPIRED + "," + UPDATED_EXPIRED);
+
+        // Get all the dealList where expired equals to UPDATED_EXPIRED
+        defaultDealShouldNotBeFound("expired.in=" + UPDATED_EXPIRED);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByExpiredIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where expired is not null
+        defaultDealShouldBeFound("expired.specified=true");
+
+        // Get all the dealList where expired is null
+        defaultDealShouldNotBeFound("expired.specified=false");
+    }
+
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -1347,7 +1467,9 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].pinCode").value(hasItem(DEFAULT_PIN_CODE)))
             .andExpect(jsonPath("$.[*].merchant").value(hasItem(DEFAULT_MERCHANT)))
-            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
+            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)))
+            .andExpect(jsonPath("$.[*].brand").value(hasItem(DEFAULT_BRAND)))
+            .andExpect(jsonPath("$.[*].expired").value(hasItem(DEFAULT_EXPIRED.booleanValue())));
 
         // Check, that the count call also returns 1
         restDealMockMvc
@@ -1414,7 +1536,9 @@ class DealResourceIT {
             .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
             .merchant(UPDATED_MERCHANT)
-            .tags(UPDATED_TAGS);
+            .tags(UPDATED_TAGS)
+            .brand(UPDATED_BRAND)
+            .expired(UPDATED_EXPIRED);
 
         restDealMockMvc
             .perform(
@@ -1447,6 +1571,8 @@ class DealResourceIT {
         assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(UPDATED_MERCHANT);
         assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
+        assertThat(testDeal.getBrand()).isEqualTo(UPDATED_BRAND);
+        assertThat(testDeal.getExpired()).isEqualTo(UPDATED_EXPIRED);
     }
 
     @Test
@@ -1563,6 +1689,8 @@ class DealResourceIT {
         assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(DEFAULT_MERCHANT);
         assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
+        assertThat(testDeal.getBrand()).isEqualTo(DEFAULT_BRAND);
+        assertThat(testDeal.getExpired()).isEqualTo(DEFAULT_EXPIRED);
     }
 
     @Test
@@ -1596,7 +1724,9 @@ class DealResourceIT {
             .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
             .merchant(UPDATED_MERCHANT)
-            .tags(UPDATED_TAGS);
+            .tags(UPDATED_TAGS)
+            .brand(UPDATED_BRAND)
+            .expired(UPDATED_EXPIRED);
 
         restDealMockMvc
             .perform(
@@ -1629,6 +1759,8 @@ class DealResourceIT {
         assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(UPDATED_MERCHANT);
         assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
+        assertThat(testDeal.getBrand()).isEqualTo(UPDATED_BRAND);
+        assertThat(testDeal.getExpired()).isEqualTo(UPDATED_EXPIRED);
     }
 
     @Test

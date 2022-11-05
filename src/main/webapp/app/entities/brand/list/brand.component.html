@@ -50,6 +50,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span>Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="status">
             <div class="d-flex">
               <span>Status</span>
@@ -78,6 +84,7 @@
           </td>
           <td>{{ brand.title }}</td>
           <td>{{ brand.subTitle }}</td>
+          <td>{{ brand.code }}</td>
           <td>{{ brand.status }}</td>
           <td>{{ brand.country }}</td>
           <td>{{ brand.imageUrl }}</td>

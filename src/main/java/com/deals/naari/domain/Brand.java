@@ -27,13 +27,15 @@ public class Brand implements Serializable {
     @Column(name = "sub_title")
     private String subTitle;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "status")
     private String status;
 
     @Column(name = "country")
     private String country;
 
-    @Lob
     @Column(name = "image_url")
     private String imageUrl;
 
@@ -76,6 +78,19 @@ public class Brand implements Serializable {
 
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
+    }
+
+    public String getCode() {
+        return this.code;
+    }
+
+    public Brand code(String code) {
+        this.setCode(code);
+        return this;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getStatus() {
@@ -143,6 +158,7 @@ public class Brand implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", subTitle='" + getSubTitle() + "'" +
+            ", code='" + getCode() + "'" +
             ", status='" + getStatus() + "'" +
             ", country='" + getCountry() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +

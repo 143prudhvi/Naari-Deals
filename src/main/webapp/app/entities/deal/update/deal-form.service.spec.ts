@@ -39,6 +39,8 @@ describe('Deal Form Service', () => {
             pinCode: expect.any(Object),
             merchant: expect.any(Object),
             tags: expect.any(Object),
+            brand: expect.any(Object),
+            expired: expect.any(Object),
           })
         );
       });
@@ -68,6 +70,8 @@ describe('Deal Form Service', () => {
             pinCode: expect.any(Object),
             merchant: expect.any(Object),
             tags: expect.any(Object),
+            brand: expect.any(Object),
+            expired: expect.any(Object),
           })
         );
       });

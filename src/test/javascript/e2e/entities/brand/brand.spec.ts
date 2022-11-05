@@ -45,6 +45,7 @@ describe('Brand e2e test', () => {
     await promise.all([
       brandUpdatePage.setTitleInput('title'),
       brandUpdatePage.setSubTitleInput('subTitle'),
+      brandUpdatePage.setCodeInput('code'),
       brandUpdatePage.setStatusInput('status'),
       brandUpdatePage.setCountryInput('country'),
       brandUpdatePage.setImageUrlInput('imageUrl'),

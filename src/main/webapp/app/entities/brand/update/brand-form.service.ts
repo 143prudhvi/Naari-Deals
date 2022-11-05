@@ -20,6 +20,7 @@ type BrandFormGroupContent = {
   id: FormControl<IBrand['id'] | NewBrand['id']>;
   title: FormControl<IBrand['title']>;
   subTitle: FormControl<IBrand['subTitle']>;
+  code: FormControl<IBrand['code']>;
   status: FormControl<IBrand['status']>;
   country: FormControl<IBrand['country']>;
   imageUrl: FormControl<IBrand['imageUrl']>;
@@ -44,6 +45,7 @@ export class BrandFormService {
       ),
       title: new FormControl(brandRawValue.title),
       subTitle: new FormControl(brandRawValue.subTitle),
+      code: new FormControl(brandRawValue.code),
       status: new FormControl(brandRawValue.status),
       country: new FormControl(brandRawValue.country),
       imageUrl: new FormControl(brandRawValue.imageUrl),

@@ -62,6 +62,8 @@ describe('Deal e2e test', () => {
       dealUpdatePage.setPinCodeInput('pinCode'),
       dealUpdatePage.setMerchantInput('merchant'),
       dealUpdatePage.setTagsInput('tags'),
+      dealUpdatePage.setBrandInput('brand'),
+      dealUpdatePage.getExpiredInput().click(),
     ]);
 
     await dealUpdatePage.save();

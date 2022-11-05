@@ -5,21 +5,22 @@ export const sampleWithRequiredData: IBrand = {
 };
 
 export const sampleWithPartialData: IBrand = {
-  id: 35902,
-  title: 'experiences Forint Coordinator',
-  subTitle: 'Pataca Metal Sol',
-  status: 'bandwidth-monitored primary',
-  country: 'Zambia',
-  imageUrl: '../fake-data/blob/hipster.txt',
+  id: 92165,
+  title: 'Legacy impactful',
+  subTitle: 'Pizza Suriname',
+  code: 'Baby interface Concrete',
+  status: 'parse',
+  country: 'Turks and Caicos Islands',
 };
 
 export const sampleWithFullData: IBrand = {
-  id: 16212,
-  title: 'Security Islands Money',
-  subTitle: 'Canyon orchestrate',
-  status: 'Parks invoice Incredible',
-  country: 'Holy See (Vatican City State)',
-  imageUrl: '../fake-data/blob/hipster.txt',
+  id: 95885,
+  title: 'haptic',
+  subTitle: 'Money Minnesota cross-platform',
+  code: 'sensor',
+  status: 'invoice Incredible syndicate',
+  country: 'Mozambique',
+  imageUrl: 'Cambridgeshire toolset Global',
 };
 
 export const sampleWithNewData: NewBrand = {

@@ -19,6 +19,8 @@ export interface IDeal {
   pinCode?: string | null;
   merchant?: string | null;
   tags?: string | null;
+  brand?: string | null;
+  expired?: boolean | null;
 }
 
 export type NewDeal = Omit<IDeal, 'id'> & { id: null };

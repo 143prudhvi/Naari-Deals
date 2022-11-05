@@ -50,6 +50,9 @@ public class BrandServiceImpl implements BrandService {
                 if (brand.getSubTitle() != null) {
                     existingBrand.setSubTitle(brand.getSubTitle());
                 }
+                if (brand.getCode() != null) {
+                    existingBrand.setCode(brand.getCode());
+                }
                 if (brand.getStatus() != null) {
                     existingBrand.setStatus(brand.getStatus());
                 }

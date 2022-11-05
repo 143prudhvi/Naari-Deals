@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type DealFormGroupInput = IDeal | PartialWithRequiredKeyOf<NewDeal>;
 
-type DealFormDefaults = Pick<NewDeal, 'id' | 'approved'>;
+type DealFormDefaults = Pick<NewDeal, 'id' | 'approved' | 'expired'>;
 
 type DealFormGroupContent = {
   id: FormControl<IDeal['id'] | NewDeal['id']>;
@@ -37,6 +37,8 @@ type DealFormGroupContent = {
   pinCode: FormControl<IDeal['pinCode']>;
   merchant: FormControl<IDeal['merchant']>;
   tags: FormControl<IDeal['tags']>;
+  brand: FormControl<IDeal['brand']>;
+  expired: FormControl<IDeal['expired']>;
 };
 
 export type DealFormGroup = FormGroup<DealFormGroupContent>;
@@ -75,6 +77,8 @@ export class DealFormService {
       pinCode: new FormControl(dealRawValue.pinCode),
       merchant: new FormControl(dealRawValue.merchant),
       tags: new FormControl(dealRawValue.tags),
+      brand: new FormControl(dealRawValue.brand),
+      expired: new FormControl(dealRawValue.expired),
     });
   }
 
@@ -96,6 +100,7 @@ export class DealFormService {
     return {
       id: null,
       approved: false,
+      expired: false,
     };
   }
 }

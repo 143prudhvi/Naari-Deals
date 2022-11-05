@@ -83,6 +83,14 @@
     {
       "fieldName": "tags",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "brand",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expired",
+      "fieldType": "Boolean"
     }
   ],
   "fluentMethods": true,

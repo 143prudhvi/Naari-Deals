@@ -133,6 +133,12 @@ public class DealQueryService extends QueryService<Deal> {
             if (criteria.getTags() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTags(), Deal_.tags));
             }
+            if (criteria.getBrand() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getBrand(), Deal_.brand));
+            }
+            if (criteria.getExpired() != null) {
+                specification = specification.and(buildSpecification(criteria.getExpired(), Deal_.expired));
+            }
         }
         return specification;
     }
