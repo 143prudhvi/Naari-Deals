@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface BioProfileRepositoryExt extends JpaRepository<BioProfile, String>, JpaSpecificationExecutor<BioProfile> {
-    @Query(value = "SELECT * FROM bio_profile c WHERE c.user_name = :username", nativeQuery = true)
+    @Query(value = "SELECT * FROM bio_profile c WHERE c.user_id = :username", nativeQuery = true)
     BioProfile findByUserName(@Param("username") String username);
 
     @Query(value = "SELECT * FROM bio_profile c WHERE c.user_id = :userId", nativeQuery = true)
