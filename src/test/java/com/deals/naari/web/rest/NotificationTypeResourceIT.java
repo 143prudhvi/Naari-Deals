@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.deals.naari.IntegrationTest;
 import com.deals.naari.domain.NotificationType;
 import com.deals.naari.repository.NotificationTypeRepository;
+import com.deals.naari.service.criteria.NotificationTypeCriteria;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -148,6 +149,193 @@ class NotificationTypeResourceIT {
             .andExpect(jsonPath("$.id").value(notificationType.getId().intValue()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
+    }
+
+    @Test
+    @Transactional
+    void getNotificationTypesByIdFiltering() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        Long id = notificationType.getId();
+
+        defaultNotificationTypeShouldBeFound("id.equals=" + id);
+        defaultNotificationTypeShouldNotBeFound("id.notEquals=" + id);
+
+        defaultNotificationTypeShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultNotificationTypeShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultNotificationTypeShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultNotificationTypeShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByTypeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where type equals to DEFAULT_TYPE
+        defaultNotificationTypeShouldBeFound("type.equals=" + DEFAULT_TYPE);
+
+        // Get all the notificationTypeList where type equals to UPDATED_TYPE
+        defaultNotificationTypeShouldNotBeFound("type.equals=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByTypeIsInShouldWork() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where type in DEFAULT_TYPE or UPDATED_TYPE
+        defaultNotificationTypeShouldBeFound("type.in=" + DEFAULT_TYPE + "," + UPDATED_TYPE);
+
+        // Get all the notificationTypeList where type equals to UPDATED_TYPE
+        defaultNotificationTypeShouldNotBeFound("type.in=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByTypeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where type is not null
+        defaultNotificationTypeShouldBeFound("type.specified=true");
+
+        // Get all the notificationTypeList where type is null
+        defaultNotificationTypeShouldNotBeFound("type.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByTypeContainsSomething() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where type contains DEFAULT_TYPE
+        defaultNotificationTypeShouldBeFound("type.contains=" + DEFAULT_TYPE);
+
+        // Get all the notificationTypeList where type contains UPDATED_TYPE
+        defaultNotificationTypeShouldNotBeFound("type.contains=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByTypeNotContainsSomething() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where type does not contain DEFAULT_TYPE
+        defaultNotificationTypeShouldNotBeFound("type.doesNotContain=" + DEFAULT_TYPE);
+
+        // Get all the notificationTypeList where type does not contain UPDATED_TYPE
+        defaultNotificationTypeShouldBeFound("type.doesNotContain=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByDescriptionIsEqualToSomething() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where description equals to DEFAULT_DESCRIPTION
+        defaultNotificationTypeShouldBeFound("description.equals=" + DEFAULT_DESCRIPTION);
+
+        // Get all the notificationTypeList where description equals to UPDATED_DESCRIPTION
+        defaultNotificationTypeShouldNotBeFound("description.equals=" + UPDATED_DESCRIPTION);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByDescriptionIsInShouldWork() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where description in DEFAULT_DESCRIPTION or UPDATED_DESCRIPTION
+        defaultNotificationTypeShouldBeFound("description.in=" + DEFAULT_DESCRIPTION + "," + UPDATED_DESCRIPTION);
+
+        // Get all the notificationTypeList where description equals to UPDATED_DESCRIPTION
+        defaultNotificationTypeShouldNotBeFound("description.in=" + UPDATED_DESCRIPTION);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByDescriptionIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where description is not null
+        defaultNotificationTypeShouldBeFound("description.specified=true");
+
+        // Get all the notificationTypeList where description is null
+        defaultNotificationTypeShouldNotBeFound("description.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByDescriptionContainsSomething() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where description contains DEFAULT_DESCRIPTION
+        defaultNotificationTypeShouldBeFound("description.contains=" + DEFAULT_DESCRIPTION);
+
+        // Get all the notificationTypeList where description contains UPDATED_DESCRIPTION
+        defaultNotificationTypeShouldNotBeFound("description.contains=" + UPDATED_DESCRIPTION);
+    }
+
+    @Test
+    @Transactional
+    void getAllNotificationTypesByDescriptionNotContainsSomething() throws Exception {
+        // Initialize the database
+        notificationTypeRepository.saveAndFlush(notificationType);
+
+        // Get all the notificationTypeList where description does not contain DEFAULT_DESCRIPTION
+        defaultNotificationTypeShouldNotBeFound("description.doesNotContain=" + DEFAULT_DESCRIPTION);
+
+        // Get all the notificationTypeList where description does not contain UPDATED_DESCRIPTION
+        defaultNotificationTypeShouldBeFound("description.doesNotContain=" + UPDATED_DESCRIPTION);
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultNotificationTypeShouldBeFound(String filter) throws Exception {
+        restNotificationTypeMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(notificationType.getId().intValue())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
+
+        // Check, that the count call also returns 1
+        restNotificationTypeMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultNotificationTypeShouldNotBeFound(String filter) throws Exception {
+        restNotificationTypeMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restNotificationTypeMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

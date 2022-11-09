@@ -126,7 +126,7 @@ entity Notification{
   discountType String
 }
 
-filter Deal
+filter all
 
 paginate Deal with infinite-scroll
 paginate Deal with pagination

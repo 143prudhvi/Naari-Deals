@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.deals.naari.IntegrationTest;
 import com.deals.naari.domain.EmailSubscription;
 import com.deals.naari.repository.EmailSubscriptionRepository;
+import com.deals.naari.service.criteria.EmailSubscriptionCriteria;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -148,6 +149,193 @@ class EmailSubscriptionResourceIT {
             .andExpect(jsonPath("$.id").value(emailSubscription.getId().intValue()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY));
+    }
+
+    @Test
+    @Transactional
+    void getEmailSubscriptionsByIdFiltering() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        Long id = emailSubscription.getId();
+
+        defaultEmailSubscriptionShouldBeFound("id.equals=" + id);
+        defaultEmailSubscriptionShouldNotBeFound("id.notEquals=" + id);
+
+        defaultEmailSubscriptionShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultEmailSubscriptionShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultEmailSubscriptionShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultEmailSubscriptionShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByEmailIsEqualToSomething() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where email equals to DEFAULT_EMAIL
+        defaultEmailSubscriptionShouldBeFound("email.equals=" + DEFAULT_EMAIL);
+
+        // Get all the emailSubscriptionList where email equals to UPDATED_EMAIL
+        defaultEmailSubscriptionShouldNotBeFound("email.equals=" + UPDATED_EMAIL);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByEmailIsInShouldWork() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where email in DEFAULT_EMAIL or UPDATED_EMAIL
+        defaultEmailSubscriptionShouldBeFound("email.in=" + DEFAULT_EMAIL + "," + UPDATED_EMAIL);
+
+        // Get all the emailSubscriptionList where email equals to UPDATED_EMAIL
+        defaultEmailSubscriptionShouldNotBeFound("email.in=" + UPDATED_EMAIL);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByEmailIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where email is not null
+        defaultEmailSubscriptionShouldBeFound("email.specified=true");
+
+        // Get all the emailSubscriptionList where email is null
+        defaultEmailSubscriptionShouldNotBeFound("email.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByEmailContainsSomething() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where email contains DEFAULT_EMAIL
+        defaultEmailSubscriptionShouldBeFound("email.contains=" + DEFAULT_EMAIL);
+
+        // Get all the emailSubscriptionList where email contains UPDATED_EMAIL
+        defaultEmailSubscriptionShouldNotBeFound("email.contains=" + UPDATED_EMAIL);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByEmailNotContainsSomething() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where email does not contain DEFAULT_EMAIL
+        defaultEmailSubscriptionShouldNotBeFound("email.doesNotContain=" + DEFAULT_EMAIL);
+
+        // Get all the emailSubscriptionList where email does not contain UPDATED_EMAIL
+        defaultEmailSubscriptionShouldBeFound("email.doesNotContain=" + UPDATED_EMAIL);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByCountryIsEqualToSomething() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where country equals to DEFAULT_COUNTRY
+        defaultEmailSubscriptionShouldBeFound("country.equals=" + DEFAULT_COUNTRY);
+
+        // Get all the emailSubscriptionList where country equals to UPDATED_COUNTRY
+        defaultEmailSubscriptionShouldNotBeFound("country.equals=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByCountryIsInShouldWork() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where country in DEFAULT_COUNTRY or UPDATED_COUNTRY
+        defaultEmailSubscriptionShouldBeFound("country.in=" + DEFAULT_COUNTRY + "," + UPDATED_COUNTRY);
+
+        // Get all the emailSubscriptionList where country equals to UPDATED_COUNTRY
+        defaultEmailSubscriptionShouldNotBeFound("country.in=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByCountryIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where country is not null
+        defaultEmailSubscriptionShouldBeFound("country.specified=true");
+
+        // Get all the emailSubscriptionList where country is null
+        defaultEmailSubscriptionShouldNotBeFound("country.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByCountryContainsSomething() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where country contains DEFAULT_COUNTRY
+        defaultEmailSubscriptionShouldBeFound("country.contains=" + DEFAULT_COUNTRY);
+
+        // Get all the emailSubscriptionList where country contains UPDATED_COUNTRY
+        defaultEmailSubscriptionShouldNotBeFound("country.contains=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllEmailSubscriptionsByCountryNotContainsSomething() throws Exception {
+        // Initialize the database
+        emailSubscriptionRepository.saveAndFlush(emailSubscription);
+
+        // Get all the emailSubscriptionList where country does not contain DEFAULT_COUNTRY
+        defaultEmailSubscriptionShouldNotBeFound("country.doesNotContain=" + DEFAULT_COUNTRY);
+
+        // Get all the emailSubscriptionList where country does not contain UPDATED_COUNTRY
+        defaultEmailSubscriptionShouldBeFound("country.doesNotContain=" + UPDATED_COUNTRY);
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultEmailSubscriptionShouldBeFound(String filter) throws Exception {
+        restEmailSubscriptionMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(emailSubscription.getId().intValue())))
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)));
+
+        // Check, that the count call also returns 1
+        restEmailSubscriptionMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultEmailSubscriptionShouldNotBeFound(String filter) throws Exception {
+        restEmailSubscriptionMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restEmailSubscriptionMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.BioProfile;
 import com.deals.naari.repository.BioProfileRepository;
+import com.deals.naari.service.BioProfileQueryService;
 import com.deals.naari.service.BioProfileService;
+import com.deals.naari.service.criteria.BioProfileCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,16 @@ public class BioProfileResource {
 
     private final BioProfileRepository bioProfileRepository;
 
-    public BioProfileResource(BioProfileService bioProfileService, BioProfileRepository bioProfileRepository) {
+    private final BioProfileQueryService bioProfileQueryService;
+
+    public BioProfileResource(
+        BioProfileService bioProfileService,
+        BioProfileRepository bioProfileRepository,
+        BioProfileQueryService bioProfileQueryService
+    ) {
         this.bioProfileService = bioProfileService;
         this.bioProfileRepository = bioProfileRepository;
+        this.bioProfileQueryService = bioProfileQueryService;
     }
 
     /**
@@ -133,12 +142,26 @@ public class BioProfileResource {
     /**
      * {@code GET  /bio-profiles} : get all the bioProfiles.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of bioProfiles in body.
      */
     @GetMapping("/bio-profiles")
-    public List<BioProfile> getAllBioProfiles() {
-        log.debug("REST request to get all BioProfiles");
-        return bioProfileService.findAll();
+    public ResponseEntity<List<BioProfile>> getAllBioProfiles(BioProfileCriteria criteria) {
+        log.debug("REST request to get BioProfiles by criteria: {}", criteria);
+        List<BioProfile> entityList = bioProfileQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /bio-profiles/count} : count all the bioProfiles.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/bio-profiles/count")
+    public ResponseEntity<Long> countBioProfiles(BioProfileCriteria criteria) {
+        log.debug("REST request to count BioProfiles by criteria: {}", criteria);
+        return ResponseEntity.ok().body(bioProfileQueryService.countByCriteria(criteria));
     }
 
     /**

@@ -36,7 +36,7 @@
     }
   ],
   "fluentMethods": true,
-  "jpaMetamodelFiltering": false,
+  "jpaMetamodelFiltering": true,
   "name": "Merchant",
   "pagination": "no",
   "readOnly": false,

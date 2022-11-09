@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.Merchant;
 import com.deals.naari.repository.MerchantRepository;
+import com.deals.naari.service.MerchantQueryService;
 import com.deals.naari.service.MerchantService;
+import com.deals.naari.service.criteria.MerchantCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,16 @@ public class MerchantResource {
 
     private final MerchantRepository merchantRepository;
 
-    public MerchantResource(MerchantService merchantService, MerchantRepository merchantRepository) {
+    private final MerchantQueryService merchantQueryService;
+
+    public MerchantResource(
+        MerchantService merchantService,
+        MerchantRepository merchantRepository,
+        MerchantQueryService merchantQueryService
+    ) {
         this.merchantService = merchantService;
         this.merchantRepository = merchantRepository;
+        this.merchantQueryService = merchantQueryService;
     }
 
     /**
@@ -133,12 +142,26 @@ public class MerchantResource {
     /**
      * {@code GET  /merchants} : get all the merchants.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of merchants in body.
      */
     @GetMapping("/merchants")
-    public List<Merchant> getAllMerchants() {
-        log.debug("REST request to get all Merchants");
-        return merchantService.findAll();
+    public ResponseEntity<List<Merchant>> getAllMerchants(MerchantCriteria criteria) {
+        log.debug("REST request to get Merchants by criteria: {}", criteria);
+        List<Merchant> entityList = merchantQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /merchants/count} : count all the merchants.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/merchants/count")
+    public ResponseEntity<Long> countMerchants(MerchantCriteria criteria) {
+        log.debug("REST request to count Merchants by criteria: {}", criteria);
+        return ResponseEntity.ok().body(merchantQueryService.countByCriteria(criteria));
     }
 
     /**

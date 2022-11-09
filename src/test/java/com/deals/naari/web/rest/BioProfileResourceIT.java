@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.deals.naari.IntegrationTest;
 import com.deals.naari.domain.BioProfile;
 import com.deals.naari.repository.BioProfileRepository;
+import com.deals.naari.service.criteria.BioProfileCriteria;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -180,6 +181,457 @@ class BioProfileResourceIT {
             .andExpect(jsonPath("$.dob").value(DEFAULT_DOB))
             .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL));
+    }
+
+    @Test
+    @Transactional
+    void getBioProfilesByIdFiltering() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        Long id = bioProfile.getId();
+
+        defaultBioProfileShouldBeFound("id.equals=" + id);
+        defaultBioProfileShouldNotBeFound("id.notEquals=" + id);
+
+        defaultBioProfileShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultBioProfileShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultBioProfileShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultBioProfileShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByUserIdIsEqualToSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where userId equals to DEFAULT_USER_ID
+        defaultBioProfileShouldBeFound("userId.equals=" + DEFAULT_USER_ID);
+
+        // Get all the bioProfileList where userId equals to UPDATED_USER_ID
+        defaultBioProfileShouldNotBeFound("userId.equals=" + UPDATED_USER_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByUserIdIsInShouldWork() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where userId in DEFAULT_USER_ID or UPDATED_USER_ID
+        defaultBioProfileShouldBeFound("userId.in=" + DEFAULT_USER_ID + "," + UPDATED_USER_ID);
+
+        // Get all the bioProfileList where userId equals to UPDATED_USER_ID
+        defaultBioProfileShouldNotBeFound("userId.in=" + UPDATED_USER_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByUserIdIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where userId is not null
+        defaultBioProfileShouldBeFound("userId.specified=true");
+
+        // Get all the bioProfileList where userId is null
+        defaultBioProfileShouldNotBeFound("userId.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByUserIdContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where userId contains DEFAULT_USER_ID
+        defaultBioProfileShouldBeFound("userId.contains=" + DEFAULT_USER_ID);
+
+        // Get all the bioProfileList where userId contains UPDATED_USER_ID
+        defaultBioProfileShouldNotBeFound("userId.contains=" + UPDATED_USER_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByUserIdNotContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where userId does not contain DEFAULT_USER_ID
+        defaultBioProfileShouldNotBeFound("userId.doesNotContain=" + DEFAULT_USER_ID);
+
+        // Get all the bioProfileList where userId does not contain UPDATED_USER_ID
+        defaultBioProfileShouldBeFound("userId.doesNotContain=" + UPDATED_USER_ID);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByFirstNameIsEqualToSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where firstName equals to DEFAULT_FIRST_NAME
+        defaultBioProfileShouldBeFound("firstName.equals=" + DEFAULT_FIRST_NAME);
+
+        // Get all the bioProfileList where firstName equals to UPDATED_FIRST_NAME
+        defaultBioProfileShouldNotBeFound("firstName.equals=" + UPDATED_FIRST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByFirstNameIsInShouldWork() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where firstName in DEFAULT_FIRST_NAME or UPDATED_FIRST_NAME
+        defaultBioProfileShouldBeFound("firstName.in=" + DEFAULT_FIRST_NAME + "," + UPDATED_FIRST_NAME);
+
+        // Get all the bioProfileList where firstName equals to UPDATED_FIRST_NAME
+        defaultBioProfileShouldNotBeFound("firstName.in=" + UPDATED_FIRST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByFirstNameIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where firstName is not null
+        defaultBioProfileShouldBeFound("firstName.specified=true");
+
+        // Get all the bioProfileList where firstName is null
+        defaultBioProfileShouldNotBeFound("firstName.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByFirstNameContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where firstName contains DEFAULT_FIRST_NAME
+        defaultBioProfileShouldBeFound("firstName.contains=" + DEFAULT_FIRST_NAME);
+
+        // Get all the bioProfileList where firstName contains UPDATED_FIRST_NAME
+        defaultBioProfileShouldNotBeFound("firstName.contains=" + UPDATED_FIRST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByFirstNameNotContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where firstName does not contain DEFAULT_FIRST_NAME
+        defaultBioProfileShouldNotBeFound("firstName.doesNotContain=" + DEFAULT_FIRST_NAME);
+
+        // Get all the bioProfileList where firstName does not contain UPDATED_FIRST_NAME
+        defaultBioProfileShouldBeFound("firstName.doesNotContain=" + UPDATED_FIRST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByLastNameIsEqualToSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where lastName equals to DEFAULT_LAST_NAME
+        defaultBioProfileShouldBeFound("lastName.equals=" + DEFAULT_LAST_NAME);
+
+        // Get all the bioProfileList where lastName equals to UPDATED_LAST_NAME
+        defaultBioProfileShouldNotBeFound("lastName.equals=" + UPDATED_LAST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByLastNameIsInShouldWork() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where lastName in DEFAULT_LAST_NAME or UPDATED_LAST_NAME
+        defaultBioProfileShouldBeFound("lastName.in=" + DEFAULT_LAST_NAME + "," + UPDATED_LAST_NAME);
+
+        // Get all the bioProfileList where lastName equals to UPDATED_LAST_NAME
+        defaultBioProfileShouldNotBeFound("lastName.in=" + UPDATED_LAST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByLastNameIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where lastName is not null
+        defaultBioProfileShouldBeFound("lastName.specified=true");
+
+        // Get all the bioProfileList where lastName is null
+        defaultBioProfileShouldNotBeFound("lastName.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByLastNameContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where lastName contains DEFAULT_LAST_NAME
+        defaultBioProfileShouldBeFound("lastName.contains=" + DEFAULT_LAST_NAME);
+
+        // Get all the bioProfileList where lastName contains UPDATED_LAST_NAME
+        defaultBioProfileShouldNotBeFound("lastName.contains=" + UPDATED_LAST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByLastNameNotContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where lastName does not contain DEFAULT_LAST_NAME
+        defaultBioProfileShouldNotBeFound("lastName.doesNotContain=" + DEFAULT_LAST_NAME);
+
+        // Get all the bioProfileList where lastName does not contain UPDATED_LAST_NAME
+        defaultBioProfileShouldBeFound("lastName.doesNotContain=" + UPDATED_LAST_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByDobIsEqualToSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where dob equals to DEFAULT_DOB
+        defaultBioProfileShouldBeFound("dob.equals=" + DEFAULT_DOB);
+
+        // Get all the bioProfileList where dob equals to UPDATED_DOB
+        defaultBioProfileShouldNotBeFound("dob.equals=" + UPDATED_DOB);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByDobIsInShouldWork() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where dob in DEFAULT_DOB or UPDATED_DOB
+        defaultBioProfileShouldBeFound("dob.in=" + DEFAULT_DOB + "," + UPDATED_DOB);
+
+        // Get all the bioProfileList where dob equals to UPDATED_DOB
+        defaultBioProfileShouldNotBeFound("dob.in=" + UPDATED_DOB);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByDobIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where dob is not null
+        defaultBioProfileShouldBeFound("dob.specified=true");
+
+        // Get all the bioProfileList where dob is null
+        defaultBioProfileShouldNotBeFound("dob.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByDobContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where dob contains DEFAULT_DOB
+        defaultBioProfileShouldBeFound("dob.contains=" + DEFAULT_DOB);
+
+        // Get all the bioProfileList where dob contains UPDATED_DOB
+        defaultBioProfileShouldNotBeFound("dob.contains=" + UPDATED_DOB);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByDobNotContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where dob does not contain DEFAULT_DOB
+        defaultBioProfileShouldNotBeFound("dob.doesNotContain=" + DEFAULT_DOB);
+
+        // Get all the bioProfileList where dob does not contain UPDATED_DOB
+        defaultBioProfileShouldBeFound("dob.doesNotContain=" + UPDATED_DOB);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByGenderIsEqualToSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where gender equals to DEFAULT_GENDER
+        defaultBioProfileShouldBeFound("gender.equals=" + DEFAULT_GENDER);
+
+        // Get all the bioProfileList where gender equals to UPDATED_GENDER
+        defaultBioProfileShouldNotBeFound("gender.equals=" + UPDATED_GENDER);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByGenderIsInShouldWork() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where gender in DEFAULT_GENDER or UPDATED_GENDER
+        defaultBioProfileShouldBeFound("gender.in=" + DEFAULT_GENDER + "," + UPDATED_GENDER);
+
+        // Get all the bioProfileList where gender equals to UPDATED_GENDER
+        defaultBioProfileShouldNotBeFound("gender.in=" + UPDATED_GENDER);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByGenderIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where gender is not null
+        defaultBioProfileShouldBeFound("gender.specified=true");
+
+        // Get all the bioProfileList where gender is null
+        defaultBioProfileShouldNotBeFound("gender.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByGenderContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where gender contains DEFAULT_GENDER
+        defaultBioProfileShouldBeFound("gender.contains=" + DEFAULT_GENDER);
+
+        // Get all the bioProfileList where gender contains UPDATED_GENDER
+        defaultBioProfileShouldNotBeFound("gender.contains=" + UPDATED_GENDER);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByGenderNotContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where gender does not contain DEFAULT_GENDER
+        defaultBioProfileShouldNotBeFound("gender.doesNotContain=" + DEFAULT_GENDER);
+
+        // Get all the bioProfileList where gender does not contain UPDATED_GENDER
+        defaultBioProfileShouldBeFound("gender.doesNotContain=" + UPDATED_GENDER);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByImageUrlIsEqualToSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where imageUrl equals to DEFAULT_IMAGE_URL
+        defaultBioProfileShouldBeFound("imageUrl.equals=" + DEFAULT_IMAGE_URL);
+
+        // Get all the bioProfileList where imageUrl equals to UPDATED_IMAGE_URL
+        defaultBioProfileShouldNotBeFound("imageUrl.equals=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByImageUrlIsInShouldWork() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where imageUrl in DEFAULT_IMAGE_URL or UPDATED_IMAGE_URL
+        defaultBioProfileShouldBeFound("imageUrl.in=" + DEFAULT_IMAGE_URL + "," + UPDATED_IMAGE_URL);
+
+        // Get all the bioProfileList where imageUrl equals to UPDATED_IMAGE_URL
+        defaultBioProfileShouldNotBeFound("imageUrl.in=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByImageUrlIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where imageUrl is not null
+        defaultBioProfileShouldBeFound("imageUrl.specified=true");
+
+        // Get all the bioProfileList where imageUrl is null
+        defaultBioProfileShouldNotBeFound("imageUrl.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByImageUrlContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where imageUrl contains DEFAULT_IMAGE_URL
+        defaultBioProfileShouldBeFound("imageUrl.contains=" + DEFAULT_IMAGE_URL);
+
+        // Get all the bioProfileList where imageUrl contains UPDATED_IMAGE_URL
+        defaultBioProfileShouldNotBeFound("imageUrl.contains=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllBioProfilesByImageUrlNotContainsSomething() throws Exception {
+        // Initialize the database
+        bioProfileRepository.saveAndFlush(bioProfile);
+
+        // Get all the bioProfileList where imageUrl does not contain DEFAULT_IMAGE_URL
+        defaultBioProfileShouldNotBeFound("imageUrl.doesNotContain=" + DEFAULT_IMAGE_URL);
+
+        // Get all the bioProfileList where imageUrl does not contain UPDATED_IMAGE_URL
+        defaultBioProfileShouldBeFound("imageUrl.doesNotContain=" + UPDATED_IMAGE_URL);
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultBioProfileShouldBeFound(String filter) throws Exception {
+        restBioProfileMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(bioProfile.getId().intValue())))
+            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID)))
+            .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME)))
+            .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME)))
+            .andExpect(jsonPath("$.[*].dob").value(hasItem(DEFAULT_DOB)))
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)));
+
+        // Check, that the count call also returns 1
+        restBioProfileMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultBioProfileShouldNotBeFound(String filter) throws Exception {
+        restBioProfileMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restBioProfileMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

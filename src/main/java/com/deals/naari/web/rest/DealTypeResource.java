@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.DealType;
 import com.deals.naari.repository.DealTypeRepository;
+import com.deals.naari.service.DealTypeQueryService;
 import com.deals.naari.service.DealTypeService;
+import com.deals.naari.service.criteria.DealTypeCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,16 @@ public class DealTypeResource {
 
     private final DealTypeRepository dealTypeRepository;
 
-    public DealTypeResource(DealTypeService dealTypeService, DealTypeRepository dealTypeRepository) {
+    private final DealTypeQueryService dealTypeQueryService;
+
+    public DealTypeResource(
+        DealTypeService dealTypeService,
+        DealTypeRepository dealTypeRepository,
+        DealTypeQueryService dealTypeQueryService
+    ) {
         this.dealTypeService = dealTypeService;
         this.dealTypeRepository = dealTypeRepository;
+        this.dealTypeQueryService = dealTypeQueryService;
     }
 
     /**
@@ -133,12 +142,26 @@ public class DealTypeResource {
     /**
      * {@code GET  /deal-types} : get all the dealTypes.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dealTypes in body.
      */
     @GetMapping("/deal-types")
-    public List<DealType> getAllDealTypes() {
-        log.debug("REST request to get all DealTypes");
-        return dealTypeService.findAll();
+    public ResponseEntity<List<DealType>> getAllDealTypes(DealTypeCriteria criteria) {
+        log.debug("REST request to get DealTypes by criteria: {}", criteria);
+        List<DealType> entityList = dealTypeQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /deal-types/count} : count all the dealTypes.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/deal-types/count")
+    public ResponseEntity<Long> countDealTypes(DealTypeCriteria criteria) {
+        log.debug("REST request to count DealTypes by criteria: {}", criteria);
+        return ResponseEntity.ok().body(dealTypeQueryService.countByCriteria(criteria));
     }
 
     /**

@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface EmailSubscriptionRepository extends JpaRepository<EmailSubscription, Long> {}
+public interface EmailSubscriptionRepository extends JpaRepository<EmailSubscription, Long>, JpaSpecificationExecutor<EmailSubscription> {}

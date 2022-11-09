@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.EmailSubscription;
 import com.deals.naari.repository.EmailSubscriptionRepository;
+import com.deals.naari.service.EmailSubscriptionQueryService;
 import com.deals.naari.service.EmailSubscriptionService;
+import com.deals.naari.service.criteria.EmailSubscriptionCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,12 +37,16 @@ public class EmailSubscriptionResource {
 
     private final EmailSubscriptionRepository emailSubscriptionRepository;
 
+    private final EmailSubscriptionQueryService emailSubscriptionQueryService;
+
     public EmailSubscriptionResource(
         EmailSubscriptionService emailSubscriptionService,
-        EmailSubscriptionRepository emailSubscriptionRepository
+        EmailSubscriptionRepository emailSubscriptionRepository,
+        EmailSubscriptionQueryService emailSubscriptionQueryService
     ) {
         this.emailSubscriptionService = emailSubscriptionService;
         this.emailSubscriptionRepository = emailSubscriptionRepository;
+        this.emailSubscriptionQueryService = emailSubscriptionQueryService;
     }
 
     /**
@@ -137,12 +143,26 @@ public class EmailSubscriptionResource {
     /**
      * {@code GET  /email-subscriptions} : get all the emailSubscriptions.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of emailSubscriptions in body.
      */
     @GetMapping("/email-subscriptions")
-    public List<EmailSubscription> getAllEmailSubscriptions() {
-        log.debug("REST request to get all EmailSubscriptions");
-        return emailSubscriptionService.findAll();
+    public ResponseEntity<List<EmailSubscription>> getAllEmailSubscriptions(EmailSubscriptionCriteria criteria) {
+        log.debug("REST request to get EmailSubscriptions by criteria: {}", criteria);
+        List<EmailSubscription> entityList = emailSubscriptionQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /email-subscriptions/count} : count all the emailSubscriptions.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/email-subscriptions/count")
+    public ResponseEntity<Long> countEmailSubscriptions(EmailSubscriptionCriteria criteria) {
+        log.debug("REST request to count EmailSubscriptions by criteria: {}", criteria);
+        return ResponseEntity.ok().body(emailSubscriptionQueryService.countByCriteria(criteria));
     }
 
     /**

@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.Brand;
 import com.deals.naari.repository.BrandRepository;
+import com.deals.naari.service.BrandQueryService;
 import com.deals.naari.service.BrandService;
+import com.deals.naari.service.criteria.BrandCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,12 @@ public class BrandResource {
 
     private final BrandRepository brandRepository;
 
-    public BrandResource(BrandService brandService, BrandRepository brandRepository) {
+    private final BrandQueryService brandQueryService;
+
+    public BrandResource(BrandService brandService, BrandRepository brandRepository, BrandQueryService brandQueryService) {
         this.brandService = brandService;
         this.brandRepository = brandRepository;
+        this.brandQueryService = brandQueryService;
     }
 
     /**
@@ -129,12 +134,26 @@ public class BrandResource {
     /**
      * {@code GET  /brands} : get all the brands.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of brands in body.
      */
     @GetMapping("/brands")
-    public List<Brand> getAllBrands() {
-        log.debug("REST request to get all Brands");
-        return brandService.findAll();
+    public ResponseEntity<List<Brand>> getAllBrands(BrandCriteria criteria) {
+        log.debug("REST request to get Brands by criteria: {}", criteria);
+        List<Brand> entityList = brandQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /brands/count} : count all the brands.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/brands/count")
+    public ResponseEntity<Long> countBrands(BrandCriteria criteria) {
+        log.debug("REST request to count Brands by criteria: {}", criteria);
+        return ResponseEntity.ok().body(brandQueryService.countByCriteria(criteria));
     }
 
     /**

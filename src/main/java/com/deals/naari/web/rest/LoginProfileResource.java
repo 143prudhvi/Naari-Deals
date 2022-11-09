@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.LoginProfile;
 import com.deals.naari.repository.LoginProfileRepository;
+import com.deals.naari.service.LoginProfileQueryService;
 import com.deals.naari.service.LoginProfileService;
+import com.deals.naari.service.criteria.LoginProfileCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,16 @@ public class LoginProfileResource {
 
     private final LoginProfileRepository loginProfileRepository;
 
-    public LoginProfileResource(LoginProfileService loginProfileService, LoginProfileRepository loginProfileRepository) {
+    private final LoginProfileQueryService loginProfileQueryService;
+
+    public LoginProfileResource(
+        LoginProfileService loginProfileService,
+        LoginProfileRepository loginProfileRepository,
+        LoginProfileQueryService loginProfileQueryService
+    ) {
         this.loginProfileService = loginProfileService;
         this.loginProfileRepository = loginProfileRepository;
+        this.loginProfileQueryService = loginProfileQueryService;
     }
 
     /**
@@ -133,12 +142,26 @@ public class LoginProfileResource {
     /**
      * {@code GET  /login-profiles} : get all the loginProfiles.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of loginProfiles in body.
      */
     @GetMapping("/login-profiles")
-    public List<LoginProfile> getAllLoginProfiles() {
-        log.debug("REST request to get all LoginProfiles");
-        return loginProfileService.findAll();
+    public ResponseEntity<List<LoginProfile>> getAllLoginProfiles(LoginProfileCriteria criteria) {
+        log.debug("REST request to get LoginProfiles by criteria: {}", criteria);
+        List<LoginProfile> entityList = loginProfileQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /login-profiles/count} : count all the loginProfiles.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/login-profiles/count")
+    public ResponseEntity<Long> countLoginProfiles(LoginProfileCriteria criteria) {
+        log.debug("REST request to count LoginProfiles by criteria: {}", criteria);
+        return ResponseEntity.ok().body(loginProfileQueryService.countByCriteria(criteria));
     }
 
     /**

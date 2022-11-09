@@ -2,7 +2,6 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.Deal;
 import com.deals.naari.repository.DealRepository;
-import com.deals.naari.security.AuthoritiesConstants;
 import com.deals.naari.service.DealQueryService;
 import com.deals.naari.service.DealService;
 import com.deals.naari.service.criteria.DealCriteria;
@@ -19,7 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
@@ -60,7 +58,6 @@ public class DealResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/deals")
-    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Deal> createDeal(@RequestBody Deal deal) throws URISyntaxException {
         log.debug("REST request to save Deal : {}", deal);
         if (deal.getId() != null) {
@@ -84,7 +81,6 @@ public class DealResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/deals/{id}")
-    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Deal> updateDeal(@PathVariable(value = "id", required = false) final Long id, @RequestBody Deal deal)
         throws URISyntaxException {
         log.debug("REST request to update Deal : {}, {}", id, deal);
@@ -118,7 +114,6 @@ public class DealResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/deals/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Deal> partialUpdateDeal(@PathVariable(value = "id", required = false) final Long id, @RequestBody Deal deal)
         throws URISyntaxException {
         log.debug("REST request to partial update Deal partially : {}, {}", id, deal);
@@ -188,7 +183,6 @@ public class DealResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/deals/{id}")
-    @PreAuthorize("hasRole(\"" + AuthoritiesConstants.ADMIN + "\")")
     public ResponseEntity<Void> deleteDeal(@PathVariable Long id) {
         log.debug("REST request to delete Deal : {}", id);
         dealService.delete(id);

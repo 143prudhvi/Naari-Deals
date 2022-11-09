@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.deals.naari.IntegrationTest;
 import com.deals.naari.domain.Merchant;
 import com.deals.naari.repository.MerchantRepository;
+import com.deals.naari.service.criteria.MerchantCriteria;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -189,6 +190,458 @@ class MerchantResourceIT {
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
             .andExpect(jsonPath("$.siteUrl").value(DEFAULT_SITE_URL.toString()));
+    }
+
+    @Test
+    @Transactional
+    void getMerchantsByIdFiltering() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        Long id = merchant.getId();
+
+        defaultMerchantShouldBeFound("id.equals=" + id);
+        defaultMerchantShouldNotBeFound("id.notEquals=" + id);
+
+        defaultMerchantShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultMerchantShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultMerchantShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultMerchantShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByNameIsEqualToSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where name equals to DEFAULT_NAME
+        defaultMerchantShouldBeFound("name.equals=" + DEFAULT_NAME);
+
+        // Get all the merchantList where name equals to UPDATED_NAME
+        defaultMerchantShouldNotBeFound("name.equals=" + UPDATED_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByNameIsInShouldWork() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where name in DEFAULT_NAME or UPDATED_NAME
+        defaultMerchantShouldBeFound("name.in=" + DEFAULT_NAME + "," + UPDATED_NAME);
+
+        // Get all the merchantList where name equals to UPDATED_NAME
+        defaultMerchantShouldNotBeFound("name.in=" + UPDATED_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByNameIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where name is not null
+        defaultMerchantShouldBeFound("name.specified=true");
+
+        // Get all the merchantList where name is null
+        defaultMerchantShouldNotBeFound("name.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByNameContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where name contains DEFAULT_NAME
+        defaultMerchantShouldBeFound("name.contains=" + DEFAULT_NAME);
+
+        // Get all the merchantList where name contains UPDATED_NAME
+        defaultMerchantShouldNotBeFound("name.contains=" + UPDATED_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByNameNotContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where name does not contain DEFAULT_NAME
+        defaultMerchantShouldNotBeFound("name.doesNotContain=" + DEFAULT_NAME);
+
+        // Get all the merchantList where name does not contain UPDATED_NAME
+        defaultMerchantShouldBeFound("name.doesNotContain=" + UPDATED_NAME);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCountryIsEqualToSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where country equals to DEFAULT_COUNTRY
+        defaultMerchantShouldBeFound("country.equals=" + DEFAULT_COUNTRY);
+
+        // Get all the merchantList where country equals to UPDATED_COUNTRY
+        defaultMerchantShouldNotBeFound("country.equals=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCountryIsInShouldWork() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where country in DEFAULT_COUNTRY or UPDATED_COUNTRY
+        defaultMerchantShouldBeFound("country.in=" + DEFAULT_COUNTRY + "," + UPDATED_COUNTRY);
+
+        // Get all the merchantList where country equals to UPDATED_COUNTRY
+        defaultMerchantShouldNotBeFound("country.in=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCountryIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where country is not null
+        defaultMerchantShouldBeFound("country.specified=true");
+
+        // Get all the merchantList where country is null
+        defaultMerchantShouldNotBeFound("country.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCountryContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where country contains DEFAULT_COUNTRY
+        defaultMerchantShouldBeFound("country.contains=" + DEFAULT_COUNTRY);
+
+        // Get all the merchantList where country contains UPDATED_COUNTRY
+        defaultMerchantShouldNotBeFound("country.contains=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCountryNotContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where country does not contain DEFAULT_COUNTRY
+        defaultMerchantShouldNotBeFound("country.doesNotContain=" + DEFAULT_COUNTRY);
+
+        // Get all the merchantList where country does not contain UPDATED_COUNTRY
+        defaultMerchantShouldBeFound("country.doesNotContain=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCityIsEqualToSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where city equals to DEFAULT_CITY
+        defaultMerchantShouldBeFound("city.equals=" + DEFAULT_CITY);
+
+        // Get all the merchantList where city equals to UPDATED_CITY
+        defaultMerchantShouldNotBeFound("city.equals=" + UPDATED_CITY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCityIsInShouldWork() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where city in DEFAULT_CITY or UPDATED_CITY
+        defaultMerchantShouldBeFound("city.in=" + DEFAULT_CITY + "," + UPDATED_CITY);
+
+        // Get all the merchantList where city equals to UPDATED_CITY
+        defaultMerchantShouldNotBeFound("city.in=" + UPDATED_CITY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCityIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where city is not null
+        defaultMerchantShouldBeFound("city.specified=true");
+
+        // Get all the merchantList where city is null
+        defaultMerchantShouldNotBeFound("city.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCityContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where city contains DEFAULT_CITY
+        defaultMerchantShouldBeFound("city.contains=" + DEFAULT_CITY);
+
+        // Get all the merchantList where city contains UPDATED_CITY
+        defaultMerchantShouldNotBeFound("city.contains=" + UPDATED_CITY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByCityNotContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where city does not contain DEFAULT_CITY
+        defaultMerchantShouldNotBeFound("city.doesNotContain=" + DEFAULT_CITY);
+
+        // Get all the merchantList where city does not contain UPDATED_CITY
+        defaultMerchantShouldBeFound("city.doesNotContain=" + UPDATED_CITY);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByStoreIconIsEqualToSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where storeIcon equals to DEFAULT_STORE_ICON
+        defaultMerchantShouldBeFound("storeIcon.equals=" + DEFAULT_STORE_ICON);
+
+        // Get all the merchantList where storeIcon equals to UPDATED_STORE_ICON
+        defaultMerchantShouldNotBeFound("storeIcon.equals=" + UPDATED_STORE_ICON);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByStoreIconIsInShouldWork() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where storeIcon in DEFAULT_STORE_ICON or UPDATED_STORE_ICON
+        defaultMerchantShouldBeFound("storeIcon.in=" + DEFAULT_STORE_ICON + "," + UPDATED_STORE_ICON);
+
+        // Get all the merchantList where storeIcon equals to UPDATED_STORE_ICON
+        defaultMerchantShouldNotBeFound("storeIcon.in=" + UPDATED_STORE_ICON);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByStoreIconIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where storeIcon is not null
+        defaultMerchantShouldBeFound("storeIcon.specified=true");
+
+        // Get all the merchantList where storeIcon is null
+        defaultMerchantShouldNotBeFound("storeIcon.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByStoreIconContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where storeIcon contains DEFAULT_STORE_ICON
+        defaultMerchantShouldBeFound("storeIcon.contains=" + DEFAULT_STORE_ICON);
+
+        // Get all the merchantList where storeIcon contains UPDATED_STORE_ICON
+        defaultMerchantShouldNotBeFound("storeIcon.contains=" + UPDATED_STORE_ICON);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByStoreIconNotContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where storeIcon does not contain DEFAULT_STORE_ICON
+        defaultMerchantShouldNotBeFound("storeIcon.doesNotContain=" + DEFAULT_STORE_ICON);
+
+        // Get all the merchantList where storeIcon does not contain UPDATED_STORE_ICON
+        defaultMerchantShouldBeFound("storeIcon.doesNotContain=" + UPDATED_STORE_ICON);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByTypeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where type equals to DEFAULT_TYPE
+        defaultMerchantShouldBeFound("type.equals=" + DEFAULT_TYPE);
+
+        // Get all the merchantList where type equals to UPDATED_TYPE
+        defaultMerchantShouldNotBeFound("type.equals=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByTypeIsInShouldWork() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where type in DEFAULT_TYPE or UPDATED_TYPE
+        defaultMerchantShouldBeFound("type.in=" + DEFAULT_TYPE + "," + UPDATED_TYPE);
+
+        // Get all the merchantList where type equals to UPDATED_TYPE
+        defaultMerchantShouldNotBeFound("type.in=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByTypeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where type is not null
+        defaultMerchantShouldBeFound("type.specified=true");
+
+        // Get all the merchantList where type is null
+        defaultMerchantShouldNotBeFound("type.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByTypeContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where type contains DEFAULT_TYPE
+        defaultMerchantShouldBeFound("type.contains=" + DEFAULT_TYPE);
+
+        // Get all the merchantList where type contains UPDATED_TYPE
+        defaultMerchantShouldNotBeFound("type.contains=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByTypeNotContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where type does not contain DEFAULT_TYPE
+        defaultMerchantShouldNotBeFound("type.doesNotContain=" + DEFAULT_TYPE);
+
+        // Get all the merchantList where type does not contain UPDATED_TYPE
+        defaultMerchantShouldBeFound("type.doesNotContain=" + UPDATED_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByLocationIsEqualToSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where location equals to DEFAULT_LOCATION
+        defaultMerchantShouldBeFound("location.equals=" + DEFAULT_LOCATION);
+
+        // Get all the merchantList where location equals to UPDATED_LOCATION
+        defaultMerchantShouldNotBeFound("location.equals=" + UPDATED_LOCATION);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByLocationIsInShouldWork() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where location in DEFAULT_LOCATION or UPDATED_LOCATION
+        defaultMerchantShouldBeFound("location.in=" + DEFAULT_LOCATION + "," + UPDATED_LOCATION);
+
+        // Get all the merchantList where location equals to UPDATED_LOCATION
+        defaultMerchantShouldNotBeFound("location.in=" + UPDATED_LOCATION);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByLocationIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where location is not null
+        defaultMerchantShouldBeFound("location.specified=true");
+
+        // Get all the merchantList where location is null
+        defaultMerchantShouldNotBeFound("location.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByLocationContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where location contains DEFAULT_LOCATION
+        defaultMerchantShouldBeFound("location.contains=" + DEFAULT_LOCATION);
+
+        // Get all the merchantList where location contains UPDATED_LOCATION
+        defaultMerchantShouldNotBeFound("location.contains=" + UPDATED_LOCATION);
+    }
+
+    @Test
+    @Transactional
+    void getAllMerchantsByLocationNotContainsSomething() throws Exception {
+        // Initialize the database
+        merchantRepository.saveAndFlush(merchant);
+
+        // Get all the merchantList where location does not contain DEFAULT_LOCATION
+        defaultMerchantShouldNotBeFound("location.doesNotContain=" + DEFAULT_LOCATION);
+
+        // Get all the merchantList where location does not contain UPDATED_LOCATION
+        defaultMerchantShouldBeFound("location.doesNotContain=" + UPDATED_LOCATION);
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultMerchantShouldBeFound(String filter) throws Exception {
+        restMerchantMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(merchant.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
+            .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
+            .andExpect(jsonPath("$.[*].storeIcon").value(hasItem(DEFAULT_STORE_ICON)))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
+            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
+            .andExpect(jsonPath("$.[*].siteUrl").value(hasItem(DEFAULT_SITE_URL.toString())));
+
+        // Check, that the count call also returns 1
+        restMerchantMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultMerchantShouldNotBeFound(String filter) throws Exception {
+        restMerchantMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restMerchantMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.MemberType;
 import com.deals.naari.repository.MemberTypeRepository;
+import com.deals.naari.service.MemberTypeQueryService;
 import com.deals.naari.service.MemberTypeService;
+import com.deals.naari.service.criteria.MemberTypeCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,16 @@ public class MemberTypeResource {
 
     private final MemberTypeRepository memberTypeRepository;
 
-    public MemberTypeResource(MemberTypeService memberTypeService, MemberTypeRepository memberTypeRepository) {
+    private final MemberTypeQueryService memberTypeQueryService;
+
+    public MemberTypeResource(
+        MemberTypeService memberTypeService,
+        MemberTypeRepository memberTypeRepository,
+        MemberTypeQueryService memberTypeQueryService
+    ) {
         this.memberTypeService = memberTypeService;
         this.memberTypeRepository = memberTypeRepository;
+        this.memberTypeQueryService = memberTypeQueryService;
     }
 
     /**
@@ -133,12 +142,26 @@ public class MemberTypeResource {
     /**
      * {@code GET  /member-types} : get all the memberTypes.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of memberTypes in body.
      */
     @GetMapping("/member-types")
-    public List<MemberType> getAllMemberTypes() {
-        log.debug("REST request to get all MemberTypes");
-        return memberTypeService.findAll();
+    public ResponseEntity<List<MemberType>> getAllMemberTypes(MemberTypeCriteria criteria) {
+        log.debug("REST request to get MemberTypes by criteria: {}", criteria);
+        List<MemberType> entityList = memberTypeQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /member-types/count} : count all the memberTypes.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/member-types/count")
+    public ResponseEntity<Long> countMemberTypes(MemberTypeCriteria criteria) {
+        log.debug("REST request to count MemberTypes by criteria: {}", criteria);
+        return ResponseEntity.ok().body(memberTypeQueryService.countByCriteria(criteria));
     }
 
     /**

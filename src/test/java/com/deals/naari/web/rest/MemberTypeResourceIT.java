@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.deals.naari.IntegrationTest;
 import com.deals.naari.domain.MemberType;
 import com.deals.naari.repository.MemberTypeRepository;
+import com.deals.naari.service.criteria.MemberTypeCriteria;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -157,6 +158,194 @@ class MemberTypeResourceIT {
             .andExpect(jsonPath("$.memberType").value(DEFAULT_MEMBER_TYPE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()));
+    }
+
+    @Test
+    @Transactional
+    void getMemberTypesByIdFiltering() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        Long id = memberType.getId();
+
+        defaultMemberTypeShouldBeFound("id.equals=" + id);
+        defaultMemberTypeShouldNotBeFound("id.notEquals=" + id);
+
+        defaultMemberTypeShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultMemberTypeShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultMemberTypeShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultMemberTypeShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByMemberTypeIsEqualToSomething() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where memberType equals to DEFAULT_MEMBER_TYPE
+        defaultMemberTypeShouldBeFound("memberType.equals=" + DEFAULT_MEMBER_TYPE);
+
+        // Get all the memberTypeList where memberType equals to UPDATED_MEMBER_TYPE
+        defaultMemberTypeShouldNotBeFound("memberType.equals=" + UPDATED_MEMBER_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByMemberTypeIsInShouldWork() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where memberType in DEFAULT_MEMBER_TYPE or UPDATED_MEMBER_TYPE
+        defaultMemberTypeShouldBeFound("memberType.in=" + DEFAULT_MEMBER_TYPE + "," + UPDATED_MEMBER_TYPE);
+
+        // Get all the memberTypeList where memberType equals to UPDATED_MEMBER_TYPE
+        defaultMemberTypeShouldNotBeFound("memberType.in=" + UPDATED_MEMBER_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByMemberTypeIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where memberType is not null
+        defaultMemberTypeShouldBeFound("memberType.specified=true");
+
+        // Get all the memberTypeList where memberType is null
+        defaultMemberTypeShouldNotBeFound("memberType.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByMemberTypeContainsSomething() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where memberType contains DEFAULT_MEMBER_TYPE
+        defaultMemberTypeShouldBeFound("memberType.contains=" + DEFAULT_MEMBER_TYPE);
+
+        // Get all the memberTypeList where memberType contains UPDATED_MEMBER_TYPE
+        defaultMemberTypeShouldNotBeFound("memberType.contains=" + UPDATED_MEMBER_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByMemberTypeNotContainsSomething() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where memberType does not contain DEFAULT_MEMBER_TYPE
+        defaultMemberTypeShouldNotBeFound("memberType.doesNotContain=" + DEFAULT_MEMBER_TYPE);
+
+        // Get all the memberTypeList where memberType does not contain UPDATED_MEMBER_TYPE
+        defaultMemberTypeShouldBeFound("memberType.doesNotContain=" + UPDATED_MEMBER_TYPE);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByDescriptionIsEqualToSomething() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where description equals to DEFAULT_DESCRIPTION
+        defaultMemberTypeShouldBeFound("description.equals=" + DEFAULT_DESCRIPTION);
+
+        // Get all the memberTypeList where description equals to UPDATED_DESCRIPTION
+        defaultMemberTypeShouldNotBeFound("description.equals=" + UPDATED_DESCRIPTION);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByDescriptionIsInShouldWork() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where description in DEFAULT_DESCRIPTION or UPDATED_DESCRIPTION
+        defaultMemberTypeShouldBeFound("description.in=" + DEFAULT_DESCRIPTION + "," + UPDATED_DESCRIPTION);
+
+        // Get all the memberTypeList where description equals to UPDATED_DESCRIPTION
+        defaultMemberTypeShouldNotBeFound("description.in=" + UPDATED_DESCRIPTION);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByDescriptionIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where description is not null
+        defaultMemberTypeShouldBeFound("description.specified=true");
+
+        // Get all the memberTypeList where description is null
+        defaultMemberTypeShouldNotBeFound("description.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByDescriptionContainsSomething() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where description contains DEFAULT_DESCRIPTION
+        defaultMemberTypeShouldBeFound("description.contains=" + DEFAULT_DESCRIPTION);
+
+        // Get all the memberTypeList where description contains UPDATED_DESCRIPTION
+        defaultMemberTypeShouldNotBeFound("description.contains=" + UPDATED_DESCRIPTION);
+    }
+
+    @Test
+    @Transactional
+    void getAllMemberTypesByDescriptionNotContainsSomething() throws Exception {
+        // Initialize the database
+        memberTypeRepository.saveAndFlush(memberType);
+
+        // Get all the memberTypeList where description does not contain DEFAULT_DESCRIPTION
+        defaultMemberTypeShouldNotBeFound("description.doesNotContain=" + DEFAULT_DESCRIPTION);
+
+        // Get all the memberTypeList where description does not contain UPDATED_DESCRIPTION
+        defaultMemberTypeShouldBeFound("description.doesNotContain=" + UPDATED_DESCRIPTION);
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultMemberTypeShouldBeFound(String filter) throws Exception {
+        restMemberTypeMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(memberType.getId().intValue())))
+            .andExpect(jsonPath("$.[*].memberType").value(hasItem(DEFAULT_MEMBER_TYPE)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())));
+
+        // Check, that the count call also returns 1
+        restMemberTypeMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultMemberTypeShouldNotBeFound(String filter) throws Exception {
+        restMemberTypeMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restMemberTypeMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

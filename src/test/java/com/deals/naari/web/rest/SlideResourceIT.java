@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.deals.naari.IntegrationTest;
 import com.deals.naari.domain.Slide;
 import com.deals.naari.repository.SlideRepository;
+import com.deals.naari.service.criteria.SlideCriteria;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -204,6 +205,655 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
             .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL))
             .andExpect(jsonPath("$.tags").value(DEFAULT_TAGS));
+    }
+
+    @Test
+    @Transactional
+    void getSlidesByIdFiltering() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        Long id = slide.getId();
+
+        defaultSlideShouldBeFound("id.equals=" + id);
+        defaultSlideShouldNotBeFound("id.notEquals=" + id);
+
+        defaultSlideShouldBeFound("id.greaterThanOrEqual=" + id);
+        defaultSlideShouldNotBeFound("id.greaterThan=" + id);
+
+        defaultSlideShouldBeFound("id.lessThanOrEqual=" + id);
+        defaultSlideShouldNotBeFound("id.lessThan=" + id);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTitleIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where title equals to DEFAULT_TITLE
+        defaultSlideShouldBeFound("title.equals=" + DEFAULT_TITLE);
+
+        // Get all the slideList where title equals to UPDATED_TITLE
+        defaultSlideShouldNotBeFound("title.equals=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTitleIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where title in DEFAULT_TITLE or UPDATED_TITLE
+        defaultSlideShouldBeFound("title.in=" + DEFAULT_TITLE + "," + UPDATED_TITLE);
+
+        // Get all the slideList where title equals to UPDATED_TITLE
+        defaultSlideShouldNotBeFound("title.in=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTitleIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where title is not null
+        defaultSlideShouldBeFound("title.specified=true");
+
+        // Get all the slideList where title is null
+        defaultSlideShouldNotBeFound("title.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTitleContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where title contains DEFAULT_TITLE
+        defaultSlideShouldBeFound("title.contains=" + DEFAULT_TITLE);
+
+        // Get all the slideList where title contains UPDATED_TITLE
+        defaultSlideShouldNotBeFound("title.contains=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTitleNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where title does not contain DEFAULT_TITLE
+        defaultSlideShouldNotBeFound("title.doesNotContain=" + DEFAULT_TITLE);
+
+        // Get all the slideList where title does not contain UPDATED_TITLE
+        defaultSlideShouldBeFound("title.doesNotContain=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesBySubTitleIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where subTitle equals to DEFAULT_SUB_TITLE
+        defaultSlideShouldBeFound("subTitle.equals=" + DEFAULT_SUB_TITLE);
+
+        // Get all the slideList where subTitle equals to UPDATED_SUB_TITLE
+        defaultSlideShouldNotBeFound("subTitle.equals=" + UPDATED_SUB_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesBySubTitleIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where subTitle in DEFAULT_SUB_TITLE or UPDATED_SUB_TITLE
+        defaultSlideShouldBeFound("subTitle.in=" + DEFAULT_SUB_TITLE + "," + UPDATED_SUB_TITLE);
+
+        // Get all the slideList where subTitle equals to UPDATED_SUB_TITLE
+        defaultSlideShouldNotBeFound("subTitle.in=" + UPDATED_SUB_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesBySubTitleIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where subTitle is not null
+        defaultSlideShouldBeFound("subTitle.specified=true");
+
+        // Get all the slideList where subTitle is null
+        defaultSlideShouldNotBeFound("subTitle.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesBySubTitleContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where subTitle contains DEFAULT_SUB_TITLE
+        defaultSlideShouldBeFound("subTitle.contains=" + DEFAULT_SUB_TITLE);
+
+        // Get all the slideList where subTitle contains UPDATED_SUB_TITLE
+        defaultSlideShouldNotBeFound("subTitle.contains=" + UPDATED_SUB_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesBySubTitleNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where subTitle does not contain DEFAULT_SUB_TITLE
+        defaultSlideShouldNotBeFound("subTitle.doesNotContain=" + DEFAULT_SUB_TITLE);
+
+        // Get all the slideList where subTitle does not contain UPDATED_SUB_TITLE
+        defaultSlideShouldBeFound("subTitle.doesNotContain=" + UPDATED_SUB_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStatusIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where status equals to DEFAULT_STATUS
+        defaultSlideShouldBeFound("status.equals=" + DEFAULT_STATUS);
+
+        // Get all the slideList where status equals to UPDATED_STATUS
+        defaultSlideShouldNotBeFound("status.equals=" + UPDATED_STATUS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStatusIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where status in DEFAULT_STATUS or UPDATED_STATUS
+        defaultSlideShouldBeFound("status.in=" + DEFAULT_STATUS + "," + UPDATED_STATUS);
+
+        // Get all the slideList where status equals to UPDATED_STATUS
+        defaultSlideShouldNotBeFound("status.in=" + UPDATED_STATUS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStatusIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where status is not null
+        defaultSlideShouldBeFound("status.specified=true");
+
+        // Get all the slideList where status is null
+        defaultSlideShouldNotBeFound("status.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStatusContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where status contains DEFAULT_STATUS
+        defaultSlideShouldBeFound("status.contains=" + DEFAULT_STATUS);
+
+        // Get all the slideList where status contains UPDATED_STATUS
+        defaultSlideShouldNotBeFound("status.contains=" + UPDATED_STATUS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStatusNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where status does not contain DEFAULT_STATUS
+        defaultSlideShouldNotBeFound("status.doesNotContain=" + DEFAULT_STATUS);
+
+        // Get all the slideList where status does not contain UPDATED_STATUS
+        defaultSlideShouldBeFound("status.doesNotContain=" + UPDATED_STATUS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByCountryIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where country equals to DEFAULT_COUNTRY
+        defaultSlideShouldBeFound("country.equals=" + DEFAULT_COUNTRY);
+
+        // Get all the slideList where country equals to UPDATED_COUNTRY
+        defaultSlideShouldNotBeFound("country.equals=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByCountryIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where country in DEFAULT_COUNTRY or UPDATED_COUNTRY
+        defaultSlideShouldBeFound("country.in=" + DEFAULT_COUNTRY + "," + UPDATED_COUNTRY);
+
+        // Get all the slideList where country equals to UPDATED_COUNTRY
+        defaultSlideShouldNotBeFound("country.in=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByCountryIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where country is not null
+        defaultSlideShouldBeFound("country.specified=true");
+
+        // Get all the slideList where country is null
+        defaultSlideShouldNotBeFound("country.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByCountryContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where country contains DEFAULT_COUNTRY
+        defaultSlideShouldBeFound("country.contains=" + DEFAULT_COUNTRY);
+
+        // Get all the slideList where country contains UPDATED_COUNTRY
+        defaultSlideShouldNotBeFound("country.contains=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByCountryNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where country does not contain DEFAULT_COUNTRY
+        defaultSlideShouldNotBeFound("country.doesNotContain=" + DEFAULT_COUNTRY);
+
+        // Get all the slideList where country does not contain UPDATED_COUNTRY
+        defaultSlideShouldBeFound("country.doesNotContain=" + UPDATED_COUNTRY);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStartDateIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where startDate equals to DEFAULT_START_DATE
+        defaultSlideShouldBeFound("startDate.equals=" + DEFAULT_START_DATE);
+
+        // Get all the slideList where startDate equals to UPDATED_START_DATE
+        defaultSlideShouldNotBeFound("startDate.equals=" + UPDATED_START_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStartDateIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where startDate in DEFAULT_START_DATE or UPDATED_START_DATE
+        defaultSlideShouldBeFound("startDate.in=" + DEFAULT_START_DATE + "," + UPDATED_START_DATE);
+
+        // Get all the slideList where startDate equals to UPDATED_START_DATE
+        defaultSlideShouldNotBeFound("startDate.in=" + UPDATED_START_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStartDateIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where startDate is not null
+        defaultSlideShouldBeFound("startDate.specified=true");
+
+        // Get all the slideList where startDate is null
+        defaultSlideShouldNotBeFound("startDate.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStartDateContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where startDate contains DEFAULT_START_DATE
+        defaultSlideShouldBeFound("startDate.contains=" + DEFAULT_START_DATE);
+
+        // Get all the slideList where startDate contains UPDATED_START_DATE
+        defaultSlideShouldNotBeFound("startDate.contains=" + UPDATED_START_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByStartDateNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where startDate does not contain DEFAULT_START_DATE
+        defaultSlideShouldNotBeFound("startDate.doesNotContain=" + DEFAULT_START_DATE);
+
+        // Get all the slideList where startDate does not contain UPDATED_START_DATE
+        defaultSlideShouldBeFound("startDate.doesNotContain=" + UPDATED_START_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByEndDateIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where endDate equals to DEFAULT_END_DATE
+        defaultSlideShouldBeFound("endDate.equals=" + DEFAULT_END_DATE);
+
+        // Get all the slideList where endDate equals to UPDATED_END_DATE
+        defaultSlideShouldNotBeFound("endDate.equals=" + UPDATED_END_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByEndDateIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where endDate in DEFAULT_END_DATE or UPDATED_END_DATE
+        defaultSlideShouldBeFound("endDate.in=" + DEFAULT_END_DATE + "," + UPDATED_END_DATE);
+
+        // Get all the slideList where endDate equals to UPDATED_END_DATE
+        defaultSlideShouldNotBeFound("endDate.in=" + UPDATED_END_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByEndDateIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where endDate is not null
+        defaultSlideShouldBeFound("endDate.specified=true");
+
+        // Get all the slideList where endDate is null
+        defaultSlideShouldNotBeFound("endDate.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByEndDateContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where endDate contains DEFAULT_END_DATE
+        defaultSlideShouldBeFound("endDate.contains=" + DEFAULT_END_DATE);
+
+        // Get all the slideList where endDate contains UPDATED_END_DATE
+        defaultSlideShouldNotBeFound("endDate.contains=" + UPDATED_END_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByEndDateNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where endDate does not contain DEFAULT_END_DATE
+        defaultSlideShouldNotBeFound("endDate.doesNotContain=" + DEFAULT_END_DATE);
+
+        // Get all the slideList where endDate does not contain UPDATED_END_DATE
+        defaultSlideShouldBeFound("endDate.doesNotContain=" + UPDATED_END_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByImageUrlIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where imageUrl equals to DEFAULT_IMAGE_URL
+        defaultSlideShouldBeFound("imageUrl.equals=" + DEFAULT_IMAGE_URL);
+
+        // Get all the slideList where imageUrl equals to UPDATED_IMAGE_URL
+        defaultSlideShouldNotBeFound("imageUrl.equals=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByImageUrlIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where imageUrl in DEFAULT_IMAGE_URL or UPDATED_IMAGE_URL
+        defaultSlideShouldBeFound("imageUrl.in=" + DEFAULT_IMAGE_URL + "," + UPDATED_IMAGE_URL);
+
+        // Get all the slideList where imageUrl equals to UPDATED_IMAGE_URL
+        defaultSlideShouldNotBeFound("imageUrl.in=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByImageUrlIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where imageUrl is not null
+        defaultSlideShouldBeFound("imageUrl.specified=true");
+
+        // Get all the slideList where imageUrl is null
+        defaultSlideShouldNotBeFound("imageUrl.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByImageUrlContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where imageUrl contains DEFAULT_IMAGE_URL
+        defaultSlideShouldBeFound("imageUrl.contains=" + DEFAULT_IMAGE_URL);
+
+        // Get all the slideList where imageUrl contains UPDATED_IMAGE_URL
+        defaultSlideShouldNotBeFound("imageUrl.contains=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByImageUrlNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where imageUrl does not contain DEFAULT_IMAGE_URL
+        defaultSlideShouldNotBeFound("imageUrl.doesNotContain=" + DEFAULT_IMAGE_URL);
+
+        // Get all the slideList where imageUrl does not contain UPDATED_IMAGE_URL
+        defaultSlideShouldBeFound("imageUrl.doesNotContain=" + UPDATED_IMAGE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByDealUrlIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where dealUrl equals to DEFAULT_DEAL_URL
+        defaultSlideShouldBeFound("dealUrl.equals=" + DEFAULT_DEAL_URL);
+
+        // Get all the slideList where dealUrl equals to UPDATED_DEAL_URL
+        defaultSlideShouldNotBeFound("dealUrl.equals=" + UPDATED_DEAL_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByDealUrlIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where dealUrl in DEFAULT_DEAL_URL or UPDATED_DEAL_URL
+        defaultSlideShouldBeFound("dealUrl.in=" + DEFAULT_DEAL_URL + "," + UPDATED_DEAL_URL);
+
+        // Get all the slideList where dealUrl equals to UPDATED_DEAL_URL
+        defaultSlideShouldNotBeFound("dealUrl.in=" + UPDATED_DEAL_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByDealUrlIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where dealUrl is not null
+        defaultSlideShouldBeFound("dealUrl.specified=true");
+
+        // Get all the slideList where dealUrl is null
+        defaultSlideShouldNotBeFound("dealUrl.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByDealUrlContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where dealUrl contains DEFAULT_DEAL_URL
+        defaultSlideShouldBeFound("dealUrl.contains=" + DEFAULT_DEAL_URL);
+
+        // Get all the slideList where dealUrl contains UPDATED_DEAL_URL
+        defaultSlideShouldNotBeFound("dealUrl.contains=" + UPDATED_DEAL_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByDealUrlNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where dealUrl does not contain DEFAULT_DEAL_URL
+        defaultSlideShouldNotBeFound("dealUrl.doesNotContain=" + DEFAULT_DEAL_URL);
+
+        // Get all the slideList where dealUrl does not contain UPDATED_DEAL_URL
+        defaultSlideShouldBeFound("dealUrl.doesNotContain=" + UPDATED_DEAL_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTagsIsEqualToSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where tags equals to DEFAULT_TAGS
+        defaultSlideShouldBeFound("tags.equals=" + DEFAULT_TAGS);
+
+        // Get all the slideList where tags equals to UPDATED_TAGS
+        defaultSlideShouldNotBeFound("tags.equals=" + UPDATED_TAGS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTagsIsInShouldWork() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where tags in DEFAULT_TAGS or UPDATED_TAGS
+        defaultSlideShouldBeFound("tags.in=" + DEFAULT_TAGS + "," + UPDATED_TAGS);
+
+        // Get all the slideList where tags equals to UPDATED_TAGS
+        defaultSlideShouldNotBeFound("tags.in=" + UPDATED_TAGS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTagsIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where tags is not null
+        defaultSlideShouldBeFound("tags.specified=true");
+
+        // Get all the slideList where tags is null
+        defaultSlideShouldNotBeFound("tags.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTagsContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where tags contains DEFAULT_TAGS
+        defaultSlideShouldBeFound("tags.contains=" + DEFAULT_TAGS);
+
+        // Get all the slideList where tags contains UPDATED_TAGS
+        defaultSlideShouldNotBeFound("tags.contains=" + UPDATED_TAGS);
+    }
+
+    @Test
+    @Transactional
+    void getAllSlidesByTagsNotContainsSomething() throws Exception {
+        // Initialize the database
+        slideRepository.saveAndFlush(slide);
+
+        // Get all the slideList where tags does not contain DEFAULT_TAGS
+        defaultSlideShouldNotBeFound("tags.doesNotContain=" + DEFAULT_TAGS);
+
+        // Get all the slideList where tags does not contain UPDATED_TAGS
+        defaultSlideShouldBeFound("tags.doesNotContain=" + UPDATED_TAGS);
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is returned.
+     */
+    private void defaultSlideShouldBeFound(String filter) throws Exception {
+        restSlideMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(slide.getId().intValue())))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].subTitle").value(hasItem(DEFAULT_SUB_TITLE)))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
+            .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
+            .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
+            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)))
+            .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
+
+        // Check, that the count call also returns 1
+        restSlideMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("1"));
+    }
+
+    /**
+     * Executes the search, and checks that the default entity is not returned.
+     */
+    private void defaultSlideShouldNotBeFound(String filter) throws Exception {
+        restSlideMockMvc
+            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$").isEmpty());
+
+        // Check, that the count call also returns 0
+        restSlideMockMvc
+            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+            .andExpect(content().string("0"));
     }
 
     @Test

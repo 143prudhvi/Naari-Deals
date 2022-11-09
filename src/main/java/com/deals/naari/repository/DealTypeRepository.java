@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface DealTypeRepository extends JpaRepository<DealType, Long> {}
+public interface DealTypeRepository extends JpaRepository<DealType, Long>, JpaSpecificationExecutor<DealType> {}

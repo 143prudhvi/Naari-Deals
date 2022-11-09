@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.Slide;
 import com.deals.naari.repository.SlideRepository;
+import com.deals.naari.service.SlideQueryService;
 import com.deals.naari.service.SlideService;
+import com.deals.naari.service.criteria.SlideCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,9 +37,12 @@ public class SlideResource {
 
     private final SlideRepository slideRepository;
 
-    public SlideResource(SlideService slideService, SlideRepository slideRepository) {
+    private final SlideQueryService slideQueryService;
+
+    public SlideResource(SlideService slideService, SlideRepository slideRepository, SlideQueryService slideQueryService) {
         this.slideService = slideService;
         this.slideRepository = slideRepository;
+        this.slideQueryService = slideQueryService;
     }
 
     /**
@@ -129,12 +134,26 @@ public class SlideResource {
     /**
      * {@code GET  /slides} : get all the slides.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of slides in body.
      */
     @GetMapping("/slides")
-    public List<Slide> getAllSlides() {
-        log.debug("REST request to get all Slides");
-        return slideService.findAll();
+    public ResponseEntity<List<Slide>> getAllSlides(SlideCriteria criteria) {
+        log.debug("REST request to get Slides by criteria: {}", criteria);
+        List<Slide> entityList = slideQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /slides/count} : count all the slides.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/slides/count")
+    public ResponseEntity<Long> countSlides(SlideCriteria criteria) {
+        log.debug("REST request to count Slides by criteria: {}", criteria);
+        return ResponseEntity.ok().body(slideQueryService.countByCriteria(criteria));
     }
 
     /**

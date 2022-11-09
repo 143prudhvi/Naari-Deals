@@ -2,7 +2,9 @@ package com.deals.naari.web.rest;
 
 import com.deals.naari.domain.NotificationType;
 import com.deals.naari.repository.NotificationTypeRepository;
+import com.deals.naari.service.NotificationTypeQueryService;
 import com.deals.naari.service.NotificationTypeService;
+import com.deals.naari.service.criteria.NotificationTypeCriteria;
 import com.deals.naari.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,12 +37,16 @@ public class NotificationTypeResource {
 
     private final NotificationTypeRepository notificationTypeRepository;
 
+    private final NotificationTypeQueryService notificationTypeQueryService;
+
     public NotificationTypeResource(
         NotificationTypeService notificationTypeService,
-        NotificationTypeRepository notificationTypeRepository
+        NotificationTypeRepository notificationTypeRepository,
+        NotificationTypeQueryService notificationTypeQueryService
     ) {
         this.notificationTypeService = notificationTypeService;
         this.notificationTypeRepository = notificationTypeRepository;
+        this.notificationTypeQueryService = notificationTypeQueryService;
     }
 
     /**
@@ -137,12 +143,26 @@ public class NotificationTypeResource {
     /**
      * {@code GET  /notification-types} : get all the notificationTypes.
      *
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of notificationTypes in body.
      */
     @GetMapping("/notification-types")
-    public List<NotificationType> getAllNotificationTypes() {
-        log.debug("REST request to get all NotificationTypes");
-        return notificationTypeService.findAll();
+    public ResponseEntity<List<NotificationType>> getAllNotificationTypes(NotificationTypeCriteria criteria) {
+        log.debug("REST request to get NotificationTypes by criteria: {}", criteria);
+        List<NotificationType> entityList = notificationTypeQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+
+    /**
+     * {@code GET  /notification-types/count} : count all the notificationTypes.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/notification-types/count")
+    public ResponseEntity<Long> countNotificationTypes(NotificationTypeCriteria criteria) {
+        log.debug("REST request to count NotificationTypes by criteria: {}", criteria);
+        return ResponseEntity.ok().body(notificationTypeQueryService.countByCriteria(criteria));
     }
 
     /**

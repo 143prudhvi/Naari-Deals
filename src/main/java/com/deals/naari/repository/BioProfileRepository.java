@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface BioProfileRepository extends JpaRepository<BioProfile, Long> {}
+public interface BioProfileRepository extends JpaRepository<BioProfile, Long>, JpaSpecificationExecutor<BioProfile> {}
