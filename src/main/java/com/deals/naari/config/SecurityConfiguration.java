@@ -89,6 +89,7 @@ public class SecurityConfiguration {
             .antMatchers("/api/deals").permitAll()
             .antMatchers("/api/slides").permitAll()
             .antMatchers("/api/brands").permitAll()
+            .antMatchers("/api/deal-types").permitAll()
             .antMatchers("/api/email-subscriptions").permitAll()
             .antMatchers("/api/categories").permitAll()
             .antMatchers("/api/aws-s3upload").permitAll()
