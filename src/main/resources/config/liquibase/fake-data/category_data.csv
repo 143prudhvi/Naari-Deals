@@ -1,43 +1,43 @@
-id;parent;title;sub_title;image_url;description;country;code;status
-1;Clothing;Shirts;Available (120);https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-0.3.5&s=a8ef3fd4a48693a0620b614a6209b687&auto=format&fit=crop&w=750&q=80;Tops - Shirts;usa;SHIRTS;active
-2;Clothing;Blouses;Available (120);https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-0.3.5&s=a8ef3fd4a48693a0620b614a6209b687&auto=format&fit=crop&w=750&q=80;Tops - Blouses;usa;WESTERN-BLOUSES;active
-3;Clothing;T-Shirts;Available (120);https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-0.3.5&s=a8ef3fd4a48693a0620b614a6209b687&auto=format&fit=crop&w=750&q=80;Tops - T-Shirts;usa;TSHIRTS;active
-4;Clothing;Jeans;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Bottoms -Jeans;usa;JEANS;active
-5;Clothing;Pants;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Bottoms - Pants;usa;PANTS;active
-6;Clothing;Leggings;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Bottoms - Leggings;usa;LEGGINGS;active
-7;Clothing;Joggers;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Bottoms - Joggers;usa;JOGGERS;active
-8;Clothing;Shorts;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Bottoms - Shorts;usa;SHORTS;active
-9;Clothing;Skirts;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Bottoms - Skirts;usa;SKIRTS;active
-10;Clothing;Maxi;Available (120);https://images.unsplash.com/photo-1463820048975-a3b50e6d991d?ixlib=rb-0.3.5&s=6cfe9709e4c45ab8b4f875c84a2746ed&auto=format&fit=crop&w=500&q=80;Dresses -Maxi;usa;MAXI;active
-11;Clothing;Midi;Available (120);https://images.unsplash.com/photo-1463820048975-a3b50e6d991d?ixlib=rb-0.3.5&s=6cfe9709e4c45ab8b4f875c84a2746ed&auto=format&fit=crop&w=500&q=80;Dresses - Midi;usa;MIDI;active
-12;Clothing;Mini;Available (120);https://images.unsplash.com/photo-1463820048975-a3b50e6d991d?ixlib=rb-0.3.5&s=6cfe9709e4c45ab8b4f875c84a2746ed&auto=format&fit=crop&w=500&q=80;Dresses - Mini;usa;MINI;active
-13;Clothing;Jump Suits;Available (120);https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-0.3.5&s=f695afbce9bdbe2c16c7a7b3875588f2&auto=format&fit=crop&w=500&q=80;Jump Suits;usa;JUMPSTARTS;active
-14;Clothing;Jackets;Available (120);https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-0.3.5&s=976794f0c5d7239a69cfacb3d3f86c3b&auto=format&fit=crop&w=500&q=80;Jackets;usa;JACKETS;active
-15;Clothing;Night Wear;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Night Wear;usa;NIGHTWEAR;active
-16;Clothing;Inner Wear;Available (120);https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-0.3.5&s=a8ef3fd4a48693a0620b614a6209b687&auto=format&fit=crop&w=750&q=80;Inner Wear;usa;INNERWEAR;active
-17;Clothing;Sarees;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Sarees;usa;SAREES;active
-18;Clothing;Blouses;Available (120);https://images.unsplash.com/photo-1463820048975-a3b50e6d991d?ixlib=rb-0.3.5&s=6cfe9709e4c45ab8b4f875c84a2746ed&auto=format&fit=crop&w=500&q=80;Blouses;usa;BLOUSES;active
-19;Clothing;"Lehenga; Ghagra";Available (120);https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-0.3.5&s=f695afbce9bdbe2c16c7a7b3875588f2&auto=format&fit=crop&w=500&q=80;Lehenga;usa;LEHENGA;active
-20;Clothing;Ghagra;Available (120);https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-0.3.5&s=976794f0c5d7239a69cfacb3d3f86c3b&auto=format&fit=crop&w=500&q=80;Ghagra;usa;GAGRA;active
-21;Clothing;Skirts;Available (120);https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-0.3.5&s=976794f0c5d7239a69cfacb3d3f86c3b&auto=format&fit=crop&w=500&q=80;Skirts;usa;SKIRTS;active
-22;Clothing;Anarkali;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Anarkali;usa;ANARKALI;active
-23;Clothing;Kurti;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Kurti;usa;KURTI;active
-24;Clothing;Duppatta;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Duppatta;usa;DUPATTA;active
-25;Footwear;Athletic Shoes;Available (120);https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-0.3.5&s=f695afbce9bdbe2c16c7a7b3875588f2&auto=format&fit=crop&w=500&q=80;Athletic Shoes;usa;ATHLETIC-SHOES;active
-26;Footwear;Casual Shoes;Available (120);https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-0.3.5&s=976794f0c5d7239a69cfacb3d3f86c3b&auto=format&fit=crop&w=500&q=80;Casual Shoes;usa;CASUAL-SHOES;active
-27;Footwear;Sandals;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Sandals;usa;SANDALS;active
-28;Footwear;Boots;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Boots;usa;BOOTS;active
-29;Footwear;Heels;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Heels;usa;HEALS;active
-30;Footwear;Party Cheppal;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Party Cheppal;usa;PARTY-HEALS;active
-31;Jewelry;Necklaces;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Necklaces;usa;NECKLACES;active
-32;Jewelry;Necklace Sets;Available (120);https://images.unsplash.com/photo-1463820048975-a3b50e6d991d?ixlib=rb-0.3.5&s=6cfe9709e4c45ab8b4f875c84a2746ed&auto=format&fit=crop&w=500&q=80;Necklace Sets;usa;NECKSETS;active
-33;Jewelry;Earrings;Available (120);https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-0.3.5&s=f695afbce9bdbe2c16c7a7b3875588f2&auto=format&fit=crop&w=500&q=80;Earrings;usa;EARRINGS;active
-34;Jewelry;Rings;Available (120);https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-0.3.5&s=976794f0c5d7239a69cfacb3d3f86c3b&auto=format&fit=crop&w=500&q=80;Rings;usa;RINGS;active
-35;Jewelry;"Bangles; Bracelets";Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;"Bangles; Bracelets";usa;BANGLETS;active
-36;Jewelry;Other Jewelry;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Other Jewelry;usa;ANKLETS;active
-37;Accesories;Hats;Available (120);https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-0.3.5&s=f51f276113011f5dc3020416e13e5cb6&auto=format&fit=crop&w=550&q=80;Hats;usa;HATS;active
-38;Accesories;Sunglasses;Available (120);https://images.unsplash.com/photo-1463820048975-a3b50e6d991d?ixlib=rb-0.3.5&s=6cfe9709e4c45ab8b4f875c84a2746ed&auto=format&fit=crop&w=500&q=80;Sunglasses;usa;SUNGLASS;active
-39;Accesories;Socks;Available (120);https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-0.3.5&s=f695afbce9bdbe2c16c7a7b3875588f2&auto=format&fit=crop&w=500&q=80;Socks;usa;SOCKS;active
-40;Accesories;Belts;Available (120);https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-0.3.5&s=976794f0c5d7239a69cfacb3d3f86c3b&auto=format&fit=crop&w=500&q=80;Belts;usa;BELTS;active
-41;Accesories;Hair Accesories;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Hair Accesories;usa;HAIRACCESS;active
-42;Accesories;Handbags;Available (120);https://images.unsplash.com/photo-1459204195697-4de88edf3ab1?ixlib=rb-0.3.5&s=11e2623667499f18828709399500a7c1&auto=format&fit=crop&w=900&q=80;Handbags;usa;HANDBAGS;active
+id;parent;title;subTitle;imageUrl;description;country;code;status
+1;Clothing;Shirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Shirt.jpg;Tops - Shirts;usa;SHIRTS;active
+2;Clothing;Blouses;Available (120);https://naarideals.s3.amazonaws.com/categories/Blouse.jpeg;Tops - Blouses;usa;WESTERN-BLOUSES;active
+3;Clothing;T-Shirts;Available (120);https://naarideals.s3.amazonaws.com/categories/T-Shirt.png;Tops - T-Shirts;usa;TSHIRTS;active
+6;Clothing;Leggings;Available (120);https://naarideals.s3.amazonaws.com/categories/Leggings.png;Bottoms - Leggings;usa;LEGGINGS;active
+5;Clothing;Pants;Available (120);https://naarideals.s3.amazonaws.com/categories/Pants.png;Bottoms - Pants;usa;PANTS;active
+4;Clothing;Jeans;Available (120);https://naarideals.s3.amazonaws.com/categories/Jeans.jpg;Bottoms -Jeans;usa;JEANS;active
+11;Clothing;Midi;Available (120);https://naarideals.s3.amazonaws.com/categories/Midi-Dress.jpg;Dresses - Midi;usa;MIDI;active
+9;Clothing;Skirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Skirts.jpg;Bottoms - Skirts;usa;SKIRTS;active
+12;Clothing;Mini;Available (120);https://naarideals.s3.amazonaws.com/categories/Mini-Dress.png;Dresses - Mini;usa;MINI;active
+13;Clothing;Jump Suits;Available (120);https://naarideals.s3.amazonaws.com/categories/Jumpsuit.jpg;Jump Suits;usa;JUMPSTARTS;active
+14;Clothing;Jackets;Available (120);https://naarideals.s3.amazonaws.com/categories/Jacket.png;Jackets;usa;JACKETS;active
+10;Clothing;Maxi;Available (120);https://naarideals.s3.amazonaws.com/categories/Maxi-Dress.png;Dresses -Maxi;usa;MAXI;active
+23;Clothing;Kurti;Available (120);https://naarideals.s3.amazonaws.com/categories/Kurti.png;Kurti;usa;KURTI;active
+8;Clothing;Shorts;Available (120);https://naarideals.s3.amazonaws.com/categories/Shorts.jpeg;Bottoms - Shorts;usa;SHORTS;active
+15;Clothing;Night Wear;Available (120);https://naarideals.s3.amazonaws.com/categories/Nightwear.jpeg;Night Wear;usa;NIGHTWEAR;active
+16;Clothing;Inner Wear;Available (120);https://naarideals.s3.amazonaws.com/categories/Underwear.png;Inner Wear;usa;INNERWEAR;active
+7;Clothing;Joggers;Available (120);https://naarideals.s3.amazonaws.com/categories/Joggers.jpeg;Bottoms - Joggers;usa;JOGGERS;active
+22;Clothing;Anarkali;Available (120);https://naarideals.s3.amazonaws.com/categories/Anarkali.png;Anarkali;usa;ANARKALI;active
+19;Clothing;"Lehenga; Ghagra";Available (120);https://naarideals.s3.amazonaws.com/categories/Lehenga.png;Lehenga;usa;LEHENGA;active
+20;Clothing;Ghagra;Available (120);https://naarideals.s3.amazonaws.com/categories/Ghagra.jpg;Ghagra;usa;GAGRA;active
+21;Clothing;Skirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Indian-Skirt.png;Skirts;usa;SKIRTS;active
+18;Clothing;Blouses;Available (120);https://naarideals.s3.amazonaws.com/categories/Indian-Blouse.png;Blouses;usa;BLOUSES;active
+24;Clothing;Duppatta;Available (120);https://naarideals.s3.amazonaws.com/categories/Duppatta.png;Duppatta;usa;DUPATTA;active
+17;Clothing;Sarees;Available (120);https://naarideals.s3.amazonaws.com/categories/Saree.png;Sarees;usa;SAREES;active
+25;Footwear;Athletic Shoes;Available (120);https://naarideals.s3.amazonaws.com/categories/Athletic-Shoes.png;Athletic Shoes;usa;ATHLETIC-SHOES;active
+30;Footwear;Party Cheppal;Available (120);https://naarideals.s3.amazonaws.com/categories/Indian-Shoes.png;Party Cheppal;usa;PARTY-HEALS;active
+27;Footwear;Sandals;Available (120);https://naarideals.s3.amazonaws.com/categories/Sandals.png;Sandals;usa;SANDALS;active
+26;Footwear;Casual Shoes;Available (120);https://naarideals.s3.amazonaws.com/categories/Casual-Shoes.png;Casual Shoes;usa;CASUAL-SHOES;active
+28;Footwear;Boots;Available (120);https://naarideals.s3.amazonaws.com/categories/Boots.png;Boots;usa;BOOTS;active
+29;Footwear;Heels;Available (120);https://naarideals.s3.amazonaws.com/categories/Heels.png;Heels;usa;HEALS;active
+31;Jewelry;Necklaces;Available (120);https://naarideals.s3.amazonaws.com/categories/Necklace.jpeg;Necklaces;usa;NECKLACES;active
+36;Jewelry;Other Jewelry;Available (120);https://naarideals.s3.amazonaws.com/categories/Other-Jewelry.png;Other Jewelry;usa;ANKLETS;active
+34;Jewelry;Rings;Available (120);https://naarideals.s3.amazonaws.com/categories/Rings.png;Rings;usa;RINGS;active
+33;Jewelry;Earrings;Available (120);https://naarideals.s3.amazonaws.com/categories/Earrings.png;Earrings;usa;EARRINGS;active
+35;Jewelry;"Bangles; Bracelets";Available (120);https://naarideals.s3.amazonaws.com/categories/Bangles.png;"Bangles; Bracelets";usa;BANGLETS;active
+32;Jewelry;Necklace Sets;Available (120);https://naarideals.s3.amazonaws.com/categories/Necklace-Set.jpeg;Necklace Sets;usa;NECKSETS;active
+37;Accesories;Hats;Available (120);https://naarideals.s3.amazonaws.com/categories/Hats.png;Hats;usa;HATS;active
+38;Accesories;Sunglasses;Available (120);https://naarideals.s3.amazonaws.com/categories/Sunglasses.png;Sunglasses;usa;SUNGLASS;active
+39;Accesories;Socks;Available (120);https://naarideals.s3.amazonaws.com/categories/Socks.png;Socks;usa;SOCKS;active
+40;Accesories;Belts;Available (120);https://naarideals.s3.amazonaws.com/categories/Belts.png;Belts;usa;BELTS;active
+41;Accesories;Hair Accesories;Available (120);https://naarideals.s3.amazonaws.com/categories/Hair-Accesories.png;Hair Accesories;usa;HAIRACCESS;active
+42;Accesories;Handbags;Available (120);https://naarideals.s3.amazonaws.com/categories/Handbags.png;Handbags;usa;HANDBAGS;active
