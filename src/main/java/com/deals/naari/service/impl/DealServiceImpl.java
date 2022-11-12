@@ -99,6 +99,9 @@ public class DealServiceImpl implements DealService {
                 if (deal.getMerchant() != null) {
                     existingDeal.setMerchant(deal.getMerchant());
                 }
+                if (deal.getCategory() != null) {
+                    existingDeal.setCategory(deal.getCategory());
+                }
                 if (deal.getTags() != null) {
                     existingDeal.setTags(deal.getTags());
                 }

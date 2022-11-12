@@ -28,11 +28,9 @@ public class Deal implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Lob
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Lob
     @Column(name = "deal_url")
     private String dealUrl;
 
@@ -77,6 +75,9 @@ public class Deal implements Serializable {
 
     @Column(name = "merchant")
     private String merchant;
+
+    @Column(name = "category")
+    private String category;
 
     @Column(name = "tags")
     private String tags;
@@ -336,6 +337,19 @@ public class Deal implements Serializable {
         this.merchant = merchant;
     }
 
+    public String getCategory() {
+        return this.category;
+    }
+
+    public Deal category(String category) {
+        this.setCategory(category);
+        return this;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getTags() {
         return this.tags;
     }
@@ -417,6 +431,7 @@ public class Deal implements Serializable {
             ", city='" + getCity() + "'" +
             ", pinCode='" + getPinCode() + "'" +
             ", merchant='" + getMerchant() + "'" +
+            ", category='" + getCategory() + "'" +
             ", tags='" + getTags() + "'" +
             ", brand='" + getBrand() + "'" +
             ", expired='" + getExpired() + "'" +

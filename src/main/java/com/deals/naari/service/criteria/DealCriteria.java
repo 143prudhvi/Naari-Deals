@@ -25,6 +25,10 @@ public class DealCriteria implements Serializable, Criteria {
 
     private StringFilter title;
 
+    private StringFilter imageUrl;
+
+    private StringFilter dealUrl;
+
     private StringFilter postedBy;
 
     private StringFilter postedDate;
@@ -53,6 +57,8 @@ public class DealCriteria implements Serializable, Criteria {
 
     private StringFilter merchant;
 
+    private StringFilter category;
+
     private StringFilter tags;
 
     private StringFilter brand;
@@ -66,6 +72,8 @@ public class DealCriteria implements Serializable, Criteria {
     public DealCriteria(DealCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.title = other.title == null ? null : other.title.copy();
+        this.imageUrl = other.imageUrl == null ? null : other.imageUrl.copy();
+        this.dealUrl = other.dealUrl == null ? null : other.dealUrl.copy();
         this.postedBy = other.postedBy == null ? null : other.postedBy.copy();
         this.postedDate = other.postedDate == null ? null : other.postedDate.copy();
         this.startDate = other.startDate == null ? null : other.startDate.copy();
@@ -80,6 +88,7 @@ public class DealCriteria implements Serializable, Criteria {
         this.city = other.city == null ? null : other.city.copy();
         this.pinCode = other.pinCode == null ? null : other.pinCode.copy();
         this.merchant = other.merchant == null ? null : other.merchant.copy();
+        this.category = other.category == null ? null : other.category.copy();
         this.tags = other.tags == null ? null : other.tags.copy();
         this.brand = other.brand == null ? null : other.brand.copy();
         this.expired = other.expired == null ? null : other.expired.copy();
@@ -119,6 +128,36 @@ public class DealCriteria implements Serializable, Criteria {
 
     public void setTitle(StringFilter title) {
         this.title = title;
+    }
+
+    public StringFilter getImageUrl() {
+        return imageUrl;
+    }
+
+    public StringFilter imageUrl() {
+        if (imageUrl == null) {
+            imageUrl = new StringFilter();
+        }
+        return imageUrl;
+    }
+
+    public void setImageUrl(StringFilter imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public StringFilter getDealUrl() {
+        return dealUrl;
+    }
+
+    public StringFilter dealUrl() {
+        if (dealUrl == null) {
+            dealUrl = new StringFilter();
+        }
+        return dealUrl;
+    }
+
+    public void setDealUrl(StringFilter dealUrl) {
+        this.dealUrl = dealUrl;
     }
 
     public StringFilter getPostedBy() {
@@ -331,6 +370,21 @@ public class DealCriteria implements Serializable, Criteria {
         this.merchant = merchant;
     }
 
+    public StringFilter getCategory() {
+        return category;
+    }
+
+    public StringFilter category() {
+        if (category == null) {
+            category = new StringFilter();
+        }
+        return category;
+    }
+
+    public void setCategory(StringFilter category) {
+        this.category = category;
+    }
+
     public StringFilter getTags() {
         return tags;
     }
@@ -396,6 +450,8 @@ public class DealCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(title, that.title) &&
+            Objects.equals(imageUrl, that.imageUrl) &&
+            Objects.equals(dealUrl, that.dealUrl) &&
             Objects.equals(postedBy, that.postedBy) &&
             Objects.equals(postedDate, that.postedDate) &&
             Objects.equals(startDate, that.startDate) &&
@@ -410,6 +466,7 @@ public class DealCriteria implements Serializable, Criteria {
             Objects.equals(city, that.city) &&
             Objects.equals(pinCode, that.pinCode) &&
             Objects.equals(merchant, that.merchant) &&
+            Objects.equals(category, that.category) &&
             Objects.equals(tags, that.tags) &&
             Objects.equals(brand, that.brand) &&
             Objects.equals(expired, that.expired) &&
@@ -422,6 +479,8 @@ public class DealCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             title,
+            imageUrl,
+            dealUrl,
             postedBy,
             postedDate,
             startDate,
@@ -436,6 +495,7 @@ public class DealCriteria implements Serializable, Criteria {
             city,
             pinCode,
             merchant,
+            category,
             tags,
             brand,
             expired,
@@ -449,6 +509,8 @@ public class DealCriteria implements Serializable, Criteria {
         return "DealCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
             (title != null ? "title=" + title + ", " : "") +
+            (imageUrl != null ? "imageUrl=" + imageUrl + ", " : "") +
+            (dealUrl != null ? "dealUrl=" + dealUrl + ", " : "") +
             (postedBy != null ? "postedBy=" + postedBy + ", " : "") +
             (postedDate != null ? "postedDate=" + postedDate + ", " : "") +
             (startDate != null ? "startDate=" + startDate + ", " : "") +
@@ -463,6 +525,7 @@ public class DealCriteria implements Serializable, Criteria {
             (city != null ? "city=" + city + ", " : "") +
             (pinCode != null ? "pinCode=" + pinCode + ", " : "") +
             (merchant != null ? "merchant=" + merchant + ", " : "") +
+            (category != null ? "category=" + category + ", " : "") +
             (tags != null ? "tags=" + tags + ", " : "") +
             (brand != null ? "brand=" + brand + ", " : "") +
             (expired != null ? "expired=" + expired + ", " : "") +

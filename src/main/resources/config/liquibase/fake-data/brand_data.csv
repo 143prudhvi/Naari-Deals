@@ -1,4 +1,4 @@
-id;title;subTitle;code;status;country;imageUrl
+id;title;sub_title;code;status;country;image_url
 1;Amazon;Available (100);AMAZON;Active;usa;assets/img/stores/branding_img_1.png
 2;PURE;Available (100);PURE;Active;usa;assets/img/stores/branding_img_3.png
 3;ART Studio;Available (100);ART_STUDIO;Active;usa;assets/img/stores/branding_img_4.png

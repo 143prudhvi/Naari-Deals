@@ -18,6 +18,7 @@ export interface IDeal {
   city?: string | null;
   pinCode?: string | null;
   merchant?: string | null;
+  category?: string | null;
   tags?: string | null;
   brand?: string | null;
   expired?: boolean | null;

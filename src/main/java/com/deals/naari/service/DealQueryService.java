@@ -88,6 +88,12 @@ public class DealQueryService extends QueryService<Deal> {
             if (criteria.getTitle() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTitle(), Deal_.title));
             }
+            if (criteria.getImageUrl() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getImageUrl(), Deal_.imageUrl));
+            }
+            if (criteria.getDealUrl() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getDealUrl(), Deal_.dealUrl));
+            }
             if (criteria.getPostedBy() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getPostedBy(), Deal_.postedBy));
             }
@@ -129,6 +135,9 @@ public class DealQueryService extends QueryService<Deal> {
             }
             if (criteria.getMerchant() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getMerchant(), Deal_.merchant));
+            }
+            if (criteria.getCategory() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getCategory(), Deal_.category));
             }
             if (criteria.getTags() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTags(), Deal_.tags));

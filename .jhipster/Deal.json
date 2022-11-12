@@ -16,13 +16,11 @@
     },
     {
       "fieldName": "imageUrl",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldType": "String"
     },
     {
       "fieldName": "dealUrl",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldType": "String"
     },
     {
       "fieldName": "postedBy",
@@ -78,6 +76,10 @@
     },
     {
       "fieldName": "merchant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
       "fieldType": "String"
     },
     {

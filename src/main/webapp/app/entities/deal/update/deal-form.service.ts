@@ -36,6 +36,7 @@ type DealFormGroupContent = {
   city: FormControl<IDeal['city']>;
   pinCode: FormControl<IDeal['pinCode']>;
   merchant: FormControl<IDeal['merchant']>;
+  category: FormControl<IDeal['category']>;
   tags: FormControl<IDeal['tags']>;
   brand: FormControl<IDeal['brand']>;
   expired: FormControl<IDeal['expired']>;
@@ -76,6 +77,7 @@ export class DealFormService {
       city: new FormControl(dealRawValue.city),
       pinCode: new FormControl(dealRawValue.pinCode),
       merchant: new FormControl(dealRawValue.merchant),
+      category: new FormControl(dealRawValue.category),
       tags: new FormControl(dealRawValue.tags),
       brand: new FormControl(dealRawValue.brand),
       expired: new FormControl(dealRawValue.expired),

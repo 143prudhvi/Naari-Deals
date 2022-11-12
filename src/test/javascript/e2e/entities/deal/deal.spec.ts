@@ -61,6 +61,7 @@ describe('Deal e2e test', () => {
       dealUpdatePage.setCityInput('city'),
       dealUpdatePage.setPinCodeInput('pinCode'),
       dealUpdatePage.setMerchantInput('merchant'),
+      dealUpdatePage.setCategoryInput('category'),
       dealUpdatePage.setTagsInput('tags'),
       dealUpdatePage.setBrandInput('brand'),
       dealUpdatePage.getExpiredInput().click(),

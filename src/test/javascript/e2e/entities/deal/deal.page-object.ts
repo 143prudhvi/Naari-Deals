@@ -48,6 +48,7 @@ export class DealUpdatePage {
   cityInput = element(by.id('field_city'));
   pinCodeInput = element(by.id('field_pinCode'));
   merchantInput = element(by.id('field_merchant'));
+  categoryInput = element(by.id('field_category'));
   tagsInput = element(by.id('field_tags'));
   brandInput = element(by.id('field_brand'));
   expiredInput = element(by.id('field_expired'));
@@ -202,6 +203,14 @@ export class DealUpdatePage {
 
   async getMerchantInput(): Promise<string> {
     return await this.merchantInput.getAttribute('value');
+  }
+
+  async setCategoryInput(category: string): Promise<void> {
+    await this.categoryInput.sendKeys(category);
+  }
+
+  async getCategoryInput(): Promise<string> {
+    return await this.categoryInput.getAttribute('value');
   }
 
   async setTagsInput(tags: string): Promise<void> {

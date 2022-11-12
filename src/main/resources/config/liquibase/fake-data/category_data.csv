@@ -1,4 +1,4 @@
-id;parent;title;subTitle;imageUrl;description;country;code;status
+id;parent;title;sub-title;image_url;description;country;code;status
 1;Clothing;Shirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Shirt.jpg;Tops - Shirts;usa;SHIRTS;active
 2;Clothing;Blouses;Available (120);https://naarideals.s3.amazonaws.com/categories/Blouse.jpeg;Tops - Blouses;usa;WESTERN-BLOUSES;active
 3;Clothing;T-Shirts;Available (120);https://naarideals.s3.amazonaws.com/categories/T-Shirt.png;Tops - T-Shirts;usa;TSHIRTS;active

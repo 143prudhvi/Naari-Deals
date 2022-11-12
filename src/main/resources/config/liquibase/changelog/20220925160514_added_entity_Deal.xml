@@ -20,10 +20,10 @@
             <column name="description" type="${clobType}">
                 <constraints nullable="true" />
             </column>
-            <column name="image_url" type="${clobType}">
+            <column name="image_url" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="deal_url" type="${clobType}">
+            <column name="deal_url" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="posted_by" type="varchar(255)">
@@ -68,6 +68,9 @@
             <column name="merchant" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="category" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="tags" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -100,8 +103,8 @@
             <column name="id" type="numeric"/>
             <column name="title" type="string"/>
             <column name="description" type="clob"/>
-            <column name="image_url" type="clob"/>
-            <column name="deal_url" type="clob"/>
+            <column name="image_url" type="string"/>
+            <column name="deal_url" type="string"/>
             <column name="posted_by" type="string"/>
             <column name="posted_date" type="string"/>
             <column name="start_date" type="string"/>
@@ -116,6 +119,7 @@
             <column name="city" type="string"/>
             <column name="pin_code" type="string"/>
             <column name="merchant" type="string"/>
+            <column name="category" type="string"/>
             <column name="tags" type="string"/>
             <column name="brand" type="string"/>
             <column name="expired" type="boolean"/>

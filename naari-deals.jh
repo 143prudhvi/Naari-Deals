@@ -38,8 +38,8 @@ entity BioProfile {
 entity Deal {
       title String
       description TextBlob
-      imageUrl TextBlob
-      dealUrl TextBlob
+      imageUrl String
+      dealUrl String
       postedBy String
       postedDate String
       startDate String
@@ -54,6 +54,7 @@ entity Deal {
       city String
       pinCode String
       merchant String
+      category String
       tags String
       brand String
       expired Boolean
