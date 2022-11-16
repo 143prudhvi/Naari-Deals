@@ -87,6 +87,7 @@ public class SecurityConfiguration {
             .antMatchers("/api/naari-login").permitAll()
             .antMatchers("/api/naari-deals").permitAll()
             .antMatchers("/api/deals").permitAll()
+            .antMatchers("/api/deals/*").permitAll()
             .antMatchers("/api/slides").permitAll()
             .antMatchers("/api/brands").permitAll()
             .antMatchers("/api/deal-types").permitAll()
