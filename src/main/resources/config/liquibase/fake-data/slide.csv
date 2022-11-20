@@ -1,6 +1,6 @@
-id;title;sub_title;status;country;start_date;end_date;image_url;deal_url
-1;The biggest sale;Special for today;active;usa;10/24/2022;10/31/2022;assets/images/carousel/banner1.jpg;https://www.amazon.com/Newffr-Womens-Casual-Blazer-Pockets/dp/B09CZ4HPCL?ref_=Oct_DLandingS_D_1985b3f7_63&smid=A114Y47Z8F8GXJ
-2;Summer collection;New Arrivals On Sale;active;usa;10/24/2022;10/31/2022;assets/images/carousel/banner2.jpg;https://www.amazon.com/Newffr-Womens-Casual-Blazer-Pockets/dp/B09CZ4HPCL?ref_=Oct_DLandingS_D_1985b3f7_63&smid=A114Y47Z8F8GXJ
-3;The biggest sale;Special for today;active;usa;10/24/2022;10/31/2022;assets/images/carousel/banner3.jpg;https://www.amazon.com/Newffr-Womens-Casual-Blazer-Pockets/dp/B09CZ4HPCL?ref_=Oct_DLandingS_D_1985b3f7_63&smid=A114Y47Z8F8GXJ
-4;Summer collection;New Arrivals On Sale;active;usa;10/24/2022;10/31/2022;assets/images/carousel/banner4.jpg;https://www.amazon.com/Newffr-Womens-Casual-Blazer-Pockets/dp/B09CZ4HPCL?ref_=Oct_DLandingS_D_1985b3f7_63&smid=A114Y47Z8F8GXJ
-5;The biggest sale;Special for today;active;usa;10/24/2022;10/31/2022;assets/images/carousel/banner5.jpg;https://www.amazon.com/Newffr-Womens-Casual-Blazer-Pockets/dp/B09CZ4HPCL?ref_=Oct_DLandingS_D_1985b3f7_63&smid=A114Y47Z8F8GXJ
+id;title;sub_title;status;country;start_date;end_date;image_url;merchant_icon;deal_url;tags
+1;AMAZON;Black Friday Deal's;active;usa;11/15/2022;11/26/2022;https://naarideals.s3.amazonaws.com/home/amazon.png;https://naarideals.s3.amazonaws.com/merchant/amazon.png;../fake-data/blob/hipster.txt;HOME
+2;WALMART;Black Friday Deal's;active;usa;11/15/2022;11/26/2022;https://naarideals.s3.amazonaws.com/home/walmart.png;https://naarideals.s3.amazonaws.com/merchant/walmart.png;../fake-data/blob/hipster.txt;HOME
+3;AZA FASHIONS;Black Friday Deal's;active;usa;11/15/2022;11/26/2022;https://naarideals.s3.amazonaws.com/home/aza.JPG;https://naarideals.s3.amazonaws.com/merchant/aza.png;../fake-data/blob/hipster.txt;HOME
+4;JC PENNY;Black Friday Deal's;active;usa;11/15/2022;11/26/2022;https://naarideals.s3.amazonaws.com/home/jc_penny.JPG;https://naarideals.s3.amazonaws.com/merchant/jcpenny.png;../fake-data/blob/hipster.txt;HOME
+5;MACY;Black Friday Deal's;active;usa;11/15/2022;11/26/2022;https://naarideals.s3.amazonaws.com/home/macy.JPG;https://naarideals.s3.amazonaws.com/merchant/macy.png;../fake-data/blob/hipster.txt;HOME

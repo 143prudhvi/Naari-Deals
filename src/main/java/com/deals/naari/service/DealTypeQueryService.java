@@ -106,6 +106,9 @@ public class DealTypeQueryService extends QueryService<DealType> {
             if (criteria.getStatus() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getStatus(), DealType_.status));
             }
+            if (criteria.getDisplay() != null) {
+                specification = specification.and(buildSpecification(criteria.getDisplay(), DealType_.display));
+            }
         }
         return specification;
     }

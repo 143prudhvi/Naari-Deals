@@ -1,9 +1,9 @@
-id;title;sub_title;code;status;country;image_url
-1;Amazon;Available (100);AMAZON;Active;usa;assets/img/stores/branding_img_1.png
-2;PURE;Available (100);PURE;Active;usa;assets/img/stores/branding_img_3.png
-3;ART Studio;Available (100);ART_STUDIO;Active;usa;assets/img/stores/branding_img_4.png
-4;Hand Crafted;Available (100);HAND_CRAFT;Active;usa;assets/img/stores/branding_img_5.png
-5;Hand Made;Available (100);HAND_MADE;Active;usa;assets/img/stores/branding_img_6.png
-6;Amazon;Available (100);AMAZON;Active;usa;assets/img/stores/branding_img_1.png
-7;PURE;Available (100);PURE;Active;usa;assets/img/stores/branding_img_3.png
-8;ART Studio;Available (100);ART_STUDIO;Active;usa;assets/img/stores/branding_img_4.png
+id;title;sub_title;code;status;country;image_url;site_url
+1;Amazon;Available (100);AMAZON;Active;usa;assets/img/stores/branding_img_1.png;assets/img/stores/branding_img_1.png
+2;PURE;Available (100);PURE;Active;usa;assets/img/stores/branding_img_3.png;assets/img/stores/branding_img_3.png
+3;ART Studio;Available (100);ART_STUDIO;Active;usa;assets/img/stores/branding_img_4.png;assets/img/stores/branding_img_4.png
+4;Hand Crafted;Available (100);HAND_CRAFT;Active;usa;assets/img/stores/branding_img_5.png;assets/img/stores/branding_img_5.png
+5;Hand Made;Available (100);HAND_MADE;Active;usa;assets/img/stores/branding_img_6.png;assets/img/stores/branding_img_6.png
+6;Amazon;Available (100);AMAZON;Active;usa;assets/img/stores/branding_img_1.png;assets/img/stores/branding_img_1.png
+7;PURE;Available (100);PURE;Active;usa;assets/img/stores/branding_img_3.png;assets/img/stores/branding_img_3.png
+8;ART Studio;Available (100);ART_STUDIO;Active;usa;assets/img/stores/branding_img_4.png;assets/img/stores/branding_img_4.png

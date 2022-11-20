@@ -25,10 +25,6 @@ public class DealCriteria implements Serializable, Criteria {
 
     private StringFilter title;
 
-    private StringFilter imageUrl;
-
-    private StringFilter dealUrl;
-
     private StringFilter postedBy;
 
     private StringFilter postedDate;
@@ -72,8 +68,6 @@ public class DealCriteria implements Serializable, Criteria {
     public DealCriteria(DealCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.title = other.title == null ? null : other.title.copy();
-        this.imageUrl = other.imageUrl == null ? null : other.imageUrl.copy();
-        this.dealUrl = other.dealUrl == null ? null : other.dealUrl.copy();
         this.postedBy = other.postedBy == null ? null : other.postedBy.copy();
         this.postedDate = other.postedDate == null ? null : other.postedDate.copy();
         this.startDate = other.startDate == null ? null : other.startDate.copy();
@@ -128,36 +122,6 @@ public class DealCriteria implements Serializable, Criteria {
 
     public void setTitle(StringFilter title) {
         this.title = title;
-    }
-
-    public StringFilter getImageUrl() {
-        return imageUrl;
-    }
-
-    public StringFilter imageUrl() {
-        if (imageUrl == null) {
-            imageUrl = new StringFilter();
-        }
-        return imageUrl;
-    }
-
-    public void setImageUrl(StringFilter imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public StringFilter getDealUrl() {
-        return dealUrl;
-    }
-
-    public StringFilter dealUrl() {
-        if (dealUrl == null) {
-            dealUrl = new StringFilter();
-        }
-        return dealUrl;
-    }
-
-    public void setDealUrl(StringFilter dealUrl) {
-        this.dealUrl = dealUrl;
     }
 
     public StringFilter getPostedBy() {
@@ -450,8 +414,6 @@ public class DealCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(title, that.title) &&
-            Objects.equals(imageUrl, that.imageUrl) &&
-            Objects.equals(dealUrl, that.dealUrl) &&
             Objects.equals(postedBy, that.postedBy) &&
             Objects.equals(postedDate, that.postedDate) &&
             Objects.equals(startDate, that.startDate) &&
@@ -479,8 +441,6 @@ public class DealCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             title,
-            imageUrl,
-            dealUrl,
             postedBy,
             postedDate,
             startDate,
@@ -509,8 +469,6 @@ public class DealCriteria implements Serializable, Criteria {
         return "DealCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
             (title != null ? "title=" + title + ", " : "") +
-            (imageUrl != null ? "imageUrl=" + imageUrl + ", " : "") +
-            (dealUrl != null ? "dealUrl=" + dealUrl + ", " : "") +
             (postedBy != null ? "postedBy=" + postedBy + ", " : "") +
             (postedDate != null ? "postedDate=" + postedDate + ", " : "") +
             (startDate != null ? "startDate=" + startDate + ", " : "") +

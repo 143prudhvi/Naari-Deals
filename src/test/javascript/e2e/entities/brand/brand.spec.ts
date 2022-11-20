@@ -49,6 +49,7 @@ describe('Brand e2e test', () => {
       brandUpdatePage.setStatusInput('status'),
       brandUpdatePage.setCountryInput('country'),
       brandUpdatePage.setImageUrlInput('imageUrl'),
+      brandUpdatePage.setSiteUrlInput('siteUrl'),
     ]);
 
     await brandUpdatePage.save();

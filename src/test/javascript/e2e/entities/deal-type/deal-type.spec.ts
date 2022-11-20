@@ -50,6 +50,7 @@ describe('DealType e2e test', () => {
       dealTypeUpdatePage.setCountryInput('country'),
       dealTypeUpdatePage.setCodeInput('code'),
       dealTypeUpdatePage.setStatusInput('status'),
+      dealTypeUpdatePage.getDisplayInput().click(),
     ]);
 
     await dealTypeUpdatePage.save();

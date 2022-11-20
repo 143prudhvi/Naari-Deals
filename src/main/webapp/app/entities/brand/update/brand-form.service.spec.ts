@@ -26,6 +26,7 @@ describe('Brand Form Service', () => {
             status: expect.any(Object),
             country: expect.any(Object),
             imageUrl: expect.any(Object),
+            siteUrl: expect.any(Object),
           })
         );
       });
@@ -42,6 +43,7 @@ describe('Brand Form Service', () => {
             status: expect.any(Object),
             country: expect.any(Object),
             imageUrl: expect.any(Object),
+            siteUrl: expect.any(Object),
           })
         );
       });

@@ -36,6 +36,7 @@ export class BrandUpdatePage {
   statusInput = element(by.id('field_status'));
   countryInput = element(by.id('field_country'));
   imageUrlInput = element(by.id('field_imageUrl'));
+  siteUrlInput = element(by.id('field_siteUrl'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -95,6 +96,14 @@ export class BrandUpdatePage {
 
   async getImageUrlInput(): Promise<string> {
     return await this.imageUrlInput.getAttribute('value');
+  }
+
+  async setSiteUrlInput(siteUrl: string): Promise<void> {
+    await this.siteUrlInput.sendKeys(siteUrl);
+  }
+
+  async getSiteUrlInput(): Promise<string> {
+    return await this.siteUrlInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

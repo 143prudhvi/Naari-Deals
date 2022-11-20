@@ -5,23 +5,31 @@ export const sampleWithRequiredData: IMerchant = {
 };
 
 export const sampleWithPartialData: IMerchant = {
-  id: 29592,
-  country: 'Senegal',
-  storeIcon: 'Market Legacy Cambridgeshire',
-  type: 'Hawaii Customer Sausages',
-  location: 'Operations Branch Shoes',
-  siteUrl: '../fake-data/blob/hipster.txt',
+  id: 43436,
+  title: 'back Infrastructure Hawaii',
+  address: 'Cape Factors Operations',
+  phone: '(240) 725-5005 x679',
+  country: 'Taiwan',
+  city: 'Considinemouth',
+  type: 'Bedfordshire Tactics Maine',
+  location: 'Congolese program Central',
+  siteUrl: 'navigating Buckinghamshire',
 };
 
 export const sampleWithFullData: IMerchant = {
-  id: 57040,
-  name: 'Ergonomic Pound',
-  country: 'Taiwan',
-  city: 'Considinemouth',
-  storeIcon: 'Bedfordshire Tactics Maine',
-  type: 'Congolese program Central',
-  location: 'navigating Buckinghamshire',
-  siteUrl: '../fake-data/blob/hipster.txt',
+  id: 60904,
+  code: 'Dominica',
+  title: 'withdrawal Islands Account',
+  subTitle: 'lime background',
+  address: 'payment',
+  phone: '1-355-734-0052 x8712',
+  country: 'Serbia',
+  city: 'MacGyverview',
+  imageUrl: 'monitoring port Account',
+  type: 'dot-com',
+  location: 'overriding Investment',
+  siteUrl: 'Rubber HDD deploy',
+  status: 'edge',
 };
 
 export const sampleWithNewData: NewMerchant = {

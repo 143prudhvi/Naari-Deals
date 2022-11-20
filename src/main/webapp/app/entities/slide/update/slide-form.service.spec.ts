@@ -27,6 +27,7 @@ describe('Slide Form Service', () => {
             startDate: expect.any(Object),
             endDate: expect.any(Object),
             imageUrl: expect.any(Object),
+            merchantIcon: expect.any(Object),
             dealUrl: expect.any(Object),
             tags: expect.any(Object),
           })
@@ -46,6 +47,7 @@ describe('Slide Form Service', () => {
             startDate: expect.any(Object),
             endDate: expect.any(Object),
             imageUrl: expect.any(Object),
+            merchantIcon: expect.any(Object),
             dealUrl: expect.any(Object),
             tags: expect.any(Object),
           })

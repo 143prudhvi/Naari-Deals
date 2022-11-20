@@ -24,6 +24,7 @@ type BrandFormGroupContent = {
   status: FormControl<IBrand['status']>;
   country: FormControl<IBrand['country']>;
   imageUrl: FormControl<IBrand['imageUrl']>;
+  siteUrl: FormControl<IBrand['siteUrl']>;
 };
 
 export type BrandFormGroup = FormGroup<BrandFormGroupContent>;
@@ -49,6 +50,7 @@ export class BrandFormService {
       status: new FormControl(brandRawValue.status),
       country: new FormControl(brandRawValue.country),
       imageUrl: new FormControl(brandRawValue.imageUrl),
+      siteUrl: new FormControl(brandRawValue.siteUrl),
     });
   }
 

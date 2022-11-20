@@ -42,6 +42,9 @@ public class DealType implements Serializable {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "display")
+    private Boolean display;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -148,6 +151,19 @@ public class DealType implements Serializable {
         this.status = status;
     }
 
+    public Boolean getDisplay() {
+        return this.display;
+    }
+
+    public DealType display(Boolean display) {
+        this.setDisplay(display);
+        return this;
+    }
+
+    public void setDisplay(Boolean display) {
+        this.display = display;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -179,6 +195,7 @@ public class DealType implements Serializable {
             ", country='" + getCountry() + "'" +
             ", code='" + getCode() + "'" +
             ", status='" + getStatus() + "'" +
+            ", display='" + getDisplay() + "'" +
             "}";
     }
 }

@@ -28,9 +28,11 @@ public class Deal implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Lob
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Lob
     @Column(name = "deal_url")
     private String dealUrl;
 

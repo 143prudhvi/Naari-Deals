@@ -42,6 +42,10 @@ public class Slide implements Serializable {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "merchant_icon")
+    private String merchantIcon;
+
+    @Lob
     @Column(name = "deal_url")
     private String dealUrl;
 
@@ -154,6 +158,19 @@ public class Slide implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    public String getMerchantIcon() {
+        return this.merchantIcon;
+    }
+
+    public Slide merchantIcon(String merchantIcon) {
+        this.setMerchantIcon(merchantIcon);
+        return this;
+    }
+
+    public void setMerchantIcon(String merchantIcon) {
+        this.merchantIcon = merchantIcon;
+    }
+
     public String getDealUrl() {
         return this.dealUrl;
     }
@@ -211,6 +228,7 @@ public class Slide implements Serializable {
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +
+            ", merchantIcon='" + getMerchantIcon() + "'" +
             ", dealUrl='" + getDealUrl() + "'" +
             ", tags='" + getTags() + "'" +
             "}";

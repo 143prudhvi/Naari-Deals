@@ -103,6 +103,9 @@ public class BrandQueryService extends QueryService<Brand> {
             if (criteria.getImageUrl() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getImageUrl(), Brand_.imageUrl));
             }
+            if (criteria.getSiteUrl() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getSiteUrl(), Brand_.siteUrl));
+            }
         }
         return specification;
     }

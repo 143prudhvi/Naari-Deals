@@ -6,7 +6,23 @@
   "entityTableName": "merchant",
   "fields": [
     {
-      "fieldName": "name",
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
       "fieldType": "String"
     },
     {
@@ -18,7 +34,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "storeIcon",
+      "fieldName": "imageUrl",
       "fieldType": "String"
     },
     {
@@ -31,8 +47,11 @@
     },
     {
       "fieldName": "siteUrl",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

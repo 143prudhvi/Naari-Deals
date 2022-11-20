@@ -48,6 +48,9 @@ class BrandResourceIT {
     private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
     private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SITE_URL = "AAAAAAAAAA";
+    private static final String UPDATED_SITE_URL = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/brands";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -78,7 +81,8 @@ class BrandResourceIT {
             .code(DEFAULT_CODE)
             .status(DEFAULT_STATUS)
             .country(DEFAULT_COUNTRY)
-            .imageUrl(DEFAULT_IMAGE_URL);
+            .imageUrl(DEFAULT_IMAGE_URL)
+            .siteUrl(DEFAULT_SITE_URL);
         return brand;
     }
 
@@ -95,7 +99,8 @@ class BrandResourceIT {
             .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
-            .imageUrl(UPDATED_IMAGE_URL);
+            .imageUrl(UPDATED_IMAGE_URL)
+            .siteUrl(UPDATED_SITE_URL);
         return brand;
     }
 
@@ -123,6 +128,7 @@ class BrandResourceIT {
         assertThat(testBrand.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testBrand.getSiteUrl()).isEqualTo(DEFAULT_SITE_URL);
     }
 
     @Test
@@ -160,7 +166,8 @@ class BrandResourceIT {
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)));
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
+            .andExpect(jsonPath("$.[*].siteUrl").value(hasItem(DEFAULT_SITE_URL)));
     }
 
     @Test
@@ -180,7 +187,8 @@ class BrandResourceIT {
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL));
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
+            .andExpect(jsonPath("$.siteUrl").value(DEFAULT_SITE_URL));
     }
 
     @Test
@@ -591,6 +599,71 @@ class BrandResourceIT {
         defaultBrandShouldBeFound("imageUrl.doesNotContain=" + UPDATED_IMAGE_URL);
     }
 
+    @Test
+    @Transactional
+    void getAllBrandsBySiteUrlIsEqualToSomething() throws Exception {
+        // Initialize the database
+        brandRepository.saveAndFlush(brand);
+
+        // Get all the brandList where siteUrl equals to DEFAULT_SITE_URL
+        defaultBrandShouldBeFound("siteUrl.equals=" + DEFAULT_SITE_URL);
+
+        // Get all the brandList where siteUrl equals to UPDATED_SITE_URL
+        defaultBrandShouldNotBeFound("siteUrl.equals=" + UPDATED_SITE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllBrandsBySiteUrlIsInShouldWork() throws Exception {
+        // Initialize the database
+        brandRepository.saveAndFlush(brand);
+
+        // Get all the brandList where siteUrl in DEFAULT_SITE_URL or UPDATED_SITE_URL
+        defaultBrandShouldBeFound("siteUrl.in=" + DEFAULT_SITE_URL + "," + UPDATED_SITE_URL);
+
+        // Get all the brandList where siteUrl equals to UPDATED_SITE_URL
+        defaultBrandShouldNotBeFound("siteUrl.in=" + UPDATED_SITE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllBrandsBySiteUrlIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        brandRepository.saveAndFlush(brand);
+
+        // Get all the brandList where siteUrl is not null
+        defaultBrandShouldBeFound("siteUrl.specified=true");
+
+        // Get all the brandList where siteUrl is null
+        defaultBrandShouldNotBeFound("siteUrl.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllBrandsBySiteUrlContainsSomething() throws Exception {
+        // Initialize the database
+        brandRepository.saveAndFlush(brand);
+
+        // Get all the brandList where siteUrl contains DEFAULT_SITE_URL
+        defaultBrandShouldBeFound("siteUrl.contains=" + DEFAULT_SITE_URL);
+
+        // Get all the brandList where siteUrl contains UPDATED_SITE_URL
+        defaultBrandShouldNotBeFound("siteUrl.contains=" + UPDATED_SITE_URL);
+    }
+
+    @Test
+    @Transactional
+    void getAllBrandsBySiteUrlNotContainsSomething() throws Exception {
+        // Initialize the database
+        brandRepository.saveAndFlush(brand);
+
+        // Get all the brandList where siteUrl does not contain DEFAULT_SITE_URL
+        defaultBrandShouldNotBeFound("siteUrl.doesNotContain=" + DEFAULT_SITE_URL);
+
+        // Get all the brandList where siteUrl does not contain UPDATED_SITE_URL
+        defaultBrandShouldBeFound("siteUrl.doesNotContain=" + UPDATED_SITE_URL);
+    }
+
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -605,7 +678,8 @@ class BrandResourceIT {
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)));
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
+            .andExpect(jsonPath("$.[*].siteUrl").value(hasItem(DEFAULT_SITE_URL)));
 
         // Check, that the count call also returns 1
         restBrandMockMvc
@@ -659,7 +733,8 @@ class BrandResourceIT {
             .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
-            .imageUrl(UPDATED_IMAGE_URL);
+            .imageUrl(UPDATED_IMAGE_URL)
+            .siteUrl(UPDATED_SITE_URL);
 
         restBrandMockMvc
             .perform(
@@ -679,6 +754,7 @@ class BrandResourceIT {
         assertThat(testBrand.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testBrand.getSiteUrl()).isEqualTo(UPDATED_SITE_URL);
     }
 
     @Test
@@ -769,6 +845,7 @@ class BrandResourceIT {
         assertThat(testBrand.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testBrand.getSiteUrl()).isEqualTo(DEFAULT_SITE_URL);
     }
 
     @Test
@@ -789,7 +866,8 @@ class BrandResourceIT {
             .code(UPDATED_CODE)
             .status(UPDATED_STATUS)
             .country(UPDATED_COUNTRY)
-            .imageUrl(UPDATED_IMAGE_URL);
+            .imageUrl(UPDATED_IMAGE_URL)
+            .siteUrl(UPDATED_SITE_URL);
 
         restBrandMockMvc
             .perform(
@@ -809,6 +887,7 @@ class BrandResourceIT {
         assertThat(testBrand.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBrand.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testBrand.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testBrand.getSiteUrl()).isEqualTo(UPDATED_SITE_URL);
     }
 
     @Test

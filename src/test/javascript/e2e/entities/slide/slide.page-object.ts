@@ -37,6 +37,7 @@ export class SlideUpdatePage {
   startDateInput = element(by.id('field_startDate'));
   endDateInput = element(by.id('field_endDate'));
   imageUrlInput = element(by.id('field_imageUrl'));
+  merchantIconInput = element(by.id('field_merchantIcon'));
   dealUrlInput = element(by.id('field_dealUrl'));
   tagsInput = element(by.id('field_tags'));
 
@@ -106,6 +107,14 @@ export class SlideUpdatePage {
 
   async getImageUrlInput(): Promise<string> {
     return await this.imageUrlInput.getAttribute('value');
+  }
+
+  async setMerchantIconInput(merchantIcon: string): Promise<void> {
+    await this.merchantIconInput.sendKeys(merchantIcon);
+  }
+
+  async getMerchantIconInput(): Promise<string> {
+    return await this.merchantIconInput.getAttribute('value');
   }
 
   async setDealUrlInput(dealUrl: string): Promise<void> {

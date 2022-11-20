@@ -6,6 +6,7 @@ export interface IBrand {
   status?: string | null;
   country?: string | null;
   imageUrl?: string | null;
+  siteUrl?: string | null;
 }
 
 export type NewBrand = Omit<IBrand, 'id'> & { id: null };

@@ -106,8 +106,8 @@ public class SlideQueryService extends QueryService<Slide> {
             if (criteria.getImageUrl() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getImageUrl(), Slide_.imageUrl));
             }
-            if (criteria.getDealUrl() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getDealUrl(), Slide_.dealUrl));
+            if (criteria.getMerchantIcon() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getMerchantIcon(), Slide_.merchantIcon));
             }
             if (criteria.getTags() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTags(), Slide_.tags));

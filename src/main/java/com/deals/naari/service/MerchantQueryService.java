@@ -85,8 +85,20 @@ public class MerchantQueryService extends QueryService<Merchant> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), Merchant_.id));
             }
-            if (criteria.getName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getName(), Merchant_.name));
+            if (criteria.getCode() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getCode(), Merchant_.code));
+            }
+            if (criteria.getTitle() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getTitle(), Merchant_.title));
+            }
+            if (criteria.getSubTitle() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getSubTitle(), Merchant_.subTitle));
+            }
+            if (criteria.getAddress() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getAddress(), Merchant_.address));
+            }
+            if (criteria.getPhone() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getPhone(), Merchant_.phone));
             }
             if (criteria.getCountry() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getCountry(), Merchant_.country));
@@ -94,14 +106,20 @@ public class MerchantQueryService extends QueryService<Merchant> {
             if (criteria.getCity() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getCity(), Merchant_.city));
             }
-            if (criteria.getStoreIcon() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getStoreIcon(), Merchant_.storeIcon));
+            if (criteria.getImageUrl() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getImageUrl(), Merchant_.imageUrl));
             }
             if (criteria.getType() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getType(), Merchant_.type));
             }
             if (criteria.getLocation() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getLocation(), Merchant_.location));
+            }
+            if (criteria.getSiteUrl() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getSiteUrl(), Merchant_.siteUrl));
+            }
+            if (criteria.getStatus() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getStatus(), Merchant_.status));
             }
         }
         return specification;

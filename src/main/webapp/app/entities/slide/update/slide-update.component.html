@@ -47,8 +47,20 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" for="field_merchantIcon">Merchant Icon</label>
+          <input
+            type="text"
+            class="form-control"
+            name="merchantIcon"
+            id="field_merchantIcon"
+            data-cy="merchantIcon"
+            formControlName="merchantIcon"
+          />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" for="field_dealUrl">Deal Url</label>
-          <input type="text" class="form-control" name="dealUrl" id="field_dealUrl" data-cy="dealUrl" formControlName="dealUrl" />
+          <textarea class="form-control" name="dealUrl" id="field_dealUrl" data-cy="dealUrl" formControlName="dealUrl"></textarea>
         </div>
 
         <div class="row mb-3">

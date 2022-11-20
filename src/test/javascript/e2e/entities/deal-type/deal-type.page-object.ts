@@ -37,6 +37,7 @@ export class DealTypeUpdatePage {
   countryInput = element(by.id('field_country'));
   codeInput = element(by.id('field_code'));
   statusInput = element(by.id('field_status'));
+  displayInput = element(by.id('field_display'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -104,6 +105,10 @@ export class DealTypeUpdatePage {
 
   async getStatusInput(): Promise<string> {
     return await this.statusInput.getAttribute('value');
+  }
+
+  getDisplayInput(): ElementFinder {
+    return this.displayInput;
   }
 
   async save(): Promise<void> {

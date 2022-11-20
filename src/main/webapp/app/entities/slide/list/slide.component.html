@@ -80,6 +80,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="merchantIcon">
+            <div class="d-flex">
+              <span>Merchant Icon</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="dealUrl">
             <div class="d-flex">
               <span>Deal Url</span>
@@ -107,6 +113,7 @@
           <td>{{ slide.startDate }}</td>
           <td>{{ slide.endDate }}</td>
           <td>{{ slide.imageUrl }}</td>
+          <td>{{ slide.merchantIcon }}</td>
           <td>{{ slide.dealUrl }}</td>
           <td>{{ slide.tags }}</td>
           <td class="text-end">

@@ -44,8 +44,20 @@ public class MerchantServiceImpl implements MerchantService {
         return merchantRepository
             .findById(merchant.getId())
             .map(existingMerchant -> {
-                if (merchant.getName() != null) {
-                    existingMerchant.setName(merchant.getName());
+                if (merchant.getCode() != null) {
+                    existingMerchant.setCode(merchant.getCode());
+                }
+                if (merchant.getTitle() != null) {
+                    existingMerchant.setTitle(merchant.getTitle());
+                }
+                if (merchant.getSubTitle() != null) {
+                    existingMerchant.setSubTitle(merchant.getSubTitle());
+                }
+                if (merchant.getAddress() != null) {
+                    existingMerchant.setAddress(merchant.getAddress());
+                }
+                if (merchant.getPhone() != null) {
+                    existingMerchant.setPhone(merchant.getPhone());
                 }
                 if (merchant.getCountry() != null) {
                     existingMerchant.setCountry(merchant.getCountry());
@@ -53,8 +65,8 @@ public class MerchantServiceImpl implements MerchantService {
                 if (merchant.getCity() != null) {
                     existingMerchant.setCity(merchant.getCity());
                 }
-                if (merchant.getStoreIcon() != null) {
-                    existingMerchant.setStoreIcon(merchant.getStoreIcon());
+                if (merchant.getImageUrl() != null) {
+                    existingMerchant.setImageUrl(merchant.getImageUrl());
                 }
                 if (merchant.getType() != null) {
                     existingMerchant.setType(merchant.getType());
@@ -64,6 +76,9 @@ public class MerchantServiceImpl implements MerchantService {
                 }
                 if (merchant.getSiteUrl() != null) {
                     existingMerchant.setSiteUrl(merchant.getSiteUrl());
+                }
+                if (merchant.getStatus() != null) {
+                    existingMerchant.setStatus(merchant.getStatus());
                 }
 
                 return existingMerchant;

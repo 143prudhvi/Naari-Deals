@@ -20,10 +20,10 @@
             <column name="description" type="${clobType}">
                 <constraints nullable="true" />
             </column>
-            <column name="image_url" type="varchar(255)">
+            <column name="image_url" type="${clobType}">
                 <constraints nullable="true" />
             </column>
-            <column name="deal_url" type="varchar(255)">
+            <column name="deal_url" type="${clobType}">
                 <constraints nullable="true" />
             </column>
             <column name="posted_by" type="varchar(255)">
@@ -103,8 +103,8 @@
             <column name="id" type="numeric"/>
             <column name="title" type="string"/>
             <column name="description" type="clob"/>
-            <column name="image_url" type="string"/>
-            <column name="deal_url" type="string"/>
+            <column name="image_url" type="clob"/>
+            <column name="deal_url" type="clob"/>
             <column name="posted_by" type="string"/>
             <column name="posted_date" type="string"/>
             <column name="start_date" type="string"/>

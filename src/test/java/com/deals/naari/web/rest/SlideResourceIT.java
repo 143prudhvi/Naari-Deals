@@ -21,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link SlideResource} REST controller.
@@ -50,6 +51,9 @@ class SlideResourceIT {
 
     private static final String DEFAULT_IMAGE_URL = "AAAAAAAAAA";
     private static final String UPDATED_IMAGE_URL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_MERCHANT_ICON = "AAAAAAAAAA";
+    private static final String UPDATED_MERCHANT_ICON = "BBBBBBBBBB";
 
     private static final String DEFAULT_DEAL_URL = "AAAAAAAAAA";
     private static final String UPDATED_DEAL_URL = "BBBBBBBBBB";
@@ -89,6 +93,7 @@ class SlideResourceIT {
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
             .imageUrl(DEFAULT_IMAGE_URL)
+            .merchantIcon(DEFAULT_MERCHANT_ICON)
             .dealUrl(DEFAULT_DEAL_URL)
             .tags(DEFAULT_TAGS);
         return slide;
@@ -109,6 +114,7 @@ class SlideResourceIT {
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .imageUrl(UPDATED_IMAGE_URL)
+            .merchantIcon(UPDATED_MERCHANT_ICON)
             .dealUrl(UPDATED_DEAL_URL)
             .tags(UPDATED_TAGS);
         return slide;
@@ -139,6 +145,7 @@ class SlideResourceIT {
         assertThat(testSlide.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testSlide.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
+        assertThat(testSlide.getMerchantIcon()).isEqualTo(DEFAULT_MERCHANT_ICON);
         assertThat(testSlide.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
         assertThat(testSlide.getTags()).isEqualTo(DEFAULT_TAGS);
     }
@@ -180,7 +187,8 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
-            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)))
+            .andExpect(jsonPath("$.[*].merchantIcon").value(hasItem(DEFAULT_MERCHANT_ICON)))
+            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL.toString())))
             .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
     }
 
@@ -203,7 +211,8 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
-            .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL))
+            .andExpect(jsonPath("$.merchantIcon").value(DEFAULT_MERCHANT_ICON))
+            .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL.toString()))
             .andExpect(jsonPath("$.tags").value(DEFAULT_TAGS));
     }
 
@@ -682,67 +691,67 @@ class SlideResourceIT {
 
     @Test
     @Transactional
-    void getAllSlidesByDealUrlIsEqualToSomething() throws Exception {
+    void getAllSlidesByMerchantIconIsEqualToSomething() throws Exception {
         // Initialize the database
         slideRepository.saveAndFlush(slide);
 
-        // Get all the slideList where dealUrl equals to DEFAULT_DEAL_URL
-        defaultSlideShouldBeFound("dealUrl.equals=" + DEFAULT_DEAL_URL);
+        // Get all the slideList where merchantIcon equals to DEFAULT_MERCHANT_ICON
+        defaultSlideShouldBeFound("merchantIcon.equals=" + DEFAULT_MERCHANT_ICON);
 
-        // Get all the slideList where dealUrl equals to UPDATED_DEAL_URL
-        defaultSlideShouldNotBeFound("dealUrl.equals=" + UPDATED_DEAL_URL);
+        // Get all the slideList where merchantIcon equals to UPDATED_MERCHANT_ICON
+        defaultSlideShouldNotBeFound("merchantIcon.equals=" + UPDATED_MERCHANT_ICON);
     }
 
     @Test
     @Transactional
-    void getAllSlidesByDealUrlIsInShouldWork() throws Exception {
+    void getAllSlidesByMerchantIconIsInShouldWork() throws Exception {
         // Initialize the database
         slideRepository.saveAndFlush(slide);
 
-        // Get all the slideList where dealUrl in DEFAULT_DEAL_URL or UPDATED_DEAL_URL
-        defaultSlideShouldBeFound("dealUrl.in=" + DEFAULT_DEAL_URL + "," + UPDATED_DEAL_URL);
+        // Get all the slideList where merchantIcon in DEFAULT_MERCHANT_ICON or UPDATED_MERCHANT_ICON
+        defaultSlideShouldBeFound("merchantIcon.in=" + DEFAULT_MERCHANT_ICON + "," + UPDATED_MERCHANT_ICON);
 
-        // Get all the slideList where dealUrl equals to UPDATED_DEAL_URL
-        defaultSlideShouldNotBeFound("dealUrl.in=" + UPDATED_DEAL_URL);
+        // Get all the slideList where merchantIcon equals to UPDATED_MERCHANT_ICON
+        defaultSlideShouldNotBeFound("merchantIcon.in=" + UPDATED_MERCHANT_ICON);
     }
 
     @Test
     @Transactional
-    void getAllSlidesByDealUrlIsNullOrNotNull() throws Exception {
+    void getAllSlidesByMerchantIconIsNullOrNotNull() throws Exception {
         // Initialize the database
         slideRepository.saveAndFlush(slide);
 
-        // Get all the slideList where dealUrl is not null
-        defaultSlideShouldBeFound("dealUrl.specified=true");
+        // Get all the slideList where merchantIcon is not null
+        defaultSlideShouldBeFound("merchantIcon.specified=true");
 
-        // Get all the slideList where dealUrl is null
-        defaultSlideShouldNotBeFound("dealUrl.specified=false");
+        // Get all the slideList where merchantIcon is null
+        defaultSlideShouldNotBeFound("merchantIcon.specified=false");
     }
 
     @Test
     @Transactional
-    void getAllSlidesByDealUrlContainsSomething() throws Exception {
+    void getAllSlidesByMerchantIconContainsSomething() throws Exception {
         // Initialize the database
         slideRepository.saveAndFlush(slide);
 
-        // Get all the slideList where dealUrl contains DEFAULT_DEAL_URL
-        defaultSlideShouldBeFound("dealUrl.contains=" + DEFAULT_DEAL_URL);
+        // Get all the slideList where merchantIcon contains DEFAULT_MERCHANT_ICON
+        defaultSlideShouldBeFound("merchantIcon.contains=" + DEFAULT_MERCHANT_ICON);
 
-        // Get all the slideList where dealUrl contains UPDATED_DEAL_URL
-        defaultSlideShouldNotBeFound("dealUrl.contains=" + UPDATED_DEAL_URL);
+        // Get all the slideList where merchantIcon contains UPDATED_MERCHANT_ICON
+        defaultSlideShouldNotBeFound("merchantIcon.contains=" + UPDATED_MERCHANT_ICON);
     }
 
     @Test
     @Transactional
-    void getAllSlidesByDealUrlNotContainsSomething() throws Exception {
+    void getAllSlidesByMerchantIconNotContainsSomething() throws Exception {
         // Initialize the database
         slideRepository.saveAndFlush(slide);
 
-        // Get all the slideList where dealUrl does not contain DEFAULT_DEAL_URL
-        defaultSlideShouldNotBeFound("dealUrl.doesNotContain=" + DEFAULT_DEAL_URL);
+        // Get all the slideList where merchantIcon does not contain DEFAULT_MERCHANT_ICON
+        defaultSlideShouldNotBeFound("merchantIcon.doesNotContain=" + DEFAULT_MERCHANT_ICON);
 
-        // Get all the slideList where dealUrl does not contain UPDATED_DEAL_URL
-        defaultSlideShouldBeFound("dealUrl.doesNotContain=" + UPDATED_DEAL_URL);
+        // Get all the slideList where merchantIcon does not contain UPDATED_MERCHANT_ICON
+        defaultSlideShouldBeFound("merchantIcon.doesNotContain=" + UPDATED_MERCHANT_ICON);
     }
 
     @Test
@@ -826,7 +835,8 @@ class SlideResourceIT {
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
-            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)))
+            .andExpect(jsonPath("$.[*].merchantIcon").value(hasItem(DEFAULT_MERCHANT_ICON)))
+            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL.toString())))
             .andExpect(jsonPath("$.[*].tags").value(hasItem(DEFAULT_TAGS)));
 
         // Check, that the count call also returns 1
@@ -883,6 +893,7 @@ class SlideResourceIT {
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .imageUrl(UPDATED_IMAGE_URL)
+            .merchantIcon(UPDATED_MERCHANT_ICON)
             .dealUrl(UPDATED_DEAL_URL)
             .tags(UPDATED_TAGS);
 
@@ -905,6 +916,7 @@ class SlideResourceIT {
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testSlide.getMerchantIcon()).isEqualTo(UPDATED_MERCHANT_ICON);
         assertThat(testSlide.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
         assertThat(testSlide.getTags()).isEqualTo(UPDATED_TAGS);
     }
@@ -998,6 +1010,7 @@ class SlideResourceIT {
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testSlide.getMerchantIcon()).isEqualTo(DEFAULT_MERCHANT_ICON);
         assertThat(testSlide.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
         assertThat(testSlide.getTags()).isEqualTo(DEFAULT_TAGS);
     }
@@ -1022,6 +1035,7 @@ class SlideResourceIT {
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .imageUrl(UPDATED_IMAGE_URL)
+            .merchantIcon(UPDATED_MERCHANT_ICON)
             .dealUrl(UPDATED_DEAL_URL)
             .tags(UPDATED_TAGS);
 
@@ -1044,6 +1058,7 @@ class SlideResourceIT {
         assertThat(testSlide.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testSlide.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testSlide.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
+        assertThat(testSlide.getMerchantIcon()).isEqualTo(UPDATED_MERCHANT_ICON);
         assertThat(testSlide.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
         assertThat(testSlide.getTags()).isEqualTo(UPDATED_TAGS);
     }

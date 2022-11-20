@@ -34,8 +34,13 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "dealUrl",
+      "fieldName": "merchantIcon",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "dealUrl",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "tags",

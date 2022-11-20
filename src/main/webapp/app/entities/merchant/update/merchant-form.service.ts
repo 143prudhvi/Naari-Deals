@@ -18,13 +18,18 @@ type MerchantFormDefaults = Pick<NewMerchant, 'id'>;
 
 type MerchantFormGroupContent = {
   id: FormControl<IMerchant['id'] | NewMerchant['id']>;
-  name: FormControl<IMerchant['name']>;
+  code: FormControl<IMerchant['code']>;
+  title: FormControl<IMerchant['title']>;
+  subTitle: FormControl<IMerchant['subTitle']>;
+  address: FormControl<IMerchant['address']>;
+  phone: FormControl<IMerchant['phone']>;
   country: FormControl<IMerchant['country']>;
   city: FormControl<IMerchant['city']>;
-  storeIcon: FormControl<IMerchant['storeIcon']>;
+  imageUrl: FormControl<IMerchant['imageUrl']>;
   type: FormControl<IMerchant['type']>;
   location: FormControl<IMerchant['location']>;
   siteUrl: FormControl<IMerchant['siteUrl']>;
+  status: FormControl<IMerchant['status']>;
 };
 
 export type MerchantFormGroup = FormGroup<MerchantFormGroupContent>;
@@ -44,13 +49,18 @@ export class MerchantFormService {
           validators: [Validators.required],
         }
       ),
-      name: new FormControl(merchantRawValue.name),
+      code: new FormControl(merchantRawValue.code),
+      title: new FormControl(merchantRawValue.title),
+      subTitle: new FormControl(merchantRawValue.subTitle),
+      address: new FormControl(merchantRawValue.address),
+      phone: new FormControl(merchantRawValue.phone),
       country: new FormControl(merchantRawValue.country),
       city: new FormControl(merchantRawValue.city),
-      storeIcon: new FormControl(merchantRawValue.storeIcon),
+      imageUrl: new FormControl(merchantRawValue.imageUrl),
       type: new FormControl(merchantRawValue.type),
       location: new FormControl(merchantRawValue.location),
       siteUrl: new FormControl(merchantRawValue.siteUrl),
+      status: new FormControl(merchantRawValue.status),
     });
   }
 

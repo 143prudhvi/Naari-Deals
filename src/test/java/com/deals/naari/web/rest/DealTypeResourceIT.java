@@ -51,6 +51,9 @@ class DealTypeResourceIT {
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_DISPLAY = false;
+    private static final Boolean UPDATED_DISPLAY = true;
+
     private static final String ENTITY_API_URL = "/api/deal-types";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -82,7 +85,8 @@ class DealTypeResourceIT {
             .bgColor(DEFAULT_BG_COLOR)
             .country(DEFAULT_COUNTRY)
             .code(DEFAULT_CODE)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .display(DEFAULT_DISPLAY);
         return dealType;
     }
 
@@ -100,7 +104,8 @@ class DealTypeResourceIT {
             .bgColor(UPDATED_BG_COLOR)
             .country(UPDATED_COUNTRY)
             .code(UPDATED_CODE)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .display(UPDATED_DISPLAY);
         return dealType;
     }
 
@@ -129,6 +134,7 @@ class DealTypeResourceIT {
         assertThat(testDealType.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testDealType.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testDealType.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testDealType.getDisplay()).isEqualTo(DEFAULT_DISPLAY);
     }
 
     @Test
@@ -167,7 +173,8 @@ class DealTypeResourceIT {
             .andExpect(jsonPath("$.[*].bgColor").value(hasItem(DEFAULT_BG_COLOR)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].display").value(hasItem(DEFAULT_DISPLAY.booleanValue())));
     }
 
     @Test
@@ -188,7 +195,8 @@ class DealTypeResourceIT {
             .andExpect(jsonPath("$.bgColor").value(DEFAULT_BG_COLOR))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
+            .andExpect(jsonPath("$.display").value(DEFAULT_DISPLAY.booleanValue()));
     }
 
     @Test
@@ -664,6 +672,45 @@ class DealTypeResourceIT {
         defaultDealTypeShouldBeFound("status.doesNotContain=" + UPDATED_STATUS);
     }
 
+    @Test
+    @Transactional
+    void getAllDealTypesByDisplayIsEqualToSomething() throws Exception {
+        // Initialize the database
+        dealTypeRepository.saveAndFlush(dealType);
+
+        // Get all the dealTypeList where display equals to DEFAULT_DISPLAY
+        defaultDealTypeShouldBeFound("display.equals=" + DEFAULT_DISPLAY);
+
+        // Get all the dealTypeList where display equals to UPDATED_DISPLAY
+        defaultDealTypeShouldNotBeFound("display.equals=" + UPDATED_DISPLAY);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealTypesByDisplayIsInShouldWork() throws Exception {
+        // Initialize the database
+        dealTypeRepository.saveAndFlush(dealType);
+
+        // Get all the dealTypeList where display in DEFAULT_DISPLAY or UPDATED_DISPLAY
+        defaultDealTypeShouldBeFound("display.in=" + DEFAULT_DISPLAY + "," + UPDATED_DISPLAY);
+
+        // Get all the dealTypeList where display equals to UPDATED_DISPLAY
+        defaultDealTypeShouldNotBeFound("display.in=" + UPDATED_DISPLAY);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealTypesByDisplayIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        dealTypeRepository.saveAndFlush(dealType);
+
+        // Get all the dealTypeList where display is not null
+        defaultDealTypeShouldBeFound("display.specified=true");
+
+        // Get all the dealTypeList where display is null
+        defaultDealTypeShouldNotBeFound("display.specified=false");
+    }
+
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -679,7 +726,8 @@ class DealTypeResourceIT {
             .andExpect(jsonPath("$.[*].bgColor").value(hasItem(DEFAULT_BG_COLOR)))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
+            .andExpect(jsonPath("$.[*].display").value(hasItem(DEFAULT_DISPLAY.booleanValue())));
 
         // Check, that the count call also returns 1
         restDealTypeMockMvc
@@ -734,7 +782,8 @@ class DealTypeResourceIT {
             .bgColor(UPDATED_BG_COLOR)
             .country(UPDATED_COUNTRY)
             .code(UPDATED_CODE)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .display(UPDATED_DISPLAY);
 
         restDealTypeMockMvc
             .perform(
@@ -755,6 +804,7 @@ class DealTypeResourceIT {
         assertThat(testDealType.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testDealType.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testDealType.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testDealType.getDisplay()).isEqualTo(UPDATED_DISPLAY);
     }
 
     @Test
@@ -825,7 +875,7 @@ class DealTypeResourceIT {
         DealType partialUpdatedDealType = new DealType();
         partialUpdatedDealType.setId(dealType.getId());
 
-        partialUpdatedDealType.country(UPDATED_COUNTRY);
+        partialUpdatedDealType.country(UPDATED_COUNTRY).display(UPDATED_DISPLAY);
 
         restDealTypeMockMvc
             .perform(
@@ -846,6 +896,7 @@ class DealTypeResourceIT {
         assertThat(testDealType.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testDealType.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testDealType.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testDealType.getDisplay()).isEqualTo(UPDATED_DISPLAY);
     }
 
     @Test
@@ -867,7 +918,8 @@ class DealTypeResourceIT {
             .bgColor(UPDATED_BG_COLOR)
             .country(UPDATED_COUNTRY)
             .code(UPDATED_CODE)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .display(UPDATED_DISPLAY);
 
         restDealTypeMockMvc
             .perform(
@@ -888,6 +940,7 @@ class DealTypeResourceIT {
         assertThat(testDealType.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testDealType.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testDealType.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testDealType.getDisplay()).isEqualTo(UPDATED_DISPLAY);
     }
 
     @Test

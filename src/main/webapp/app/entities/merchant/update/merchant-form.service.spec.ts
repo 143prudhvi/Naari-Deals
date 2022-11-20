@@ -20,13 +20,18 @@ describe('Merchant Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            name: expect.any(Object),
+            code: expect.any(Object),
+            title: expect.any(Object),
+            subTitle: expect.any(Object),
+            address: expect.any(Object),
+            phone: expect.any(Object),
             country: expect.any(Object),
             city: expect.any(Object),
-            storeIcon: expect.any(Object),
+            imageUrl: expect.any(Object),
             type: expect.any(Object),
             location: expect.any(Object),
             siteUrl: expect.any(Object),
+            status: expect.any(Object),
           })
         );
       });
@@ -37,13 +42,18 @@ describe('Merchant Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            name: expect.any(Object),
+            code: expect.any(Object),
+            title: expect.any(Object),
+            subTitle: expect.any(Object),
+            address: expect.any(Object),
+            phone: expect.any(Object),
             country: expect.any(Object),
             city: expect.any(Object),
-            storeIcon: expect.any(Object),
+            imageUrl: expect.any(Object),
             type: expect.any(Object),
             location: expect.any(Object),
             siteUrl: expect.any(Object),
+            status: expect.any(Object),
           })
         );
       });

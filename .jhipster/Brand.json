@@ -28,6 +28,10 @@
     {
       "fieldName": "imageUrl",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "siteUrl",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

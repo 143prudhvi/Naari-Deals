@@ -5,22 +5,24 @@ export const sampleWithRequiredData: IBrand = {
 };
 
 export const sampleWithPartialData: IBrand = {
-  id: 92165,
-  title: 'Legacy impactful',
-  subTitle: 'Pizza Suriname',
-  code: 'Baby interface Concrete',
-  status: 'parse',
-  country: 'Turks and Caicos Islands',
+  id: 42262,
+  title: 'synthesize mobile Pizza',
+  subTitle: 'bypassing Baby',
+  code: 'empower regional parse',
+  status: 'Security Islands Money',
+  country: 'Monaco',
+  siteUrl: 'Licensed sensor',
 };
 
 export const sampleWithFullData: IBrand = {
-  id: 95885,
-  title: 'haptic',
-  subTitle: 'Money Minnesota cross-platform',
-  code: 'sensor',
-  status: 'invoice Incredible syndicate',
-  country: 'Mozambique',
-  imageUrl: 'Cambridgeshire toolset Global',
+  id: 86547,
+  title: 'Investor collaboration',
+  subTitle: 'methodical Cambridgeshire',
+  code: 'Applications',
+  status: 'calculate calculating',
+  country: 'Gabon',
+  imageUrl: 'online Chicken Oklahoma',
+  siteUrl: 'Steel Frozen',
 };
 
 export const sampleWithNewData: NewBrand = {

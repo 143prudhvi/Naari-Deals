@@ -38,9 +38,33 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="name">
+          <th scope="col" jhiSortBy="code">
             <div class="d-flex">
-              <span>Name</span>
+              <span>Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="title">
+            <div class="d-flex">
+              <span>Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="subTitle">
+            <div class="d-flex">
+              <span>Sub Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="address">
+            <div class="d-flex">
+              <span>Address</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phone">
+            <div class="d-flex">
+              <span>Phone</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -56,9 +80,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="storeIcon">
+          <th scope="col" jhiSortBy="imageUrl">
             <div class="d-flex">
-              <span>Store Icon</span>
+              <span>Image Url</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -80,6 +104,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span>Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -88,13 +118,18 @@
           <td>
             <a [routerLink]="['/merchant', merchant.id, 'view']">{{ merchant.id }}</a>
           </td>
-          <td>{{ merchant.name }}</td>
+          <td>{{ merchant.code }}</td>
+          <td>{{ merchant.title }}</td>
+          <td>{{ merchant.subTitle }}</td>
+          <td>{{ merchant.address }}</td>
+          <td>{{ merchant.phone }}</td>
           <td>{{ merchant.country }}</td>
           <td>{{ merchant.city }}</td>
-          <td>{{ merchant.storeIcon }}</td>
+          <td>{{ merchant.imageUrl }}</td>
           <td>{{ merchant.type }}</td>
           <td>{{ merchant.location }}</td>
           <td>{{ merchant.siteUrl }}</td>
+          <td>{{ merchant.status }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

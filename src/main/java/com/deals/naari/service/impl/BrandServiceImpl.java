@@ -62,6 +62,9 @@ public class BrandServiceImpl implements BrandService {
                 if (brand.getImageUrl() != null) {
                     existingBrand.setImageUrl(brand.getImageUrl());
                 }
+                if (brand.getSiteUrl() != null) {
+                    existingBrand.setSiteUrl(brand.getSiteUrl());
+                }
 
                 return existingBrand;
             })

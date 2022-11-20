@@ -7,6 +7,7 @@ export interface ISlide {
   startDate?: string | null;
   endDate?: string | null;
   imageUrl?: string | null;
+  merchantIcon?: string | null;
   dealUrl?: string | null;
   tags?: string | null;
 }

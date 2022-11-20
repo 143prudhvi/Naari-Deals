@@ -5,22 +5,23 @@ export const sampleWithRequiredData: ISlide = {
 };
 
 export const sampleWithPartialData: ISlide = {
-  id: 40476,
-  endDate: 'framework',
-  tags: 'Personal azure sensor',
+  id: 14679,
+  endDate: 'disintermediate',
+  dealUrl: '../fake-data/blob/hipster.txt',
 };
 
 export const sampleWithFullData: ISlide = {
-  id: 11894,
-  title: 'protocol portals Plastic',
-  subTitle: 'digital',
-  status: 'even-keeled e-business user-centric',
-  country: 'Guinea-Bissau',
-  startDate: 'Computers',
-  endDate: 'Identity magnetic',
-  imageUrl: 'Checking',
-  dealUrl: 'Marketing',
-  tags: 'Norway background application',
+  id: 59641,
+  title: 'Diverse Assurance yellow',
+  subTitle: 'Pants Plastic Self-enabling',
+  status: 'port framework',
+  country: 'San Marino',
+  startDate: 'XML 24/7',
+  endDate: 'Viaduct encompassing',
+  imageUrl: 'Generic Marketing Operations',
+  merchantIcon: 'background application',
+  dealUrl: '../fake-data/blob/hipster.txt',
+  tags: 'hacking relationships',
 };
 
 export const sampleWithNewData: NewSlide = {

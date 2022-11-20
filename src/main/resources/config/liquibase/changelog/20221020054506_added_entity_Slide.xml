@@ -35,7 +35,10 @@
             <column name="image_url" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="deal_url" type="varchar(255)">
+            <column name="merchant_icon" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deal_url" type="${clobType}">
                 <constraints nullable="true" />
             </column>
             <column name="tags" type="varchar(255)">
@@ -69,7 +72,8 @@
             <column name="start_date" type="string"/>
             <column name="end_date" type="string"/>
             <column name="image_url" type="string"/>
-            <column name="deal_url" type="string"/>
+            <column name="merchant_icon" type="string"/>
+            <column name="deal_url" type="clob"/>
             <column name="tags" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

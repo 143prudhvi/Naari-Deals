@@ -37,7 +37,7 @@ public class SlideCriteria implements Serializable, Criteria {
 
     private StringFilter imageUrl;
 
-    private StringFilter dealUrl;
+    private StringFilter merchantIcon;
 
     private StringFilter tags;
 
@@ -54,7 +54,7 @@ public class SlideCriteria implements Serializable, Criteria {
         this.startDate = other.startDate == null ? null : other.startDate.copy();
         this.endDate = other.endDate == null ? null : other.endDate.copy();
         this.imageUrl = other.imageUrl == null ? null : other.imageUrl.copy();
-        this.dealUrl = other.dealUrl == null ? null : other.dealUrl.copy();
+        this.merchantIcon = other.merchantIcon == null ? null : other.merchantIcon.copy();
         this.tags = other.tags == null ? null : other.tags.copy();
         this.distinct = other.distinct;
     }
@@ -184,19 +184,19 @@ public class SlideCriteria implements Serializable, Criteria {
         this.imageUrl = imageUrl;
     }
 
-    public StringFilter getDealUrl() {
-        return dealUrl;
+    public StringFilter getMerchantIcon() {
+        return merchantIcon;
     }
 
-    public StringFilter dealUrl() {
-        if (dealUrl == null) {
-            dealUrl = new StringFilter();
+    public StringFilter merchantIcon() {
+        if (merchantIcon == null) {
+            merchantIcon = new StringFilter();
         }
-        return dealUrl;
+        return merchantIcon;
     }
 
-    public void setDealUrl(StringFilter dealUrl) {
-        this.dealUrl = dealUrl;
+    public void setMerchantIcon(StringFilter merchantIcon) {
+        this.merchantIcon = merchantIcon;
     }
 
     public StringFilter getTags() {
@@ -240,7 +240,7 @@ public class SlideCriteria implements Serializable, Criteria {
             Objects.equals(startDate, that.startDate) &&
             Objects.equals(endDate, that.endDate) &&
             Objects.equals(imageUrl, that.imageUrl) &&
-            Objects.equals(dealUrl, that.dealUrl) &&
+            Objects.equals(merchantIcon, that.merchantIcon) &&
             Objects.equals(tags, that.tags) &&
             Objects.equals(distinct, that.distinct)
         );
@@ -248,7 +248,7 @@ public class SlideCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, subTitle, status, country, startDate, endDate, imageUrl, dealUrl, tags, distinct);
+        return Objects.hash(id, title, subTitle, status, country, startDate, endDate, imageUrl, merchantIcon, tags, distinct);
     }
 
     // prettier-ignore
@@ -263,7 +263,7 @@ public class SlideCriteria implements Serializable, Criteria {
             (startDate != null ? "startDate=" + startDate + ", " : "") +
             (endDate != null ? "endDate=" + endDate + ", " : "") +
             (imageUrl != null ? "imageUrl=" + imageUrl + ", " : "") +
-            (dealUrl != null ? "dealUrl=" + dealUrl + ", " : "") +
+            (merchantIcon != null ? "merchantIcon=" + merchantIcon + ", " : "") +
             (tags != null ? "tags=" + tags + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";

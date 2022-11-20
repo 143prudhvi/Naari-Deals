@@ -7,6 +7,7 @@ export interface IDealType {
   country?: string | null;
   code?: string | null;
   status?: string | null;
+  display?: boolean | null;
 }
 
 export type NewDealType = Omit<IDealType, 'id'> & { id: null };

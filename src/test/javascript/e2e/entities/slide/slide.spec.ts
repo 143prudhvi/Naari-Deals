@@ -50,6 +50,7 @@ describe('Slide e2e test', () => {
       slideUpdatePage.setStartDateInput('startDate'),
       slideUpdatePage.setEndDateInput('endDate'),
       slideUpdatePage.setImageUrlInput('imageUrl'),
+      slideUpdatePage.setMerchantIconInput('merchantIcon'),
       slideUpdatePage.setDealUrlInput('dealUrl'),
       slideUpdatePage.setTagsInput('tags'),
     ]);

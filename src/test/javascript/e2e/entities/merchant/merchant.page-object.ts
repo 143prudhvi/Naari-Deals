@@ -30,13 +30,18 @@ export class MerchantUpdatePage {
   cancelButton = element(by.id('cancel-save'));
 
   idInput = element(by.id('field_id'));
-  nameInput = element(by.id('field_name'));
+  codeInput = element(by.id('field_code'));
+  titleInput = element(by.id('field_title'));
+  subTitleInput = element(by.id('field_subTitle'));
+  addressInput = element(by.id('field_address'));
+  phoneInput = element(by.id('field_phone'));
   countryInput = element(by.id('field_country'));
   cityInput = element(by.id('field_city'));
-  storeIconInput = element(by.id('field_storeIcon'));
+  imageUrlInput = element(by.id('field_imageUrl'));
   typeInput = element(by.id('field_type'));
   locationInput = element(by.id('field_location'));
   siteUrlInput = element(by.id('field_siteUrl'));
+  statusInput = element(by.id('field_status'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -50,12 +55,44 @@ export class MerchantUpdatePage {
     return await this.idInput.getAttribute('value');
   }
 
-  async setNameInput(name: string): Promise<void> {
-    await this.nameInput.sendKeys(name);
+  async setCodeInput(code: string): Promise<void> {
+    await this.codeInput.sendKeys(code);
   }
 
-  async getNameInput(): Promise<string> {
-    return await this.nameInput.getAttribute('value');
+  async getCodeInput(): Promise<string> {
+    return await this.codeInput.getAttribute('value');
+  }
+
+  async setTitleInput(title: string): Promise<void> {
+    await this.titleInput.sendKeys(title);
+  }
+
+  async getTitleInput(): Promise<string> {
+    return await this.titleInput.getAttribute('value');
+  }
+
+  async setSubTitleInput(subTitle: string): Promise<void> {
+    await this.subTitleInput.sendKeys(subTitle);
+  }
+
+  async getSubTitleInput(): Promise<string> {
+    return await this.subTitleInput.getAttribute('value');
+  }
+
+  async setAddressInput(address: string): Promise<void> {
+    await this.addressInput.sendKeys(address);
+  }
+
+  async getAddressInput(): Promise<string> {
+    return await this.addressInput.getAttribute('value');
+  }
+
+  async setPhoneInput(phone: string): Promise<void> {
+    await this.phoneInput.sendKeys(phone);
+  }
+
+  async getPhoneInput(): Promise<string> {
+    return await this.phoneInput.getAttribute('value');
   }
 
   async setCountryInput(country: string): Promise<void> {
@@ -74,12 +111,12 @@ export class MerchantUpdatePage {
     return await this.cityInput.getAttribute('value');
   }
 
-  async setStoreIconInput(storeIcon: string): Promise<void> {
-    await this.storeIconInput.sendKeys(storeIcon);
+  async setImageUrlInput(imageUrl: string): Promise<void> {
+    await this.imageUrlInput.sendKeys(imageUrl);
   }
 
-  async getStoreIconInput(): Promise<string> {
-    return await this.storeIconInput.getAttribute('value');
+  async getImageUrlInput(): Promise<string> {
+    return await this.imageUrlInput.getAttribute('value');
   }
 
   async setTypeInput(type: string): Promise<void> {
@@ -104,6 +141,14 @@ export class MerchantUpdatePage {
 
   async getSiteUrlInput(): Promise<string> {
     return await this.siteUrlInput.getAttribute('value');
+  }
+
+  async setStatusInput(status: string): Promise<void> {
+    await this.statusInput.sendKeys(status);
+  }
+
+  async getStatusInput(): Promise<string> {
+    return await this.statusInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

@@ -254,8 +254,8 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(deal.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
-            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
+            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL.toString())))
             .andExpect(jsonPath("$.[*].postedBy").value(hasItem(DEFAULT_POSTED_BY)))
             .andExpect(jsonPath("$.[*].postedDate").value(hasItem(DEFAULT_POSTED_DATE)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
@@ -290,8 +290,8 @@ class DealResourceIT {
             .andExpect(jsonPath("$.id").value(deal.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL))
-            .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL))
+            .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()))
+            .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL.toString()))
             .andExpect(jsonPath("$.postedBy").value(DEFAULT_POSTED_BY))
             .andExpect(jsonPath("$.postedDate").value(DEFAULT_POSTED_DATE))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE))
@@ -393,136 +393,6 @@ class DealResourceIT {
 
         // Get all the dealList where title does not contain UPDATED_TITLE
         defaultDealShouldBeFound("title.doesNotContain=" + UPDATED_TITLE);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByImageUrlIsEqualToSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where imageUrl equals to DEFAULT_IMAGE_URL
-        defaultDealShouldBeFound("imageUrl.equals=" + DEFAULT_IMAGE_URL);
-
-        // Get all the dealList where imageUrl equals to UPDATED_IMAGE_URL
-        defaultDealShouldNotBeFound("imageUrl.equals=" + UPDATED_IMAGE_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByImageUrlIsInShouldWork() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where imageUrl in DEFAULT_IMAGE_URL or UPDATED_IMAGE_URL
-        defaultDealShouldBeFound("imageUrl.in=" + DEFAULT_IMAGE_URL + "," + UPDATED_IMAGE_URL);
-
-        // Get all the dealList where imageUrl equals to UPDATED_IMAGE_URL
-        defaultDealShouldNotBeFound("imageUrl.in=" + UPDATED_IMAGE_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByImageUrlIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where imageUrl is not null
-        defaultDealShouldBeFound("imageUrl.specified=true");
-
-        // Get all the dealList where imageUrl is null
-        defaultDealShouldNotBeFound("imageUrl.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByImageUrlContainsSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where imageUrl contains DEFAULT_IMAGE_URL
-        defaultDealShouldBeFound("imageUrl.contains=" + DEFAULT_IMAGE_URL);
-
-        // Get all the dealList where imageUrl contains UPDATED_IMAGE_URL
-        defaultDealShouldNotBeFound("imageUrl.contains=" + UPDATED_IMAGE_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByImageUrlNotContainsSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where imageUrl does not contain DEFAULT_IMAGE_URL
-        defaultDealShouldNotBeFound("imageUrl.doesNotContain=" + DEFAULT_IMAGE_URL);
-
-        // Get all the dealList where imageUrl does not contain UPDATED_IMAGE_URL
-        defaultDealShouldBeFound("imageUrl.doesNotContain=" + UPDATED_IMAGE_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByDealUrlIsEqualToSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where dealUrl equals to DEFAULT_DEAL_URL
-        defaultDealShouldBeFound("dealUrl.equals=" + DEFAULT_DEAL_URL);
-
-        // Get all the dealList where dealUrl equals to UPDATED_DEAL_URL
-        defaultDealShouldNotBeFound("dealUrl.equals=" + UPDATED_DEAL_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByDealUrlIsInShouldWork() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where dealUrl in DEFAULT_DEAL_URL or UPDATED_DEAL_URL
-        defaultDealShouldBeFound("dealUrl.in=" + DEFAULT_DEAL_URL + "," + UPDATED_DEAL_URL);
-
-        // Get all the dealList where dealUrl equals to UPDATED_DEAL_URL
-        defaultDealShouldNotBeFound("dealUrl.in=" + UPDATED_DEAL_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByDealUrlIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where dealUrl is not null
-        defaultDealShouldBeFound("dealUrl.specified=true");
-
-        // Get all the dealList where dealUrl is null
-        defaultDealShouldNotBeFound("dealUrl.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByDealUrlContainsSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where dealUrl contains DEFAULT_DEAL_URL
-        defaultDealShouldBeFound("dealUrl.contains=" + DEFAULT_DEAL_URL);
-
-        // Get all the dealList where dealUrl contains UPDATED_DEAL_URL
-        defaultDealShouldNotBeFound("dealUrl.contains=" + UPDATED_DEAL_URL);
-    }
-
-    @Test
-    @Transactional
-    void getAllDealsByDealUrlNotContainsSomething() throws Exception {
-        // Initialize the database
-        dealRepository.saveAndFlush(deal);
-
-        // Get all the dealList where dealUrl does not contain DEFAULT_DEAL_URL
-        defaultDealShouldNotBeFound("dealUrl.doesNotContain=" + DEFAULT_DEAL_URL);
-
-        // Get all the dealList where dealUrl does not contain UPDATED_DEAL_URL
-        defaultDealShouldBeFound("dealUrl.doesNotContain=" + UPDATED_DEAL_URL);
     }
 
     @Test
@@ -1654,8 +1524,8 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(deal.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL)))
-            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL)))
+            .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
+            .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL.toString())))
             .andExpect(jsonPath("$.[*].postedBy").value(hasItem(DEFAULT_POSTED_BY)))
             .andExpect(jsonPath("$.[*].postedDate").value(hasItem(DEFAULT_POSTED_DATE)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))

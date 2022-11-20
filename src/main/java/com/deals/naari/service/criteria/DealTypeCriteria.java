@@ -37,6 +37,8 @@ public class DealTypeCriteria implements Serializable, Criteria {
 
     private StringFilter status;
 
+    private BooleanFilter display;
+
     private Boolean distinct;
 
     public DealTypeCriteria() {}
@@ -50,6 +52,7 @@ public class DealTypeCriteria implements Serializable, Criteria {
         this.country = other.country == null ? null : other.country.copy();
         this.code = other.code == null ? null : other.code.copy();
         this.status = other.status == null ? null : other.status.copy();
+        this.display = other.display == null ? null : other.display.copy();
         this.distinct = other.distinct;
     }
 
@@ -178,6 +181,21 @@ public class DealTypeCriteria implements Serializable, Criteria {
         this.status = status;
     }
 
+    public BooleanFilter getDisplay() {
+        return display;
+    }
+
+    public BooleanFilter display() {
+        if (display == null) {
+            display = new BooleanFilter();
+        }
+        return display;
+    }
+
+    public void setDisplay(BooleanFilter display) {
+        this.display = display;
+    }
+
     public Boolean getDistinct() {
         return distinct;
     }
@@ -204,13 +222,14 @@ public class DealTypeCriteria implements Serializable, Criteria {
             Objects.equals(country, that.country) &&
             Objects.equals(code, that.code) &&
             Objects.equals(status, that.status) &&
+            Objects.equals(display, that.display) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, subTitle, icon, bgColor, country, code, status, distinct);
+        return Objects.hash(id, title, subTitle, icon, bgColor, country, code, status, display, distinct);
     }
 
     // prettier-ignore
@@ -225,6 +244,7 @@ public class DealTypeCriteria implements Serializable, Criteria {
             (country != null ? "country=" + country + ", " : "") +
             (code != null ? "code=" + code + ", " : "") +
             (status != null ? "status=" + status + ", " : "") +
+            (display != null ? "display=" + display + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

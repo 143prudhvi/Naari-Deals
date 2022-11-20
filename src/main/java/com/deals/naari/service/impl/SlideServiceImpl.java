@@ -65,6 +65,9 @@ public class SlideServiceImpl implements SlideService {
                 if (slide.getImageUrl() != null) {
                     existingSlide.setImageUrl(slide.getImageUrl());
                 }
+                if (slide.getMerchantIcon() != null) {
+                    existingSlide.setMerchantIcon(slide.getMerchantIcon());
+                }
                 if (slide.getDealUrl() != null) {
                     existingSlide.setDealUrl(slide.getDealUrl());
                 }

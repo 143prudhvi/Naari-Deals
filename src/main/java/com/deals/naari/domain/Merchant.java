@@ -21,8 +21,20 @@ public class Merchant implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "sub_title")
+    private String subTitle;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone")
+    private String phone;
 
     @Column(name = "country")
     private String country;
@@ -30,8 +42,8 @@ public class Merchant implements Serializable {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "store_icon")
-    private String storeIcon;
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Column(name = "type")
     private String type;
@@ -39,9 +51,11 @@ public class Merchant implements Serializable {
     @Column(name = "location")
     private String location;
 
-    @Lob
     @Column(name = "site_url")
     private String siteUrl;
+
+    @Column(name = "status")
+    private String status;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -58,17 +72,69 @@ public class Merchant implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getCode() {
+        return this.code;
     }
 
-    public Merchant name(String name) {
-        this.setName(name);
+    public Merchant code(String code) {
+        this.setCode(code);
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public Merchant title(String title) {
+        this.setTitle(title);
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubTitle() {
+        return this.subTitle;
+    }
+
+    public Merchant subTitle(String subTitle) {
+        this.setSubTitle(subTitle);
+        return this;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public Merchant address(String address) {
+        this.setAddress(address);
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public Merchant phone(String phone) {
+        this.setPhone(phone);
+        return this;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getCountry() {
@@ -97,17 +163,17 @@ public class Merchant implements Serializable {
         this.city = city;
     }
 
-    public String getStoreIcon() {
-        return this.storeIcon;
+    public String getImageUrl() {
+        return this.imageUrl;
     }
 
-    public Merchant storeIcon(String storeIcon) {
-        this.setStoreIcon(storeIcon);
+    public Merchant imageUrl(String imageUrl) {
+        this.setImageUrl(imageUrl);
         return this;
     }
 
-    public void setStoreIcon(String storeIcon) {
-        this.storeIcon = storeIcon;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getType() {
@@ -149,6 +215,19 @@ public class Merchant implements Serializable {
         this.siteUrl = siteUrl;
     }
 
+    public String getStatus() {
+        return this.status;
+    }
+
+    public Merchant status(String status) {
+        this.setStatus(status);
+        return this;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -173,13 +252,18 @@ public class Merchant implements Serializable {
     public String toString() {
         return "Merchant{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", code='" + getCode() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", subTitle='" + getSubTitle() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", phone='" + getPhone() + "'" +
             ", country='" + getCountry() + "'" +
             ", city='" + getCity() + "'" +
-            ", storeIcon='" + getStoreIcon() + "'" +
+            ", imageUrl='" + getImageUrl() + "'" +
             ", type='" + getType() + "'" +
             ", location='" + getLocation() + "'" +
             ", siteUrl='" + getSiteUrl() + "'" +
+            ", status='" + getStatus() + "'" +
             "}";
     }
 }

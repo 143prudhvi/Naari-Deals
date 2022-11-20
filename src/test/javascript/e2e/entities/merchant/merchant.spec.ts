@@ -43,13 +43,18 @@ describe('Merchant e2e test', () => {
     await merchantComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      merchantUpdatePage.setNameInput('name'),
+      merchantUpdatePage.setCodeInput('code'),
+      merchantUpdatePage.setTitleInput('title'),
+      merchantUpdatePage.setSubTitleInput('subTitle'),
+      merchantUpdatePage.setAddressInput('address'),
+      merchantUpdatePage.setPhoneInput('phone'),
       merchantUpdatePage.setCountryInput('country'),
       merchantUpdatePage.setCityInput('city'),
-      merchantUpdatePage.setStoreIconInput('storeIcon'),
+      merchantUpdatePage.setImageUrlInput('imageUrl'),
       merchantUpdatePage.setTypeInput('type'),
       merchantUpdatePage.setLocationInput('location'),
       merchantUpdatePage.setSiteUrlInput('siteUrl'),
+      merchantUpdatePage.setStatusInput('status'),
     ]);
 
     await merchantUpdatePage.save();

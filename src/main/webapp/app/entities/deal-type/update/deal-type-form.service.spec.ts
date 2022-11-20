@@ -27,6 +27,7 @@ describe('DealType Form Service', () => {
             country: expect.any(Object),
             code: expect.any(Object),
             status: expect.any(Object),
+            display: expect.any(Object),
           })
         );
       });
@@ -44,6 +45,7 @@ describe('DealType Form Service', () => {
             country: expect.any(Object),
             code: expect.any(Object),
             status: expect.any(Object),
+            display: expect.any(Object),
           })
         );
       });

@@ -12,6 +12,7 @@ entity DealType {
       country String
       code String
       status String
+      display Boolean
 }
 
 entity LoginProfile{
@@ -38,8 +39,8 @@ entity BioProfile {
 entity Deal {
       title String
       description TextBlob
-      imageUrl String
-      dealUrl String
+      imageUrl TextBlob
+      dealUrl TextBlob
       postedBy String
       postedDate String
       startDate String
@@ -61,13 +62,18 @@ entity Deal {
 }
 
 entity Merchant{
-      name String
+      code String
+      title String
+      subTitle String
+      address String
+      phone String
       country String
       city String
-      storeIcon String
+      imageUrl String
       type String
       location String
-      siteUrl TextBlob
+      siteUrl String
+      status String
 }
 
 entity Category{
@@ -89,7 +95,8 @@ entity Slide{
       startDate String
       endDate String
       imageUrl String
-      dealUrl String
+      merchantIcon String
+      dealUrl TextBlob
       tags String
 }
 
@@ -100,6 +107,7 @@ entity Brand{
       status String
       country String
       imageUrl String
+      siteUrl String
 }
 
 

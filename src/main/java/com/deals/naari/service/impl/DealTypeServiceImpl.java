@@ -65,6 +65,9 @@ public class DealTypeServiceImpl implements DealTypeService {
                 if (dealType.getStatus() != null) {
                     existingDealType.setStatus(dealType.getStatus());
                 }
+                if (dealType.getDisplay() != null) {
+                    existingDealType.setDisplay(dealType.getDisplay());
+                }
 
                 return existingDealType;
             })

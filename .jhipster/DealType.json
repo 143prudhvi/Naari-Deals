@@ -32,6 +32,10 @@
     {
       "fieldName": "status",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "display",
+      "fieldType": "Boolean"
     }
   ],
   "fluentMethods": true,

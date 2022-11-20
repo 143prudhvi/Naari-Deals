@@ -39,6 +39,9 @@ public class Brand implements Serializable {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "site_url")
+    private String siteUrl;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -132,6 +135,19 @@ public class Brand implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    public String getSiteUrl() {
+        return this.siteUrl;
+    }
+
+    public Brand siteUrl(String siteUrl) {
+        this.setSiteUrl(siteUrl);
+        return this;
+    }
+
+    public void setSiteUrl(String siteUrl) {
+        this.siteUrl = siteUrl;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -162,6 +178,7 @@ public class Brand implements Serializable {
             ", status='" + getStatus() + "'" +
             ", country='" + getCountry() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +
+            ", siteUrl='" + getSiteUrl() + "'" +
             "}";
     }
 }

@@ -35,6 +35,8 @@ public class BrandCriteria implements Serializable, Criteria {
 
     private StringFilter imageUrl;
 
+    private StringFilter siteUrl;
+
     private Boolean distinct;
 
     public BrandCriteria() {}
@@ -47,6 +49,7 @@ public class BrandCriteria implements Serializable, Criteria {
         this.status = other.status == null ? null : other.status.copy();
         this.country = other.country == null ? null : other.country.copy();
         this.imageUrl = other.imageUrl == null ? null : other.imageUrl.copy();
+        this.siteUrl = other.siteUrl == null ? null : other.siteUrl.copy();
         this.distinct = other.distinct;
     }
 
@@ -160,6 +163,21 @@ public class BrandCriteria implements Serializable, Criteria {
         this.imageUrl = imageUrl;
     }
 
+    public StringFilter getSiteUrl() {
+        return siteUrl;
+    }
+
+    public StringFilter siteUrl() {
+        if (siteUrl == null) {
+            siteUrl = new StringFilter();
+        }
+        return siteUrl;
+    }
+
+    public void setSiteUrl(StringFilter siteUrl) {
+        this.siteUrl = siteUrl;
+    }
+
     public Boolean getDistinct() {
         return distinct;
     }
@@ -185,13 +203,14 @@ public class BrandCriteria implements Serializable, Criteria {
             Objects.equals(status, that.status) &&
             Objects.equals(country, that.country) &&
             Objects.equals(imageUrl, that.imageUrl) &&
+            Objects.equals(siteUrl, that.siteUrl) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, subTitle, code, status, country, imageUrl, distinct);
+        return Objects.hash(id, title, subTitle, code, status, country, imageUrl, siteUrl, distinct);
     }
 
     // prettier-ignore
@@ -205,6 +224,7 @@ public class BrandCriteria implements Serializable, Criteria {
             (status != null ? "status=" + status + ", " : "") +
             (country != null ? "country=" + country + ", " : "") +
             (imageUrl != null ? "imageUrl=" + imageUrl + ", " : "") +
+            (siteUrl != null ? "siteUrl=" + siteUrl + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

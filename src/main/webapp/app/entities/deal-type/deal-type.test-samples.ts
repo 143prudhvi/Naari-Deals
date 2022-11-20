@@ -5,21 +5,22 @@ export const sampleWithRequiredData: IDealType = {
 };
 
 export const sampleWithPartialData: IDealType = {
-  id: 871,
-  title: 'California Meadows orchestrate',
-  subTitle: 'architectures',
-  country: 'Saint Kitts and Nevis',
+  id: 81490,
+  title: 'Fantastic Bedfordshire',
+  subTitle: 'compress',
+  country: 'Malaysia',
 };
 
 export const sampleWithFullData: IDealType = {
-  id: 34231,
-  title: 'Re-engineered enterprise navigate',
-  subTitle: 'index',
-  icon: 'Borders ubiquitous Credit',
-  bgColor: 'adapter Frozen',
-  country: 'Switzerland',
-  code: 'Home',
-  status: 'capacitor invoice',
+  id: 50327,
+  title: 'customized system calculate',
+  subTitle: 'driver monetize',
+  icon: 'Botswana Lead',
+  bgColor: 'Plastic Frozen SQL',
+  country: 'Madagascar',
+  code: 'Road',
+  status: 'invoice users',
+  display: true,
 };
 
 export const sampleWithNewData: NewDealType = {
