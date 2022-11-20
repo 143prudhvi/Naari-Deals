@@ -1,32 +1,17 @@
 id;code;title;sub_title;address;phone;country;city;image_url;type;location;site_url;status
-1;AMAZON;Amazon;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/amazon.png;;On Line;https://www.amazon.com/;active
-2;AZA;AZA Fashions;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/aza.png;;On Line;https://www.azafashions.com/;active
-3;AMEAGLE;American Eagle;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/american_eagle.png;;On Line;https://www.ae.com/;active
-4;BREPUB;Banana Republic;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/banana_republic.png;;On Line;https://bananarepublic.gap.com/;active
-5;BBODY;Bath Body;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/bath_body.png;;On Line;https://www.bathandbodyworks.com/;active
-6;BEALLS;Bealls;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/bealls.png;;On Line;https://www.beallsflorida.com/;active
-7;BOSCOV;Boscov;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/boscov.png;;On Line;https://www.boscovs.com/;active
-8;BURLING;Burlington;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/burlington.png;;On Line;https://www.burlington.com/;active
-9;COLUMSPORT;Columbia Sports Wear;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/columbia_sports_wear.png;;On Line;https://www.columbia.com/;active
-10;COSTCO;Costco;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/costco.png;;On Line;https://www.costco.com/;active
-11;DILLARD;Dillards;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/dillards.png;;On Line;https://www.dillards.com/;active
-12;FOREVER21;Forever 21;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/forever_21.png;;On Line;https://www.forever21.com/;active
-13;HOLLISTER;Hollister;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/hollistor_logo.png;;On Line;https://www.hollisterco.com/;active
-14;JCPENNY;JC Penny;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/jcpenny.png;;On Line;https://www.jcpenney.com/;active
-15;LBRYANT;Lane Bryant;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/lane_bryant.png;;On Line;https://www.lanebryant.com/;active
-16;LEVIS;Levis;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/levis.png;;On Line;https://www.levi.com/;active
-17;LBRAND;Lucky Brand;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/lucky_brand.png;;On Line;https://www.luckybrand.com/;active
-18;MACY;Macy's;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/macy.png;;On Line;https://www.macys.com/;active
-19;NDSTROM;Nord Storm;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/nord_storm.png;;On Line;https://www.nordstrom.com/;active
-20;OLDNAVY;Old Navy;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/old_navy_logo.png;;On Line;https://oldnavy.gap.com/;active
-21;SAMS;Sams Club;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sams_club.png;;On Line;https://www.samsclub.com/;active
-22;SEARS;Sears Outlet;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sears_outlet.png;;On Line;https://www.sears.com/;active
-23;TARGET;Target;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/target.png;;On Line;https://www.target.com/;active
-24;THILFIGER;Tommy Hilfiger;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/tommy_hilfiger.png;;On Line;https://usa.tommy.com/;active
-25;ULTA;Ulta;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/ulta.png;;On Line;https://www.ulta.com/;active
-26;UARMOUR;Under Armour;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/under_armour.png;;On Line;https://www.underarmour.co;active
-27;VBRADLY;Vera Bradly;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/vera_bradly.png;;On Line;https://verabradley.com/;active
-28;VSECRET;Visctoria Secret;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/victoria_secret.png;;On Line;https://www.victoriassecret.com/;active
-29;WALLMART;Wallmart;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/wallmart.png;;On Line;https://www.walmart.com/;active
-30;COACHOUT;Coach Outlet;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/coach_outlet.png;;On Line;https://www.coachoutlet.com/;active
-31;MICHAEL_KORS;Michael Kors;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/michael_kors.png;;On Line;https://www.michaelkors.com/;active
+1;AMAZON;Amazon;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/amazon.png;;On Line;https://www.amazon.com;active
+2;AZA;AZA Fashions;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/aza.png;;On Line;https://www.azafashions.com;active
+3;BEALLS;Bealls;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/bealls.png;;On Line;https://www.beallsflorida.com;active
+4;BOSCOV;Boscov;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/boscov.png;;On Line;https://www.boscovs.com;active
+5;BURLING;Burlington;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/burlington.png;;On Line;https://www.burlington.com;active
+6;COSTCO;Costco;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/costco.png;;On Line;https://www.costco.com;active
+7;DILLARD;Dillards;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/dillards.png;;On Line;https://www.dillards.com;active
+8;JCPENNY;JC Penny;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/jcpenny.png;;On Line;https://www.jcpenney.com;active
+9;MACY;Macy's;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/macy.png;;On Line;https://www.macys.com;active
+10;NDSTROM;Nord Storm;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/nord_storm.png;;On Line;https://www.nordstrom.com;active
+11;SAMS;Sams Club;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sams_club.png;;On Line;https://www.samsclub.com;active
+12;SEARS;Sears Outlet;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sears_outlet.png;;On Line;https://www.sears.com;active
+13;TARGET;Target;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/target.png;;On Line;https://www.target.com;active
+14;ULTA;Ulta;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/ulta.png;;On Line;https://www.ulta.com;active
+15;SEPHORA;Sephora;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sephora.png;;On Line;https://www.sephora.com;active
+16;WALLMART;Wallmart;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/wallmart.png;;On Line;https://www.walmart.com;active
