@@ -1,11 +1,36 @@
 id;title;sub_title;code;status;country;image_url;site_url
-1;Proactive Island Strategist;customized interface;Concrete;copy;Bosnia and Herzegovina;Cotton Intelligent;Central Movies
-2;logistical Principal neural;up;Refined mindshare;primary;Tonga;Expanded;Kyat
-3;Clothing;Tala pink;Michigan User-centric Auto;Villages Fantastic Practical;Armenia;redefine;sky
-4;bifurcated synthesize;Quetzal overriding Gloves;cross-platform;sensor bypassing Business-focused;Mauritania;actuating;Ranch America application
-5;GB;hacking;Configuration Bedfordshire;Account Response;Botswana;Front-line New override;Keyboard payment
-6;Brand;Keyboard Generic state;interfaces;alarm;Cape Verde;user-centric Stream;e-tailers
-7;monetize;Accountability;quantify Ergonomic haptic;vertical seize;Jersey;bleeding-edge;Malawi
-8;Solutions Steel;Hawaii;fuchsia Corporate;Buckinghamshire;Gambia;Intelligent deposit;Manager
-9;Universal Avon;Wooden Applications RSS;generating;copying online;Gambia;connect synthesizing;Plastic Avon
-10;Buckinghamshire Sahara;Idaho Island;Associate;Plastic Metal neural-net;Nepal;York Music Buckinghamshire;Guinea lime Salad
+1;Abercrombie & Fitch;Check Now;ABERCROMB;Active;usa;https://naarideals.s3.amazonaws.com/brands/Abercrombie%26Fitch.png;https://www.abercrombie.com
+2;Adidas;Check Now;ADIDAS;Active;usa;https://naarideals.s3.amazonaws.com/brands/Adidas.png;https://www.adidas.com
+3;American Eagle;Check Now;AMERICAN_EGLE;Active;usa;https://naarideals.s3.amazonaws.com/brands/AmericanEagle.png;https://www.ae.com
+4;Bath & Body Works;Check Now;BATH_BODY;Active;usa;https://naarideals.s3.amazonaws.com/brands/Bath%26BodyWork.png;https://www.bathandbodyworks.com
+5;Calvin Klein;Check Now;CALVIN_KLEIN;Active;usa;https://naarideals.s3.amazonaws.com/brands/CalvinKlein.png;https://www.calvinklein.us
+6;Columbia;Check Now;COLUMBIA;Active;usa;https://naarideals.s3.amazonaws.com/brands/Columbia.png;https://www.columbia.com
+7;Elf;Check Now;ELF;Active;usa;https://naarideals.s3.amazonaws.com/brands/elf.png;https://www.elfcosmetics.com
+8;Express;Check Now;EXPRESS;Active;usa;https://naarideals.s3.amazonaws.com/brands/Express.png;https://www.express.com
+9;Forever21;Check Now;FOREVER21;Active;usa;https://naarideals.s3.amazonaws.com/brands/Forever21.png;https://www.forever21.com
+10;Gap;Check Now;GAP;Active;usa;https://naarideals.s3.amazonaws.com/brands/Gap.png;https://www.gap.com
+11;H&M;Check Now;H&M;Active;usa;https://naarideals.s3.amazonaws.com/brands/H%26M.png;https://www2.hm.com
+12;Hollister;Check Now;HOLISTER;Active;usa;https://naarideals.s3.amazonaws.com/brands/Holister.png;https://www.hollisterco.com
+13;Levis;Check Now;LEVIS;Active;usa;https://naarideals.s3.amazonaws.com/brands/Levis.png;https://www.levi.com
+14;Loreal;Check Now;LOREAL;Active;usa;https://naarideals.s3.amazonaws.com/brands/Loreal.png;https://www.loreal.com/en
+15;Lulu Lemon;Check Now;LULU_LEMON;Active;usa;https://naarideals.s3.amazonaws.com/brands/Lululemon.png;https://shop.lululemon.com
+16;Lulu's;Check Now;LULUS;Active;usa;https://naarideals.s3.amazonaws.com/brands/Lulus.png;https://www.lulus.com
+17;Maybelline;Check Now;MAYBE;Active;usa;https://naarideals.s3.amazonaws.com/brands/Maybeline.png;https://www.maybelline.com
+18;Michael Kors;Check Now;MICHAEL_KORS;Active;usa;https://naarideals.s3.amazonaws.com/brands/MichaelKors.png;https://www.michaelkors.com
+19;Nars;Check Now;NARS;Active;usa;https://naarideals.s3.amazonaws.com/brands/Nars.png;https://www.narscosmetics.com
+20;New Balance;Check Now;NEW_BALANCE;Active;usa;https://naarideals.s3.amazonaws.com/brands/NewBalance.png;https://www.newbalance.com
+21;Nike;Check Now;NIKE;Active;usa;https://naarideals.s3.amazonaws.com/brands/Nike.png;https://www.nike.com
+22;North Face;Check Now;NORTH_FACE;Active;usa;https://naarideals.s3.amazonaws.com/brands/NorthFace.png;https://www.thenorthface.com
+23;Old Navy;Check Now;OLD_NAVY;Active;usa;https://naarideals.s3.amazonaws.com/brands/OldNavy.png;https://oldnavy.gap.com
+24;Puma;Check Now;PUMA;Active;usa;https://naarideals.s3.amazonaws.com/brands/Puma.png;https://us.puma.com
+25;Reebok;Check Now;REEBOK;Active;usa;https://naarideals.s3.amazonaws.com/brands/Reebok.png;https://www.reebok.com
+26;Tommy Hilfiger;Check Now;TOMMY_HILFIGER;Active;usa;https://naarideals.s3.amazonaws.com/brands/TommyHilfiger.png;https://usa.tommy.com
+27;Under Armour;Check Now;UNDER_AROMOR;Active;usa;https://naarideals.s3.amazonaws.com/brands/UnderArmour.png;https://www.underarmour.com
+28;Vans;Check Now;VANS;Active;usa;https://naarideals.s3.amazonaws.com/brands/Vans.png;https://www.vans.com
+29;Victoria's Secret;Check Now;VIC_SECRET;Active;usa;https://naarideals.s3.amazonaws.com/brands/VictoriasSecret.png;https://www.victoriassecret.com
+30;Zara;Check Now;ZARA;Active;usa;https://naarideals.s3.amazonaws.com/brands/Zara.png;https://www.zara.com/us
+31;Biba;Check Now;BIBA;Active;usa;https://naarideals.s3.amazonaws.com/brands/Biba.png;https://www.biba.in
+32;Raas the Global Desi;Check Now;RAAS_GLOBAL;Active;usa;https://naarideals.s3.amazonaws.com/brands/raas.png;https://raastheglobaldesi.com
+33;lashkaraa;Check Now;LASHKARAA;Active;usa;https://naarideals.s3.amazonaws.com/brands/Lashkaraa.png;https://www.lashkaraa.com
+34;House Of Indya;Check Now;HOUSE_OF_INDIA;Active;usa;https://naarideals.s3.amazonaws.com/brands/Indya.png;https://www.houseofindya.com
+35;Mirraw;Check Now;MIRRAW;Active;usa;https://naarideals.s3.amazonaws.com/brands/Mirraw.png;https://www.mirraw.com

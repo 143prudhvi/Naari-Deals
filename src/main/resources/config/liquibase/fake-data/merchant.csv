@@ -1,11 +1,17 @@
 id;code;title;sub_title;address;phone;country;city;image_url;type;location;site_url;status
-1;ROI;e-business;Music Manager bypass;eyeballs;1-264-566-2988;Nicaragua;Lake Lucindaport;white;1080p;Ergonomic Checking magnetic;Toys;invoice facilitate
-2;synthesizing;Croatian Crossroad architecture;Clothing Public-key;program;902.873.0475 x35159;Cote d'Ivoire;Novato;Leu tolerance Handmade;invoice New open;Shirt Unbranded;enhance pricing morph;payment
-3;bypassing;Arizona;Wooden Intelligent Concrete;Account Bedfordshire;(918) 927-4996;Poland;Ardellaville;Brand Rustic hacking;value-added Rustic matrix;microchip;optical niches Frozen;ivory Benin
-4;transitional Corners Personal;Soap 3rd Movies;Sahara;lime;1-764-908-7017;Spain;Doloresburgh;Chips;reinvent vortals;reintermediate Antillian;Identity virtual tangible;Investment
-5;forecast ADP;hierarchy Intelligent;input collaborative;Avon primary Jewelery;411.379.6104 x322;Belgium;Miami;Malagasy HDD;yellow;District Bike COM;Granite Pula;alarm Manat Vietnam
-6;Cambridgeshire;Stream auxiliary Wisconsin;Shoes;International Center overriding;(809) 225-5853 x0312;Malawi;New Coleport;Minnesota multi-byte overriding;Beauty;Baby Dominican Berkshire;withdrawal Dollar Shoes;XSS Executive
-7;withdrawal Licensed;overriding transmitting;Buckinghamshire Face Exclusive;system-worthy;(675) 733-4755 x5623;Finland;Lincoln;Representative JSON Intelligent;Avon;Shoes standardization Roads;COM copying;Baby gold
-8;CFA quantifying Music;foreground;Martinique;envisioneer Operations;(601) 620-2317;Togo;Schambergerberg;Soft;navigate Car;Sol;Netherlands;New Berkshire
-9;Coordinator invoice;Tuna;Shores;Identity Web SQL;737.522.2009;Jordan;West Albinberg;Regional bluetooth;Investor deposit copying;azure;Strategist Kids asymmetric;mobile Alaska
-10;Enterprise-wide invoice Ball;Strategist Concrete compressing;Maryland;Coordinator silver;(985) 400-3225 x741;Iceland;Collinsshire;Myanmar Borders Creative;Oro Personal;Handmade;Kansas Beauty transmitter;SQL cultivate middleware
+1;AMAZON;Amazon;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/amazon.png;;On Line;https://www.amazon.com;active
+2;AZA;AZA Fashions;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/aza.png;;On Line;https://www.azafashions.com;active
+3;BEALLS;Bealls;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/bealls.png;;On Line;https://www.beallsflorida.com;active
+4;BOSCOV;Boscov;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/boscov.png;;On Line;https://www.boscovs.com;active
+5;BURLING;Burlington;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/burlington.png;;On Line;https://www.burlington.com;active
+6;COSTCO;Costco;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/costco.png;;On Line;https://www.costco.com;active
+7;DILLARD;Dillards;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/dillards.png;;On Line;https://www.dillards.com;active
+8;JCPENNY;JC Penny;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/jcpenny.png;;On Line;https://www.jcpenney.com;active
+9;MACY;Macy's;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/macy.png;;On Line;https://www.macys.com;active
+10;NDSTROM;Nord Storm;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/nord_storm.png;;On Line;https://www.nordstrom.com;active
+11;SAMS;Sams Club;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sams_club.png;;On Line;https://www.samsclub.com;active
+12;SEARS;Sears Outlet;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sears_outlet.png;;On Line;https://www.sears.com;active
+13;TARGET;Target;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/target.png;;On Line;https://www.target.com;active
+14;ULTA;Ulta;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/ulta.png;;On Line;https://www.ulta.com;active
+15;SEPHORA;Sephora;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/sephora.png;;On Line;https://www.sephora.com;active
+16;WALLMART;Wallmart;0;;;usa;usa;https://naarideals.s3.amazonaws.com/merchant/wallmart.png;;On Line;https://www.walmart.com;active
