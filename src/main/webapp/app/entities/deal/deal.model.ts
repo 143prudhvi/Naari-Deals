@@ -4,12 +4,14 @@ export interface IDeal {
   description?: string | null;
   imageUrl?: string | null;
   dealUrl?: string | null;
+  highlight?: string | null;
   postedBy?: string | null;
   postedDate?: string | null;
   startDate?: string | null;
   endDate?: string | null;
   originalPrice?: string | null;
   currentPrice?: string | null;
+  priceTag?: string | null;
   discount?: string | null;
   discountType?: string | null;
   active?: string | null;

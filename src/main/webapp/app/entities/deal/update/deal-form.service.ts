@@ -22,12 +22,14 @@ type DealFormGroupContent = {
   description: FormControl<IDeal['description']>;
   imageUrl: FormControl<IDeal['imageUrl']>;
   dealUrl: FormControl<IDeal['dealUrl']>;
+  highlight: FormControl<IDeal['highlight']>;
   postedBy: FormControl<IDeal['postedBy']>;
   postedDate: FormControl<IDeal['postedDate']>;
   startDate: FormControl<IDeal['startDate']>;
   endDate: FormControl<IDeal['endDate']>;
   originalPrice: FormControl<IDeal['originalPrice']>;
   currentPrice: FormControl<IDeal['currentPrice']>;
+  priceTag: FormControl<IDeal['priceTag']>;
   discount: FormControl<IDeal['discount']>;
   discountType: FormControl<IDeal['discountType']>;
   active: FormControl<IDeal['active']>;
@@ -63,12 +65,14 @@ export class DealFormService {
       description: new FormControl(dealRawValue.description),
       imageUrl: new FormControl(dealRawValue.imageUrl),
       dealUrl: new FormControl(dealRawValue.dealUrl),
+      highlight: new FormControl(dealRawValue.highlight),
       postedBy: new FormControl(dealRawValue.postedBy),
       postedDate: new FormControl(dealRawValue.postedDate),
       startDate: new FormControl(dealRawValue.startDate),
       endDate: new FormControl(dealRawValue.endDate),
       originalPrice: new FormControl(dealRawValue.originalPrice),
       currentPrice: new FormControl(dealRawValue.currentPrice),
+      priceTag: new FormControl(dealRawValue.priceTag),
       discount: new FormControl(dealRawValue.discount),
       discountType: new FormControl(dealRawValue.discountType),
       active: new FormControl(dealRawValue.active),

@@ -25,6 +25,8 @@ public class DealCriteria implements Serializable, Criteria {
 
     private StringFilter title;
 
+    private StringFilter highlight;
+
     private StringFilter postedBy;
 
     private StringFilter postedDate;
@@ -36,6 +38,8 @@ public class DealCriteria implements Serializable, Criteria {
     private StringFilter originalPrice;
 
     private StringFilter currentPrice;
+
+    private StringFilter priceTag;
 
     private StringFilter discount;
 
@@ -68,12 +72,14 @@ public class DealCriteria implements Serializable, Criteria {
     public DealCriteria(DealCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.title = other.title == null ? null : other.title.copy();
+        this.highlight = other.highlight == null ? null : other.highlight.copy();
         this.postedBy = other.postedBy == null ? null : other.postedBy.copy();
         this.postedDate = other.postedDate == null ? null : other.postedDate.copy();
         this.startDate = other.startDate == null ? null : other.startDate.copy();
         this.endDate = other.endDate == null ? null : other.endDate.copy();
         this.originalPrice = other.originalPrice == null ? null : other.originalPrice.copy();
         this.currentPrice = other.currentPrice == null ? null : other.currentPrice.copy();
+        this.priceTag = other.priceTag == null ? null : other.priceTag.copy();
         this.discount = other.discount == null ? null : other.discount.copy();
         this.discountType = other.discountType == null ? null : other.discountType.copy();
         this.active = other.active == null ? null : other.active.copy();
@@ -122,6 +128,21 @@ public class DealCriteria implements Serializable, Criteria {
 
     public void setTitle(StringFilter title) {
         this.title = title;
+    }
+
+    public StringFilter getHighlight() {
+        return highlight;
+    }
+
+    public StringFilter highlight() {
+        if (highlight == null) {
+            highlight = new StringFilter();
+        }
+        return highlight;
+    }
+
+    public void setHighlight(StringFilter highlight) {
+        this.highlight = highlight;
     }
 
     public StringFilter getPostedBy() {
@@ -212,6 +233,21 @@ public class DealCriteria implements Serializable, Criteria {
 
     public void setCurrentPrice(StringFilter currentPrice) {
         this.currentPrice = currentPrice;
+    }
+
+    public StringFilter getPriceTag() {
+        return priceTag;
+    }
+
+    public StringFilter priceTag() {
+        if (priceTag == null) {
+            priceTag = new StringFilter();
+        }
+        return priceTag;
+    }
+
+    public void setPriceTag(StringFilter priceTag) {
+        this.priceTag = priceTag;
     }
 
     public StringFilter getDiscount() {
@@ -414,12 +450,14 @@ public class DealCriteria implements Serializable, Criteria {
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(title, that.title) &&
+            Objects.equals(highlight, that.highlight) &&
             Objects.equals(postedBy, that.postedBy) &&
             Objects.equals(postedDate, that.postedDate) &&
             Objects.equals(startDate, that.startDate) &&
             Objects.equals(endDate, that.endDate) &&
             Objects.equals(originalPrice, that.originalPrice) &&
             Objects.equals(currentPrice, that.currentPrice) &&
+            Objects.equals(priceTag, that.priceTag) &&
             Objects.equals(discount, that.discount) &&
             Objects.equals(discountType, that.discountType) &&
             Objects.equals(active, that.active) &&
@@ -441,12 +479,14 @@ public class DealCriteria implements Serializable, Criteria {
         return Objects.hash(
             id,
             title,
+            highlight,
             postedBy,
             postedDate,
             startDate,
             endDate,
             originalPrice,
             currentPrice,
+            priceTag,
             discount,
             discountType,
             active,
@@ -469,12 +509,14 @@ public class DealCriteria implements Serializable, Criteria {
         return "DealCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
             (title != null ? "title=" + title + ", " : "") +
+            (highlight != null ? "highlight=" + highlight + ", " : "") +
             (postedBy != null ? "postedBy=" + postedBy + ", " : "") +
             (postedDate != null ? "postedDate=" + postedDate + ", " : "") +
             (startDate != null ? "startDate=" + startDate + ", " : "") +
             (endDate != null ? "endDate=" + endDate + ", " : "") +
             (originalPrice != null ? "originalPrice=" + originalPrice + ", " : "") +
             (currentPrice != null ? "currentPrice=" + currentPrice + ", " : "") +
+            (priceTag != null ? "priceTag=" + priceTag + ", " : "") +
             (discount != null ? "discount=" + discount + ", " : "") +
             (discountType != null ? "discountType=" + discountType + ", " : "") +
             (active != null ? "active=" + active + ", " : "") +

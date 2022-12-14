@@ -61,6 +61,7 @@ public class CacheConfiguration {
             createCache(cm, com.deals.naari.domain.CategoryType.class.getName());
             createCache(cm, com.deals.naari.domain.Slide.class.getName());
             createCache(cm, com.deals.naari.domain.Brand.class.getName());
+            createCache(cm, com.deals.naari.domain.Feedback.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

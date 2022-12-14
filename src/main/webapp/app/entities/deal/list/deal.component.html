@@ -64,6 +64,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="highlight">
+            <div class="d-flex">
+              <span>Highlight</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="postedBy">
             <div class="d-flex">
               <span>Posted By</span>
@@ -97,6 +103,12 @@
           <th scope="col" jhiSortBy="currentPrice">
             <div class="d-flex">
               <span>Current Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="priceTag">
+            <div class="d-flex">
+              <span>Price Tag</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -184,12 +196,14 @@
           <td>{{ deal.description }}</td>
           <td>{{ deal.imageUrl }}</td>
           <td>{{ deal.dealUrl }}</td>
+          <td>{{ deal.highlight }}</td>
           <td>{{ deal.postedBy }}</td>
           <td>{{ deal.postedDate }}</td>
           <td>{{ deal.startDate }}</td>
           <td>{{ deal.endDate }}</td>
           <td>{{ deal.originalPrice }}</td>
           <td>{{ deal.currentPrice }}</td>
+          <td>{{ deal.priceTag }}</td>
           <td>{{ deal.discount }}</td>
           <td>{{ deal.discountType }}</td>
           <td>{{ deal.active }}</td>

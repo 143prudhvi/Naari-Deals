@@ -57,6 +57,9 @@ public class DealServiceImpl implements DealService {
                 if (deal.getDealUrl() != null) {
                     existingDeal.setDealUrl(deal.getDealUrl());
                 }
+                if (deal.getHighlight() != null) {
+                    existingDeal.setHighlight(deal.getHighlight());
+                }
                 if (deal.getPostedBy() != null) {
                     existingDeal.setPostedBy(deal.getPostedBy());
                 }
@@ -74,6 +77,9 @@ public class DealServiceImpl implements DealService {
                 }
                 if (deal.getCurrentPrice() != null) {
                     existingDeal.setCurrentPrice(deal.getCurrentPrice());
+                }
+                if (deal.getPriceTag() != null) {
+                    existingDeal.setPriceTag(deal.getPriceTag());
                 }
                 if (deal.getDiscount() != null) {
                     existingDeal.setDiscount(deal.getDiscount());

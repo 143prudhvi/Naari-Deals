@@ -69,6 +69,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'Brands' },
         loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule),
       },
+      {
+        path: 'feedback',
+        data: { pageTitle: 'Feedbacks' },
+        loadChildren: () => import('./feedback/feedback.module').then(m => m.FeedbackModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

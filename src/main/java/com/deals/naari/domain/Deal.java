@@ -36,6 +36,9 @@ public class Deal implements Serializable {
     @Column(name = "deal_url")
     private String dealUrl;
 
+    @Column(name = "highlight")
+    private String highlight;
+
     @Column(name = "posted_by")
     private String postedBy;
 
@@ -53,6 +56,9 @@ public class Deal implements Serializable {
 
     @Column(name = "current_price")
     private String currentPrice;
+
+    @Column(name = "price_tag")
+    private String priceTag;
 
     @Column(name = "discount")
     private String discount;
@@ -157,6 +163,19 @@ public class Deal implements Serializable {
         this.dealUrl = dealUrl;
     }
 
+    public String getHighlight() {
+        return this.highlight;
+    }
+
+    public Deal highlight(String highlight) {
+        this.setHighlight(highlight);
+        return this;
+    }
+
+    public void setHighlight(String highlight) {
+        this.highlight = highlight;
+    }
+
     public String getPostedBy() {
         return this.postedBy;
     }
@@ -233,6 +252,19 @@ public class Deal implements Serializable {
 
     public void setCurrentPrice(String currentPrice) {
         this.currentPrice = currentPrice;
+    }
+
+    public String getPriceTag() {
+        return this.priceTag;
+    }
+
+    public Deal priceTag(String priceTag) {
+        this.setPriceTag(priceTag);
+        return this;
+    }
+
+    public void setPriceTag(String priceTag) {
+        this.priceTag = priceTag;
     }
 
     public String getDiscount() {
@@ -419,12 +451,14 @@ public class Deal implements Serializable {
             ", description='" + getDescription() + "'" +
             ", imageUrl='" + getImageUrl() + "'" +
             ", dealUrl='" + getDealUrl() + "'" +
+            ", highlight='" + getHighlight() + "'" +
             ", postedBy='" + getPostedBy() + "'" +
             ", postedDate='" + getPostedDate() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
             ", originalPrice='" + getOriginalPrice() + "'" +
             ", currentPrice='" + getCurrentPrice() + "'" +
+            ", priceTag='" + getPriceTag() + "'" +
             ", discount='" + getDiscount() + "'" +
             ", discountType='" + getDiscountType() + "'" +
             ", active='" + getActive() + "'" +

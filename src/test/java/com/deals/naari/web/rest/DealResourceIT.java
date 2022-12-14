@@ -43,6 +43,9 @@ class DealResourceIT {
     private static final String DEFAULT_DEAL_URL = "AAAAAAAAAA";
     private static final String UPDATED_DEAL_URL = "BBBBBBBBBB";
 
+    private static final String DEFAULT_HIGHLIGHT = "AAAAAAAAAA";
+    private static final String UPDATED_HIGHLIGHT = "BBBBBBBBBB";
+
     private static final String DEFAULT_POSTED_BY = "AAAAAAAAAA";
     private static final String UPDATED_POSTED_BY = "BBBBBBBBBB";
 
@@ -60,6 +63,9 @@ class DealResourceIT {
 
     private static final String DEFAULT_CURRENT_PRICE = "AAAAAAAAAA";
     private static final String UPDATED_CURRENT_PRICE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PRICE_TAG = "AAAAAAAAAA";
+    private static final String UPDATED_PRICE_TAG = "BBBBBBBBBB";
 
     private static final String DEFAULT_DISCOUNT = "AAAAAAAAAA";
     private static final String UPDATED_DISCOUNT = "BBBBBBBBBB";
@@ -126,12 +132,14 @@ class DealResourceIT {
             .description(DEFAULT_DESCRIPTION)
             .imageUrl(DEFAULT_IMAGE_URL)
             .dealUrl(DEFAULT_DEAL_URL)
+            .highlight(DEFAULT_HIGHLIGHT)
             .postedBy(DEFAULT_POSTED_BY)
             .postedDate(DEFAULT_POSTED_DATE)
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
             .originalPrice(DEFAULT_ORIGINAL_PRICE)
             .currentPrice(DEFAULT_CURRENT_PRICE)
+            .priceTag(DEFAULT_PRICE_TAG)
             .discount(DEFAULT_DISCOUNT)
             .discountType(DEFAULT_DISCOUNT_TYPE)
             .active(DEFAULT_ACTIVE)
@@ -159,12 +167,14 @@ class DealResourceIT {
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
             .dealUrl(UPDATED_DEAL_URL)
+            .highlight(UPDATED_HIGHLIGHT)
             .postedBy(UPDATED_POSTED_BY)
             .postedDate(UPDATED_POSTED_DATE)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .originalPrice(UPDATED_ORIGINAL_PRICE)
             .currentPrice(UPDATED_CURRENT_PRICE)
+            .priceTag(UPDATED_PRICE_TAG)
             .discount(UPDATED_DISCOUNT)
             .discountType(UPDATED_DISCOUNT_TYPE)
             .active(UPDATED_ACTIVE)
@@ -202,12 +212,14 @@ class DealResourceIT {
         assertThat(testDeal.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
         assertThat(testDeal.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
+        assertThat(testDeal.getHighlight()).isEqualTo(DEFAULT_HIGHLIGHT);
         assertThat(testDeal.getPostedBy()).isEqualTo(DEFAULT_POSTED_BY);
         assertThat(testDeal.getPostedDate()).isEqualTo(DEFAULT_POSTED_DATE);
         assertThat(testDeal.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testDeal.getEndDate()).isEqualTo(DEFAULT_END_DATE);
         assertThat(testDeal.getOriginalPrice()).isEqualTo(DEFAULT_ORIGINAL_PRICE);
         assertThat(testDeal.getCurrentPrice()).isEqualTo(DEFAULT_CURRENT_PRICE);
+        assertThat(testDeal.getPriceTag()).isEqualTo(DEFAULT_PRICE_TAG);
         assertThat(testDeal.getDiscount()).isEqualTo(DEFAULT_DISCOUNT);
         assertThat(testDeal.getDiscountType()).isEqualTo(DEFAULT_DISCOUNT_TYPE);
         assertThat(testDeal.getActive()).isEqualTo(DEFAULT_ACTIVE);
@@ -256,12 +268,14 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
             .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL.toString())))
+            .andExpect(jsonPath("$.[*].highlight").value(hasItem(DEFAULT_HIGHLIGHT)))
             .andExpect(jsonPath("$.[*].postedBy").value(hasItem(DEFAULT_POSTED_BY)))
             .andExpect(jsonPath("$.[*].postedDate").value(hasItem(DEFAULT_POSTED_DATE)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
             .andExpect(jsonPath("$.[*].originalPrice").value(hasItem(DEFAULT_ORIGINAL_PRICE)))
             .andExpect(jsonPath("$.[*].currentPrice").value(hasItem(DEFAULT_CURRENT_PRICE)))
+            .andExpect(jsonPath("$.[*].priceTag").value(hasItem(DEFAULT_PRICE_TAG)))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT)))
             .andExpect(jsonPath("$.[*].discountType").value(hasItem(DEFAULT_DISCOUNT_TYPE)))
             .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE)))
@@ -292,12 +306,14 @@ class DealResourceIT {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()))
             .andExpect(jsonPath("$.dealUrl").value(DEFAULT_DEAL_URL.toString()))
+            .andExpect(jsonPath("$.highlight").value(DEFAULT_HIGHLIGHT))
             .andExpect(jsonPath("$.postedBy").value(DEFAULT_POSTED_BY))
             .andExpect(jsonPath("$.postedDate").value(DEFAULT_POSTED_DATE))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE))
             .andExpect(jsonPath("$.originalPrice").value(DEFAULT_ORIGINAL_PRICE))
             .andExpect(jsonPath("$.currentPrice").value(DEFAULT_CURRENT_PRICE))
+            .andExpect(jsonPath("$.priceTag").value(DEFAULT_PRICE_TAG))
             .andExpect(jsonPath("$.discount").value(DEFAULT_DISCOUNT))
             .andExpect(jsonPath("$.discountType").value(DEFAULT_DISCOUNT_TYPE))
             .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE))
@@ -393,6 +409,71 @@ class DealResourceIT {
 
         // Get all the dealList where title does not contain UPDATED_TITLE
         defaultDealShouldBeFound("title.doesNotContain=" + UPDATED_TITLE);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByHighlightIsEqualToSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where highlight equals to DEFAULT_HIGHLIGHT
+        defaultDealShouldBeFound("highlight.equals=" + DEFAULT_HIGHLIGHT);
+
+        // Get all the dealList where highlight equals to UPDATED_HIGHLIGHT
+        defaultDealShouldNotBeFound("highlight.equals=" + UPDATED_HIGHLIGHT);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByHighlightIsInShouldWork() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where highlight in DEFAULT_HIGHLIGHT or UPDATED_HIGHLIGHT
+        defaultDealShouldBeFound("highlight.in=" + DEFAULT_HIGHLIGHT + "," + UPDATED_HIGHLIGHT);
+
+        // Get all the dealList where highlight equals to UPDATED_HIGHLIGHT
+        defaultDealShouldNotBeFound("highlight.in=" + UPDATED_HIGHLIGHT);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByHighlightIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where highlight is not null
+        defaultDealShouldBeFound("highlight.specified=true");
+
+        // Get all the dealList where highlight is null
+        defaultDealShouldNotBeFound("highlight.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByHighlightContainsSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where highlight contains DEFAULT_HIGHLIGHT
+        defaultDealShouldBeFound("highlight.contains=" + DEFAULT_HIGHLIGHT);
+
+        // Get all the dealList where highlight contains UPDATED_HIGHLIGHT
+        defaultDealShouldNotBeFound("highlight.contains=" + UPDATED_HIGHLIGHT);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByHighlightNotContainsSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where highlight does not contain DEFAULT_HIGHLIGHT
+        defaultDealShouldNotBeFound("highlight.doesNotContain=" + DEFAULT_HIGHLIGHT);
+
+        // Get all the dealList where highlight does not contain UPDATED_HIGHLIGHT
+        defaultDealShouldBeFound("highlight.doesNotContain=" + UPDATED_HIGHLIGHT);
     }
 
     @Test
@@ -783,6 +864,71 @@ class DealResourceIT {
 
         // Get all the dealList where currentPrice does not contain UPDATED_CURRENT_PRICE
         defaultDealShouldBeFound("currentPrice.doesNotContain=" + UPDATED_CURRENT_PRICE);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByPriceTagIsEqualToSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where priceTag equals to DEFAULT_PRICE_TAG
+        defaultDealShouldBeFound("priceTag.equals=" + DEFAULT_PRICE_TAG);
+
+        // Get all the dealList where priceTag equals to UPDATED_PRICE_TAG
+        defaultDealShouldNotBeFound("priceTag.equals=" + UPDATED_PRICE_TAG);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByPriceTagIsInShouldWork() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where priceTag in DEFAULT_PRICE_TAG or UPDATED_PRICE_TAG
+        defaultDealShouldBeFound("priceTag.in=" + DEFAULT_PRICE_TAG + "," + UPDATED_PRICE_TAG);
+
+        // Get all the dealList where priceTag equals to UPDATED_PRICE_TAG
+        defaultDealShouldNotBeFound("priceTag.in=" + UPDATED_PRICE_TAG);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByPriceTagIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where priceTag is not null
+        defaultDealShouldBeFound("priceTag.specified=true");
+
+        // Get all the dealList where priceTag is null
+        defaultDealShouldNotBeFound("priceTag.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByPriceTagContainsSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where priceTag contains DEFAULT_PRICE_TAG
+        defaultDealShouldBeFound("priceTag.contains=" + DEFAULT_PRICE_TAG);
+
+        // Get all the dealList where priceTag contains UPDATED_PRICE_TAG
+        defaultDealShouldNotBeFound("priceTag.contains=" + UPDATED_PRICE_TAG);
+    }
+
+    @Test
+    @Transactional
+    void getAllDealsByPriceTagNotContainsSomething() throws Exception {
+        // Initialize the database
+        dealRepository.saveAndFlush(deal);
+
+        // Get all the dealList where priceTag does not contain DEFAULT_PRICE_TAG
+        defaultDealShouldNotBeFound("priceTag.doesNotContain=" + DEFAULT_PRICE_TAG);
+
+        // Get all the dealList where priceTag does not contain UPDATED_PRICE_TAG
+        defaultDealShouldBeFound("priceTag.doesNotContain=" + UPDATED_PRICE_TAG);
     }
 
     @Test
@@ -1526,12 +1672,14 @@ class DealResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
             .andExpect(jsonPath("$.[*].dealUrl").value(hasItem(DEFAULT_DEAL_URL.toString())))
+            .andExpect(jsonPath("$.[*].highlight").value(hasItem(DEFAULT_HIGHLIGHT)))
             .andExpect(jsonPath("$.[*].postedBy").value(hasItem(DEFAULT_POSTED_BY)))
             .andExpect(jsonPath("$.[*].postedDate").value(hasItem(DEFAULT_POSTED_DATE)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE)))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE)))
             .andExpect(jsonPath("$.[*].originalPrice").value(hasItem(DEFAULT_ORIGINAL_PRICE)))
             .andExpect(jsonPath("$.[*].currentPrice").value(hasItem(DEFAULT_CURRENT_PRICE)))
+            .andExpect(jsonPath("$.[*].priceTag").value(hasItem(DEFAULT_PRICE_TAG)))
             .andExpect(jsonPath("$.[*].discount").value(hasItem(DEFAULT_DISCOUNT)))
             .andExpect(jsonPath("$.[*].discountType").value(hasItem(DEFAULT_DISCOUNT_TYPE)))
             .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE)))
@@ -1596,12 +1744,14 @@ class DealResourceIT {
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
             .dealUrl(UPDATED_DEAL_URL)
+            .highlight(UPDATED_HIGHLIGHT)
             .postedBy(UPDATED_POSTED_BY)
             .postedDate(UPDATED_POSTED_DATE)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .originalPrice(UPDATED_ORIGINAL_PRICE)
             .currentPrice(UPDATED_CURRENT_PRICE)
+            .priceTag(UPDATED_PRICE_TAG)
             .discount(UPDATED_DISCOUNT)
             .discountType(UPDATED_DISCOUNT_TYPE)
             .active(UPDATED_ACTIVE)
@@ -1631,12 +1781,14 @@ class DealResourceIT {
         assertThat(testDeal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testDeal.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
+        assertThat(testDeal.getHighlight()).isEqualTo(UPDATED_HIGHLIGHT);
         assertThat(testDeal.getPostedBy()).isEqualTo(UPDATED_POSTED_BY);
         assertThat(testDeal.getPostedDate()).isEqualTo(UPDATED_POSTED_DATE);
         assertThat(testDeal.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testDeal.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testDeal.getOriginalPrice()).isEqualTo(UPDATED_ORIGINAL_PRICE);
         assertThat(testDeal.getCurrentPrice()).isEqualTo(UPDATED_CURRENT_PRICE);
+        assertThat(testDeal.getPriceTag()).isEqualTo(UPDATED_PRICE_TAG);
         assertThat(testDeal.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
         assertThat(testDeal.getDiscountType()).isEqualTo(UPDATED_DISCOUNT_TYPE);
         assertThat(testDeal.getActive()).isEqualTo(UPDATED_ACTIVE);
@@ -1723,16 +1875,17 @@ class DealResourceIT {
             .title(UPDATED_TITLE)
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
+            .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .originalPrice(UPDATED_ORIGINAL_PRICE)
             .currentPrice(UPDATED_CURRENT_PRICE)
-            .discount(UPDATED_DISCOUNT)
+            .priceTag(UPDATED_PRICE_TAG)
             .discountType(UPDATED_DISCOUNT_TYPE)
+            .active(UPDATED_ACTIVE)
             .approved(UPDATED_APPROVED)
             .country(UPDATED_COUNTRY)
-            .city(UPDATED_CITY)
             .pinCode(UPDATED_PIN_CODE)
-            .category(UPDATED_CATEGORY)
+            .tags(UPDATED_TAGS)
             .expired(UPDATED_EXPIRED);
 
         restDealMockMvc
@@ -1751,22 +1904,24 @@ class DealResourceIT {
         assertThat(testDeal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testDeal.getDealUrl()).isEqualTo(DEFAULT_DEAL_URL);
+        assertThat(testDeal.getHighlight()).isEqualTo(DEFAULT_HIGHLIGHT);
         assertThat(testDeal.getPostedBy()).isEqualTo(DEFAULT_POSTED_BY);
         assertThat(testDeal.getPostedDate()).isEqualTo(DEFAULT_POSTED_DATE);
-        assertThat(testDeal.getStartDate()).isEqualTo(DEFAULT_START_DATE);
+        assertThat(testDeal.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testDeal.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testDeal.getOriginalPrice()).isEqualTo(UPDATED_ORIGINAL_PRICE);
         assertThat(testDeal.getCurrentPrice()).isEqualTo(UPDATED_CURRENT_PRICE);
-        assertThat(testDeal.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
+        assertThat(testDeal.getPriceTag()).isEqualTo(UPDATED_PRICE_TAG);
+        assertThat(testDeal.getDiscount()).isEqualTo(DEFAULT_DISCOUNT);
         assertThat(testDeal.getDiscountType()).isEqualTo(UPDATED_DISCOUNT_TYPE);
-        assertThat(testDeal.getActive()).isEqualTo(DEFAULT_ACTIVE);
+        assertThat(testDeal.getActive()).isEqualTo(UPDATED_ACTIVE);
         assertThat(testDeal.getApproved()).isEqualTo(UPDATED_APPROVED);
         assertThat(testDeal.getCountry()).isEqualTo(UPDATED_COUNTRY);
-        assertThat(testDeal.getCity()).isEqualTo(UPDATED_CITY);
+        assertThat(testDeal.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testDeal.getPinCode()).isEqualTo(UPDATED_PIN_CODE);
         assertThat(testDeal.getMerchant()).isEqualTo(DEFAULT_MERCHANT);
-        assertThat(testDeal.getCategory()).isEqualTo(UPDATED_CATEGORY);
-        assertThat(testDeal.getTags()).isEqualTo(DEFAULT_TAGS);
+        assertThat(testDeal.getCategory()).isEqualTo(DEFAULT_CATEGORY);
+        assertThat(testDeal.getTags()).isEqualTo(UPDATED_TAGS);
         assertThat(testDeal.getBrand()).isEqualTo(DEFAULT_BRAND);
         assertThat(testDeal.getExpired()).isEqualTo(UPDATED_EXPIRED);
     }
@@ -1788,12 +1943,14 @@ class DealResourceIT {
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
             .dealUrl(UPDATED_DEAL_URL)
+            .highlight(UPDATED_HIGHLIGHT)
             .postedBy(UPDATED_POSTED_BY)
             .postedDate(UPDATED_POSTED_DATE)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .originalPrice(UPDATED_ORIGINAL_PRICE)
             .currentPrice(UPDATED_CURRENT_PRICE)
+            .priceTag(UPDATED_PRICE_TAG)
             .discount(UPDATED_DISCOUNT)
             .discountType(UPDATED_DISCOUNT_TYPE)
             .active(UPDATED_ACTIVE)
@@ -1823,12 +1980,14 @@ class DealResourceIT {
         assertThat(testDeal.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testDeal.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testDeal.getDealUrl()).isEqualTo(UPDATED_DEAL_URL);
+        assertThat(testDeal.getHighlight()).isEqualTo(UPDATED_HIGHLIGHT);
         assertThat(testDeal.getPostedBy()).isEqualTo(UPDATED_POSTED_BY);
         assertThat(testDeal.getPostedDate()).isEqualTo(UPDATED_POSTED_DATE);
         assertThat(testDeal.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testDeal.getEndDate()).isEqualTo(UPDATED_END_DATE);
         assertThat(testDeal.getOriginalPrice()).isEqualTo(UPDATED_ORIGINAL_PRICE);
         assertThat(testDeal.getCurrentPrice()).isEqualTo(UPDATED_CURRENT_PRICE);
+        assertThat(testDeal.getPriceTag()).isEqualTo(UPDATED_PRICE_TAG);
         assertThat(testDeal.getDiscount()).isEqualTo(UPDATED_DISCOUNT);
         assertThat(testDeal.getDiscountType()).isEqualTo(UPDATED_DISCOUNT_TYPE);
         assertThat(testDeal.getActive()).isEqualTo(UPDATED_ACTIVE);

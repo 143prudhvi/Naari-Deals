@@ -1,43 +1,11 @@
 id;parent;title;sub_title;image_url;description;country;code;status
-1;Clothing;Shirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Shirt.jpg;Tops - Shirts;usa;SHIRTS;active
-2;Clothing;Blouses;Available (120);https://naarideals.s3.amazonaws.com/categories/Blouse.jpeg;Tops - Blouses;usa;WESTERN-BLOUSES;active
-3;Clothing;T-Shirts;Available (120);https://naarideals.s3.amazonaws.com/categories/T-Shirt.png;Tops - T-Shirts;usa;TSHIRTS;active
-6;Clothing;Leggings;Available (120);https://naarideals.s3.amazonaws.com/categories/Leggings.png;Bottoms - Leggings;usa;LEGGINGS;active
-5;Clothing;Pants;Available (120);https://naarideals.s3.amazonaws.com/categories/Pants.png;Bottoms - Pants;usa;PANTS;active
-4;Clothing;Jeans;Available (120);https://naarideals.s3.amazonaws.com/categories/Jeans.jpg;Bottoms -Jeans;usa;JEANS;active
-11;Clothing;Midi;Available (120);https://naarideals.s3.amazonaws.com/categories/Midi-Dress.jpg;Dresses - Midi;usa;MIDI;active
-9;Clothing;Skirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Skirts.jpg;Bottoms - Skirts;usa;SKIRTS;active
-12;Clothing;Mini;Available (120);https://naarideals.s3.amazonaws.com/categories/Mini-Dress.png;Dresses - Mini;usa;MINI;active
-13;Clothing;Jump Suits;Available (120);https://naarideals.s3.amazonaws.com/categories/Jumpsuit.jpg;Jump Suits;usa;JUMPSTARTS;active
-14;Clothing;Jackets;Available (120);https://naarideals.s3.amazonaws.com/categories/Jacket.png;Jackets;usa;JACKETS;active
-10;Clothing;Maxi;Available (120);https://naarideals.s3.amazonaws.com/categories/Maxi-Dress.png;Dresses -Maxi;usa;MAXI;active
-23;Clothing;Kurti;Available (120);https://naarideals.s3.amazonaws.com/categories/Kurti.png;Kurti;usa;KURTI;active
-8;Clothing;Shorts;Available (120);https://naarideals.s3.amazonaws.com/categories/Shorts.jpeg;Bottoms - Shorts;usa;SHORTS;active
-15;Clothing;Night Wear;Available (120);https://naarideals.s3.amazonaws.com/categories/Nightwear.jpeg;Night Wear;usa;NIGHTWEAR;active
-16;Clothing;Inner Wear;Available (120);https://naarideals.s3.amazonaws.com/categories/Underwear.png;Inner Wear;usa;INNERWEAR;active
-7;Clothing;Joggers;Available (120);https://naarideals.s3.amazonaws.com/categories/Joggers.jpeg;Bottoms - Joggers;usa;JOGGERS;active
-22;Clothing;Anarkali;Available (120);https://naarideals.s3.amazonaws.com/categories/Anarkali.png;Anarkali;usa;ANARKALI;active
-19;Clothing;"Lehenga; Ghagra";Available (120);https://naarideals.s3.amazonaws.com/categories/Lehenga.png;Lehenga;usa;LEHENGA;active
-20;Clothing;Ghagra;Available (120);https://naarideals.s3.amazonaws.com/categories/Ghagra.jpg;Ghagra;usa;GAGRA;active
-21;Clothing;Skirts;Available (120);https://naarideals.s3.amazonaws.com/categories/Indian-Skirt.png;Skirts;usa;SKIRTS;active
-18;Clothing;Blouses;Available (120);https://naarideals.s3.amazonaws.com/categories/Indian-Blouse.png;Blouses;usa;BLOUSES;active
-24;Clothing;Duppatta;Available (120);https://naarideals.s3.amazonaws.com/categories/Duppatta.png;Duppatta;usa;DUPATTA;active
-17;Clothing;Sarees;Available (120);https://naarideals.s3.amazonaws.com/categories/Saree.png;Sarees;usa;SAREES;active
-25;Footwear;Athletic Shoes;Available (120);https://naarideals.s3.amazonaws.com/categories/Athletic-Shoes.png;Athletic Shoes;usa;ATHLETIC-SHOES;active
-30;Footwear;Party Cheppal;Available (120);https://naarideals.s3.amazonaws.com/categories/Indian-Shoes.png;Party Cheppal;usa;PARTY-HEALS;active
-27;Footwear;Sandals;Available (120);https://naarideals.s3.amazonaws.com/categories/Sandals.png;Sandals;usa;SANDALS;active
-26;Footwear;Casual Shoes;Available (120);https://naarideals.s3.amazonaws.com/categories/Casual-Shoes.png;Casual Shoes;usa;CASUAL-SHOES;active
-28;Footwear;Boots;Available (120);https://naarideals.s3.amazonaws.com/categories/Boots.png;Boots;usa;BOOTS;active
-29;Footwear;Heels;Available (120);https://naarideals.s3.amazonaws.com/categories/Heels.png;Heels;usa;HEALS;active
-31;Jewelry;Necklaces;Available (120);https://naarideals.s3.amazonaws.com/categories/Necklace.jpeg;Necklaces;usa;NECKLACES;active
-36;Jewelry;Other Jewelry;Available (120);https://naarideals.s3.amazonaws.com/categories/Other-Jewelry.png;Other Jewelry;usa;ANKLETS;active
-34;Jewelry;Rings;Available (120);https://naarideals.s3.amazonaws.com/categories/Rings.png;Rings;usa;RINGS;active
-33;Jewelry;Earrings;Available (120);https://naarideals.s3.amazonaws.com/categories/Earrings.png;Earrings;usa;EARRINGS;active
-35;Jewelry;"Bangles; Bracelets";Available (120);https://naarideals.s3.amazonaws.com/categories/Bangles.png;"Bangles; Bracelets";usa;BANGLETS;active
-32;Jewelry;Necklace Sets;Available (120);https://naarideals.s3.amazonaws.com/categories/Necklace-Set.jpeg;Necklace Sets;usa;NECKSETS;active
-37;Accesories;Hats;Available (120);https://naarideals.s3.amazonaws.com/categories/Hats.png;Hats;usa;HATS;active
-38;Accesories;Sunglasses;Available (120);https://naarideals.s3.amazonaws.com/categories/Sunglasses.png;Sunglasses;usa;SUNGLASS;active
-39;Accesories;Socks;Available (120);https://naarideals.s3.amazonaws.com/categories/Socks.png;Socks;usa;SOCKS;active
-40;Accesories;Belts;Available (120);https://naarideals.s3.amazonaws.com/categories/Belts.png;Belts;usa;BELTS;active
-41;Accesories;Hair Accesories;Available (120);https://naarideals.s3.amazonaws.com/categories/Hair-Accesories.png;Hair Accesories;usa;HAIRACCESS;active
-42;Accesories;Handbags;Available (120);https://naarideals.s3.amazonaws.com/categories/Handbags.png;Handbags;usa;HANDBAGS;active
+1;Table;open-source;Integration;Refined metrics e-commerce;Chief;Sri Lanka;Berkshire Planner enterprise;Electronics
+2;Soap Salad killer;Games;Washington;mesh methodologies Realigned;Chicken Overpass;Moldova;Music Investment;Investor compress
+3;plug-and-play;Specialist;Rubber;Thailand throughput;revolutionize District;Kenya;networks;Avon XML
+4;invoice Sleek azure;feed Kids;Fresh;National;blue Chief;Congo;Islands Tasty;empower
+5;Sleek Public-key;SQL Garden;Agent circuit;6th;UIC-Franc;Nepal;transmit Central;help-desk
+6;Liaison withdrawal Granite;Refined Palladium Consultant;Portugal Barbados Tactics;South teal Games;PNG Personal;Papua New Guinea;Lead asymmetric monetize;Tunisian
+7;Applications;turquoise Berkshire hack;streamline Practical Administrator;circuit Licensed quantifying;Loan Security;Botswana;Front-line;Buckinghamshire Compatible Fish
+8;Human magenta;Designer Knoll;green Architect Web;Bedfordshire Fresh Pizza;Fantastic;Pakistan;back-end;driver
+9;auxiliary;Metal Tools quantify;SMS Personal;generate;Ball;Yemen;Soap Investor Central;Dollar
+10;Sleek array Fort;online bottom-line;Bacon streamline National;Keyboard Brazil Automated;Music;Cameroon;Bulgaria redundant Rial;Jordanian Kids Fish

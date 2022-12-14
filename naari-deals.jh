@@ -41,12 +41,14 @@ entity Deal {
       description TextBlob
       imageUrl TextBlob
       dealUrl TextBlob
+      highlight String
       postedBy String
       postedDate String
       startDate String
       endDate String
       originalPrice String
       currentPrice String
+      priceTag String
       discount String
       discountType String
       active String
@@ -110,6 +112,15 @@ entity Brand{
       siteUrl String
 }
 
+entity Feedback{
+      type String
+      name String
+      email String
+      phone String
+      userId String
+      message TextBlob
+
+}
 
 entity EmailSubscription{
       email String

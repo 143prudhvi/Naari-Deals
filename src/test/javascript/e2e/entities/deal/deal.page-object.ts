@@ -34,12 +34,14 @@ export class DealUpdatePage {
   descriptionInput = element(by.id('field_description'));
   imageUrlInput = element(by.id('field_imageUrl'));
   dealUrlInput = element(by.id('field_dealUrl'));
+  highlightInput = element(by.id('field_highlight'));
   postedByInput = element(by.id('field_postedBy'));
   postedDateInput = element(by.id('field_postedDate'));
   startDateInput = element(by.id('field_startDate'));
   endDateInput = element(by.id('field_endDate'));
   originalPriceInput = element(by.id('field_originalPrice'));
   currentPriceInput = element(by.id('field_currentPrice'));
+  priceTagInput = element(by.id('field_priceTag'));
   discountInput = element(by.id('field_discount'));
   discountTypeInput = element(by.id('field_discountType'));
   activeInput = element(by.id('field_active'));
@@ -97,6 +99,14 @@ export class DealUpdatePage {
     return await this.dealUrlInput.getAttribute('value');
   }
 
+  async setHighlightInput(highlight: string): Promise<void> {
+    await this.highlightInput.sendKeys(highlight);
+  }
+
+  async getHighlightInput(): Promise<string> {
+    return await this.highlightInput.getAttribute('value');
+  }
+
   async setPostedByInput(postedBy: string): Promise<void> {
     await this.postedByInput.sendKeys(postedBy);
   }
@@ -143,6 +153,14 @@ export class DealUpdatePage {
 
   async getCurrentPriceInput(): Promise<string> {
     return await this.currentPriceInput.getAttribute('value');
+  }
+
+  async setPriceTagInput(priceTag: string): Promise<void> {
+    await this.priceTagInput.sendKeys(priceTag);
+  }
+
+  async getPriceTagInput(): Promise<string> {
+    return await this.priceTagInput.getAttribute('value');
   }
 
   async setDiscountInput(discount: string): Promise<void> {

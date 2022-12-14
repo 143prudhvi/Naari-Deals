@@ -26,6 +26,9 @@
             <column name="deal_url" type="${clobType}">
                 <constraints nullable="true" />
             </column>
+            <column name="highlight" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="posted_by" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -42,6 +45,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="current_price" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="price_tag" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="discount" type="varchar(255)">
@@ -105,12 +111,14 @@
             <column name="description" type="clob"/>
             <column name="image_url" type="clob"/>
             <column name="deal_url" type="clob"/>
+            <column name="highlight" type="string"/>
             <column name="posted_by" type="string"/>
             <column name="posted_date" type="string"/>
             <column name="start_date" type="string"/>
             <column name="end_date" type="string"/>
             <column name="original_price" type="string"/>
             <column name="current_price" type="string"/>
+            <column name="price_tag" type="string"/>
             <column name="discount" type="string"/>
             <column name="discount_type" type="string"/>
             <column name="active" type="string"/>

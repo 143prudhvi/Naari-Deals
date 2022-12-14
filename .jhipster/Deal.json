@@ -25,6 +25,10 @@
       "fieldTypeBlobContent": "text"
     },
     {
+      "fieldName": "highlight",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "postedBy",
       "fieldType": "String"
     },
@@ -46,6 +50,10 @@
     },
     {
       "fieldName": "currentPrice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "priceTag",
       "fieldType": "String"
     },
     {
