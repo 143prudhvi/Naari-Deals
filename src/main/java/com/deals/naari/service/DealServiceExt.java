@@ -5,7 +5,6 @@ import com.deals.naari.domain.Deal;
 import com.deals.naari.domain.DealType;
 import com.deals.naari.repository.CategoryRepositoryExt;
 import com.deals.naari.repository.DealRepository;
-import com.deals.naari.repository.DealRepositoryExt;
 import com.deals.naari.repository.DealTypeRepositoryExt;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,19 +27,16 @@ public class DealServiceExt {
     private final Logger log = LoggerFactory.getLogger(DealServiceExt.class);
 
     private final DealRepository dealRepository;
-    private final DealRepositoryExt dealRepositoryExt;
 
     private final CategoryRepositoryExt categoryRepositoryExt;
 
     private final DealTypeRepositoryExt dealTypeRepositoryExt;
 
     public DealServiceExt(
-        DealRepositoryExt dealRepositoryExt,
         DealRepository dealRepository,
         CategoryRepositoryExt categoryRepositoryExt,
         DealTypeRepositoryExt dealTypeRepositoryExt
     ) {
-        this.dealRepositoryExt = dealRepositoryExt;
         this.dealRepository = dealRepository;
         this.categoryRepositoryExt = categoryRepositoryExt;
         this.dealTypeRepositoryExt = dealTypeRepositoryExt;
@@ -240,8 +236,24 @@ public class DealServiceExt {
         return dealRepository.findById(id);
     }
 
-    public void deleteDeals(String ids) {
-        log.debug("Request to delete Deals with ids : {}", ids);
-        dealRepositoryExt.deleteDeals(ids);
+    public void delete(Long id) {
+        log.debug("Request to delete Deal : {}", id);
+
+        Optional<Deal> existingDeal = dealRepository.findById(id);
+
+        for (String tag : existingDeal.get().getTags().split(",")) {
+            Optional<Category> category = categoryRepositoryExt.findByTitle(tag);
+            if (category.isPresent()) {
+                Category c = category.get();
+                c.setSubTitle(Integer.toString(Integer.parseInt(c.getSubTitle()) - 1));
+                categoryRepositoryExt.save(c);
+            } else {
+                Optional<DealType> dealType = dealTypeRepositoryExt.findByTitle(tag);
+                DealType d = dealType.get();
+                d.setSubTitle(Integer.toString(Integer.parseInt(d.getSubTitle()) - 1));
+                dealTypeRepositoryExt.save(d);
+            }
+        }
+        dealRepository.deleteById(id);
     }
 }

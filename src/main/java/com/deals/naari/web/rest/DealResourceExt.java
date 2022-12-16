@@ -157,13 +157,13 @@ public class DealResourceExt {
      * @param id the id of the deal to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/naari-deals/{ids}")
-    public ResponseEntity<Void> deleteDeals(@PathVariable String ids) {
-        log.debug("REST request to delete Deals with ids : {}", ids);
-        dealServiceExt.deleteDeals(ids);
+    @DeleteMapping("/naari-deals/{id}")
+    public ResponseEntity<Void> deleteDeal(@PathVariable Long id) {
+        log.debug("REST request to delete Deals with ids : {}", id);
+        dealServiceExt.delete(id);
         return ResponseEntity
             .noContent()
-            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, ids.toString()))
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
 }
