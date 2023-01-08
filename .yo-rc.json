@@ -5,6 +5,8 @@
     "baseName": "NaariDeals",
     "blueprints": [],
     "buildTool": "maven",
+    "serverSideOptions": ["websocket:spring-websocket"],
+    "websocket": "spring-websocket",
     "cacheProvider": "ehcache",
     "clientFramework": "angularX",
     "clientPackageManager": "npm",
@@ -59,7 +61,6 @@
     "skipUserManagement": false,
     "testFrameworks": ["protractor"],
     "useSass": true,
-    "websocket": false,
     "withAdminUi": true
   },
   "git-provider": "GitHub",

@@ -48,6 +48,21 @@ class ClientForwardControllerTest {
     }
 
     @Test
+    void getWebsocketInfoEndpoint() throws Exception {
+        restMockMvc.perform(get("/naariwebsocket/info")).andExpect(status().isNotFound());
+    }
+
+    @Test
+    void getWebsocketEndpoint() throws Exception {
+        restMockMvc.perform(get("/naariwebsocket/tracker/308/sessionId/websocket")).andExpect(status().isNotFound());
+    }
+
+    @Test
+    void getWebsocketFallbackEndpoint() throws Exception {
+        restMockMvc.perform(get("/naariwebsocket/tracker/308/sessionId/xhr_streaming")).andExpect(status().isNotFound());
+    }
+
+    @Test
     void getUnmappedDottedEndpoint() throws Exception {
         restMockMvc.perform(get("/foo.js")).andExpect(status().isNotFound());
     }
