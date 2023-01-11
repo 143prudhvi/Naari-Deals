@@ -26,7 +26,7 @@ export class TrackerService {
     }
 
     // building absolute path so that websocket doesn't fail when deploying with a context path
-    let url = '/naariwebscoket';
+    let url = '/naariwebsocket';
     url = this.location.prepareExternalUrl(url);
     const authToken = this.authServerProvider.getToken();
     if (authToken) {
